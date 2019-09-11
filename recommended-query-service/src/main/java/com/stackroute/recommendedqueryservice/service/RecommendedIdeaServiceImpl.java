@@ -23,7 +23,7 @@ public class RecommendedIdeaServiceImpl implements RecommendedIdeaService {
 
     @Override
     public List<Idea> findBySkill(String name) {
-       return ideaRecommendationRepository.findBySkill(name);
+        return ideaRecommendationRepository.findBySkill(name);
     }
 
     @Override
@@ -32,13 +32,14 @@ public class RecommendedIdeaServiceImpl implements RecommendedIdeaService {
     }
 
     @Override
-    public List<Idea> findByWorkedOnIdea(String name, String rname) {
-        return ideaRecommendationRepository.findByWorkedOnIdea(name, rname);
+    public List<Idea> findByWorkedOnIdea(String email) {
+
+        return ideaRecommendationRepository.findByWorkedOnIdea(email);
     }
 
     @Override
-    public List<Idea> findByAppliedOnIdea(String name, String rname) {
-        return ideaRecommendationRepository.findByAppliedOnIdea(name, rname);
+    public List<Idea> findByAppliedOnIdea(String email) {
+        return ideaRecommendationRepository.findByAppliedOnIdea(email);
     }
 
 

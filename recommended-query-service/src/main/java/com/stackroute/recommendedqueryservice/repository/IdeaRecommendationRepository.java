@@ -13,7 +13,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Repository
-public interface IdeaRecommendationRepository extends Neo4jRepository<Idea,Long> {
+public interface IdeaRecommendationRepository extends Neo4jRepository<Idea, Long> {
 
     @Query("MATCH(i:Idea),(sp:ServiceProvider)-[h:has_skill]->(s:Skills) with i,collect(s) as skills" +
             " match (sp)-[h:has_skill]-(s)<-[n:needs]-(i) where sp.name={name} return i")
@@ -24,14 +24,14 @@ public interface IdeaRecommendationRepository extends Neo4jRepository<Idea,Long>
     List<Idea> findByRole(@Param("name") String name);
 
     //The above method gives all idea with the desired role
-    @Query("match (s:ServiceProvider)-[w:worked_on]->(i:Idea),(i:Idea)-[r:requires]->" +
-            "(ro:Roles)<-[re:requires]-(rec:Idea) where not((s:ServiceProvider)-[w:worked_on]->(rec:Idea)) " +
-            " and s.name={name} and ro.roleName={roleName} return distinct rec")
-    List<Idea> findByWorkedOnIdea(@Param("name") String name, @Param("roleName") String rname);
+    @Query("match (ro:Roles)-[pl:played_by]->(s:ServiceProvider)-[w:worked_on]->(i:Idea)," +
+            "(i:Idea)-[r:requires]->(ro:Roles)<-[re:requires]-(rec:Idea) " +
+            "where not((s:ServiceProvider)-[w:worked_on]->(rec:Idea)) and s.email={email} return distinct rec")
+    List<Idea> findByWorkedOnIdea(@Param("email") String email);
 
-    @Query("match (s:ServiceProvider)-[w:applied_for]->(i:Idea),(i:Idea)-[r:requires]->" +
-            "(ro:Roles)<-[re:requires]-(rec:Idea) where not((s:ServiceProvider)-[w:applied_for]->(rec:Idea)) " +
-            " and s.name={name} and ro.roleName={roleName} return distinct rec")
-    List<Idea> findByAppliedOnIdea(@Param("name") String name, @Param("roleName") String rname);
+    @Query("match (ro:Roles)-[pl:played_by]->(s:ServiceProvider)-[w:applied_for]->(i:Idea)," +
+            "(i:Idea)-[r:requires]->(ro:Roles)<-[re:requires]-(rec:Idea) where not" +
+            "((s:ServiceProvider)-[w:applied_for]->(rec:Idea)) and s.email={email} return distinct rec")
+    List<Idea> findByAppliedOnIdea(@Param("email") String email);
 
 }

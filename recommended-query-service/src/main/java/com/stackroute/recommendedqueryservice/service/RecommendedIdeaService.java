@@ -15,7 +15,7 @@ public interface RecommendedIdeaService {
 
     List<Idea> findByRole(String name);
 
-    List<Idea> findByWorkedOnIdea(String name,String rname);
+    List<Idea> findByWorkedOnIdea(String email);
 
-    List<Idea> findByAppliedOnIdea(String name,String rname);
+    List<Idea> findByAppliedOnIdea(String email);
 }

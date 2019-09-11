@@ -16,7 +16,6 @@ public class RecommendedTeamServiceImpl implements RecommendedeamService {
         this.teamRecommendationService = teamRecommendationService;
     }
 
-
     @Override
     public Collection<ServiceProvider> getTeam(String name, String ex, String rname) {
         Collection<ServiceProvider> serviceProviders = teamRecommendationService.getTeam(name, ex, rname);

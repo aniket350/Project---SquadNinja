@@ -6,5 +6,5 @@ import org.springframework.data.repository.query.Param;
 import java.util.Collection;
 
 public interface RecommendedeamService {
-    Collection<ServiceProvider> getTeam(String name,String ex,String rname);
+    Collection<ServiceProvider> getTeam(String name, String ex, String rname);
 }

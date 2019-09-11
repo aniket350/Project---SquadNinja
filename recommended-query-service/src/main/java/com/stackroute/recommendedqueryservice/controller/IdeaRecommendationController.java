@@ -35,25 +35,19 @@ public class IdeaRecommendationController {
 
     @GetMapping("role/{name}")
     public ResponseEntity<Iterable<Idea>> getIdeasByRole(@PathVariable("name") String name) {
-        System.out.println(name);
         Iterable<Idea> ideas = recommendedIdeaService.findByRole(name);
-        System.out.println("controller");
         return new ResponseEntity<>(ideas, HttpStatus.OK);
     }
 
-    @GetMapping("worked/{name}")
-    public ResponseEntity<Iterable<Idea>> getIdeasByPreviousWork(@PathVariable("name") String name, @RequestParam("roleName") String rname) {
-        System.out.println(name);
-        Iterable<Idea> ideas = recommendedIdeaService.findByWorkedOnIdea(name, rname);
-        System.out.println("controller");
+    @GetMapping("workedonIdea/{email}")
+    public ResponseEntity<Iterable<Idea>> getIdeasByPreviousWork(@PathVariable("email") String name) {
+        Iterable<Idea> ideas = recommendedIdeaService.findByWorkedOnIdea(name);
         return new ResponseEntity<>(ideas, HttpStatus.OK);
     }
 
-    @GetMapping("applied/{name}")
-    public ResponseEntity<Iterable<Idea>> getIdeasByPreviousApplied(@PathVariable("name") String name, @RequestParam("roleName") String rname) {
-        System.out.println(name);
-        Iterable<Idea> ideas = recommendedIdeaService.findByAppliedOnIdea(name, rname);
-        System.out.println("controller");
+    @GetMapping("appliedonIdea/{email}")
+    public ResponseEntity<Iterable<Idea>> getIdeasByPreviousApplied(@PathVariable("email") String email) {
+        Iterable<Idea> ideas = recommendedIdeaService.findByAppliedOnIdea(email);
         return new ResponseEntity<>(ideas, HttpStatus.OK);
     }
 
