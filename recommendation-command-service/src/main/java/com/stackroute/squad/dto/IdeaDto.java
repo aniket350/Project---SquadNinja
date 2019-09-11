@@ -1,6 +1,7 @@
 package com.stackroute.squad.dto;
 
 import lombok.*;
+import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.springframework.data.annotation.Id;
 
@@ -19,7 +20,7 @@ import java.util.List;
 @ToString
 public class IdeaDto {
   @Id
-  private int id;
+  private Long id;
   private String title;
   private String description;
   private String duration;

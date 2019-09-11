@@ -20,7 +20,8 @@ import org.neo4j.ogm.annotation.Relationship;
 public class SubDomain
 {
     @Id
-    private int id;
+    @GeneratedValue
+    private Long id;
     private String name;
     @Relationship(type = "has", direction = Relationship.INCOMING)
     private Domain domain;

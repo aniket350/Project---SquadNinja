@@ -2,17 +2,29 @@ package com.stackroute.squad.services;
 
 
 import com.stackroute.squad.domain.ServiceProvider;
+import com.stackroute.squad.exceptions.ServiceProviderNotFound;
 
 import java.util.List;
 
 public interface ServiceProviderService {
-  public ServiceProvider save(ServiceProvider serviceProvider);
+  /**
+   * AbstractMethod to save a serviceProvider
+   */
+  public ServiceProvider save(ServiceProvider serviceProvider) throws Exception;
 
-  public List<ServiceProvider> getAllServiceProvider();
+  /**
+   * AbstractMethod to get all serviceProvider
+   */
+  public List<ServiceProvider> getAllServiceProvider() throws ServiceProviderNotFound;
 
-  public ServiceProvider deleteServiceProvider(int id);
+  /**
+   * AbstractMethod to update serviceProvider
+   */
+  public ServiceProvider updateServiceProvider(ServiceProvider serviceProvider) throws ServiceProviderNotFound;
 
-  public ServiceProvider updateServiceProvider(ServiceProvider serviceProvider);
-  public ServiceProvider getByEmail(String email);
+  /**
+   * AbstractMethod to get serviceProvider by email
+   */
+  public ServiceProvider getByEmail(String email) throws ServiceProviderNotFound;
 
 }

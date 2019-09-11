@@ -23,7 +23,8 @@ import java.util.List;
 public class Idea
 {
     @Id
-    private int id;
+    @GeneratedValue
+    private Long id;
     private String title;
     private String description;
     private String duration;
@@ -31,10 +32,13 @@ public class Idea
     private String status;
     private String postedBy;
     private Date postedOn;
+    //Idea belongs to subdomain
     @Relationship(type = "belongs_to", direction = Relationship.OUTGOING)
     private SubDomain subDomain;
+    //Idea requires roles
     @Relationship(type = "requires", direction = Relationship.OUTGOING)
     private List<Roles> roles;
+    //Idea needs skills
     @Relationship(type = "needs", direction = Relationship.OUTGOING)
     private List<Skills> skills;
 

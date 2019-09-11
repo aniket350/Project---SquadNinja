@@ -10,7 +10,7 @@ import java.util.Collections;
 /*@Repository annotation is used to indicate that the class provides the mechanism for storage, retrieval,
  search, update and delete operation on objects.*/
 @Repository
-public interface IHRepository extends Neo4jRepository<IdeaHamster, Integer> {
-  public IdeaHamster findById(int id);
+public interface IHRepository extends Neo4jRepository<IdeaHamster, Long> {
+  public IdeaHamster findById(long id);
 
 }

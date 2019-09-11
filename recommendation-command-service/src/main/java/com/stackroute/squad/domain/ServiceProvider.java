@@ -20,22 +20,23 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class ServiceProvider
-{
-    @Id
-    private int id;
-    private String name;
-    private long mobileNo;
-    private String email;
-    private String domain;
-    private String subDomain;
-    private String previousProject;
-    private String chargePerHour;
-    private String currentLocation;
-    private List<String> preferredLocation;
-    @Relationship(type = "has_skills", direction = Relationship.OUTGOING)
-    private List<Skills> skills;
-    @Relationship(type = "worked_on", direction = Relationship.OUTGOING)
-     private Idea idea;
-
+public class ServiceProvider {
+  @Id
+  @GeneratedValue
+  private Long id;
+  private String name;
+  private long mobileNo;
+  private String email;
+  private String domain;
+  private String subDomain;
+  private String previousProject;
+  private String chargePerHour;
+  private String currentLocation;
+  private List<String> preferredLocation;
+  @Relationship(type = "has_skills", direction = Relationship.OUTGOING)
+  private List<Skills> skills;
+  @Relationship(type = "worked_on", direction = Relationship.OUTGOING)
+  private Idea idea;
+  @Relationship(type = "applied_for", direction = Relationship.OUTGOING)
+  private Idea ideaDto;
 }

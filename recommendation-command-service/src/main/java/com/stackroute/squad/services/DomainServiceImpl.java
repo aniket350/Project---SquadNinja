@@ -7,20 +7,33 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @Service indicates annotated class is a service which hold business logic in the Service layer
+ */
 @Service
 public class DomainServiceImpl implements DomainService {
   DomainRepository domainRepository;
+
+  /**
+   * Constructor based Dependency injection to inject Domain Repository here
+   */
   @Autowired
   public DomainServiceImpl(DomainRepository domainRepository) {
     this.domainRepository = domainRepository;
   }
 
+  /**
+   * Implementation of saveDomain method
+   */
   @Override
-  public Domain save(Domain domain) {
-   Domain savedomain=domainRepository.save(domain);
+  public Domain saveDomain(Domain domain) {
+    Domain savedomain = domainRepository.save(domain);
     return savedomain;
   }
 
+  /**
+   * Implementation of getAllDomains method
+   */
   @Override
   public List<Domain> getAllDomains() {
     List<Domain> allDomains = (List<Domain>) domainRepository.findAll();
@@ -28,14 +41,9 @@ public class DomainServiceImpl implements DomainService {
 
   }
 
-  @Override
-  public Domain deleteDomain(int id) {
-    Domain retrivedDomain = domainRepository.findById(id);
-    domainRepository.deleteById(id);
-    return retrivedDomain;
-
-  }
-
+  /**
+   * Implementation of update Domains method
+   */
   @Override
   public Domain updateDomain(Domain domain) {
     Domain updateDomain = domainRepository.save(domain);

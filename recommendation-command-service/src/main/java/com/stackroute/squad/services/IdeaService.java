@@ -1,18 +1,27 @@
 package com.stackroute.squad.services;
 
 import com.stackroute.squad.domain.Idea;
+import com.stackroute.squad.exceptions.IdeaAlreadyExistsException;
+import com.stackroute.squad.exceptions.IdeaNotFoundException;
 
 
 import java.util.List;
 
 public interface IdeaService {
-  public Idea save(Idea idea);
+  /**
+   * AbstractMethod to save a idea
+   */
+  public Idea saveIdea(Idea idea) throws IdeaAlreadyExistsException;
 
-  public List<Idea> getAllIdea();
+  /**
+   * AbstractMethod to get All ideas
+   */
+  public List<Idea> getAllIdeas() throws IdeaNotFoundException;
 
-  public Idea deleteIdea(int id);
-
-  public Idea updateIdea(Idea idea);
+  /**
+   * AbstractMethod to update idea
+   */
+  public Idea updateIdea(Idea idea) throws IdeaNotFoundException;
 
 
 }
