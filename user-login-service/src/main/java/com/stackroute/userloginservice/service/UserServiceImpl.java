@@ -1,6 +1,7 @@
 package com.stackroute.userloginservice.service;
 
 import com.stackroute.userloginservice.domain.User;
+import com.stackroute.userloginservice.dto.UserDto;
 import com.stackroute.userloginservice.repository.UserRepository;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -24,20 +25,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @RabbitListener(queues = "${ih.rabbitmq.queue}")
-    public void recievedMessage(User user) {
+    public void recievedMessage(UserDto user) {
         User x = new User();
         x.setRole(user.getRole());
-        x.setEmailId(user.getEmailId());
+        x.setEmailId(user.getEmail());
         x.setPassword(user.getPassword());
         userRepository.save(x);
         System.out.println("Recieved Message From ideaHamster:" + x.toString());
     }
     //For service provider producer
     @RabbitListener(queues = "${spRegister.rabbitmq.queue}")
-    public void recieveMessage(User user) {
+    public void recieveMessage(UserDto user) {
         User y = new User();
         y.setRole(user.getRole());
-        y.setEmailId(user.getEmailId());
+        y.setEmailId(user.getEmail());
         y.setPassword(user.getPassword());
         userRepository.save(y);
         System.out.println("Recieved Message From service-provider:" + y.toString());
