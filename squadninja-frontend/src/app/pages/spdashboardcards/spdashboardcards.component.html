@@ -1,0 +1,41 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- idea -->
+<div class="wrapper">
+  <div class="content" *ngFor="let x of ideaCardsData">
+     <!-- card -->
+     <div class="card">
+           <div class="icon"><i class="material-icons md-36">alternate_email</i></div>
+           <p class="title">{{x.title}}</p>
+           <p class="text">{{x.description}}</p>
+     </div>
+     <!-- end card -->
+     <!-- card -->
+     <!-- <div class="card">
+           <div class="icon"><i class="material-icons md-36">alternate_email</i></div>
+           <p class="title">{{x.ideaTitle}}</p>
+           <p class="text">{{x.description}}</p>
+     </div> -->
+     <!-- end card -->
+     <!-- card -->
+     <!-- <div class="card">
+           <div class="icon"><i class="material-icons md-36">alternate_email</i></div>
+           <p class="title">{{x.ideaTitle}}</p>
+           <p class="text">{{x.description}}</p>
+     </div> -->
+     <!-- end card -->
+  </div>
+</div>
+
+
+<!-- service -->
+<div class="wrapper">
+  <div class="content" *ngFor="let y of spCardData">
+     <!-- card -->
+     <div class="card">
+           <div class="icon"><i class="material-icons md-36">face</i></div>
+           <p class="title">{{y.name}}</p>
+           <p class="text">{{y.role.skills }}</p>
+     </div>
+     
+  </div>
+</div>
