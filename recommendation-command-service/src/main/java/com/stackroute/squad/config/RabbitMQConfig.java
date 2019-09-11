@@ -111,6 +111,7 @@ public class RabbitMQConfig {
   Binding bindSpUpdate(Queue spQueueUpdate, TopicExchange spExchangeUpdate) {
     return BindingBuilder.bind(spQueueUpdate).to(spExchangeUpdate).with(spUpdateRoutingkey);
   }
+
   /*..........................Delete of idea..........................................*/
   @Value("${ideaDelete.rabbitmq.queue}")
   String ideaDeleteQueueName;
@@ -132,9 +133,10 @@ public class RabbitMQConfig {
   }
 
   @Bean
-  Binding bindideaDelete(Queue ideaDeleteQueue, TopicExchange ideaDeleteExchange) {
+  Binding bindIdeaDelete(Queue ideaDeleteQueue, TopicExchange ideaDeleteExchange) {
     return BindingBuilder.bind(ideaDeleteQueue).to(ideaDeleteExchange).with(ideaDeleteRoutingkey);
   }
+
   /*.....................................................................*/
   @Bean
   public Jackson2JsonMessageConverter jsonMessageConverter() {

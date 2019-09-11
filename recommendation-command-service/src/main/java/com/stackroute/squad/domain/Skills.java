@@ -22,8 +22,7 @@ import java.util.List;
 public class Skills
 {
     @Id
-    private int id;
+    @GeneratedValue
+    private Long id;
     private String skillName;
-//    @Relationship(type = "has_skill", direction = Relationship.INCOMING)
-//    private List<ServiceProvider> serviceProviderList;
 }

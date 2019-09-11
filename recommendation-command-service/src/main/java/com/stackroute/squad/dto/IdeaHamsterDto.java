@@ -20,7 +20,6 @@ import java.util.List;
 @ToString
 public class IdeaHamsterDto {
   @Id
-
   private String email;
   private String name;
   private long mobile;

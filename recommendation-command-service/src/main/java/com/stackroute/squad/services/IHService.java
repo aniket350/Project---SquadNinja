@@ -5,12 +5,18 @@ import com.stackroute.squad.domain.IdeaHamster;
 import java.util.List;
 
 public interface IHService {
-  public IdeaHamster save(IdeaHamster ideaHamster);
+  /**
+   * AbstractMethod to save a ideahamster
+   */
+  public IdeaHamster saveIH(IdeaHamster ideaHamster);
+  /**
+   * AbstractMethod to get all idea hamsters
+   */
+  public List<IdeaHamster> getAllIdeaHamsters();
 
-  public List<IdeaHamster> getAllIdeaHamster();
-
-  public IdeaHamster deleteIdeaHamster(int id);
-
+  /**
+   * AbstractMethod to update idea hamster
+   */
   public IdeaHamster updateIdeaHamster(IdeaHamster ideaHamster);
 
 

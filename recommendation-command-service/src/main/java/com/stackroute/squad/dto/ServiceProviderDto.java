@@ -3,6 +3,7 @@ package com.stackroute.squad.dto;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
+import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 
@@ -24,7 +25,7 @@ import java.util.List;
 //@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id", scope = ServiceProviderDto.class)
 public class ServiceProviderDto {
   @Id
-  private int id;
+  private Long id;
   private String email;
   private String name;
   private long mobileNo;

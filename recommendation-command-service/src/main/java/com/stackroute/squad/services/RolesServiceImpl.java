@@ -7,19 +7,32 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @Service indicates annotated class is a service which hold business logic in the Service layer
+ */
 @Service
-public class RolesServiceImpl implements RolesService{
+public class RolesServiceImpl implements RolesService {
   RolesRepository rolesRepository;
+
+  /**
+   * Constructor based Dependency injection to inject rolRepository here
+   */
   @Autowired
-  public RolesServiceImpl(RolesRepository rolesRepository){
-    this.rolesRepository=rolesRepository;
+  public RolesServiceImpl(RolesRepository rolesRepository) {
+    this.rolesRepository = rolesRepository;
   }
+
+  /**
+   * Implementation of saveRoles method
+   */
   @Override
   public Roles save(Roles roles) {
     return rolesRepository.save(roles);
   }
 
-
+  /**
+   * Implementation of getAllRoles method
+   */
   @Override
   public List<Roles> getAllRoles() {
     List<Roles> allRoles = (List<Roles>) rolesRepository.findAll();
@@ -27,13 +40,9 @@ public class RolesServiceImpl implements RolesService{
 
   }
 
-  @Override
-  public Roles deleteRoles(int id) {
-    Roles retrivedRoles = rolesRepository.findById(id);
-    rolesRepository.deleteById(id);
-    return retrivedRoles;
-  }
-
+  /**
+   * Implementation of updateRoles method
+   */
   @Override
   public Roles updateRoles(Roles roles) {
     Roles updateRoles = rolesRepository.save(roles);

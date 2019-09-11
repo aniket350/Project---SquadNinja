@@ -22,8 +22,8 @@ import java.util.List;
 @ToString
 public class IdeaHamster {
   @Id
-
-  private int id;
+  @GeneratedValue
+  private Long id;
   private String name;
   private long mobile;
   private String email;

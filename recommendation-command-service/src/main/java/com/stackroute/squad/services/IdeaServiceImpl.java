@@ -5,6 +5,8 @@ import com.stackroute.squad.dto.IdeaDto;
 import com.stackroute.squad.domain.Idea;
 import com.stackroute.squad.dto.RolesDto;
 import com.stackroute.squad.dto.ServiceProviderDto;
+import com.stackroute.squad.exceptions.IdeaAlreadyExistsException;
+import com.stackroute.squad.exceptions.IdeaNotFoundException;
 import com.stackroute.squad.repository.IdeaRepository;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,28 +19,38 @@ import java.util.Map;
 
 import static org.neo4j.ogm.session.Utils.map;
 
+/**
+ * @Service indicates annotated class is a service which hold business logic in the Service layer
+ */
 @Service
 public class IdeaServiceImpl implements IdeaService {
 
   private IdeaRepository ideaRepository;
   private Object Idea;
 
+  /**
+   * Constructor based Dependency injection to inject Idea Repository here
+   */
+
   @Autowired
   public IdeaServiceImpl(IdeaRepository ideaRepository) {
     this.ideaRepository = ideaRepository;
   }
 
+  /**
+   * Implementation of saveIdea method
+   */
 
   @Override
-  public Idea save(Idea idea) {
+  public Idea saveIdea(Idea idea) throws IdeaAlreadyExistsException {
     System.out.println(ideaRepository.save(idea));
     return ideaRepository.save(idea);
   }
 
+  /*It recieves the data from idea service*/
   @RabbitListener(queues = "${idea.rabbitmq.queue}")
-  public void receive(IdeaDto ideaDTO) {
+  public void receiveData(IdeaDto ideaDTO) throws IdeaAlreadyExistsException {
     Idea idea = new Idea();
-    idea.setId(ideaDTO.getId());
     idea.setTitle(ideaDTO.getTitle());
     idea.setDescription(ideaDTO.getDescription());
     idea.setDuration(ideaDTO.getDuration());
@@ -59,37 +71,37 @@ public class IdeaServiceImpl implements IdeaService {
         ideaRepository.setNeedsRelation(ideaDTO.getTitle(), rolesDto.getSkills().get(j));
       }
     }
-    System.out.println(ideaDTO);
 
 
   }
 
+  /*It recieves the data from idea service and delete the node and delete the relationship between idea and roles*/
   @RabbitListener(queues = "${ideaDelete.rabbitmq.queue}")
-  public void deleteIdea(IdeaDto ideaDto) {
+  public void deleteIdea(IdeaDto ideaDto) throws IdeaNotFoundException {
     for (int i = 0; i < ideaDto.getRole().size(); i++) {
       ideaRepository.deleteRequiresRelation(ideaDto.getTitle(), ideaDto.getRole().get(i).getRoleName());
     }
-    System.out.println(ideaDto);
+
   }
 
-
+  /**
+   * Implementation of getAllIdeas method
+   */
   @Override
-  public List<Idea> getAllIdea() {
+  public List<Idea> getAllIdeas() throws IdeaNotFoundException {
     List<Idea> allIdeas = (List<Idea>) ideaRepository.findAll();
     return allIdeas;
   }
 
 
+  /**
+   * Implementation of deleteIdea method
+   */
+  /**
+   * Implementation of updateIdea method
+   */
   @Override
-  public Idea deleteIdea(int id) {
-    Idea retrivedIdea = ideaRepository.findById(id);
-    ideaRepository.deleteById(id);
-    return retrivedIdea;
-
-  }
-
-  @Override
-  public Idea updateIdea(Idea idea) {
+  public Idea updateIdea(Idea idea) throws IdeaNotFoundException {
     Idea updateIdeaById = ideaRepository.save(idea);
     return updateIdeaById;
   }

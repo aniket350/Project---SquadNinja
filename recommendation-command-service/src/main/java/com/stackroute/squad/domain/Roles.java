@@ -23,8 +23,8 @@ import java.util.List;
 @ToString
 public class Roles {
   @Id
-
-  private int id;
+@GeneratedValue
+  private Long id;
   private String roleName;
   private String noOfPeople;
   private String experience;

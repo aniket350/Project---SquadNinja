@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 /*@Repository annotation is used to indicate that the class provides the mechanism for storage, retrieval,
  search, update and delete operation on objects.*/
 @Repository
-public interface SkillsRepository extends Neo4jRepository<Skills, Integer> {
+public interface SkillsRepository extends Neo4jRepository<Skills, Long> {
   public Skills findById(int id);
 }

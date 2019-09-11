@@ -22,7 +22,8 @@ import java.util.List;
 public class Domain
 {
     @Id
-    private int id;
+    @GeneratedValue
+    private Long id;
     private String domainName;
 
 }
