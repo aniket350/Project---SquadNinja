@@ -42,27 +42,27 @@ public class RabbitMQConfig {
     /* -----------------profile------------------- */
 
     @Value("${spRegister.rabbitmq.queue}")
-    String profileQueueName;
+    String spQueueName;
 
     @Value("${spRegister.rabbitmq.exchange}")
-    String profileExchange;
+    String spExchange;
 
     @Value("${spRegister.rabbitmq.routingkey}")
-    String profilRoutingkey;
+    String spRoutingkey;
 
     @Bean
     Queue queueProfile() {
-        return new Queue(profileQueueName, true);
+        return new Queue(spQueueName, true);
     }
 
     @Bean
     TopicExchange exchangeProfile() {
-        return new TopicExchange(profileExchange);
+        return new TopicExchange(spExchange);
     }
 
     @Bean
     Binding bindingProfile(Queue queueProfile, TopicExchange exchangeProfile) {
-        return BindingBuilder.bind(queueProfile).to(exchangeProfile).with(profilRoutingkey);
+        return BindingBuilder.bind(queueProfile).to(exchangeProfile).with(spRoutingkey);
     }
 
 
