@@ -26,15 +26,20 @@ public class UserServiceImpl implements UserService {
     @RabbitListener(queues = "${ih.rabbitmq.queue}")
     public void recievedMessage(User user) {
         User x = new User();
-        x.set
-        userRepository.save(user);
-        System.out.println("Recieved Message From ideaHamster:" + user.toString());
+        x.setRole(user.getRole());
+        x.setEmailId(user.getEmailId());
+        x.setPassword(user.getPassword());
+        userRepository.save(x);
+        System.out.println("Recieved Message From ideaHamster:" + x.toString());
     }
-
     //For service provider producer
     @RabbitListener(queues = "${spRegister.rabbitmq.queue}")
     public void recieveMessage(User user) {
-        userRepository.save(user);
-        System.out.println("Recieved Message From service-provider:" + user.toString());
+        User y = new User();
+        y.setRole(user.getRole());
+        y.setEmailId(user.getEmailId());
+        y.setPassword(user.getPassword());
+        userRepository.save(y);
+        System.out.println("Recieved Message From service-provider:" + y.toString());
     }
 }
