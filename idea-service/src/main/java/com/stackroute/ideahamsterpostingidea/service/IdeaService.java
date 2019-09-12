@@ -38,4 +38,6 @@ public interface IdeaService {
 
     /*AbstractMethod to get recent Idea by date*/
     public List<Idea> getRecentIdeas() throws Exception;
+
+    public Idea findByPostedBy(String postedBy) throws  IdeaNotFoundException;
 }

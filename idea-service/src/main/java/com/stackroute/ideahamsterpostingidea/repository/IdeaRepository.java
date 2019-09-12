@@ -14,5 +14,7 @@ public interface IdeaRepository extends MongoRepository<Idea, String> {
 
   public Idea findByLocation(String location);
 
+ 
+
 
 }

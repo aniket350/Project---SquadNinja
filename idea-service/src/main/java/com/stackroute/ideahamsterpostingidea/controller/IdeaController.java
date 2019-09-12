@@ -98,6 +98,7 @@ public class IdeaController {
         List<Idea> recentIdeas = ideaService.getRecentIdeas();
         return new ResponseEntity<>(recentIdeas, HttpStatus.OK);
     }
+
 }
 
 

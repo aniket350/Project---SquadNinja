@@ -20,8 +20,6 @@ import { IdeaviewComponent } from 'src/app/pages/ideaview/ideaview.component';
 
 
 
-
-
 @NgModule({
   declarations: [
     IhdashboardcardsComponent,

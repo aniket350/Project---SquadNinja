@@ -3,6 +3,9 @@ import {$} from 'protractor';
 import { protractor } from 'protractor/built/ptor';
 import { FormControl } from '@angular/forms';
 import { IhdashboardserService } from 'src/app/services/ihdashboardser/ihdashboardser.service';
+import { SectionComponentService } from 'src/app/services/cardHomePage/section-component.service';
+import { SectionComponentSP } from 'src/app/services/cardSPHomePage/section-component-service-service';
+import { SpprofileserService } from 'src/app/services/spprofileser/spprofileser.service';
 
 @Component({
   selector: 'app-ihdashboardcards',
@@ -11,43 +14,47 @@ import { IhdashboardserService } from 'src/app/services/ihdashboardser/ihdashboa
 })
 export class IhdashboardcardsComponent implements OnInit {
 
-  tabs = ['Devloper', 'Tester', 'Designer'];
-  selected = new FormControl(0);
-  
+  sections: any = ['title'];
+  private ideaCardsData: any;
 
-  cards = ['Idea1', 'Idea2'];
-  sel = new FormControl(0);
+  serviceProviderData: SpprofileserService;
+  updated: any;
 
-  public ideas = [];
+  cards:any=['one','two'];
+  constructor(private sectionComponentService : SectionComponentService, private sectionComponentSP: SectionComponentSP,private serviceProviderProfile: SpprofileserService){}
 
-  private _ideas : IhdashboardserService;
-  constructor() {}
-
+  public emailId = '';
   ngOnInit() {
-    //  this._ideas.getServiceProviders()
-    //  .subscribe(data => this.ideas = data);
+    this.getTheProfile();
+
+    this.sectionComponentService.getIdeas()
+      .subscribe(data => {
+        this.ideaCardsData = data
+        console.log(this.ideaCardsData);
+      });
+      
+    this.sections = this.chunk(this.sections, 3);
   }
 
-  addTab() {
-    this.tabs.push('Role ');
 
-    this.selected.setValue(this.tabs.length - 1);
+  chunk(arr, chunkSize) {
+    let R = [];
+    for (let i = 0, len = arr.length; i < len; i += chunkSize) {
+      R.push(arr.slice(i, i + chunkSize));
     }
-  
-
-  addCard() {
-    this.cards.push('{{ideas.name}}');
-    this.sel.setValue(this.cards.length - 1);
-  
+    return R;
   }
 
-  removeTab(index: number) {
-    this.tabs.splice(index, 1);
+  getTheProfile(){
+    this.emailId=localStorage.getItem("emailId");
+    this.serviceProviderProfile.getByEmailIdForServiceProvider(this.emailId)
+    .subscribe((data)=> {
+      console.log("data fetched..", data);
+      this.serviceProviderData=data;
+      console.log("after getting back from service",this.serviceProviderData);
+    });
   }
 
-  removeCard(cardindex: number) {
-    this.ideas.splice(cardindex, 1);
-  }
 
 }
  

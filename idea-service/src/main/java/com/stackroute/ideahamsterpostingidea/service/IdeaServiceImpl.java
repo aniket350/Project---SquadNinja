@@ -145,4 +145,13 @@ public class IdeaServiceImpl implements IdeaService {
         List<Idea> getRecentIdea = ideaRepository.findAll(Sort.by(Sort.Direction.DESC, "postedOn"));
         return getRecentIdea;
     }
+
+    @Override
+    public Idea findByPostedBy(String postedBy) throws IdeaNotFoundException {
+        if (!ideaRepository.existsById(postedBy)) {
+            throw new IdeaNotFoundException("idea not found");
+        }
+        Idea retriveIdea = ideaRepository.findById(postedBy).get();
+        return retriveIdea;
+    }
 }
