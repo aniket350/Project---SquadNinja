@@ -89,7 +89,7 @@
                   <div class="form-group">
                     <label class="form-control-label" for="input-username">Name</label>
                     <input [(ngModel)]="serviceProviderData.name" name="name" type="text" id="input-username"
-                      class="form-control form-control-alternative" placeholder={{serviceProviderData.name}} value="">
+                      class="form-control form-control-alternative" placeholder={{serviceProviderData.name}}>
                   </div>
                 </div>
                 <div class="col-lg-6">
@@ -100,22 +100,22 @@
                   </div>
                 </div>
               </div>
-              <!-- <div class="row">
+              <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-first-name">First name</label>
-                    <input type="text" id="input-first-name" class="form-control form-control-alternative"
-                      placeholder="First name" value="Kajal">
+                    <label class="form-control-label" for="input-role-roleName">Role</label>
+                    <input type="text" id="input-role-roleName" class="form-control form-control-alternative"
+                      placeholder={{serviceProviderData.role.roleName}}>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-last-name">Last name</label>
-                    <input type="text" id="input-last-name" class="form-control form-control-alternative"
-                      placeholder="Last name" value="Agarwal">
+                    <label class="form-control-label" for="input-role-skills">Skills</label>
+                    <input type="text" id="input-role-skills" class="form-control form-control-alternative"
+                      placeholder={{serviceProviderData.role.roleName}}>
                   </div>
                 </div>
-              </div> -->
+              </div>
             </div>
             <hr class="my-4" />
 
