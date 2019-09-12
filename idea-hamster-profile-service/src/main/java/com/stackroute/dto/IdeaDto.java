@@ -1,6 +1,8 @@
-package com.stackroute.domain;
+package com.stackroute.dto;
 
+import com.stackroute.domain.Role;
 import lombok.*;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
@@ -10,7 +12,9 @@ import java.util.List;
 @Getter
 @ToString
 @Builder
-public class Idea {
+@Component
+public class IdeaDto {
+
     private String title;
     private String description;
     private String duration;
@@ -20,5 +24,7 @@ public class Idea {
     private List<Role> role;
     private String status;
     private Date postedOn;
+    private String postedBy;
     private String location;
+
 }

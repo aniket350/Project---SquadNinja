@@ -11,9 +11,9 @@ import java.util.Collection;
 import java.util.List;
 
 public interface RecommendedIdeaService {
-    List<Idea> findBySkill(String name);
+    List<Idea> findBySkill(String email);
 
-    List<Idea> findByRole(String name);
+    List<Idea> findByRole(String email);
 
     List<Idea> findByWorkedOnIdea(String email);
 

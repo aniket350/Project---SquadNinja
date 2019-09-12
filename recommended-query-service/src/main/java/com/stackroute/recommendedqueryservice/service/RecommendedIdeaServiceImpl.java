@@ -22,13 +22,13 @@ public class RecommendedIdeaServiceImpl implements RecommendedIdeaService {
     }
 
     @Override
-    public List<Idea> findBySkill(String name) {
-        return ideaRecommendationRepository.findBySkill(name);
+    public List<Idea> findBySkill(String email) {
+        return ideaRecommendationRepository.findBySkill(email);
     }
 
     @Override
-    public List<Idea> findByRole(String ideaName) {
-        return ideaRecommendationRepository.findByRole(ideaName);
+    public List<Idea> findByRole(String email) {
+        return ideaRecommendationRepository.findByRole(email);
     }
 
     @Override

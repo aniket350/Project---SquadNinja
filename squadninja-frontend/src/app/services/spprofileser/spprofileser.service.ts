@@ -19,7 +19,24 @@ export class SpprofileserService {
   createUser(user: any):Observable<any> {
     return this.http.post<Register>(this._url, user);
   }
-  updateTheProfile(profile: any):Observable<any> {
-    return this.http.put<SpProfile>(`http://13.235.10.115:8084/api/v1/serviceprovider`,(profile));
+  updateTheProfile(profile: any,emailId):Observable<any> {
+    console.log("*******in service", profile);
+    let profileUpdated = {
+      "email": emailId,
+      "name": profile.name,
+      "mobileNo": profile.mobileNo,
+      "domain": profile.domain,
+      "subDomain": profile.subDomain,
+      "chargePerHour": profile.chargePerHour,
+      "currentLocation": profile.currentLocation,
+      "preferredLocation": [profile.prefferedLocation],
+      "role":{
+      "roleName" : profile.roleName,
+      "experience": profile.experience,
+      "skills": [profile.skills]
+    	}
+    }
+    console.log(profileUpdated)
+    return this.http.put<any>(`http://13.235.10.115:8084/api/v1/serviceprovider`,profileUpdated);
   }
 }
