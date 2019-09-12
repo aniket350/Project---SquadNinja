@@ -16,5 +16,13 @@ export class IhdashboardserService {
 
   getServiceProviders(): Observable<Ideas[]> {
     return this.http.get<Ideas[]>(this._url);
+
 }
+//getRecommendedData(): Observable<any> {
+  // console.log(Message);
+ // console.log(this.request);
+  //return this.http.get('http://localhost:3000/ihdashboardservice');
+//}
+
+
 }
