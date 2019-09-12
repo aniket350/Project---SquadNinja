@@ -25,17 +25,15 @@ public class IdeaRecommendationController {
     }
 
 
-    @GetMapping("skill/{name}")
-    public ResponseEntity<Collection<Idea>> getIdeasBySkill(@PathVariable("name") String name) {
-        System.out.println(name);
-        List<Idea> Ideas = recommendedIdeaService.findBySkill(name);
-        System.out.println(Ideas);
+    @GetMapping("skill/{email}")
+    public ResponseEntity<Collection<Idea>> getIdeasBySkill(@PathVariable("email") String email) {
+        List<Idea> Ideas = recommendedIdeaService.findBySkill(email);
         return new ResponseEntity<>(Ideas, HttpStatus.OK);
     }
 
-    @GetMapping("role/{name}")
-    public ResponseEntity<Iterable<Idea>> getIdeasByRole(@PathVariable("name") String name) {
-        Iterable<Idea> ideas = recommendedIdeaService.findByRole(name);
+    @GetMapping("role/{email}")
+    public ResponseEntity<Iterable<Idea>> getIdeasByRole(@PathVariable("email") String email) {
+        Iterable<Idea> ideas = recommendedIdeaService.findByRole(email);
         return new ResponseEntity<>(ideas, HttpStatus.OK);
     }
 

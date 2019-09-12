@@ -16,12 +16,12 @@ import java.util.List;
 public interface IdeaRecommendationRepository extends Neo4jRepository<Idea, Long> {
 
     @Query("MATCH(i:Idea),(sp:ServiceProvider)-[h:has_skill]->(s:Skills) with i,collect(s) as skills" +
-            " match (sp)-[h:has_skill]-(s)<-[n:needs]-(i) where sp.name={name} return i")
-    List<Idea> findBySkill(@Param("name") String name);
+            " match (sp)-[h:has_skill]-(s)<-[n:needs]-(i) where sp.email={email} return i")
+    List<Idea> findBySkill(@Param("email") String email);
 
     //The above method gives all idea with the desired skill'
-    @Query("MATCH (sp:ServiceProvider)<-[h:played_by]-(r:Roles)<-[n:requires]-(i) where sp.name={name} return i")
-    List<Idea> findByRole(@Param("name") String name);
+    @Query("MATCH (sp:ServiceProvider)<-[h:played_by]-(r:Roles)<-[n:requires]-(i) where sp.email={email} return i")
+    List<Idea> findByRole(@Param("email") String email);
 
     //The above method gives all idea with the desired role
     @Query("match (ro:Roles)-[pl:played_by]->(s:ServiceProvider)-[w:worked_on]->(i:Idea)," +
