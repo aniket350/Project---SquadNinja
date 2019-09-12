@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-lg-7 col-md-10">
         <h1 class="display-2 text-white">Hello {{serviceProviderData.name}}</h1>
-        <p class="text-white mt-0 mb-5">Welcome</p>
+        <!-- <p class="text-white mt-0 mb-5">Welcome</p> -->
         <!-- <a (click)="onSubmitUpdate()" class="btn btn-info">Save profile</a> -->
       </div>
     </div>
@@ -53,16 +53,16 @@
               {{serviceProviderData.name}}<span class="font-weight-light"></span>
             </h3>
             <div class="h5 font-weight-300">
-              <i class="ni location_pin mr-2"></i>{{serviceProviderData.currentLocation}}
+              <i class="ni location_pin mr-2" ></i>{{serviceProviderData.currentLocation}}
             </div>
             <div class="h5 mt-4">
-              <i class="ni business_briefcase-24 mr-2">{{serviceProviderData.role.roleName}}</i>
+              <i class="ni business_briefcase-24 mr-2">{{serviceProviderData?.roleName}}</i>
             </div>
             <div>
               <i class="ni education_hat mr-2"></i>
             </div>
             <hr class="my-4" />
-            <p>Likes music</p>
+            <!-- <p>Likes music</p> -->
             <a href="javascript:void(0)">Show more</a>
           </div>
         </div>
@@ -87,35 +87,22 @@
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-username">Name</label>
-                    <input [(ngModel)]="serviceProviderData.name" name="name" type="text" id="input-username"
+                    <label class="form-control-label" for="name">Name</label>
+                    <input [(ngModel)]="serviceProviderData.name" name="name" type="text" name="name"
                       class="form-control form-control-alternative" placeholder={{serviceProviderData.name}}>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-email">Email Id</label>
+                    <label class="form-control-label" for="email">Email Id</label>
                     <input name="email" [(ngModel)]="serviceProviderData.email" type="email" id="input-email"
                       class="form-control form-control-alternative" placeholder={{serviceProviderData.email}} readonly="readonly">
                   </div>
                 </div>
+                
               </div>
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-role-roleName">Role</label>
-                    <input type="text" id="input-role-roleName" class="form-control form-control-alternative"
-                      placeholder={{serviceProviderData.role.roleName}}>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-role-skills">Skills</label>
-                    <input type="text" id="input-role-skills" class="form-control form-control-alternative"
-                      placeholder={{serviceProviderData.role.roleName}}>
-                  </div>
-                </div>
-              </div>
+             
+             
             </div>
             <hr class="my-4" />
 
@@ -126,55 +113,90 @@
                   <div class="form-group">
                     <label class="form-control-label" for="input-address">Mobile number</label>
                     <input name="mobileno" [(ngModel)]="serviceProviderData.mobileNo" class="form-control form-control-alternative"
-                      placeholder="Mobilenumber" value="">
+                      placeholder="serviceProviderData.mobileNo">
                   </div>
                 </div>
               </div>
             </div>
             <div class="pl-lg-4">
-              <div class="row">
-                <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="currentLocation">Current Location</label>
+                        <input type="text" name="currentLocation" [(ngModel)]="serviceProviderData.currentLocation" class="form-control form-control-alternative"
+                          placeholder={{serviceProviderData.currentLocation}}>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="preferredLocation">Preffered Location</label>
+                        <input type="text" name="preferredLocation" [(ngModel)]="serviceProviderData.preferredLocation" class="form-control form-control-alternative"
+                          placeholder={{serviceProviderData.preferredLocation}}>
+                      </div>
+                    </div>
+                  </div>
+       
+            </div>
+            <hr class="my-4" />
+
+            <h6 class="heading-small text-muted mb-4">Additional Information</h6>
+            <div class="row">
+                <!-- <div class="col-md-12">
                   <div class="form-group">
                     <label class="form-control-label" for="input-address">Address</label>
                     <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address"
                       value="Kormanagala" type="text">
                   </div>
-                </div>
+                </div> -->
               </div>
+              <div class="pl-lg-4">
               <div class="row">
                 <div class="col-lg-4">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-city">City</label>
-                    <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City"
-                      value="Bangalore">
+                    <label class="form-control-label" for="roleName">Role</label>
+                    <input type="text" name="roleName" [(ngModel)]="serviceProviderData.roleName" class="form-control form-control-alternative" placeholder={{serviceProviderData.roleName}} >
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-country">Country</label>
-                    <input type="text" id="input-country" class="form-control form-control-alternative"
-                      placeholder="Country" value="India">
+                    <label class="form-control-label" for="skills">Skills</label>
+                    <input type="text" name="skills" [(ngModel)]="serviceProviderData.skills" class="form-control form-control-alternative"
+                      placeholder={{serviceProviderData.skills}} >
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-country">Postal code</label>
-                    <input type="number" id="input-postal-code" class="form-control form-control-alternative"
-                      placeholder="Postal code">
+                    <label class="form-control-label" for="experience">Experience</label>
+                    <input type="number" name="experience" [(ngModel)]="serviceProviderData.experience" class="form-control form-control-alternative"
+                      placeholder={{serviceProviderData.experience}}>
                   </div>
                 </div>
               </div>
-            </div>
-            <hr class="my-4" />
-
-            <h6 class="heading-small text-muted mb-4">About me</h6>
-            <div class="pl-lg-4">
-              <div class="form-group">
-                <label>About Me</label>
-                <textarea rows="4" class="form-control form-control-alternative"
-                  placeholder="A few words about you ..."></textarea>
+              <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="domain">Domain</label>
+                      <input type="text" name="domain" [(ngModel)]="serviceProviderData.domain" class="form-control form-control-alternative"
+                        placeholder={{serviceProviderData.domain}}>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="subDomain">Sub Domain</label>
+                      <input type="text" name="subDomain" [(ngModel)]="serviceProviderData.subDomain" class="form-control form-control-alternative"
+                        placeholder={{serviceProviderData.subDomain}}>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="chargePerHour">Charge Per Hour</label>
+                        <input name="chargePerHour" [(ngModel)]="serviceProviderData.chargePerHour" class="form-control form-control-alternative"
+                          placeholder={{serviceProviderData.chargePerHour}}>
+                      </div>
+                    </div>
+                </div>
               </div>
-            </div>
+            
           </form>
         </div>
       </div>
