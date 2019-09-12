@@ -164,18 +164,17 @@ services:
       - 8084:8084
 
   idea-service:
-     build: idea-service
-     network_mode: "host"
-     hostname: localhost
-     restart: always
-     depends_on:
-       - mongo
-       - config-service
-       - eureka-server
-       - rabbitmq
-     ports:
+    build: idea-service
+    network_mode: "host"
+    hostname: localhost
+    restart: always
+    depends_on:
+     - mongo
+     - config-service
+     - eureka-server
+     - rabbitmq
+    ports:
        - 8090:8090
-
   squadninja-frontend:
     container_name: squadninja-frontend-container
     build: ./squadninja-frontend
