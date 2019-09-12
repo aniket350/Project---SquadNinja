@@ -99,11 +99,6 @@ public class IdeaController {
         return new ResponseEntity<>(recentIdeas, HttpStatus.OK);
     }
 
-    @GetMapping("idea/{postedBy}")
-    public ResponseEntity<?> findByPostedBy(@PathVariable String postedBy) throws IdeaNotFoundException {
-        Idea getIdea = ideaService.findByPostedBy(postedBy);
-        return new ResponseEntity<>(getIdea, HttpStatus.OK);
-    }
 }
 
 
