@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { SectionComponentData } from 'src/app/services/cardHomePage/section-component-model';
 import { Observable } from 'rxjs/internal/Observable';
 import { SpProfile } from '../spprofileser/spprofile.model';
+import { IdeaDetail } from '../spprofileser/IdeaDetail.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,4 +20,9 @@ export class SectionComponentService {
   getIdeas(): Observable<SpProfile[]> {
     return this.http.get<SpProfile[]>(this._url);
 }
+
+myIdeas(emailId):Observable<IdeaDetail[]>{
+  return this.http.get<IdeaDetail[]>(`http://13.235.10.115:8090/api/v1/idea/${emailId}`);
+}
+
 }
