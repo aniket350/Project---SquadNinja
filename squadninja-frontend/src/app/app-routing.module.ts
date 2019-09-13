@@ -8,14 +8,16 @@ import { IhdashboardComponent } from './layouts/ihdashboard/ihdashboard.componen
 import { RegisterComponent } from './register/register.component';
 import { RegisterspComponent } from './registersp/registersp.component';
 import { SpdashboardComponent } from './layouts/spdashboard/spdashboard.component';
-import { FooterSearchComponent } from './home/footer-search/footer-search.component';
+import { FussionChartComponent } from './fussion-chart/fussion-chart.component';
+import { SpprofileComponent } from './pages/spprofile/spprofile.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path:'registersp',component:RegisterspComponent},
-  {path:'footersearch',component: FooterSearchComponent},
+  {path: 'Chart', component: FussionChartComponent},
+  {path: 'sp',component:SpprofileComponent},
   {path: 'ihdashboard',
   component: IhdashboardComponent,
   children: [

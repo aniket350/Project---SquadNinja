@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 /**
  * RestController annotation is used to create Restful web services using Spring MVC
  */
+
+@CrossOrigin(origins = "*")
 @RestController
 
 /**

@@ -62,7 +62,10 @@ constructor(private registerser: RegisterserService, private userservice: Userse
 
 Login() {
     this.userservice.Login (this.email, this.password).subscribe((response) => {
+      let data = response;
+      console.log(data);
       if (response) {
+        console.log(response);
         localStorage.setItem("emailId",this.email);
         this.token = response;
         console.log(this.getDecodedAccessToken(this.token.token));
@@ -77,11 +80,11 @@ Login() {
          else {
          this.router.navigate(['/spdashboard']);
         }
+        
   }},
   (err) => {
     console.log(err);
 });
-
 
 
 }

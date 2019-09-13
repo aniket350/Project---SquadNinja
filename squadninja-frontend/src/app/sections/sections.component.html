@@ -1,24 +1,28 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!-- idea -->
-
-
 <div class="wrapper">
-    
   <div class="content" *ngFor="let x of ideaCardsData">
-<!-- card -->
-     <!-- alternate_email -->
+     <!-- card -->
      <div class="card"  [routerLink]="['/login']" routerLinkActive="router-link-active"  (click)="openCard()">
-           <!-- <div class="icon"><i class="material-icons md-32">IDEA</i></div> -->
-           <!-- <div class="icon"><img src="../../assets/img/theme/nature.jpg" width="90%" height="90"></div> -->
-           <div class="card-profile-image">
-              <a href="javascript:void(0)">
-                <img src="assets/img/theme/nature.jpg" class="rounded-circle" >
-              </a>
-            </div>
+           <div class="icon"><i class="material-icons md-36">alternate_email</i></div>
            <p class="title">{{x.title}}</p>
            <p class="text">{{x.description}}</p>
      </div>
-     
+     <!-- end card -->
+     <!-- card -->
+     <!-- <div class="card">
+           <div class="icon"><i class="material-icons md-36">alternate_email</i></div>
+           <p class="title">{{x.ideaTitle}}</p>
+           <p class="text">{{x.description}}</p>
+     </div> -->
+     <!-- end card -->
+     <!-- card -->
+     <!-- <div class="card">
+           <div class="icon"><i class="material-icons md-36">alternate_email</i></div>
+           <p class="title">{{x.ideaTitle}}</p>
+           <p class="text">{{x.description}}</p>
+     </div> -->
+     <!-- end card -->
   </div>
 </div>
 
@@ -41,6 +45,37 @@
 
 
 
+
+
+<!-- <div class="container-fluid" >
+  <div class="col">
+    <div class="row">
+    </div>
+    <div class="row">
+      <mdb-carousel   [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
+        [animation]="'slide'">
+        <mdb-carousel-item *ngFor="let item of slides; let i = index" >
+          <div class="col-md-3" [ngClass]="{'d-none d-md-block': cardIndex !== 0}"
+            *ngFor="let card of item; let cardIndex = index">
+            <mdb-card class="my-1">
+              <mdb-card-img [src]="card.img" (click)="selectedEntity(card.title)" alt="Card image cap"></mdb-card-img>
+              <mdb-card-body>
+                <mdb-card-title>
+                  <h4>{{card.title}}</h4>
+                </mdb-card-title>
+                <p>{{card.description}}</p><br>
+                <ngb-rating [rate]="card.rate"></ngb-rating><br>
+                <a href="#" mdbBtn color="primary" class="waves-light" mdbWavesEffect>{{card.buttonText}}</a>
+
+                <hr>
+              </mdb-card-body>
+            </mdb-card>
+          </div>
+        </mdb-carousel-item>
+      </mdb-carousel>
+    </div>
+  </div>
+</div> -->
 
 
 <section class="section section-shaped">

@@ -9,11 +9,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
 import { MDBBootstrapModule} from 'angular-bootstrap-md';
-import { FooterSearchComponent } from './footer-search/footer-search.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, NavbarComponent, FooterComponent, FooterSearchComponent],
+  declarations: [HomeComponent, NavbarComponent, FooterComponent],
   exports: [HomeComponent],
   imports: [
     CommonModule,

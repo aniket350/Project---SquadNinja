@@ -16,8 +16,7 @@ import { PostideaComponent } from 'src/app/pages/postidea/postidea.component';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatSelectModule} from '@angular/material/select';
 import { IhprofileserService } from 'src/app/services/ihprofileser/ihprofileser.service';
-
-
+import { IdeaviewComponent } from 'src/app/pages/ideaview/ideaview.component';
 
 
 
@@ -25,7 +24,8 @@ import { IhprofileserService } from 'src/app/services/ihprofileser/ihprofileser.
   declarations: [
     IhdashboardcardsComponent,
     IhprofileComponent,
-    PostideaComponent
+    PostideaComponent,
+    IdeaviewComponent
   ],
   imports: [
     CommonModule,
