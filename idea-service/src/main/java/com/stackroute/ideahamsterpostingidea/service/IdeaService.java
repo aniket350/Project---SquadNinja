@@ -13,11 +13,6 @@ public interface IdeaService {
      */
     public Idea save(Idea idea) throws IdeaAlreadyExistException;
 
-    /**
-     * AbstractMethod to get Idea by Id
-     */
-    public Idea getIdeaById(String id) throws IdeaNotFoundException;
-
     /*AbstractMethod to get Idea by title*/
     public Idea getIdeaByTitle(String title) throws IdeaNotFoundException;
 
@@ -30,14 +25,10 @@ public interface IdeaService {
     /*AbstractMethod to update the idea*/
     public Idea updateIdea(Idea idea) throws IdeaNotFoundException;
 
-    /*AbstractMethod to delete idea by id*/
-    public Idea deleteIdeaById(String id) throws IdeaNotFoundException;
-
     /*AbstractMethod to delete Idea by title*/
     public Idea deleteIdeaByTitle(String title) throws IdeaNotFoundException;
 
     /*AbstractMethod to get recent Idea by date*/
     public List<Idea> getRecentIdeas() throws Exception;
 
-    public Idea findByPostedBy(String postedBy) throws  IdeaNotFoundException;
 }

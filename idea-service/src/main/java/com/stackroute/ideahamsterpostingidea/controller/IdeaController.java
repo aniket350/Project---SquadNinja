@@ -44,21 +44,17 @@ public class IdeaController {
     }
 
     /* @GetMapping annotated methods handle the HTTP GET requests matched with given URI expression.get the idea by id*/
-    @GetMapping("idea/{id}")
-    public ResponseEntity<?> getIdeaById(@PathVariable String id) throws IdeaNotFoundException,Exception {
-        Idea getIdea = ideaService.getIdeaById(id);
-        return new ResponseEntity<>(getIdea, HttpStatus.OK);
-    }
+
 
     /*Get the idea by title*/
-    @GetMapping("ideas/{title}")
+    @GetMapping("idea/{title}")
     public ResponseEntity<?> getIdeaByTitle(@PathVariable String title) throws IdeaNotFoundException,Exception {
         Idea getIdeaByTitle = ideaService.getIdeaByTitle(title);
-        return new ResponseEntity<>(getIdeaByTitle, HttpStatus.FOUND);
+        return new ResponseEntity<>(getIdeaByTitle, HttpStatus.OK);
     }
 
     /*Get the idea by location*/
-    @GetMapping("ideas/get/{location}")
+    @GetMapping("idea/get/{location}")
     public ResponseEntity<?> getIdeaByLocation(@PathVariable String location) throws IdeaNotFoundException,Exception {
         Idea getIdeaBylocation = ideaService.getIdeaByLocation(location);
         return new ResponseEntity<>(getIdeaBylocation, HttpStatus.OK);
@@ -71,15 +67,9 @@ public class IdeaController {
         return new ResponseEntity<>(getAllIdeas, HttpStatus.OK);
     }
 
-    /*Delete the idea by id*/
-    @DeleteMapping("idea/{id}")
-    public ResponseEntity<?> deleteById(@PathVariable String id) throws IdeaNotFoundException,Exception {
-        Idea deleteIdea = ideaService.deleteIdeaById(id);
-        return new ResponseEntity<>(deleteIdea, HttpStatus.OK);
-    }
 
     /*Delete the idea by title*/
-    @DeleteMapping("ideas/{title}")
+    @DeleteMapping("idea/{title}")
     public ResponseEntity<?> deletIdeaByTitle(@PathVariable String title) throws IdeaNotFoundException,Exception {
         Idea deleteIdeaByTitle = ideaService.deleteIdeaByTitle(title);
         return new ResponseEntity<>(deleteIdeaByTitle, HttpStatus.OK);
