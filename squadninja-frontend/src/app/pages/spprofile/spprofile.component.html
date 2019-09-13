@@ -154,21 +154,21 @@
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label" for="roleName">Role</label>
-                    <input type="text" name="roleName" [(ngModel)]="serviceProviderData.roleName" class="form-control form-control-alternative" placeholder={{serviceProviderData.roleName}} >
+                    <input type="text" name="roleName" [(ngModel)]="serviceProviderData.roleName" class="form-control form-control-alternative" placeholder={{serviceProviderData.role?.roleName}} >
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label" for="skills">Skills</label>
                     <input type="text" name="skills" [(ngModel)]="serviceProviderData.skills" class="form-control form-control-alternative"
-                      placeholder={{serviceProviderData.skills}} >
+                      placeholder={{serviceProviderData.role?.skills}} >
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label" for="experience">Experience</label>
-                    <input type="number" name="experience" [(ngModel)]="serviceProviderData.experience" class="form-control form-control-alternative"
-                      placeholder={{serviceProviderData.experience}}>
+                    <input type="text" name="experience" [(ngModel)]="serviceProviderData.experience" class="form-control form-control-alternative"
+                      placeholder={{serviceProviderData.role?.experience}}>
                   </div>
                 </div>
               </div>

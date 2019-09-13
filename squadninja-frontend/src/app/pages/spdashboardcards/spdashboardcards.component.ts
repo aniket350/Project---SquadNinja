@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SectionComponentService } from 'src/app/services/cardHomePage/section-component.service';
 import { SectionComponentSP } from 'src/app/services/cardSPHomePage/section-component-service-service';
 import { HttpClient } from '@angular/common/http';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-spdashboardcards',
@@ -14,7 +15,10 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
   sections: any = [];
   private ideaCardsData: any;
   private spCardData: any;
-  
+
+//  cards = ['Idea1', 'Idea2','Idea1', 'Idea2','Idea1'];
+ sel = new FormControl(0);
+
   modalCardDetails = {
     title: '',
     description: '',

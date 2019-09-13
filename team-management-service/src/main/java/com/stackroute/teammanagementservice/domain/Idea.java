@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Document annotated class will have the ability to represent objects in the database
  */
-@Document(collection="idea")
+@Document(collection="TeamManagement")
 
 /**With @Data, Lombok will generate getter and setter methods, toString methods, Equal & Hashcode methods*/
 @Data
