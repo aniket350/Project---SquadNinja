@@ -13,7 +13,6 @@ export class RegisterspComponent implements OnInit {
   registerForm:FormGroup;
   submitted=false;
   user:Register=new Register();
-
   
   constructor(private spservice:SpprofileserService) { }
 
@@ -22,7 +21,6 @@ export class RegisterspComponent implements OnInit {
 
   getf(){return this.registerForm.controls;}
   saveDetails(){
-    this.user.role='serviceprovider';
     this.spservice.createUser(this.user)
     .subscribe(data=>{
       console.log(data);

@@ -1,8 +1,3 @@
-import { Subscription } from "rxjs";
-import { Router, NavigationEnd } from "@angular/router";
-import { DOCUMENT } from "@angular/common";
-import {filter} from 'rxjs/operators';
-import {Location} from '@angular/common';
 import {
   Component,
   HostListener,
@@ -10,6 +5,11 @@ import {
   Inject,
   ElementRef
 } from "@angular/core";
+import { Subscription } from "rxjs";
+import { Router, NavigationEnd } from "@angular/router";
+import { DOCUMENT } from "@angular/common";
+import {filter} from 'rxjs/operators';
+import {Location} from '@angular/common';
 
 var didScroll;
 var lastScrollTop = 0;
@@ -83,4 +83,3 @@ export class AppComponent {
     this.hasScrolled();
   }
 }
-     

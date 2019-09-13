@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IdeaviewComponent } from './ideaview.component';
+import { FooterSearchComponent } from './footer-search.component';
 
-describe('IdeaviewComponent', () => {
-  let component: IdeaviewComponent;
-  let fixture: ComponentFixture<IdeaviewComponent>;
+describe('FooterSearchComponent', () => {
+  let component: FooterSearchComponent;
+  let fixture: ComponentFixture<FooterSearchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IdeaviewComponent ]
+      declarations: [ FooterSearchComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IdeaviewComponent);
+    fixture = TestBed.createComponent(FooterSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -6,7 +6,7 @@ import { SpdashboardcardsComponent } from 'src/app/pages/spdashboardcards/spdash
 export const SpDashboardRoutes: Routes = [
   {path:'',component:SpdashboardcardsComponent},
   {path:'spdashboardcards',component:SpdashboardcardsComponent},
-  {path: 'user-profile', component: SpprofileComponent}
+  {path: 'user-profile', component: SpprofileComponent},
 ];
 
 

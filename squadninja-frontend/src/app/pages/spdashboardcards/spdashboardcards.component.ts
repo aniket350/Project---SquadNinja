@@ -12,25 +12,27 @@ export class SpdashboardcardsComponent implements OnInit {
   sections: any = [];
   private ideaCardsData: any;
   private spCardData: any;
-  cards:any=['one','two'];
-  public emailId='';
-  constructor(private sectionComponentService : SectionComponentService, private sectionComponentSP: SectionComponentSP){}
-  ngOnInit() {
-    this.emailId=localStorage.getItem("emailId");
-    this.sectionComponentService.myIdeas(this.emailId)
-      .subscribe(data => {
-        this.ideaCardsData = data
-        console.log(this.ideaCardsData);
-      });
 
-    this.sections = this.chunk(this.sections, 3);
-  }
   chunk(arr, chunkSize) {
     let R = [];
     for (let i = 0, len = arr.length; i < len; i += chunkSize) {
       R.push(arr.slice(i, i + chunkSize));
     }
     return R;
+  }
+  constructor(private sectionComponentService : SectionComponentService, private sectionComponentSP: SectionComponentSP){}
+  ngOnInit() {
+    this.sectionComponentService.getIdeas()
+      .subscribe(data => {
+        this.ideaCardsData = data
+        console.log(this.ideaCardsData);
+      });
+
+      this.sectionComponentSP.getSP()
+      .subscribe(data => {
+        this.spCardData = data
+      });
+    this.sections = this.chunk(this.sections, 3);
   }
 
 }

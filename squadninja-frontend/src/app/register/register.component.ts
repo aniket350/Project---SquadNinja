@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   submitted=false;
   user:Register=new Register();
   router: any;
+  
   constructor(private ihservice:IhprofileserService) { }
 
   ngOnInit() {
@@ -21,7 +22,6 @@ export class RegisterComponent implements OnInit {
 
   getf(){return this.registerForm.controls;}
   saveDetails(){
-    this.user.role='ideaHamster';
     this.ihservice.createUser(this.user)
     .subscribe(data=>{
       console.log(data);

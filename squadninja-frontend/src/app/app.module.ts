@@ -28,19 +28,7 @@ import { SpprofileserService } from './services/spprofileser/spprofileser.servic
 import { RegisterserService } from './services/registerser/registerser.service';
 import { RegisterspComponent } from './registersp/registersp.component';
 
-// import { HttpModule } from "@angular/http";
-
-// Import angular-fusioncharts
-import { FusionChartsModule } from "angular-fusioncharts";
-
-// Import FusionCharts library and chart modules
-import * as FusionCharts from "fusioncharts";
-import * as Charts from "fusioncharts/fusioncharts.charts";
-import * as FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
-import { FussionChartComponent } from './fussion-chart/fussion-chart.component';
-// Pass the fusioncharts library and chart modules
-FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
-
+// import { IdeaviewComponent } from './pages/ideaview/ideaview.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +38,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     RegisterComponent,
     SpdashboardComponent,
     RegisterspComponent,
-    FussionChartComponent
+   
+    // IdeaviewComponent
   ],
   imports: [
     BrowserModule,
@@ -62,8 +51,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     RouterModule,
     FormsModule,
     CommonModule,
-    HttpClientModule,
-    FusionChartsModule
+    HttpClientModule
   ],
   providers: [
     HttpClient,
