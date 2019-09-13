@@ -9,6 +9,7 @@ import { IdeaDetail } from '../spprofileser/IdeaDetail.model';
   providedIn: 'root'
 })
 export class SectionComponentService {
+  
 
 
   private _url : string= 'http://13.235.10.115:8090/api/v1/ideas';
@@ -25,4 +26,7 @@ myIdeas(emailId):Observable<IdeaDetail[]>{
   return this.http.get<IdeaDetail[]>(`http://13.235.10.115:8090/api/v1/idea/${emailId}`);
 }
 
+addTeamManagement(modalCardDetails: { title: string; description: string; role: string; domain: string; subdomain: string; }) {
+  return this.http.post('http://localhost:8083/api/v1/appliedTeam', modalCardDetails);
+}
 }

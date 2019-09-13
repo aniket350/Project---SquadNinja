@@ -55,5 +55,5 @@ export class SpprofileComponent implements OnInit {
     //   this.serviceProviderProfile.updateTheProfile(this1.serviceProviderData).subscribe(data => console.log("*****", data));
       
     }
-
+  
 }

@@ -34,7 +34,9 @@ import { RouterModule } from '@angular/router';
     MatIconModule,
     MatInputModule,
     MatAutocompleteModule ,
-    ReactiveFormsModule,
+    ReactiveFormsModule
+  ],
+  exports: [
   ],
   providers:[
     SpprofileserService

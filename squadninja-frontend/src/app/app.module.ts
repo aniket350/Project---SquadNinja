@@ -38,6 +38,7 @@ import * as FusionCharts from "fusioncharts";
 import * as Charts from "fusioncharts/fusioncharts.charts";
 import * as FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 import { FussionChartComponent } from './fussion-chart/fussion-chart.component';
+import { SpdashboardModule } from './layouts/spdashboard/spdashboard.module';
 // Pass the fusioncharts library and chart modules
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
 
@@ -63,7 +64,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     FormsModule,
     CommonModule,
     HttpClientModule,
-    FusionChartsModule
+    FusionChartsModule,
+    SpdashboardModule
   ],
   providers: [
     HttpClient,

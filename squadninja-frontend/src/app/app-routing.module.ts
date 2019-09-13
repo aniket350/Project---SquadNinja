@@ -9,6 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { RegisterspComponent } from './registersp/registersp.component';
 import { SpdashboardComponent } from './layouts/spdashboard/spdashboard.component';
 import { FussionChartComponent } from './fussion-chart/fussion-chart.component';
+import { SpprofileComponent } from './pages/spprofile/spprofile.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path:'registersp',component:RegisterspComponent},
   {path: 'Chart', component: FussionChartComponent},
+  {path: 'sp',component:SpprofileComponent},
   {path: 'ihdashboard',
   component: IhdashboardComponent,
   children: [
