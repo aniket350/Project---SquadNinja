@@ -14,8 +14,4 @@ import java.util.List;
 public interface ServiceProviderRepository extends MongoRepository<ServiceProvider,String> {
 
     public ServiceProvider findByEmail(String email);
-
-
-
-
 }

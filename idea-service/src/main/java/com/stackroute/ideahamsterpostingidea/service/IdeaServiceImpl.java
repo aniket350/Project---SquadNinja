@@ -55,17 +55,8 @@ public class IdeaServiceImpl implements IdeaService {
         }
         return savedIdea;
     }
-    /*
-     * Implementation of getIdea by id method
-    */
-    @Override
-    public Idea getIdeaById(String id) throws IdeaNotFoundException {
-        if (!ideaRepository.existsById(id)) {
-            throw new IdeaNotFoundException("idea not found");
-        }
-        Idea retriveIdea = ideaRepository.findById(id).get();
-        return retriveIdea;
-    }
+
+
 
     /*
      * Implementation of getIdea by title method
@@ -110,21 +101,6 @@ public class IdeaServiceImpl implements IdeaService {
         }
     }
 
-    /*
-     * Implementation of deleteIdea by id method
-
-     * @return
-     */
-    @Override
-    public Idea deleteIdeaById(String id) throws IdeaNotFoundException {
-        if (ideaRepository.existsById(id)) {
-            Idea retrivedTrack = ideaRepository.findById(id).get();
-            ideaRepository.deleteById(id);
-            return retrivedTrack;
-        } else {
-            throw new IdeaNotFoundException("Track not found");
-        }
-    }
 
     /*
      * Implementation of delete idea by title method
@@ -146,12 +122,4 @@ public class IdeaServiceImpl implements IdeaService {
         return getRecentIdea;
     }
 
-    @Override
-    public Idea findByPostedBy(String postedBy) throws IdeaNotFoundException {
-        if (!ideaRepository.existsById(postedBy)) {
-            throw new IdeaNotFoundException("idea not found");
-        }
-        Idea retriveIdea = ideaRepository.findById(postedBy).get();
-        return retriveIdea;
-    }
 }

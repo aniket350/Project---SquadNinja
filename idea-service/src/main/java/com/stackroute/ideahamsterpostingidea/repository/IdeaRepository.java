@@ -9,12 +9,9 @@ import org.springframework.stereotype.Repository;
  search, update and delete operation on objects.*/
 @Repository
 public interface IdeaRepository extends MongoRepository<Idea, String> {
-
+  /**findByTitle method to get idea by its title*/
   public Idea findByTitle(String title);
-
+  /**findByLocation method to get idea by its location*/
   public Idea findByLocation(String location);
-
- 
-
 
 }
