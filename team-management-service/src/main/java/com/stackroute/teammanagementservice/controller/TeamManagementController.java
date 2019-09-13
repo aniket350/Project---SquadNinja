@@ -95,5 +95,10 @@ public class TeamManagementController {
     }
 
 
+    @GetMapping("idea/{title}")
+    public ResponseEntity<?> getIdeaDetails(@PathVariable String title){
+        Idea retrievedDetails = teamManagementService.getDetails(title);
+        return new ResponseEntity<>(retrievedDetails,HttpStatus.ACCEPTED);
+    }
 
 }

@@ -162,4 +162,10 @@ public class TeamManagementServiceimpl implements TeamManagementService {
         teamManagementRepository.save(idea);
     }
 
+    @Override
+    public Idea getDetails(String title) {
+        Idea  retrievedIdea = teamManagementRepository.findByTitle(title);
+        return retrievedIdea;
+    }
+
 }

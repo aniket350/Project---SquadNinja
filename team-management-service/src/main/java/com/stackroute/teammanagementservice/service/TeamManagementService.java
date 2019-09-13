@@ -32,4 +32,6 @@ public interface TeamManagementService {
      * AbstractMethod to update When SP joins invited ideas. Delete SP from invited list and add him to selected team list
      */
    public Idea joinsp(String title, String emailId, boolean joined);
+
+    public  Idea getDetails(String title);
 }

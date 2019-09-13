@@ -175,6 +175,19 @@ services:
      - rabbitmq
     ports:
        - 8090:8090
+
+  team-management-service:
+    build: team-management-service
+    network_mode: "host"
+    hostname: localhost
+    restart: always
+    depends_on:
+      - mongo
+      - config-service
+      - eureka-server
+      - rabbitmq
+    ports:
+      - 8083:8083
   squadninja-frontend:
     container_name: squadninja-frontend-container
     build: ./squadninja-frontend
@@ -182,6 +195,18 @@ services:
     ports:
       - 4200:4200
     network_mode: "host"
+
+  recommended-query-service:
+    build: recommended-query-service
+    network_mode: "host"
+    hostname: localhost
+    restart: always
+    depends_on:
+      - neo4j
+      - config-service
+      - eureka-server
+    ports:
+      - 8081:8081
 
 
 #    WAIT_HOSTS: comma separated list of pairs host:port for which you want to wait.
