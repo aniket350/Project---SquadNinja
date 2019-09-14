@@ -29,7 +29,7 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
     subdomain: ''
                 
   }
-  recommendCards: any;
+  recommendCards: any = [];
 
   chunk(arr, chunkSize) {
     let R = [];
@@ -49,8 +49,8 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
         console.log(this.ideaCardsData);
       });
 
-    this.spprofileserService.getRecommendationIdeas(this.emailId).subscribe(data =>
-      {
+    this.spprofileserService.getRecommendationIdeas(this.emailId)
+    .subscribe(data => {
         this.recommendCards = data
         console.log(this.recommendCards);
       });
