@@ -3,6 +3,7 @@ import { SectionComponentService } from 'src/app/services/cardHomePage/section-c
 import { SectionComponentSP } from 'src/app/services/cardSPHomePage/section-component-service-service';
 import { HttpClient } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
+import { SpprofileserService } from 'src/app/services/spprofileser/spprofileser.service';
 
 @Component({
   selector: 'app-spdashboardcards',
@@ -14,7 +15,8 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
 
   sections: any = [];
   private ideaCardsData: any;
-  private spCardData: any;
+  public emailId :string= "";
+  // private spCardData: any;
 
 //  cards = ['Idea1', 'Idea2','Idea1', 'Idea2','Idea1'];
  sel = new FormControl(0);
@@ -27,6 +29,7 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
     subdomain: ''
                 
   }
+  recommendCards: any;
 
   chunk(arr, chunkSize) {
     let R = [];
@@ -35,19 +38,29 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
     }
     return R;
   }
-  constructor(private sectionComponentService : SectionComponentService, private sectionComponentSP: SectionComponentSP, private http:HttpClient){}
+  constructor(private sectionComponentService : SectionComponentService ,private spprofileserService : SpprofileserService){}
   ngOnInit() {
+
+    this.emailId=localStorage.getItem("emailId");
+
     this.sectionComponentService.getIdeas()
       .subscribe(data => {
         this.ideaCardsData = data
         console.log(this.ideaCardsData);
       });
 
-      this.sectionComponentSP.getSP()
-      .subscribe(data => {
-        this.spCardData = data
+    this.spprofileserService.getRecommendationIdeas(this.emailId).subscribe(data =>
+      {
+        this.recommendCards = data
+        console.log(this.recommendCards);
       });
+
+      // this.sectionComponentSP.getSP()
+      // .subscribe(data => {
+      //   this.spCardData = data
+      // });
     this.sections = this.chunk(this.sections, 3);
+    
   }
 
   saveCardDetails(x: any) {

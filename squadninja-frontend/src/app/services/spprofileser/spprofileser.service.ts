@@ -39,4 +39,10 @@ export class SpprofileserService {
     console.log(profileUpdated)
     return this.http.put<any>(`http://13.235.10.115:8084/api/v1/serviceprovider`,profileUpdated);
   }
+
+  getRecommendationIdeas(emailId):any{
+    console.log("in getbyemail of reg service "+emailId);
+    return this.http.get<any>(`http://13.235.10.115:8081/api/v1/skill/${emailId}`);
+  }
+
 }
