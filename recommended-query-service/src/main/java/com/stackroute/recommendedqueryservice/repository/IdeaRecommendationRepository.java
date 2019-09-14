@@ -1,9 +1,6 @@
 package com.stackroute.recommendedqueryservice.repository;
 
-import com.stackroute.recommendedqueryservice.domain.Domain;
-import com.stackroute.recommendedqueryservice.domain.Idea;
-import com.stackroute.recommendedqueryservice.domain.IdeaHamster;
-import com.stackroute.recommendedqueryservice.domain.SubDomain;
+import com.stackroute.recommendedqueryservice.domain.*;
 import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.data.repository.query.Param;

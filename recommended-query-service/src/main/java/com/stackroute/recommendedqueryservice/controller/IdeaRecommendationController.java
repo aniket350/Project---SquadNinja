@@ -49,9 +49,20 @@ public class IdeaRecommendationController {
         return new ResponseEntity<>(ideas, HttpStatus.OK);
     }
 
-    @GetMapping("sp/{name}")
-    public ResponseEntity<Collection<ServiceProvider>> getTeam(@PathVariable("name") String name, @RequestParam("experience") String ex, @RequestParam("roleName") String rname) {
-        Collection<ServiceProvider> serviceProviders = recommendedeamService.getTeam(name, ex, rname);
+    @GetMapping("sp/{title}")
+    public ResponseEntity<Collection<ServiceProvider>> getTeam(@PathVariable("title") String title, @RequestParam("roleName") String rname) {
+        List<ServiceProvider> serviceProviders = recommendedeamService.getTeam(title, rname);
+        return new ResponseEntity<>(serviceProviders, HttpStatus.OK);
+    }
+    @GetMapping("previouslyWorked/{title}")
+    public ResponseEntity<?> getautoTeam(@PathVariable("title") String title,@RequestParam("roleName") String roleName) {
+        List<ServiceProvider> serviceProviders = recommendedeamService.getTeamBasedOnWorkedOnIdea(title, roleName);
+
+        return new ResponseEntity<>(serviceProviders, HttpStatus.OK);
+    }
+    @GetMapping("applied/{title}")
+    public ResponseEntity<Collection<ServiceProvider>> getautoTeamrec(@PathVariable("title") String title, @RequestParam("roleName") String roleName) {
+        Collection<ServiceProvider> serviceProviders = recommendedeamService.getdata(title, roleName);
         return new ResponseEntity<>(serviceProviders, HttpStatus.OK);
     }
 
