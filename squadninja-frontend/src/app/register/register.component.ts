@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
       this.submitted=true;
     },
     error=>console.log(error));
-    this.router.navigate(['/login']);
+    // this.router.navigate(['/login']);
   }
 
 }
