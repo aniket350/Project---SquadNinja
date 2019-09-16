@@ -39,8 +39,8 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    Binding binding(Queue queue, TopicExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with(routingkey);
+    Binding binding(Queue queue, TopicExchange topicExchange) {
+        return BindingBuilder.bind(queue).to(topicExchange).with(routingkey);
     }
 
     @Bean
