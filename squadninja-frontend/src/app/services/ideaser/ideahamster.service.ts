@@ -36,7 +36,7 @@ export class IdeahamsterService {
    
   
     save(obj):Observable<any>{ 
-         console.log(obj)
+        //  console.log(obj)
         return this.http.post('http://13.235.10.115:8090/api/v1/idea',obj);
         
     }

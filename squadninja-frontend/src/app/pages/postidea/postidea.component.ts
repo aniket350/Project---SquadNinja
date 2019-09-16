@@ -23,7 +23,7 @@ export class PostideaComponent implements OnInit {
   duration: any;
   domain: any;
   subdomain: any;
-  roleName: any;
+  role: any;
   skills: any;
   noofpeople: any;
   experience: any;
@@ -144,6 +144,8 @@ export class PostideaComponent implements OnInit {
       }],
       location: this.location
     }
+
+
     if (this.fieldArray.length >= 1 && this.newAttribute.skills > 0) {
       this.fieldArray.push(this.newAttribute);
       obj.role = this.fieldArray;
@@ -153,11 +155,13 @@ export class PostideaComponent implements OnInit {
     }
     this._ideahamsterservice.save(obj)
       .subscribe((response) => {
-        console.log(response);
+        //  console.log(response);
         if (response) { }
       }, (err) => {
         console.log(err);
       });
+      localStorage.setItem("title",this.title);
+      localStorage.setItem("Role", JSON.stringify(obj.role));
   }
 
   addFieldValue() {
