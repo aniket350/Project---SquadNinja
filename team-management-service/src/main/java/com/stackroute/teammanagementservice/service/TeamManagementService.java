@@ -33,5 +33,7 @@ public interface TeamManagementService {
      */
    public Idea joinsp(String title, String emailId, boolean joined);
 
-    public  Idea getDetails(String title);
+   public  Idea getDetails(String title);
+
+  public Idea getUpdatedSt(String title,String emailId);
 }

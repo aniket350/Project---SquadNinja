@@ -10,6 +10,7 @@ button {
    }
    .formtext {
     margin-left: 20px;
+    margin-top: 600px;
     margin-top: 100px;
    }
    .example-button-row button,
@@ -22,6 +23,7 @@ button {
     display: flex;
     flex-direction: column;
     margin-top: 50px;
+    width: 400px;
    }
    .example-container {
     width: 300px;
@@ -29,9 +31,19 @@ button {
    }
    .cards{
     display: flex;
-    margin-right: 50px;
+    width : 1000px;
    }
+   .example-card {
+    max-width: 600px;
+    margin: 4px;
+   background-color: cyan;
+  }
    .example-header-image {
     background-image: url('https://makeawebsitehub.com/wp-content/uploads/2017/04/wordpress-923188_640.jpg');
     background-size: cover;
    }
+   .container{
+    margin-top:40px;
+    margin-right: 50px;
+   }
+   
