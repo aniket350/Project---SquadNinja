@@ -64,6 +64,8 @@ public class ServiceProviderRabbitMq {
     Binding bindingProfile(Queue queueProfile, TopicExchange exchangeProfile) {
         return  BindingBuilder.bind(queueProfile).to(exchangeProfile).with(profilRoutingkey);
     }
+/*--------------------------------------------------------------------------------------------------*/
+
 
     /*-----------------------------------------------------------------------------------------------*/
     @Bean

@@ -1,8 +1,9 @@
+import { IhprofileserService } from 'src/app/services/ihprofileser/ihprofileser.service';
+import { IhProfile } from './../../services/ihprofileser/ihprofile.model';
 import { Component, OnInit } from '@angular/core';
 import {$} from 'protractor';
 import { protractor } from 'protractor/built/ptor';
 import { FormControl } from '@angular/forms';
-import { IhdashboardserService } from 'src/app/services/ihdashboardser/ihdashboardser.service';
 import { SectionComponentService } from 'src/app/services/cardHomePage/section-component.service';
 import { SectionComponentSP } from 'src/app/services/cardSPHomePage/section-component-service-service';
 import { SpprofileserService } from 'src/app/services/spprofileser/spprofileser.service';
@@ -15,23 +16,24 @@ import { SpprofileserService } from 'src/app/services/spprofileser/spprofileser.
 export class IhdashboardcardsComponent implements OnInit {
 
   sections: any = ['title'];
-  private ideaCardsData: any;
+  ideaCardsData: any = [];
 
-  serviceProviderData: SpprofileserService;
+
   updated: any;
 
   cards:any=['one','two'];
-  constructor(private sectionComponentService : SectionComponentService, private sectionComponentSP: SectionComponentSP,private serviceProviderProfile: SpprofileserService){}
+
+  constructor(private ihprofileserService : IhprofileserService){}
 
   public emailId = '';
   ngOnInit() {
     this.getTheProfile();
 
-    this.sectionComponentService.getIdeas()
-      .subscribe(data => {
-        this.ideaCardsData = data
-        console.log(this.ideaCardsData);
-      });
+    // this.sectionComponentService.getIdeas()
+    //   .subscribe(data => {
+    //     this.ideaCardsData = data
+    //     console.log(this.ideaCardsData);
+    //   });
       
     this.sections = this.chunk(this.sections, 3);
   }
@@ -47,11 +49,11 @@ export class IhdashboardcardsComponent implements OnInit {
 
   getTheProfile(){
     this.emailId=localStorage.getItem("emailId");
-    this.serviceProviderProfile.getByEmailIdForServiceProvider(this.emailId)
+    this.ihprofileserService.getByEmailIdForIdeaHamster(this.emailId)
     .subscribe((data)=> {
       console.log("data fetched..", data);
-      this.serviceProviderData=data;
-      console.log("after getting back from service",this.serviceProviderData);
+      this.ideaCardsData=data;
+      console.log("after getting back from service",this.ideaCardsData);
     });
   }
 
