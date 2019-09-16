@@ -20,7 +20,7 @@ import java.util.List;
 @ToString
 public class IdeaDto {
   @Id
-  private Long id;
+  private String id;
   private String title;
   private String description;
   private String duration;
