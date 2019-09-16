@@ -34,6 +34,26 @@ public class IdeaHamsterRabbitMqConfig {
     Binding bindingProfile(Queue queueProfile, TopicExchange exchangeProfile) {
         return  BindingBuilder.bind(queueProfile).to(exchangeProfile).with(profilRoutingkey);
     }
+//    configuration for consuming ide
+    @Value("${idea.rabbitmq.queue}")
+    String ideaQueue;
+    @Value("${idea.rabbitmq.exchange}")
+    String ideaExchange;
+    @Value("${idea.rabbitmq.routingkey}")
+    String ideaKey;
+
+    @Bean
+    Queue queueIdea(){
+        return new Queue(ideaQueue,true);
+    }
+    @Bean
+    TopicExchange exchangeIdea(){
+        return new TopicExchange(ideaExchange);
+    }
+    @Bean
+    Binding bindingIdea(Queue queueIdea,TopicExchange exchangeIdea){
+        return BindingBuilder.bind(queueIdea).to(exchangeIdea).with(ideaKey);
+    }
 
     @Bean
     public MessageConverter jsonMessageConverter() {
