@@ -27,6 +27,7 @@ import { SpprofileComponent } from './pages/spprofile/spprofile.component';
 import { SpprofileserService } from './services/spprofileser/spprofileser.service';
 import { RegisterserService } from './services/registerser/registerser.service';
 import { RegisterspComponent } from './registersp/registersp.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 // import { HttpModule } from "@angular/http";
 
@@ -65,7 +66,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     CommonModule,
     HttpClientModule,
     FusionChartsModule,
-    SpdashboardModule
+    SpdashboardModule,
+    MatAutocompleteModule
   ],
   providers: [
     HttpClient,
