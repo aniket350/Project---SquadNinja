@@ -50,6 +50,7 @@ public class IdeaServiceImpl implements IdeaService {
   /*It recieves the data from idea service*/
   @RabbitListener(queues = "${idea.rabbitmq.queue}")
   public void receiveData(IdeaDto ideaDTO) throws IdeaAlreadyExistsException {
+    System.out.println("received in recommendation"+ideaDTO.toString());
     Idea idea = new Idea();
     idea.setTitle(ideaDTO.getTitle());
     idea.setDescription(ideaDTO.getDescription());

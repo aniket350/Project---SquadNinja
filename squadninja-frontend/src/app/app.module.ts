@@ -18,8 +18,6 @@ import { RegisterComponent } from './register/register.component';
 import { MatTabsModule} from '@angular/material';
 import { CommonModule } from '@angular/common';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import { IhdashboardserService } from './services/ihdashboardser/ihdashboardser.service';
-import { IhserviceService } from './services/ihservice/ihservice.service';
 import { IhprofileserService } from './services/ihprofileser/ihprofileser.service';
 import { SpdashboardComponent } from './layouts/spdashboard/spdashboard.component';
 import { SpdashboardcardsComponent } from './pages/spdashboardcards/spdashboardcards.component';
@@ -71,7 +69,6 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
   ],
   providers: [
     HttpClient,
-    IhserviceService,
     IhprofileserService,
     SpprofileserService,
     RegisterserService

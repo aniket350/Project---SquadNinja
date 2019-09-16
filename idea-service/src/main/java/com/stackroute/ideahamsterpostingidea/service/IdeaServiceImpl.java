@@ -48,13 +48,14 @@ public class IdeaServiceImpl implements IdeaService {
 
             throw new IdeaAlreadyExistException("idea already exist");
         }
-            Idea savedIdea = ideaRepository.save(idea);
-            rabbitTemplate.convertAndSend(exchange, routingkey, idea);
-            if (savedIdea == null) {
-                throw new IdeaAlreadyExistException("idea is null");
-            }
-            return savedIdea;
 
+        Idea savedIdea = ideaRepository.save(idea);
+        rabbitTemplate.convertAndSend(exchange, routingkey, idea);
+        System.out.println("sent="+idea);
+        if (savedIdea == null) {
+            throw new IdeaAlreadyExistException("idea is null");
+        }
+        return savedIdea;
     }
 
 

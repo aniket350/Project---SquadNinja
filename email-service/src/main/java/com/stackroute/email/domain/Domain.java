@@ -1,4 +1,5 @@
 package com.stackroute.email.domain;
+
 import lombok.*;
 
 /*
@@ -17,7 +18,6 @@ getter and setter methods
 */
 @Setter
 public class Domain {
-//    private String firstName;
-//    private String lastName;
+
     private String email;
 }
