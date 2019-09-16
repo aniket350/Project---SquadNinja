@@ -35,7 +35,7 @@ public class IdeaHamsterRabbitMqConfig {
         return  BindingBuilder.bind(queueProfile).to(exchangeProfile).with(profilRoutingkey);
     }
 //    configuration for consuming ide
-    @Value("${ideah.rabbitmq.queue}")
+    @Value("${idea.rabbitmq.queue}")
     String ideaQueue;
     @Value("${idea.rabbitmq.exchange}")
     String ideaExchange;
