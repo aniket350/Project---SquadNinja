@@ -18,6 +18,7 @@ export class SpprofileserService {
     return this.http.get<SpProfile>(`http://13.235.10.115:8084/api/v1/serviceprovider/${emailId}`);
   }
   createUser(user: any):Observable<any> {
+    console.log(user);
     return this.http.post<Register>(this._url, user);
   }
   updateTheProfile(profile: any,emailId):Observable<any> {
