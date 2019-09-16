@@ -87,7 +87,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalScrollableTitle">
-         Title: {{modalCardDetails.title}}
+         Title: {{x.title}}
         </h5>
         <button
           type="button"
@@ -99,9 +99,9 @@
         </button>
       </div>
       <div class="modal-body">
-        <p><b>Description:</b>{{modalCardDetails.description}}</p>
-        <p><b>Domain:</b>{{modalCardDetails.domain}}</p>
-        <p><b>Subdomain:</b>{{modalCardDetails.subdomain}}</p>
+        <p><b>Description:</b>{{x.description}}</p>
+        <p><b>Domain:</b>{{x.domain}}</p>
+        <p><b>Subdomain:</b>{{x.subdomain}}</p>
       
       </div>
       <div class="modal-footer">
@@ -118,10 +118,10 @@
    <div class="col-xl-11 mb-8 mb-xl-5">
      <div class="card shadow">
        <h2 class=" mb-3">
-         <span>My Ideas</span>
+         <span>Recommended Ideas</span>
        </h2>
        <mat-card class="cardGroup" cols>
-         <mat-card class="matCard" *ngFor="let x of ideaCardsData" >
+         <mat-card class="matCard" *ngFor="let x of recommendCards" >
            <mat-card-title>{{x.title}}</mat-card-title>
          </mat-card>
        </mat-card>

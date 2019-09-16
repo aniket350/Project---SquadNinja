@@ -1,3 +1,4 @@
+import { RecommendCards } from './recommendIdeas.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SpProfile } from './spprofile.model';
@@ -17,6 +18,7 @@ export class SpprofileserService {
     return this.http.get<SpProfile>(`http://13.235.10.115:8084/api/v1/serviceprovider/${emailId}`);
   }
   createUser(user: any):Observable<any> {
+    console.log(user);
     return this.http.post<Register>(this._url, user);
   }
   updateTheProfile(profile: any,emailId):Observable<any> {
@@ -39,4 +41,10 @@ export class SpprofileserService {
     console.log(profileUpdated)
     return this.http.put<any>(`http://13.235.10.115:8084/api/v1/serviceprovider`,profileUpdated);
   }
+
+  getRecommendationIdeas(emailId):Observable<RecommendCards>{
+    console.log("in getbyemail of reg service "+emailId);
+    return this.http.get<RecommendCards>(`http://13.235.10.115:8081/api/v1/skill/${emailId}`);
+  }
+
 }
