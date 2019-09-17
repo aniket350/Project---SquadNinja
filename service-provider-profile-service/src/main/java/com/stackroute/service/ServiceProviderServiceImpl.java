@@ -47,10 +47,10 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
     public String routingkey;
 
     @Value("${spProfile.rabbitmq.exchange}")
-    String profileExchange;
+    public String profileExchange;
 
     @Value("${spProfile.rabbitmq.routingkey}")
-    String profilRoutingkey;
+    public String profilRoutingkey;
 
 //for sending updated profile data to recommendation
     @Value("${spUpdate.rabbitmq.exchange}")
