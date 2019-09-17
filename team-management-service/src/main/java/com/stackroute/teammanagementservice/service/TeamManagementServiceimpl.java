@@ -145,6 +145,30 @@ public class TeamManagementServiceimpl implements TeamManagementService {
     }
 
     /**
+     * Implementation of getDetails method
+     */
+    @Override
+    public Idea getDetails(String title) {
+      Idea  retrievedIdea = teamManagementRepository.findByTitle(title);
+      return retrievedIdea;
+
+    }
+
+    @Override
+    public Idea getUpdatedSt(String title,String emailId) {
+        Idea retrieved = teamManagementRepository.findByTitle(title);
+        List<ServiceProvider> selectedTeam = retrieved.getSelectedTeam();
+        Idea updatedSt = null;
+        for (int i = 0; i < selectedTeam.size(); i++) {
+            if (selectedTeam.get(i).getEmailId().equals(emailId)) {
+                selectedTeam.remove(i);
+                updatedSt = teamManagementRepository.save(retrieved);
+            }
+
+        }
+        return updatedSt;
+    }
+    /**
      * Annotation listens to the queue name called idea and store it in database
      */
     @RabbitListener(queues = "${idea.rabbitmq.queue}")
@@ -162,10 +186,5 @@ public class TeamManagementServiceimpl implements TeamManagementService {
         teamManagementRepository.save(idea);
     }
 
-    @Override
-    public Idea getDetails(String title) {
-        Idea  retrievedIdea = teamManagementRepository.findByTitle(title);
-        return retrievedIdea;
-    }
 
 }

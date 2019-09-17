@@ -82,7 +82,7 @@ services:
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: userdetailsdb
+      MYSQL_DATABASE: LoginDB
       MYSQL_PASSWORD: root
       MYSQL_USER: root
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"

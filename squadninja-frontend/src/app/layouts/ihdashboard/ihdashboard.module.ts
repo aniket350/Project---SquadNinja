@@ -18,6 +18,7 @@ import { MatSelectModule} from '@angular/material/select';
 import { IhprofileserService } from 'src/app/services/ihprofileser/ihprofileser.service';
 import { IdeaviewComponent } from 'src/app/pages/ideaview/ideaview.component';
 import { AutoGenerateTeamComponent } from 'src/app/pages/auto-generate-team/auto-generate-team.component';
+import { IdeaviewService } from 'src/app/services/ideaviewser/ideaview.service';
 
 
 
@@ -50,7 +51,8 @@ import { AutoGenerateTeamComponent } from 'src/app/pages/auto-generate-team/auto
     MatCardModule
   ],
   providers:[
-    IhprofileserService
+    IhprofileserService,
+    IdeaviewService
   ]
 })
 export class IhdashboardModule { }
