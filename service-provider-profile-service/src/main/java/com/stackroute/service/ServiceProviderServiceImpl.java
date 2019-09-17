@@ -46,10 +46,16 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
     public String routingkey;
 
     @Value("${spProfile.rabbitmq.exchange}")
-    String profileExchange;
+    public String profileExchange;
 
     @Value("${spProfile.rabbitmq.routingkey}")
-    String profilRoutingkey;
+    public String profilRoutingkey;
+
+    @Value("${spUpdate.rabbitmq.exchange}")
+    public String updateExchange;
+
+    @Value("${spUpdate.rabbitmq.routingkey}")
+    public String updateRoutingKey;
 
 
     @Override
@@ -98,7 +104,7 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
         saveForSearch(serviceProvider);
 
         System.out.println(updateServiceProvider.toString());
-        rabbitTemplate.convertAndSend(profileExchange,profilRoutingkey, serviceProvider);
+        rabbitTemplate.convertAndSend(updateExchange,updateRoutingKey, serviceProvider);
         return updateServiceProvider;
     }
 
