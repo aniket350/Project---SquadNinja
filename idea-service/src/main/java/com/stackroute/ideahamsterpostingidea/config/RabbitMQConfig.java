@@ -19,29 +19,29 @@ container to generate bean definitions and service requests for those beans at r
 public class RabbitMQConfig {
     /*@Value annotation is found on a method, Spring context will invoke
      it when all the spring configurations and beans are getting loaded. */
-    @Value("${idea.rabbitmq.exchange}")
-    String exchange;
-    @Value("${idea.rabbitmq.routingkey}")
-    String routingkey;
-    /*It is kind of a pattern, which is used to make decision on routing messages
-   by checking if a message's Routing Key matches the pattern.*/
-    @Value("${idea.rabbitmq.queue}")
-    String queue;
-
-    @Bean
-    Queue queue() {
-        return new Queue(queue, true);
-    }
-
-    @Bean
-    TopicExchange topicExchange() {
-        return new TopicExchange(exchange);
-    }
-
-    @Bean
-    Binding binding(Queue queue, TopicExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with(routingkey);
-    }
+//    @Value("${idea.rabbitmq.exchange}")
+//    String exchange;
+//    @Value("${idea.rabbitmq.routingkey}")
+//    String routingkey;
+//    /*It is kind of a pattern, which is used to make decision on routing messages
+//   by checking if a message's Routing Key matches the pattern.*/
+//    @Value("${idea.rabbitmq.queue}")
+//    String queue;
+//
+//    @Bean
+//    Queue queue() {
+//        return new Queue(queue, true);
+//    }
+//
+//    @Bean
+//    TopicExchange topicExchange() {
+//        return new TopicExchange(exchange);
+//    }
+//
+//    @Bean
+//    Binding binding(Queue queue, TopicExchange topicExchange) {
+//        return BindingBuilder.bind(queue).to(topicExchange).with(routingkey);
+//    }
 
     @Bean
     public MessageConverter jsonMessageConverter() {

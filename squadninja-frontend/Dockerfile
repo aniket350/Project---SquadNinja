@@ -8,6 +8,8 @@ RUN npm install
 
 RUN npm install bootstrap@4.2.1
 
+RUN npm install angular-fusioncharts@3.0.3
+
 RUN npm install http-server -g
 
 RUN npm run build

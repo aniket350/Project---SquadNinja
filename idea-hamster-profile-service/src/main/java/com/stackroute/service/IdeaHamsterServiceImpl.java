@@ -59,6 +59,7 @@ public class IdeaHamsterServiceImpl implements IdeaHamsterService {
         IdeaHamster ih = new IdeaHamster();
         ih.setName(provider.getUserName());
         ih.setEmail(provider.getEmail());
+        amqpTemplate.convertAndSend(profileExchange,profilRoutingkey, ih);
 
         return ideaHamsterRepository.save(ih);
     }
@@ -85,7 +86,6 @@ public class IdeaHamsterServiceImpl implements IdeaHamsterService {
 
         System.out.println(ideaHamster.toString());
         IdeaHamster updateServiceProvider = ideaHamsterRepository.save(ideaHamster);
-        amqpTemplate.convertAndSend(profileExchange,profilRoutingkey, ideaHamster);
         return updateServiceProvider;
     }
 

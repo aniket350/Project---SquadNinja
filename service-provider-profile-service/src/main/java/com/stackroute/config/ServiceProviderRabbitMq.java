@@ -38,32 +38,34 @@ public class ServiceProviderRabbitMq {
 //        return BindingBuilder.bind(queue).to(exchange).with(routingkey);
 //    }
 
+//
+//    /* -----------------profile------------------- */
+//    @Value("${spProfile.rabbitmq.queue}")
+//    String profileQueueName;
+//
+//    @Value("${spProfile.rabbitmq.exchange}")
+//    String profileExchange;
+//
+//    @Value("${spProfile.rabbitmq.routingkey}")
+//    String profilRoutingkey;
+//
+//
+//    @Bean
+//    Queue queueProfile() {
+//        return new Queue(profileQueueName, true);
+//    }
+//
+//    @Bean
+//    TopicExchange exchangeProfile() {
+//        return new TopicExchange(profileExchange);
+//    }
+//
+//    @Bean
+//    Binding bindingProfile(Queue queueProfile, TopicExchange exchangeProfile) {
+//        return  BindingBuilder.bind(queueProfile).to(exchangeProfile).with(profilRoutingkey);
+//    }
+///*--------------------------------------------------------------------------------------------------*/
 
-    /* -----------------profile------------------- */
-    @Value("${spProfile.rabbitmq.queue}")
-    String profileQueueName;
-
-    @Value("${spProfile.rabbitmq.exchange}")
-    String profileExchange;
-
-    @Value("${spProfile.rabbitmq.routingkey}")
-    String profilRoutingkey;
-
-
-    @Bean
-    Queue queueProfile() {
-        return new Queue(profileQueueName, true);
-    }
-
-    @Bean
-    TopicExchange exchangeProfile() {
-        return new TopicExchange(profileExchange);
-    }
-
-    @Bean
-    Binding bindingProfile(Queue queueProfile, TopicExchange exchangeProfile) {
-        return  BindingBuilder.bind(queueProfile).to(exchangeProfile).with(profilRoutingkey);
-    }
 
     /*-----------------------------------------------------------------------------------------------*/
     @Bean

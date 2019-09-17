@@ -42,20 +42,18 @@ export class AutoGenerateTeamComponent implements OnInit {
     for(let role of this.obj1){
         this.tabs.push(role.role);
         console.log("came0");
-        if(role.role===this.x.role){
-          console.log("came1");
-        }
+        this.getAnyTeam(role.role);
       }
   console.log("came2");
-  this.getAnyTeam();
+ 
 }
 
-getAnyTeam(){
+getAnyTeam(role:any){
   
-  
-  this.autogeneratesp.getByIdeaTitleAndRoleName(this.title,this.obj1)
+  console.log("getteam");
+  this.autogeneratesp.getByIdeaTitleAndRoleName(this.title,role)
   .subscribe(data =>{
-    console.log("data from posting an idea "+ this.title,this.obj1);
+    console.log("data from posting an idea "+ this.title,role);
     this.autogeneratesp=data;
     console.log("after getting back from service",this.autogeneratesp);
   }
