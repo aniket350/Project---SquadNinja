@@ -65,17 +65,19 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
     @Override
     public ServiceProvider saveServiceProvider(ServiceProviderDto provider) throws UserAlreadyFoundException {
         //for authentication
-        rabbitTemplate.convertAndSend(exchange, routingkey, provider);
 
         ServiceProvider sp = new ServiceProvider();
-        if(serviceProviderRepository.findByEmail(provider.getEmail())==null){
-        sp.setName(provider.getUserName());
-        sp.setEmail(provider.getEmail());
-        //for recommendation
-        rabbitTemplate.convertAndSend(profileExchange, profilRoutingkey, sp);
-        return serviceProviderRepository.save(sp);}
-        else {
+        if(serviceProviderRepository.findByEmail(provider.getEmail())!=null) {
             throw new UserAlreadyFoundException("User already Exists");
+        }
+        else {
+
+            sp.setName(provider.getUserName());
+            sp.setEmail(provider.getEmail());
+            //for recommendation
+            rabbitTemplate.convertAndSend(exchange, routingkey, provider);
+            rabbitTemplate.convertAndSend(profileExchange, profilRoutingkey, sp);
+            return serviceProviderRepository.save(sp);
         }
 
     }
