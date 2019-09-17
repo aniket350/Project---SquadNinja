@@ -11,14 +11,25 @@ import org.neo4j.ogm.annotation.Relationship;
 import java.util.List;
 
 @JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
+
+/**With @NodeEntity, domain class can be set as node*/
 @NodeEntity
+
+/**With @Data, Lombok will generate getter and setter methods, toString methods, Equal & Hashcode methods*/
 @Data
+
+/**@NoArgsConstructor will generate constructor with no arguments*/
 @NoArgsConstructor
+
+/**@AllArgsConstructor will generate constructor with all properties in the class*/
 @AllArgsConstructor
 @Getter
 @Setter
 @ToString
 public class Idea {
+    /**
+     * Id annotation makes id variable as Primary key
+     */
     @Id @GeneratedValue
     private long id;
     private String title;
