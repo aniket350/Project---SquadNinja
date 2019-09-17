@@ -51,22 +51,25 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
     @Value("${spProfile.rabbitmq.routingkey}")
     public String profilRoutingkey;
 
+//for sending updated profile data to recommendation
     @Value("${spUpdate.rabbitmq.exchange}")
-    public String updateExchange;
+    String updateExchange;
 
     @Value("${spUpdate.rabbitmq.routingkey}")
-    public String updateRoutingKey;
+    String updateRoutingKey;
+
+
 
 
     @Override
     public ServiceProvider saveServiceProvider(ServiceProviderDto provider) {
-
+        //for authentication
         rabbitTemplate.convertAndSend(exchange, routingkey, provider);
 
         ServiceProvider sp = new ServiceProvider();
         sp.setName(provider.getUserName());
         sp.setEmail(provider.getEmail());
-
+        //for recommendation
         rabbitTemplate.convertAndSend(profileExchange, profilRoutingkey, sp);
         return serviceProviderRepository.save(sp);
 

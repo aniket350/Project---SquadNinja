@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQConfig {
-  /*.............ideaServcie............................*/
+  /*.............ideaServcie for creating node............................*/
   @Value("${idea.rabbitmq.queue}")
   String queueName;
 
