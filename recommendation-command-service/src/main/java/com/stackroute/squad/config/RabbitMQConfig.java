@@ -158,8 +158,8 @@ public class RabbitMQConfig {
   }
 
   @Bean
-  Binding bindAppliedTeam(Queue appliedTeameQueue, TopicExchange appliedTeamExchange) {
-    return BindingBuilder.bind(appliedTeameQueue).to(appliedTeamExchange).with(appliedTeamRoutingkey);
+  Binding bindAppliedTeam(Queue appliedTeamQueue, TopicExchange appliedTeamExchange) {
+    return BindingBuilder.bind(appliedTeamQueue).to(appliedTeamExchange).with(appliedTeamRoutingkey);
   }
   /*....................................................................................*/
   @Bean
