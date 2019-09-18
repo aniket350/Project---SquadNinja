@@ -10,7 +10,7 @@ import { RegisterspComponent } from './registersp/registersp.component';
 import { SpdashboardComponent } from './layouts/spdashboard/spdashboard.component';
 import { FussionChartComponent } from './fussion-chart/fussion-chart.component';
 import { SpprofileComponent } from './pages/spprofile/spprofile.component';
-
+import { FooterSearchComponent } from './home/footer-search/footer-search.component';
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
@@ -18,6 +18,7 @@ const routes: Routes = [
   {path:'registersp',component:RegisterspComponent},
   {path: 'Chart', component: FussionChartComponent},
   {path: 'sp',component:SpprofileComponent},
+  {path:'footersearch',component: FooterSearchComponent},
   {path: 'ihdashboard',
   component: IhdashboardComponent,
   children: [

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SectionComponentService } from 'src/app/services/cardHomePage/section-component.service';
 import {SectionComponentSP} from 'src/app/services/cardSPHomePage/section-component-service-service'
 import { Router } from '@angular/router';
+import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
+
 @Component({
   selector: 'app-sections',
   templateUrl: './sections.component.html',
@@ -12,68 +14,13 @@ export class SectionsComponent implements OnInit
   focus;
   focus1;
   private router:Router;
-  // cards = [
-  //   {
-  //     title: 'Card Title 1',
-  //     description: 'Some quick example text to build on the card title and make up the bulk of the card content',
-  //     buttonText: 'Button',
-  //     img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
-  //   },
-  //   {
-  //     title: 'Card Title 2',
-  //     description: 'Some quick example text to build on the card title and make up the bulk of the card content',
-  //     buttonText: 'Button',
-  //     img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
-  //   },
-  //   {
-  //     title: 'Card Title 3',
-  //     description: 'Some quick example text to build on the card title and make up the bulk of the card content',
-  //     buttonText: 'Button',
-  //     img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
-  //   },
-  //   {
-  //     title: 'Card Title 4',
-  //     description: 'Some quick example text to build on the card title and make up the bulk of the card content',
-  //     buttonText: 'Button',
-  //     img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
-  //   },
-  //   {
-  //     title: 'Card Title 5',
-  //     description: 'Some quick example text to build on the card title and make up the bulk of the card content',
-  //     buttonText: 'Button',
-  //     img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
-  //   },
-  //   {
-  //     title: 'Card Title 6',
-  //     description: 'Some quick example text to build on the card title and make up the bulk of the card content',
-  //     buttonText: 'Button',
-  //     img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
-  //   },
-  //   {
-  //     title: 'Card Title 7',
-  //     description: 'Some quick example text to build on the card title and make up the bulk of the card content',
-  //     buttonText: 'Button',
-  //     img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
-  //   },
-  //   {
-  //     title: 'Card Title 8',
-  //     description: 'Some quick example text to build on the card title and make up the bulk of the card content',
-  //     buttonText: 'Button',
-  //     img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
-  //   },
-  //   {
-  //     title: 'Card Title 9',
-  //     description: 'Some quick example text to build on the card title and make up the bulk of the card content',
-  //     buttonText: 'Button',
-  //     img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
-  //   },
-  // ];
-  // slides: any = [[]];
+ 
 
 
   sections: any = [];
   private ideaCardsData: any;
   private spCardData: any;
+  private images: string[];
 
   chunk(arr, chunkSize) {
     let R = [];
@@ -82,20 +29,26 @@ export class SectionsComponent implements OnInit
     }
     return R;
   }
+  slides: any = [[]];
+
   constructor(private sectionComponentService : SectionComponentService, private sectionComponentSP: SectionComponentSP){}
   ngOnInit() {
     this.sectionComponentService.getIdeas()
       .subscribe(data => {
         this.ideaCardsData = data
         console.log(this.ideaCardsData);
+        
       });
-
-      this.sectionComponentSP.getSP()
-      .subscribe(data => {
-        this.spCardData = data
-        console.log(this.spCardData);
-      });
-    this.sections = this.chunk(this.sections, 3);
+      this.slides = this.chunk(this.ideaCardsData,5);
+      
+      // console.log(`Sections: ${this.slides}`);
+      
+      // this.sectionComponentSP.getSP()
+      // .subscribe(data => {
+      //   this.spCardData = data
+      //   console.log(this.spCardData);
+      // });
+    // this.sections = this.chunk(this.sections,4);
   }
   openCard()
   {
