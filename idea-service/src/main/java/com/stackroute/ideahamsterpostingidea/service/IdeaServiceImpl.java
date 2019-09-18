@@ -73,8 +73,6 @@ public class IdeaServiceImpl implements IdeaService {
         rabbitTemplate.convertAndSend(exchange, routingkey, idea);
         rabbitTemplate.convertAndSend(teamExchange, teamRoutingkey, idea);
         rabbitTemplate.convertAndSend(hamsterExchange, hamsterRoutingkey, idea);
-
-        System.out.println("sent="+idea);
         if (savedIdea == null) {
             throw new IdeaAlreadyExistException("idea is null");
         }
@@ -147,6 +145,16 @@ public class IdeaServiceImpl implements IdeaService {
     public List<Idea> getRecentIdeas() {
         List<Idea> getRecentIdea = ideaRepository.findAll(Sort.by(Sort.Direction.DESC, "postedOn"));
         return getRecentIdea;
+    }
+
+
+    /**
+     * Implementation of get All ideas by emailId method
+     */
+    @Override
+    public List<Idea> getPostedByIdeas() {
+        List<Idea> getPostedIdea=ideaRepository.findAll();
+        return getPostedIdea;
     }
 
 }

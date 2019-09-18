@@ -1,0 +1,35 @@
+<section class="section section-shaped">
+    <div class="shape shape-style-1 shape-default">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <mdb-carousel [animation]="'slide'" [isControls]="true" [type]="'carousel-multi-item'" class="carousel-multi-item multi-animation">
+
+        <mdb-carousel-item *ngFor="let item of slides; let i = index">
+            <div *ngFor="let card of item; let cardIndex = index" [ngClass]="{'d-none d-md-block': cardIndex !== 0}" class="col-md-4">
+                <mdb-card
+                    class="my-1">
+                    <!-- <mdb-card-img [src]="card.img" alt="Card image cap"></mdb-card-img> -->
+                     
+                    <mdb-card-body>
+                            <div class="card"  [routerLink]="['/login']" routerLinkActive="router-link-active"  (click)="openCard()">      
+                            <div class="icon"><i class="material-icons md-36">alternate_email</i></div>
+                        
+                        <p class="title">{{card.title}}</p>
+                        <p class="text">{{card.description}}</p>
+                        
+                        <!-- <a class="waves-light" color="primary" href="#" mdbbtn mdbwaveseffect>{{card.buttonText}}</a> -->
+                    </div>
+                    </mdb-card-body>
+
+                
+                </mdb-card>
+                
+            </div>
+        </mdb-carousel-item>
+    </mdb-carousel>
+</section>

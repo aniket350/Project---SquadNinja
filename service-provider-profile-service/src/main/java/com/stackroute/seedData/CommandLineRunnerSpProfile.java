@@ -69,31 +69,31 @@ public class CommandLineRunnerSpProfile implements CommandLineRunner
             ServiceProvider serviceProvider=new ServiceProvider();
             //using the ServiceProvider object set xlsx data to ServiceProvider variables
             serviceProvider.setName(xssfSheet.getRow(i).getCell(0).toString());
-            serviceProvider.setChargePerHour(xssfSheet.getRow(i).getCell(5).toString());
-            serviceProvider.setCurrentLocation(xssfSheet.getRow(i).getCell(6).toString());
+            serviceProvider.setChargePerHour(xssfSheet.getRow(i).getCell(15).toString());
+            serviceProvider.setCurrentLocation(xssfSheet.getRow(i).getCell(5).toString());
             serviceProvider.setEmail(xssfSheet.getRow(i).getCell(1).toString());
             serviceProvider.setDomain(xssfSheet.getRow(i).getCell(3).toString());
             serviceProvider.setSubDomain(xssfSheet.getRow(i).getCell(4).toString());
             serviceProvider.setMobileNo(new Long(xssfWorkbook.getSheetAt(0).getRow(i).getCell(2).getRawValue()));
 
             Role role = new Role();
-            role.setExperience(xssfSheet.getRow(i).getCell(9).toString());
-            role.setRoleName(xssfSheet.getRow(i).getCell(8).toString());
+            role.setExperience(xssfSheet.getRow(i).getCell(8).toString());
+            role.setRole(xssfSheet.getRow(i).getCell(7).toString());
             List<Role> list1 = new ArrayList<>();
             list1.add(role);
             serviceProvider.setRole(role);
-            ArrayList list = new ArrayList<>(Collections.singleton(xssfSheet.getRow(i).getCell(10).toString()));
+            ArrayList list = new ArrayList<>(Collections.singleton(xssfSheet.getRow(i).getCell(9).toString()));
             role.setSkills(list);
-            ArrayList list2=new ArrayList<>(Collections.singleton(xssfSheet.getRow(i).getCell(7).toString()));
+            ArrayList list2=new ArrayList<>(Collections.singleton(xssfSheet.getRow(i).getCell(6).toString()));
             serviceProvider.setPreferredLocation(list2);
 
-            serviceProviderDto.setPassword(xssfSheet.getRow(i).getCell(11).toString());
+            serviceProviderDto.setPassword(xssfSheet.getRow(i).getCell(10).toString());
             serviceProviderDto.setEmail(xssfSheet.getRow(i).getCell(1).toString());
             serviceProviderDto.setUserName(xssfSheet.getRow(i).getCell(0).toString());
-            serviceProviderDto.setRole(xssfSheet.getRow(i).getCell(12).toString());
+            serviceProviderDto.setRole(xssfSheet.getRow(i).getCell(11).toString());
 
             serviceProviderServiceImpl.saveServiceProvider(serviceProviderDto);
-//            serviceProviderServiceImpl.updateTheProfile(serviceProvider);
+            serviceProviderServiceImpl.updateTheProfile(serviceProvider);
 
         }
     }
