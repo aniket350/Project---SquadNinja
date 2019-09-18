@@ -4,7 +4,7 @@
 <mat-tab-group>
     <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
       <div class="cardGroup">
-        <mat-card class="card" *ngFor="let card of autogeneratesp;let index=index" >
+        <mat-card class="card" *ngFor="let card of autogeneratesp; let index=index" >
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>{{card.name}}</mat-card-title>
