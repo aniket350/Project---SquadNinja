@@ -74,7 +74,7 @@ public class CommandLineRunnerSpProfile implements CommandLineRunner
             serviceProvider.setEmail(xssfSheet.getRow(i).getCell(1).toString());
             serviceProvider.setDomain(xssfSheet.getRow(i).getCell(3).toString());
             serviceProvider.setSubDomain(xssfSheet.getRow(i).getCell(4).toString());
-            serviceProvider.setMobileNo(new Long(xssfWorkbook.getSheetAt(0).getRow(i).getCell(2).getRawValue()));
+            serviceProvider.setMobileNo(xssfSheet.getRow(i).getCell(2).toString());
 
             Role role = new Role();
             role.setExperience(xssfSheet.getRow(i).getCell(8).toString());

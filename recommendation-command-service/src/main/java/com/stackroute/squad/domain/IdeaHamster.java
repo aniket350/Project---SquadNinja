@@ -25,7 +25,7 @@ public class IdeaHamster {
   @GeneratedValue
   private Long id;
   private String name;
-  private long mobile;
+  private String mobile;
   private String email;
 
 }
