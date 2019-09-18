@@ -55,10 +55,11 @@ public class IdeaHamsterServiceImpl implements IdeaHamsterService {
     public IdeaHamster saveIdeaHamster(IdeaHamsterDto provider) {
 
         amqpTemplate.convertAndSend(exchange, routingkey, provider);
-
+        System.out.println("sent to login="+provider);
         IdeaHamster ih = new IdeaHamster();
         ih.setName(provider.getUserName());
         ih.setEmail(provider.getEmail());
+        System.out.println("sent to recommendation="+ih.toString());
         amqpTemplate.convertAndSend(profileExchange,profilRoutingkey, ih);
 
         return ideaHamsterRepository.save(ih);

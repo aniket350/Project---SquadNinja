@@ -136,7 +136,7 @@ body {
     width: 100%;
     height: 80px;
     max-width:80px;
-    background: linear-gradient(90deg, #FF7E7E 0%, #FF4848 40%, rgba(0, 0, 0, 0.28) 60%);
+    background: linear-gradient(90deg, rgb(83, 196, 31) 0%, #FF4848 40%, rgba(0, 0, 0, 0.28) 60%);
     border-radius: 100%;
     display: flex;
     justify-content: center;
@@ -189,7 +189,7 @@ body {
     transition: all 0.3s ease;
   }
   .card:hover .icon i {
-    background: linear-gradient(90deg, #FF7E7E, #FF4848);
+    background: linear-gradient(90deg, rgb(126, 135, 255), rgb(91, 197, 20));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     opacity: 1;

@@ -10,6 +10,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
 import { MDBBootstrapModule} from 'angular-bootstrap-md';
 import { FooterSearchComponent } from './footer-search/footer-search.component';
+import {  MatCardModule } from '@angular/material';
+
+
 
 @NgModule({
   declarations: [HomeComponent, NavbarComponent, FooterComponent,FooterSearchComponent],
@@ -21,7 +24,11 @@ import { FooterSearchComponent } from './footer-search/footer-search.component';
     RouterModule,
     SectionsModule,
     NgbModule,
-    MDBBootstrapModule 
+    MDBBootstrapModule,
+    
+    MatCardModule
+   
+    
   ]
 })
 export class HomeModule { }

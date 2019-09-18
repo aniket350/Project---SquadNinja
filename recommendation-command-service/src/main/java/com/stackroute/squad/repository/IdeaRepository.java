@@ -26,7 +26,7 @@ public interface IdeaRepository extends Neo4jRepository<Idea, Long> {
  @Query("MATCH (i:Idea),(s:subdomain) WHERE i.title={title} and s.name={name} CREATE (i)-[b:belongs_to]->(s) RETURN i")
   public Idea setBelongsToRelation(@Param("title")String title, @Param("name")String name);
 //Query for idea needs skills
-  @Query("MATCH (i:Idea),(sk:skills) WHERE i.title={title} and sk.name={name} CREATE (i)-[h:need]->(sk) RETURN i")
+  @Query("MATCH (i:Idea),(sk:Skills) WHERE i.title={title} and sk.name={name} CREATE (i)-[h:need]->(sk) RETURN i")
   public Idea setNeedsRelation(@Param("title")String title, @Param("name") String name);
 //Query for deleting the idea based on roles
   @Query("MATCH (x:Idea),(y:Roles) WHERE x.title={title} and y.roleName={roleName} OPTIONAL MATCH (x)-[r:requires]-(y) DETACH DELETE x,r RETURN x")
