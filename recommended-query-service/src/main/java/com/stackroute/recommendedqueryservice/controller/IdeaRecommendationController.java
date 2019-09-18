@@ -41,7 +41,7 @@ public class IdeaRecommendationController {
     @GetMapping("skill/{email}")
     public ResponseEntity<Collection<Idea>> getIdeasBySkill(@PathVariable("email") String email) {
         List<Idea> Ideas = recommendedIdeaService.findBySkill(email);
-        return new ResponseEntity<>(Ideas, HttpStatus.FOUND);
+        return new ResponseEntity<>(Ideas, HttpStatus.OK);
     }
 
     /**
@@ -50,7 +50,7 @@ public class IdeaRecommendationController {
     @GetMapping("role/{email}")
     public ResponseEntity<Iterable<Idea>> getIdeasByRole(@PathVariable("email") String email) {
         Iterable<Idea> ideas = recommendedIdeaService.findByRole(email);
-        return new ResponseEntity<>(ideas, HttpStatus.FOUND);
+        return new ResponseEntity<>(ideas, HttpStatus.OK);
     }
 
     /**
@@ -59,7 +59,7 @@ public class IdeaRecommendationController {
     @GetMapping("workedonIdea/{email}")
     public ResponseEntity<Iterable<Idea>> getIdeasByPreviousWork(@PathVariable("email") String name) {
         Iterable<Idea> ideas = recommendedIdeaService.findByWorkedOnIdea(name);
-        return new ResponseEntity<>(ideas, HttpStatus.FOUND);
+        return new ResponseEntity<>(ideas, HttpStatus.OK);
     }
 
     /**
@@ -68,7 +68,7 @@ public class IdeaRecommendationController {
     @GetMapping("appliedonIdea/{email}")
     public ResponseEntity<Iterable<Idea>> getIdeasByPreviousApplied(@PathVariable("email") String email) {
         Iterable<Idea> ideas = recommendedIdeaService.findByAppliedOnIdea(email);
-        return new ResponseEntity<>(ideas, HttpStatus.FOUND);
+        return new ResponseEntity<>(ideas, HttpStatus.OK);
     }
 
     /**
@@ -78,7 +78,7 @@ public class IdeaRecommendationController {
     public ResponseEntity<?> getautoTeam(@PathVariable("title") String title, @RequestParam("roleName") String roleName) {
         List<ServiceProvider> serviceProviders = recommendedeamService.getTeamBasedOnWorkedOnIdea(title, roleName);
 
-        return new ResponseEntity<>(serviceProviders, HttpStatus.FOUND);
+        return new ResponseEntity<>(serviceProviders, HttpStatus.OK);
     }
 
     /**
@@ -87,7 +87,7 @@ public class IdeaRecommendationController {
     @GetMapping("applied/{title}")
     public ResponseEntity<Collection<ServiceProvider>> getRecommendedTeam(@PathVariable("title") String title, @RequestParam("roleName") String roleName) {
         Collection<ServiceProvider> serviceProviders = recommendedeamService.getdata(title, roleName);
-        return new ResponseEntity<>(serviceProviders, HttpStatus.FOUND);
+        return new ResponseEntity<>(serviceProviders, HttpStatus.OK);
     }
 
 }

@@ -37,6 +37,7 @@ export class AutoGenerateTeamComponent implements OnInit {
     this.obj1=JSON.parse(this.obj);
   
     for(let role of this.obj1){
+      // console.log(role);
         this.tabs.push(role.role);
         this.getAnyTeam(role.role);
       }
