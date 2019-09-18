@@ -63,7 +63,7 @@ public class CommandLineRunnerIhProfile implements CommandLineRunner {
         fileInputStream.close();
 
         int rowNumber=xssfSheet.getLastRowNum();
-        for(int i=0;i<=rowNumber;i++)
+        for(int i=1;i<rowNumber;i++)
         {
             //using IdeaHamster object set xlsx data to IdeaHamster variables
             ideaHamster.setEmail(xssfSheet.getRow(i).getCell(1).toString());

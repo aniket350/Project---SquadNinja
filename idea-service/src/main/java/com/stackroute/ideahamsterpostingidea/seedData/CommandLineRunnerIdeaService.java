@@ -61,7 +61,7 @@ public class CommandLineRunnerIdeaService implements CommandLineRunner
         fileInputStream.close();
 
         int rowNum=xssfSheet.getLastRowNum();
-        for(int i=0;i<rowNum;i++)
+        for(int i=1;i<rowNum;i++)
         {
             Idea idea=new Idea();
             //using the Idea object set xlsx data to Idea variables

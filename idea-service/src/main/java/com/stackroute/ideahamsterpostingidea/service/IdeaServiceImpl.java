@@ -152,8 +152,8 @@ public class IdeaServiceImpl implements IdeaService {
      * Implementation of get All ideas by emailId method
      */
     @Override
-    public List<Idea> getPostedByIdeas() {
-        List<Idea> getPostedIdea=ideaRepository.findAll();
+    public List<Idea> getPostedByIdeas(String postedBy) {
+        List<Idea> getPostedIdea=ideaRepository.findByPostedBy(postedBy);
         return getPostedIdea;
     }
 
