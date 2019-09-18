@@ -59,7 +59,7 @@ public class IdeaRecommendationController {
     @GetMapping("workedonIdea/{email}")
     public ResponseEntity<Iterable<Idea>> getIdeasByPreviousWork(@PathVariable("email") String name) {
         Iterable<Idea> ideas = recommendedIdeaService.findByWorkedOnIdea(name);
-        return new ResponseEntity<>(ideas, HttpStatus.OK;
+        return new ResponseEntity<>(ideas, HttpStatus.OK);
     }
 
     /**
