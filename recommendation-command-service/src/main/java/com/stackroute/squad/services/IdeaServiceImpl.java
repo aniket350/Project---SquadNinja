@@ -53,10 +53,10 @@ public class IdeaServiceImpl implements IdeaService {
     idea.setPostedOn(ideaDTO.getPostedOn());
     ideaRepository.save(idea);
     System.out.println("recieved="+idea.toString());
-    ideaRepository.setBelongsToRelation(ideaDTO.getTitle(), ideaDTO.getSubDomainName());
+    ideaRepository.setBelongsToRelation(ideaDTO.getTitle(), ideaDTO.getSubDomain());
 
     for (int i = 0; i < ideaDTO.getRole().size(); i++) {
-      ideaRepository.setRequiresRelation(ideaDTO.getTitle(), ideaDTO.getRole().get(i).getRoleName());
+      ideaRepository.setRequiresRelation(ideaDTO.getTitle(), ideaDTO.getRole().get(i).getRole());
     }
 
     for (int i = 0; i < ideaDTO.getRole().size(); i++) {
@@ -74,7 +74,7 @@ public class IdeaServiceImpl implements IdeaService {
   @RabbitListener(queues = "${ideaDelete.rabbitmq.queue}")
   public void deleteIdea(IdeaDto ideaDto) throws IdeaNotFoundException {
     for (int i = 0; i < ideaDto.getRole().size(); i++) {
-      ideaRepository.deleteRequiresRelation(ideaDto.getTitle(), ideaDto.getRole().get(i).getRoleName());
+      ideaRepository.deleteRequiresRelation(ideaDto.getTitle(), ideaDto.getRole().get(i).getRole());
     }
 
   }

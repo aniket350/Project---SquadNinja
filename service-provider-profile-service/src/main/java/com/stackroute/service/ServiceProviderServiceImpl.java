@@ -104,7 +104,7 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
         serviceProvider.setCurrentLocation(provider.getCurrentLocation());
         serviceProvider.setPreferredLocation(provider.getPreferredLocation());
         Role role = new Role();
-        role.setRoleName(provider.getRole().getRoleName());
+        role.setRole(provider.getRole().getRole());
         role.setExperience(provider.getRole().getExperience());
         role.setSkills(provider.getRole().getSkills());
         serviceProvider.setRole(role);
@@ -124,7 +124,7 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
 
             System.out.println(serviceProvider.toString());
             List<ServiceProvider> serviceProviderList;
-            SearchServiceProvider fetchedSearchServiceProvider = searchServiceProviderRepository.findByRoleName(serviceProvider.getRole().getRoleName());
+            SearchServiceProvider fetchedSearchServiceProvider = searchServiceProviderRepository.findByRoleName(serviceProvider.getRole().getRole());
             if (fetchedSearchServiceProvider != null) {
 
                 serviceProviderList = fetchedSearchServiceProvider.getServiceProviderList();
@@ -136,7 +136,7 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
             else if (fetchedSearchServiceProvider == null){
 
                 SearchServiceProvider searchServiceProvider = new SearchServiceProvider();
-                searchServiceProvider.setRoleName(serviceProvider.getRole().getRoleName());
+                searchServiceProvider.setRoleName(serviceProvider.getRole().getRole());
                 List<ServiceProvider> list = new ArrayList<>();
                 list.add(serviceProvider);
                 searchServiceProvider.setServiceProviderList(list);

@@ -9,6 +9,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
 import { MDBBootstrapModule} from 'angular-bootstrap-md';
+import {  MatCardModule } from '@angular/material';
+
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { MDBBootstrapModule} from 'angular-bootstrap-md';
     RouterModule,
     SectionsModule,
     NgbModule,
-    MDBBootstrapModule
+    MDBBootstrapModule,
+    MatCardModule
+   
     
   ]
 })
