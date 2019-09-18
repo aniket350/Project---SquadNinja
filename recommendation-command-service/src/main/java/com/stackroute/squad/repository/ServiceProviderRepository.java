@@ -27,7 +27,7 @@ public interface ServiceProviderRepository extends Neo4jRepository<ServiceProvid
   @Query("MATCH(sp:ServiceProvider),(r:Roles) WHERE sp.email={email} and r.roleName={roleName} CREATE (sp)<-[p:played_by]-(r) RETURN sp")
   public ServiceProvider setPlayedByRelation(@Param("email") String email, @Param("roleName") String roleName);
 //QUERY Serviceprovider has skills skills
-  @Query("MATCH(sp:ServiceProvider),(s:skills) WHERE sp.email={email} and s.name={name} CREATE (sp)-[hs:has_skills]->(s) RETURN sp")
+  @Query("MATCH(sp:ServiceProvider),(s:Skills) WHERE sp.email={email} and s.name={name} CREATE (sp)-[hs:has_skills]->(s) RETURN sp")
   public ServiceProvider setHasSkillsRelation(@Param("email") String email, @Param("name") String name);
   @Query("MATCH (sp:ServiceProvider),(i:Idea) WHERE sp.email={email} and i.title={title} CREATE (sp)-[a:applied_for]->(i) RETURN sp")
   public ServiceProvider setAppliedForRelation(@Param("email") String email, @Param("title") String title);
