@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { SpProfile } from './spprofile.model';
 import { Register } from 'src/app/register/register.model';
 import { Observable } from 'rxjs';
+import { SearchData } from './search.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +35,7 @@ export class  SpprofileserService {
       "currentLocation": profile.currentLocation,
       "preferredLocation": [profile.prefferedLocation],
       "role":{
-      "role" : profile.roleName,
+      "roleName" : profile.roleName,
       "experience": profile.experience,
       "skills": [profile.skills]
     	}
@@ -45,6 +47,11 @@ export class  SpprofileserService {
   getRecommendationIdeas(emailId):Observable<RecommendCards>{
     console.log("in getbyemail of reg service "+emailId);
     return this.http.get<RecommendCards>(`http://13.235.10.115:8081/api/v1/skill/${emailId}`);
+  }
+
+  getSearchResults(roleName):Observable<SearchData>{
+    console.log(roleName);
+    return this.http.get<SearchData>(`http://13.235.10.115:8084/api/v1/serviceproviders/${roleName}`);
   }
 
 }

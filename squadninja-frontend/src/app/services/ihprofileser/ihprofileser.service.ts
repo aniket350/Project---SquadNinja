@@ -21,8 +21,10 @@ getByEmailIdForIdeaHamster(emailId):any{
 updateTheProfile(profile: any):Observable<any> {
  return this.http.put(`http://13.235.10.115:8095/api/v1/ideahamster`,(profile));
 }
+
 getIdea(postedBy):any{
-    return this.http.get<any>(`http://13.235.10.115:8090/api/v1/postedIdeas/${postedBy}`);
+    return this.http.get<any>(`http://13.235.10.115:8090/api/v1/postedIdeas/${postedBy}`)
  }
+
 }
 
