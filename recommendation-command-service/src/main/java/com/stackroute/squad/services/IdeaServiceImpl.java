@@ -52,6 +52,7 @@ public class IdeaServiceImpl implements IdeaService {
     idea.setStatus(ideaDTO.getStatus());
     idea.setPostedOn(ideaDTO.getPostedOn());
     ideaRepository.save(idea);
+    System.out.println("recieved="+idea.toString());
     ideaRepository.setBelongsToRelation(ideaDTO.getTitle(), ideaDTO.getSubDomainName());
 
     for (int i = 0; i < ideaDTO.getRole().size(); i++) {

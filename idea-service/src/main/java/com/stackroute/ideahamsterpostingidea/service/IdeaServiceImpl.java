@@ -71,10 +71,12 @@ public class IdeaServiceImpl implements IdeaService {
 
         Idea savedIdea = ideaRepository.save(idea);
         rabbitTemplate.convertAndSend(exchange, routingkey, idea);
+        System.out.println("sent to recommendation="+idea.toString());
         rabbitTemplate.convertAndSend(teamExchange, teamRoutingkey, idea);
+        System.out.println("sent to team management="+idea.toString());
         rabbitTemplate.convertAndSend(hamsterExchange, hamsterRoutingkey, idea);
+        System.out.println("sent to team ideahamster="+idea.toString());
 
-        System.out.println("sent="+idea);
         if (savedIdea == null) {
             throw new IdeaAlreadyExistException("idea is null");
         }
