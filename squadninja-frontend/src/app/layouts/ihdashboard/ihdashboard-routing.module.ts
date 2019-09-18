@@ -1,3 +1,4 @@
+import { SearchviewComponent } from './../../pages/searchview/searchview.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { IhdashboardcardsComponent } from 'src/app/pages/ihdashboardcards/ihdashboardcards.component';
@@ -12,7 +13,8 @@ export const IhDashboardRoutes: Routes = [
   {path: 'user-profile', component: IhprofileComponent},
   {path: 'postanidea', component: PostideaComponent},
   {path: 'postanidea/autogenerateTeam',component: AutoGenerateTeamComponent},
-  {path: 'ideaview',component: IdeaviewComponent}
+  {path: 'ideaview',component: IdeaviewComponent},
+  {path: 'ideaview/searchsp',component: SearchviewComponent}
 ];
 
 
