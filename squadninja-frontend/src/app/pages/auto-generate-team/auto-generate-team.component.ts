@@ -11,12 +11,12 @@ import {HttpClient} from '@angular/common/http';
 export class AutoGenerateTeamComponent implements OnInit {
   public items: any;
   public postedIdeaDetails: any;
-
+​
   title="";
   obj1:any="";
   obj:any="";
  
-
+​
   tabs=[];
   cards = [];
   x: any = [];
@@ -26,12 +26,9 @@ export class AutoGenerateTeamComponent implements OnInit {
 // tslint:disable-next-line:max-line-length
   constructor(private http:HttpClient,private autogeneratesp:AutogenerateService) { }
   ngOnInit() {
-
-    // this.autogeneratesp.get().subscribe(res =>{
-    //   this.x=res;
-    //   console.log(this.x);
-    // })
-
+​
+  
+​
    // this.getPostedIdeas().then(() => this.getTab(0));
     this.title=localStorage.getItem("title");
     console.log(this.title);
@@ -41,16 +38,16 @@ export class AutoGenerateTeamComponent implements OnInit {
   
     for(let role of this.obj1){
         this.tabs.push(role.role);
-        console.log("came0");
         this.getAnyTeam(role.role);
       }
-  console.log("came2");
  
+  // this.getAnyTeam();
 }
-
+​
 getAnyTeam(role:any){
   
-  console.log("getteam");
+
+  console.log(role);
   this.autogeneratesp.getByIdeaTitleAndRoleName(this.title,role)
   .subscribe(data =>{
     console.log("data from posting an idea "+ this.title,role);
@@ -59,7 +56,7 @@ getAnyTeam(role:any){
   }
   ); 
 }
-
+​
 ​
  clickedAccept(item, role) {
     item.statusA = "Accepted";
@@ -69,7 +66,7 @@ getAnyTeam(role:any){
     let statusR = 'Reject';
 ​
     this.http.patch(designerpath,{'statusA' : value, 'statusR' : statusR}).subscribe();
-
+​
   }
 ​
   clickedReject(id) {
@@ -80,21 +77,5 @@ getAnyTeam(role:any){
 ​
   }
 ​
-​
-​
-​
-​
-  // async getPostedIdeas() {
-  //   return new Promise((resolve, reject) =>
-  //   this.autoGenerateTeam.posetedIdeas().subscribe((response) => {
-  //       console.log(response);
-  //       if (response) {
-  //         this.postedIdeaDetails = response;
-  //         }
-  //       }, (err) => {
-  //         console.log(err);
-  //     }
-  //     )
-  //     );
-  // }
+
 }

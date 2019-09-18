@@ -13,61 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ServiceProviderRabbitMq {
 
-    /*-----------------registration------------------------------ */
-//    @Value("${spRegister.rabbitmq.queue}")
-//    String queueName;
-//
-//    @Value("${spRegister.rabbitmq.exchange}")
-//    String exchange;
-//
-//    @Value("${spRegister.rabbitmq.routingkey}")
-//    String routingkey;
-//
-//    @Bean
-//    Queue queue() {
-//        return new Queue(queueName, true);
-//    }
-//
-//    @Bean
-//    TopicExchange exchange() {
-//        return new TopicExchange(exchange);
-//    }
-//
-//    @Bean
-//    Binding binding(Queue queue, TopicExchange exchange) {
-//        return BindingBuilder.bind(queue).to(exchange).with(routingkey);
-//    }
 
-//
-//    /* -----------------profile------------------- */
-//    @Value("${spProfile.rabbitmq.queue}")
-//    String profileQueueName;
-//
-//    @Value("${spProfile.rabbitmq.exchange}")
-//    String profileExchange;
-//
-//    @Value("${spProfile.rabbitmq.routingkey}")
-//    String profilRoutingkey;
-//
-//
-//    @Bean
-//    Queue queueProfile() {
-//        return new Queue(profileQueueName, true);
-//    }
-//
-//    @Bean
-//    TopicExchange exchangeProfile() {
-//        return new TopicExchange(profileExchange);
-//    }
-//
-//    @Bean
-//    Binding bindingProfile(Queue queueProfile, TopicExchange exchangeProfile) {
-//        return  BindingBuilder.bind(queueProfile).to(exchangeProfile).with(profilRoutingkey);
-//    }
-///*--------------------------------------------------------------------------------------------------*/
-
-
-    /*-----------------------------------------------------------------------------------------------*/
     @Bean
     public MessageConverter jsonMessageConverter() {
         return new Jackson2JsonMessageConverter();

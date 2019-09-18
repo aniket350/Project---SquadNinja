@@ -1,7 +1,7 @@
 <!-- image for profile background -->
 <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
-  style="min-height: 600px; background-image: url(assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
-  <span class="mask bg-gradient-dark opacity-1"></span>
+  style="min-height: 450px; background-image: url(assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+  <span class="mask bg-gradient-dark opacity-8"></span>
   <div class="container-fluid d-flex align-items-center">
     <div class="row">
       <div class="col-lg-7 col-md-10">
@@ -75,9 +75,7 @@
             <div class="col-8">
               <h3 class="mb-0">My account</h3>
             </div>
-            <div class="col-4 text-right">
-              <a (click)="onSubmitUpdate()" class="btn btn-sm btn-primary">Save Profile</a>
-            </div>
+            
           </div>
         </div>
         <div class="card-body">
@@ -202,6 +200,9 @@
                         <label class="form-control-label" for="chargePerHour">Charge Per Hour</label>
                         <input name="chargePerHour" [(ngModel)]="serviceProviderData.chargePerHour" class="form-control form-control-alternative"
                           placeholder={{serviceProviderData.chargePerHour}}>
+                      </div>
+                      <div class="col-4 text-right">
+                        <a (click)="onSubmitUpdate()" class="btn btn-sm btn-primary">Save Profile</a>
                       </div>
                     </div>
                 </div>

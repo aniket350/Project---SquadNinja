@@ -6,17 +6,26 @@ import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
 @NodeEntity
+
+/**With @Data, Lombok will generate getter and setter methods, toString methods, Equal & Hashcode methods*/
 @Data
+
+/**@AllArgsConstructor will generate constructor with all properties in the class*/
 @AllArgsConstructor
+
+/**@AllArgsConstructor will generate constructor with all properties in the class*/
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
 public class Roles {
+    /**
+     * Id annotation makes id variable as Primary key
+     */
     @Id
     private int id;
     private String roleName;
-    //private int noOfPeople;
+    private String noOfPeople;
     private String experience;
     @Relationship(type = "have", direction = Relationship.OUTGOING)
     private Skills skills;

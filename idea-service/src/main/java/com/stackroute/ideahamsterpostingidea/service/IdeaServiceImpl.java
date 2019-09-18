@@ -38,6 +38,19 @@ public class IdeaServiceImpl implements IdeaService {
     @Value("${idea.rabbitmq.routingkey}")
     public String routingkey;
 
+    @Value("${ideat.rabbitmq.exchange}")
+    public String teamExchange;
+
+    @Value("${ideat.rabbitmq.routingkey}")
+    public String teamRoutingkey;
+
+    @Value("${ideah.rabbitmq.exchange}")
+    public String hamsterExchange;
+
+    @Value("${ideah.rabbitmq.routingkey}")
+    public String hamsterRoutingkey;
+
+
     //deleting idea
     @Value("${ideaDelete.rabbitmq.exchange}")
     public String deleteExchange;
@@ -58,7 +71,8 @@ public class IdeaServiceImpl implements IdeaService {
 
         Idea savedIdea = ideaRepository.save(idea);
         rabbitTemplate.convertAndSend(exchange, routingkey, idea);
-        System.out.println("sent="+idea);
+        rabbitTemplate.convertAndSend(teamExchange, teamRoutingkey, idea);
+        rabbitTemplate.convertAndSend(hamsterExchange, hamsterRoutingkey, idea);
         if (savedIdea == null) {
             throw new IdeaAlreadyExistException("idea is null");
         }
@@ -131,6 +145,16 @@ public class IdeaServiceImpl implements IdeaService {
     public List<Idea> getRecentIdeas() {
         List<Idea> getRecentIdea = ideaRepository.findAll(Sort.by(Sort.Direction.DESC, "postedOn"));
         return getRecentIdea;
+    }
+
+
+    /**
+     * Implementation of get All ideas by emailId method
+     */
+    @Override
+    public List<Idea> getPostedByIdeas() {
+        List<Idea> getPostedIdea=ideaRepository.findAll();
+        return getPostedIdea;
     }
 
 }

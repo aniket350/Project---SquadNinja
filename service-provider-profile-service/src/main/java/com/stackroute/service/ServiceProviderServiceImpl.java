@@ -5,6 +5,7 @@ import com.stackroute.domain.Role;
 import com.stackroute.domain.SearchServiceProvider;
 import com.stackroute.domain.ServiceProvider;
 import com.stackroute.dto.ServiceProviderDto;
+import com.stackroute.exception.UserAlreadyFoundException;
 import com.stackroute.repository.SearchServiceProviderRepository;
 import com.stackroute.repository.ServiceProviderRepository;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -46,10 +47,10 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
     public String routingkey;
 
     @Value("${spProfile.rabbitmq.exchange}")
-    String profileExchange;
+    public String profileExchange;
 
     @Value("${spProfile.rabbitmq.routingkey}")
-    String profilRoutingkey;
+    public String profilRoutingkey;
 
 //for sending updated profile data to recommendation
     @Value("${spUpdate.rabbitmq.exchange}")
@@ -62,16 +63,22 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
 
 
     @Override
-    public ServiceProvider saveServiceProvider(ServiceProviderDto provider) {
+    public ServiceProvider saveServiceProvider(ServiceProviderDto provider) throws UserAlreadyFoundException {
         //for authentication
-        rabbitTemplate.convertAndSend(exchange, routingkey, provider);
 
         ServiceProvider sp = new ServiceProvider();
-        sp.setName(provider.getUserName());
-        sp.setEmail(provider.getEmail());
-        //for recommendation
-        rabbitTemplate.convertAndSend(profileExchange, profilRoutingkey, sp);
-        return serviceProviderRepository.save(sp);
+        if(serviceProviderRepository.findByEmail(provider.getEmail())!=null) {
+            throw new UserAlreadyFoundException("User already Exists");
+        }
+        else {
+
+            sp.setName(provider.getUserName());
+            sp.setEmail(provider.getEmail());
+            //for recommendation
+            rabbitTemplate.convertAndSend(exchange, routingkey, provider);
+            rabbitTemplate.convertAndSend(profileExchange, profilRoutingkey, sp);
+            return serviceProviderRepository.save(sp);
+        }
 
     }
 
@@ -97,7 +104,7 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
         serviceProvider.setCurrentLocation(provider.getCurrentLocation());
         serviceProvider.setPreferredLocation(provider.getPreferredLocation());
         Role role = new Role();
-        role.setRoleName(provider.getRole().getRoleName());
+        role.setRole(provider.getRole().getRole());
         role.setExperience(provider.getRole().getExperience());
         role.setSkills(provider.getRole().getSkills());
         serviceProvider.setRole(role);
@@ -107,6 +114,7 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
         saveForSearch(serviceProvider);
 
         System.out.println(updateServiceProvider.toString());
+        System.out.println("sent="+serviceProvider);
         rabbitTemplate.convertAndSend(updateExchange,updateRoutingKey, serviceProvider);
         return updateServiceProvider;
     }
@@ -116,7 +124,7 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
 
             System.out.println(serviceProvider.toString());
             List<ServiceProvider> serviceProviderList;
-            SearchServiceProvider fetchedSearchServiceProvider = searchServiceProviderRepository.findByRoleName(serviceProvider.getRole().getRoleName());
+            SearchServiceProvider fetchedSearchServiceProvider = searchServiceProviderRepository.findByRoleName(serviceProvider.getRole().getRole());
             if (fetchedSearchServiceProvider != null) {
 
                 serviceProviderList = fetchedSearchServiceProvider.getServiceProviderList();
@@ -128,7 +136,7 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
             else if (fetchedSearchServiceProvider == null){
 
                 SearchServiceProvider searchServiceProvider = new SearchServiceProvider();
-                searchServiceProvider.setRoleName(serviceProvider.getRole().getRoleName());
+                searchServiceProvider.setRoleName(serviceProvider.getRole().getRole());
                 List<ServiceProvider> list = new ArrayList<>();
                 list.add(serviceProvider);
                 searchServiceProvider.setServiceProviderList(list);

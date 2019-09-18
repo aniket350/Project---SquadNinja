@@ -14,6 +14,7 @@ import { RegisterserService } from '../services/registerser/registerser.service'
 export class LoginComponent implements OnInit {
   // private router:Router;
   public decodedTokenWithRoleSub: any;
+  invalid: boolean;
 
    // decode token
 constructor(private registerser: RegisterserService, private userservice: UserserviceService, private router: Router) { }
@@ -83,6 +84,7 @@ Login() {
         
   }},
   (err) => {
+    this.invalid=true;
     console.log(err);
 });
 

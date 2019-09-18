@@ -1,10 +1,8 @@
 package com.stackroute.squad.services;
 
-import com.stackroute.squad.domain.Roles;
 import com.stackroute.squad.dto.IdeaDto;
 import com.stackroute.squad.domain.Idea;
-import com.stackroute.squad.dto.RolesDto;
-import com.stackroute.squad.dto.ServiceProviderDto;
+import com.stackroute.squad.dto.Role;
 import com.stackroute.squad.exceptions.IdeaAlreadyExistsException;
 import com.stackroute.squad.exceptions.IdeaNotFoundException;
 import com.stackroute.squad.repository.IdeaRepository;
@@ -12,12 +10,7 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-
-import static org.neo4j.ogm.session.Utils.map;
 
 /**
  * @Service indicates annotated class is a service which hold business logic in the Service layer
@@ -59,17 +52,18 @@ public class IdeaServiceImpl implements IdeaService {
     idea.setStatus(ideaDTO.getStatus());
     idea.setPostedOn(ideaDTO.getPostedOn());
     ideaRepository.save(idea);
-    ideaRepository.setBelongsToRelation(ideaDTO.getTitle(), ideaDTO.getSubDomainName());
+    System.out.println("recieved="+idea.toString());
+    ideaRepository.setBelongsToRelation(ideaDTO.getTitle(), ideaDTO.getSubDomain());
 
     for (int i = 0; i < ideaDTO.getRole().size(); i++) {
-      ideaRepository.setRequiresRelation(ideaDTO.getTitle(), ideaDTO.getRole().get(i).getRoleName());
+      ideaRepository.setRequiresRelation(ideaDTO.getTitle(), ideaDTO.getRole().get(i).getRole());
     }
 
     for (int i = 0; i < ideaDTO.getRole().size(); i++) {
-      RolesDto rolesDto = new RolesDto();
-      rolesDto = ideaDTO.getRole().get(i);
-      for (int j = 0; j < rolesDto.getSkills().size(); j++) {
-        ideaRepository.setNeedsRelation(ideaDTO.getTitle(), rolesDto.getSkills().get(j));
+      Role role = new Role();
+      role = ideaDTO.getRole().get(i);
+      for (int j = 0; j < role.getSkills().size(); j++) {
+        ideaRepository.setNeedsRelation(ideaDTO.getTitle(), role.getSkills().get(j));
       }
     }
 
@@ -80,7 +74,7 @@ public class IdeaServiceImpl implements IdeaService {
   @RabbitListener(queues = "${ideaDelete.rabbitmq.queue}")
   public void deleteIdea(IdeaDto ideaDto) throws IdeaNotFoundException {
     for (int i = 0; i < ideaDto.getRole().size(); i++) {
-      ideaRepository.deleteRequiresRelation(ideaDto.getTitle(), ideaDto.getRole().get(i).getRoleName());
+      ideaRepository.deleteRequiresRelation(ideaDto.getTitle(), ideaDto.getRole().get(i).getRole());
     }
 
   }

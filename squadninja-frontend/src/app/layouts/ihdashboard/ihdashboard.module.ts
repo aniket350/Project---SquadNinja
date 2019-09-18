@@ -27,8 +27,8 @@ import { IdeaviewService } from 'src/app/services/ideaviewser/ideaview.service';
     IhdashboardcardsComponent,
     IhprofileComponent,
     PostideaComponent,
-    IdeaviewComponent,
-    AutoGenerateTeamComponent
+    AutoGenerateTeamComponent,
+    IdeaviewComponent
   ],
   imports: [
     CommonModule,

@@ -1,7 +1,6 @@
 package com.stackroute.squad.dto;
 
 import lombok.*;
-import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.springframework.data.annotation.Id;
 
@@ -25,9 +24,9 @@ public class IdeaDto {
   private String description;
   private String duration;
   private String domain;
-  private String subDomainName;
+  private String subDomain;
   private double cost;
-  private List<RolesDto> role;
+  private List<Role> role;
   private String status;
   private Date postedOn;
   private String postedBy;
