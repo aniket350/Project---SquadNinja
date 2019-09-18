@@ -13,7 +13,7 @@ export class SpprofileComponent implements OnInit {
   // serviceProviderData: any;
   
   serviceProviderData={
-    name:"",mobileNo:"",domain:"",subDomain:"",currentLocation:"",preferredLocation:"",roleName:"",skills:"",experience:"",chargePerHour:""
+    name:"",mobileNo:"",domain:"",subDomain:"",currentLocation:"",preferredLocation:"",role:"",skills:"",experience:"",chargePerHour:""
  };
 
  updated: any;

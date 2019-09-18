@@ -12,8 +12,9 @@
                     <span>Search Results</span>
                   </h2>
                   <mat-card class="cardGroup" cols>
-                    <mat-card class="matCard" *ngFor="let x of xxx" >
+                    <mat-card class="matCard" *ngFor="let x of searchbar" >
                       <mat-card-title>{{x.name}}</mat-card-title>
+                      <p>{{x.currentLocation}}</p>
                     </mat-card>
                   </mat-card>
                 </div>

@@ -6,7 +6,7 @@ export class SearchData {
                 email : string;
                 domain : string;
                 role : [{
-                    roleName : string,
+                    role : string,
                     skills : [string],
                     experience : string
                 }];
@@ -14,5 +14,5 @@ export class SearchData {
                 chargePerHour : string;
                 currentLocation : string;
                 preferredLocation : [string];
-         }];
+     }];
 }
