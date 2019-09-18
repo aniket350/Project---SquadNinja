@@ -93,7 +93,7 @@ public class CommandLineRunnerSpProfile implements CommandLineRunner
             serviceProviderDto.setRole(xssfSheet.getRow(i).getCell(12).toString());
 
             serviceProviderServiceImpl.saveServiceProvider(serviceProviderDto);
-            serviceProviderServiceImpl.updateTheProfile(serviceProvider);
+//            serviceProviderServiceImpl.updateTheProfile(serviceProvider);
 
         }
     }
