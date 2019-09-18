@@ -38,6 +38,19 @@ public class TeamManagementController {
         return responseEntity;
     }
 
+    @GetMapping("idea/{title}")
+    public ResponseEntity<?> getIdeaDetails(@PathVariable String title){
+        Idea retrievedDetails = teamManagementService.getDetails(title);
+        return new ResponseEntity<>(retrievedDetails,HttpStatus.ACCEPTED);
+    }
+
+    @PutMapping("removeSelectedSp")
+        public ResponseEntity<?> getUpdatedst(@RequestParam ("title") String title,@RequestParam ("emailId") String emailId){
+            Idea retrievedst = teamManagementService.getUpdatedSt(title,emailId);
+            return new ResponseEntity<>(retrievedst,HttpStatus.OK);
+        }
+
+
 
     /**
      * PutMapping Annotation for mapping HTTP PuT requests onto specific handler methods.
@@ -97,10 +110,5 @@ public class TeamManagementController {
     }
 
 
-    @GetMapping("idea/{title}")
-    public ResponseEntity<?> getIdeaDetails(@PathVariable String title){
-        Idea retrievedDetails = teamManagementService.getDetails(title);
-        return new ResponseEntity<>(retrievedDetails,HttpStatus.ACCEPTED);
-    }
 
 }

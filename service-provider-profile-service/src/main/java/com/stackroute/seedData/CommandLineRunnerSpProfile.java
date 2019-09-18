@@ -22,13 +22,11 @@ import java.util.List;
 @Component
 public class CommandLineRunnerSpProfile implements CommandLineRunner
 {
-  private ServiceProviderDto serviceProviderDto;
   private ServiceProviderServiceImpl serviceProviderServiceImpl;
 
   @Autowired
-  public CommandLineRunnerSpProfile(ServiceProviderDto serviceProviderDto, ServiceProviderServiceImpl serviceProviderServiceImpl)
+  public CommandLineRunnerSpProfile( ServiceProviderServiceImpl serviceProviderServiceImpl)
   {
-       this.serviceProviderDto = serviceProviderDto;
        this.serviceProviderServiceImpl = serviceProviderServiceImpl;
   }
 
@@ -65,9 +63,9 @@ public class CommandLineRunnerSpProfile implements CommandLineRunner
         fileInputStream.close();
 
         int noOfRow=xssfSheet.getLastRowNum();
-        for(int i=0;i<=noOfRow;i++)
+        for(int i=0;i<noOfRow;i++)
         {
-
+            ServiceProviderDto serviceProviderDto = new ServiceProviderDto();
             ServiceProvider serviceProvider=new ServiceProvider();
             //using the ServiceProvider object set xlsx data to ServiceProvider variables
             serviceProvider.setName(xssfSheet.getRow(i).getCell(0).toString());

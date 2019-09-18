@@ -50,7 +50,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     RegisterComponent,
     SpdashboardComponent,
     RegisterspComponent,
-    FussionChartComponent
+    FussionChartComponent,
+
   ],
   imports: [
     BrowserModule,
