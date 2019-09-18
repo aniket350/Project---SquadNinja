@@ -17,6 +17,7 @@ export class IhdashboardcardsComponent implements OnInit {
 
   sections: any = ['title'];
   ideaCardsData: any = [];
+  ideaCardsDatas: any =[];
 
 
   updated: any;
@@ -28,6 +29,7 @@ export class IhdashboardcardsComponent implements OnInit {
   public emailId = '';
   ngOnInit() {
     this.getTheProfile();
+    this.getPostedIdeas(this.emailId);
 
     // this.sectionComponentService.getIdeas()
     //   .subscribe(data => {
@@ -54,6 +56,16 @@ export class IhdashboardcardsComponent implements OnInit {
       console.log("data fetched..", data);
       this.ideaCardsData=data;
       console.log("after getting back from service",this.ideaCardsData);
+    });
+  }
+
+  getPostedIdeas(emailId:any){
+    this.emailId=localStorage.getItem("emailId");
+    console.log(this.emailId);
+    this.ihprofileserService.getIdea(this.emailId).subscribe((data)=>{
+      // console.log(data);
+      this.ideaCardsDatas=data;
+      console.log(this.ideaCardsDatas);
     });
   }
 
