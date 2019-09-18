@@ -42,7 +42,6 @@ import { SpdashboardModule } from './layouts/spdashboard/spdashboard.module';
 // Pass the fusioncharts library and chart modules
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
 
-
 @NgModule({
   declarations: [
     AppComponent,

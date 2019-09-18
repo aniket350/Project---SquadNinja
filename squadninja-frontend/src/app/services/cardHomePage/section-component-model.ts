@@ -1,4 +1,4 @@
 export class SectionComponentData {
-    "ideaTitle" : string;
+    "title" : string;
     "description" : string;
 }

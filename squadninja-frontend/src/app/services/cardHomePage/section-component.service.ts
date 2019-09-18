@@ -18,8 +18,8 @@ export class SectionComponentService {
     this.http=http;
    }
 
-  getIdeas(): Observable<SpProfile[]> {
-    return this.http.get<SpProfile[]>(this._url);
+  getIdeas(): Observable<SectionComponentData[]> {
+    return this.http.get<SectionComponentData[]>(this._url);
 }
 
 myIdeas(emailId):Observable<IdeaDetail[]>{
