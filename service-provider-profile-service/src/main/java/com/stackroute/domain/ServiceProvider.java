@@ -26,7 +26,7 @@ public class ServiceProvider {
     @Id
     private String email;
     private String name;
-    private long mobileNo;
+    private String mobileNo;
     private String domain;
     private String subDomain;
     private Role role;

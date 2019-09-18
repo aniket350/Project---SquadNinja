@@ -25,7 +25,7 @@ public class IdeaHamster {
     @Id
     private String email;
     private String name;
-    private long mobileNo;
+    private String mobileNo;
     private List<Idea> postedIdea;
     private Date timestamp;
 
