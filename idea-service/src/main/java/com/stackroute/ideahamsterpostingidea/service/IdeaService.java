@@ -31,4 +31,7 @@ public interface IdeaService {
     /*AbstractMethod to get recent Idea by date*/
     public List<Idea> getRecentIdeas() throws Exception;
 
+    /*AbstractMethod to get All Ideas by emailId*/
+    public List <Idea> getPostedByIdeas() throws Exception;
+
 }
