@@ -14,7 +14,7 @@ import { RegisterserService } from '../services/registerser/registerser.service'
 export class LoginComponent implements OnInit {
   // private router:Router;
   public decodedTokenWithRoleSub: any;
-  // modalRef: BsModalRef;
+
    // decode token
 constructor(private registerser: RegisterserService, private userservice: UserserviceService, private router: Router) { }
 

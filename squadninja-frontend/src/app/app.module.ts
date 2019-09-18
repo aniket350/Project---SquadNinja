@@ -18,8 +18,6 @@ import { RegisterComponent } from './register/register.component';
 import { MatTabsModule} from '@angular/material';
 import { CommonModule } from '@angular/common';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import { IhdashboardserService } from './services/ihdashboardser/ihdashboardser.service';
-import { IhserviceService } from './services/ihservice/ihservice.service';
 import { IhprofileserService } from './services/ihprofileser/ihprofileser.service';
 import { SpdashboardComponent } from './layouts/spdashboard/spdashboard.component';
 import { SpdashboardcardsComponent } from './pages/spdashboardcards/spdashboardcards.component';
@@ -27,6 +25,7 @@ import { SpprofileComponent } from './pages/spprofile/spprofile.component';
 import { SpprofileserService } from './services/spprofileser/spprofileser.service';
 import { RegisterserService } from './services/registerser/registerser.service';
 import { RegisterspComponent } from './registersp/registersp.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 // import { HttpModule } from "@angular/http";
 
@@ -50,7 +49,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     RegisterComponent,
     SpdashboardComponent,
     RegisterspComponent,
-    FussionChartComponent
+    FussionChartComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -64,11 +64,11 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     CommonModule,
     HttpClientModule,
     FusionChartsModule,
-    SpdashboardModule
+    SpdashboardModule,
+    MatAutocompleteModule
   ],
   providers: [
     HttpClient,
-    IhserviceService,
     IhprofileserService,
     SpprofileserService,
     RegisterserService

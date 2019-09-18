@@ -38,6 +38,26 @@ public class IdeaServiceImpl implements IdeaService {
     @Value("${idea.rabbitmq.routingkey}")
     public String routingkey;
 
+    @Value("${ideat.rabbitmq.exchange}")
+    public String teamExchange;
+
+    @Value("${ideat.rabbitmq.routingkey}")
+    public String teamRoutingkey;
+
+    @Value("${ideah.rabbitmq.exchange}")
+    public String hamsterExchange;
+
+    @Value("${ideah.rabbitmq.routingkey}")
+    public String hamsterRoutingkey;
+
+
+    //deleting idea
+    @Value("${ideaDelete.rabbitmq.exchange}")
+    public String deleteExchange;
+
+    @Value("${ideaDelete.rabbitmq.routingkey}")
+    public String deleteRoutingKey;
+
 
     /*
       Implementation of saveTrack method
@@ -48,8 +68,12 @@ public class IdeaServiceImpl implements IdeaService {
 
             throw new IdeaAlreadyExistException("idea already exist");
         }
+
         Idea savedIdea = ideaRepository.save(idea);
         rabbitTemplate.convertAndSend(exchange, routingkey, idea);
+        rabbitTemplate.convertAndSend(teamExchange, teamRoutingkey, idea);
+        rabbitTemplate.convertAndSend(hamsterExchange, hamsterRoutingkey, idea);
+
         System.out.println("sent="+idea);
         if (savedIdea == null) {
             throw new IdeaAlreadyExistException("idea is null");
@@ -109,6 +133,8 @@ public class IdeaServiceImpl implements IdeaService {
     @Override
     public Idea deleteIdeaByTitle(String title) throws IdeaNotFoundException {
         Idea deleteIdeaByTitle = ideaRepository.findByTitle(title);
+        rabbitTemplate.convertAndSend(deleteExchange,deleteRoutingKey,deleteIdeaByTitle);
+        ideaRepository.delete(deleteIdeaByTitle);
         return deleteIdeaByTitle;
     }
 

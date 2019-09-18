@@ -1,10 +1,8 @@
 package com.stackroute.squad.services;
 
-import com.stackroute.squad.domain.Roles;
 import com.stackroute.squad.dto.IdeaDto;
 import com.stackroute.squad.domain.Idea;
-import com.stackroute.squad.dto.RolesDto;
-import com.stackroute.squad.dto.ServiceProviderDto;
+import com.stackroute.squad.dto.Role;
 import com.stackroute.squad.exceptions.IdeaAlreadyExistsException;
 import com.stackroute.squad.exceptions.IdeaNotFoundException;
 import com.stackroute.squad.repository.IdeaRepository;
@@ -12,12 +10,7 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-
-import static org.neo4j.ogm.session.Utils.map;
 
 /**
  * @Service indicates annotated class is a service which hold business logic in the Service layer
@@ -50,7 +43,7 @@ public class IdeaServiceImpl implements IdeaService {
   /*It recieves the data from idea service*/
   @RabbitListener(queues = "${idea.rabbitmq.queue}")
   public void receiveData(IdeaDto ideaDTO) throws IdeaAlreadyExistsException {
-    System.out.println("received in recommendation"+ideaDTO);
+    System.out.println("received in recommendation"+ideaDTO.toString());
     Idea idea = new Idea();
     idea.setTitle(ideaDTO.getTitle());
     idea.setDescription(ideaDTO.getDescription());
@@ -66,10 +59,10 @@ public class IdeaServiceImpl implements IdeaService {
     }
 
     for (int i = 0; i < ideaDTO.getRole().size(); i++) {
-      RolesDto rolesDto = new RolesDto();
-      rolesDto = ideaDTO.getRole().get(i);
-      for (int j = 0; j < rolesDto.getSkills().size(); j++) {
-        ideaRepository.setNeedsRelation(ideaDTO.getTitle(), rolesDto.getSkills().get(j));
+      Role role = new Role();
+      role = ideaDTO.getRole().get(i);
+      for (int j = 0; j < role.getSkills().size(); j++) {
+        ideaRepository.setNeedsRelation(ideaDTO.getTitle(), role.getSkills().get(j));
       }
     }
 

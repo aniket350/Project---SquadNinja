@@ -51,6 +51,8 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
   /*It will listen the data from spProfile queue*/
   @RabbitListener(queues = "${spUpdate.rabbitmq.queue}")
   public void updatedServiceProvider(ServiceProviderDto serviceProviderDto) throws Exception {
+
+
     ServiceProvider retrievedServiceProvider = serviceProviderRepository.findByEmail(serviceProviderDto.getEmail());
     retrievedServiceProvider.setChargePerHour(serviceProviderDto.getChargePerHour());
     retrievedServiceProvider.setDomain(serviceProviderDto.getDomain());
@@ -59,14 +61,15 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
     retrievedServiceProvider.setPreferredLocation(serviceProviderDto.getPreferredLocation());
     retrievedServiceProvider.setCurrentLocation(serviceProviderDto.getCurrentLocation());
     serviceProviderRepository.save(retrievedServiceProvider);
-    serviceProviderRepository.setPlayedByRelation(serviceProviderDto.getEmail(), serviceProviderDto.getRolesDto().getRoleName());
-    for (int i = 0; i < serviceProviderDto.getRolesDto().getSkills().size(); i++) {
-      serviceProviderRepository.setHasSkillsRelation(serviceProviderDto.getEmail(), serviceProviderDto.getRolesDto().getSkills().get(i));
+    System.out.println(serviceProviderDto.getRole());
+    serviceProviderRepository.setPlayedByRelation(serviceProviderDto.getEmail(), serviceProviderDto.getRole().getRoleName());
+    for (int i = 0; i < serviceProviderDto.getRole().getSkills().size(); i++) {
+      serviceProviderRepository.setHasSkillsRelation(serviceProviderDto.getEmail(), serviceProviderDto.getRole().getSkills().get(i));
     }
-    IdeaDto ideaDto = new IdeaDto();
-    serviceProviderRepository.setWorkedOnRelation(serviceProviderDto.getEmail(), ideaDto.getTitle());
-    IdeaDto ideaDto1 = new IdeaDto();
-    serviceProviderRepository.setAppliedForRelation(serviceProviderDto.getEmail(), ideaDto1.getTitle());
+//    IdeaDto ideaDto = new IdeaDto();
+//    serviceProviderRepository.setWorkedOnRelation(serviceProviderDto.getEmail(), ideaDto.getTitle());
+//    IdeaDto ideaDto1 = new IdeaDto();
+//    serviceProviderRepository.setAppliedForRelation(serviceProviderDto.getEmail(), ideaDto1.getTitle());
 
 
   }

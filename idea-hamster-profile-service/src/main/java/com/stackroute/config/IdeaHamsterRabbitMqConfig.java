@@ -15,27 +15,27 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class IdeaHamsterRabbitMqConfig {
 
-    /* -----------------profile------------------- */
-    @Value("${ihProfile.rabbitmq.queue}")
-    String profileQueueName;
-    @Value("${ihProfile.rabbitmq.exchange}")
-    String profileExchange;
-    @Value("${ihProfile.rabbitmq.routingkey}")
-    String profilRoutingkey;
-    @Bean
-    Queue queueProfile() {
-        return new Queue(profileQueueName, true);
-    }
-    @Bean
-    TopicExchange exchangeProfile() {
-        return new TopicExchange(profileExchange);
-    }
-    @Bean
-    Binding bindingProfile(Queue queueProfile, TopicExchange exchangeProfile) {
-        return  BindingBuilder.bind(queueProfile).to(exchangeProfile).with(profilRoutingkey);
-    }
-//    configuration for consuming ide
-    @Value("${idea.rabbitmq.queue}")
+//    /* -----------------profile------------------- */
+//    @Value("${ihProfile.rabbitmq.queue}")
+//    String profileQueueName;
+//    @Value("${ihProfile.rabbitmq.exchange}")
+//    String profileExchange;
+//    @Value("${ihProfile.rabbitmq.routingkey}")
+//    String profilRoutingkey;
+//    @Bean
+//    Queue queueProfile() {
+//        return new Queue(profileQueueName, true);
+//    }
+//    @Bean
+//    TopicExchange exchangeProfile() {
+//        return new TopicExchange(profileExchange);
+//    }
+//    @Bean
+//    Binding bindingProfile(Queue queueProfile, TopicExchange exchangeProfile) {
+//        return  BindingBuilder.bind(queueProfile).to(exchangeProfile).with(profilRoutingkey);
+//    }
+//    configuration for consuming idea
+    @Value("${ideah.rabbitmq.queue}")
     String ideaQueue;
     @Value("${idea.rabbitmq.exchange}")
     String ideaExchange;
