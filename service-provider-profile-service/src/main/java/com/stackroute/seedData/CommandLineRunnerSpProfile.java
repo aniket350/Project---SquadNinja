@@ -92,8 +92,8 @@ public class CommandLineRunnerSpProfile implements CommandLineRunner
             serviceProviderDto.setUserName(xssfSheet.getRow(i).getCell(0).toString());
             serviceProviderDto.setRole(xssfSheet.getRow(i).getCell(11).toString());
 
-            serviceProviderServiceImpl.saveServiceProvider(serviceProviderDto);
-//            serviceProviderServiceImpl.updateTheProfile(serviceProvider);
+//            serviceProviderServiceImpl.saveServiceProvider(serviceProviderDto);
+            serviceProviderServiceImpl.updateTheProfile(serviceProvider);
 
         }
     }
