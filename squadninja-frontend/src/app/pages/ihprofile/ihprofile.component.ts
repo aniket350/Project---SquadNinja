@@ -32,7 +32,8 @@ export class IhprofileComponent implements OnInit {
       this.updated=data;
       console.log("after getting back from service",this.updated);
   });
-    this.getTheProfile();
-  }
+  window.location.reload();
+    //this.getTheProfile();
+    }
 
 }
