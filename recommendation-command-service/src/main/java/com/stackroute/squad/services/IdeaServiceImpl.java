@@ -56,6 +56,7 @@ public class IdeaServiceImpl implements IdeaService {
     ideaRepository.setBelongsToRelation(ideaDTO.getTitle(), ideaDTO.getSubDomain());
 
     for (int i = 0; i < ideaDTO.getRole().size(); i++) {
+      System.out.println("relationship ");
       ideaRepository.setRequiresRelation(ideaDTO.getTitle(), ideaDTO.getRole().get(i).getRole());
     }
 
@@ -63,6 +64,7 @@ public class IdeaServiceImpl implements IdeaService {
       Role role = new Role();
       role = ideaDTO.getRole().get(i);
       for (int j = 0; j < role.getSkills().size(); j++) {
+        System.out.println("relationship with skills");
         ideaRepository.setNeedsRelation(ideaDTO.getTitle(), role.getSkills().get(j));
       }
     }

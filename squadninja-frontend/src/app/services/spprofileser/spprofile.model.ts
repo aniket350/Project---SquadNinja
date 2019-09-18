@@ -4,7 +4,7 @@ export class SpProfile{
    email : string;
    domain : string;
    role : [{
-       roleName : string,
+       role : string,
        skills : [string],
        experience : string
    }];

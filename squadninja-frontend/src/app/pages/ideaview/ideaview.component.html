@@ -8,8 +8,8 @@
         <!-- <input type="text" placeholder="Search Service Provider"> -->
   
         <form class="form-inline md-form mr-auto mb-4">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search Servie Provider" aria-label="Search" [(ngModel)]="name">
-                <button class="btn btn-outline-warning btn-rounded btn-sm my-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2" type="text" placeholder="Search Servie Provider" aria-label="Search" #mysearch>
+                <button class="btn btn-outline-warning btn-rounded btn-sm my-0" [routerLink]="['searchsp']" routerLinkActive="router-link-active" (click)="onSearch(mysearch.value)">Search</button>
               </form>
     </div>
       <section>

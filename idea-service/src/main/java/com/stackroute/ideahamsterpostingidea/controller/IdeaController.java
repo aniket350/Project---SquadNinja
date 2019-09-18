@@ -91,8 +91,8 @@ public class IdeaController {
 
     /*by this GetMapping it will get All ideas which belongs to that emailId*/
     @GetMapping("postedIdeas/{postedBy}")
-    public ResponseEntity<?> getPostedIdeas() throws Exception {
-        List<Idea> postedIdeas=ideaService.getPostedByIdeas();
+    public ResponseEntity<?> getPostedIdeas(@PathVariable String postedBy) throws Exception {
+        List<Idea> postedIdeas=ideaService.getPostedByIdeas(postedBy);
         return new ResponseEntity<>(postedIdeas,HttpStatus.OK);
     }
 
