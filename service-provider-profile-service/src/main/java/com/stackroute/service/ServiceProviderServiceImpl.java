@@ -5,6 +5,7 @@ import com.stackroute.domain.Role;
 import com.stackroute.domain.SearchServiceProvider;
 import com.stackroute.domain.ServiceProvider;
 import com.stackroute.dto.ServiceProviderDto;
+import com.stackroute.exception.UserAlreadyFoundException;
 import com.stackroute.repository.SearchServiceProviderRepository;
 import com.stackroute.repository.ServiceProviderRepository;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -62,16 +63,22 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
 
 
     @Override
-    public ServiceProvider saveServiceProvider(ServiceProviderDto provider) {
+    public ServiceProvider saveServiceProvider(ServiceProviderDto provider) throws UserAlreadyFoundException {
         //for authentication
-        rabbitTemplate.convertAndSend(exchange, routingkey, provider);
 
         ServiceProvider sp = new ServiceProvider();
-        sp.setName(provider.getUserName());
-        sp.setEmail(provider.getEmail());
-        //for recommendation
-        rabbitTemplate.convertAndSend(profileExchange, profilRoutingkey, sp);
-        return serviceProviderRepository.save(sp);
+        if(serviceProviderRepository.findByEmail(provider.getEmail())!=null) {
+            throw new UserAlreadyFoundException("User already Exists");
+        }
+        else {
+
+            sp.setName(provider.getUserName());
+            sp.setEmail(provider.getEmail());
+            //for recommendation
+            rabbitTemplate.convertAndSend(exchange, routingkey, provider);
+            rabbitTemplate.convertAndSend(profileExchange, profilRoutingkey, sp);
+            return serviceProviderRepository.save(sp);
+        }
 
     }
 
@@ -107,6 +114,7 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
         saveForSearch(serviceProvider);
 
         System.out.println(updateServiceProvider.toString());
+        System.out.println("sent="+serviceProvider);
         rabbitTemplate.convertAndSend(updateExchange,updateRoutingKey, serviceProvider);
         return updateServiceProvider;
     }

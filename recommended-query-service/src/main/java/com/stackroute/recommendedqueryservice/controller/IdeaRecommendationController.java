@@ -13,11 +13,21 @@ import java.util.Iterator;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
+/**
+ * RestController annotation is used to create Restful web services using Spring MVC
+ */
 @RestController
+/**
+ * RequestMapping annotation maps HTTP requests to handler methods
+ */
 @RequestMapping("api/v1/")
 public class IdeaRecommendationController {
     private RecommendedIdeaService recommendedIdeaService;
     private RecommendedeamService recommendedeamService;
+
+    /**
+     * Constructor based Dependency injection to inject Rrecmmendedideaservice and recommendedTeamService into controller
+     */
 
     @Autowired
     public IdeaRecommendationController(RecommendedIdeaService recommendedIdeaService, RecommendedeamService recommendedeamService) {
@@ -25,46 +35,59 @@ public class IdeaRecommendationController {
         this.recommendedeamService = recommendedeamService;
     }
 
-
+    /**
+     * GetMapping Annotation for mapping HTTP GET requests onto specific handler methods.
+     */
     @GetMapping("skill/{email}")
     public ResponseEntity<Collection<Idea>> getIdeasBySkill(@PathVariable("email") String email) {
         List<Idea> Ideas = recommendedIdeaService.findBySkill(email);
-        return new ResponseEntity<>(Ideas, HttpStatus.OK);
+        return new ResponseEntity<>(Ideas, HttpStatus.FOUND);
     }
 
+    /**
+     * GetMapping Annotation for mapping HTTP GET requests onto specific handler methods.
+     */
     @GetMapping("role/{email}")
     public ResponseEntity<Iterable<Idea>> getIdeasByRole(@PathVariable("email") String email) {
         Iterable<Idea> ideas = recommendedIdeaService.findByRole(email);
-        return new ResponseEntity<>(ideas, HttpStatus.OK);
+        return new ResponseEntity<>(ideas, HttpStatus.FOUND);
     }
 
+    /**
+     * GetMapping Annotation for mapping HTTP GET requests onto specific handler methods.
+     */
     @GetMapping("workedonIdea/{email}")
     public ResponseEntity<Iterable<Idea>> getIdeasByPreviousWork(@PathVariable("email") String name) {
         Iterable<Idea> ideas = recommendedIdeaService.findByWorkedOnIdea(name);
-        return new ResponseEntity<>(ideas, HttpStatus.OK);
+        return new ResponseEntity<>(ideas, HttpStatus.FOUND);
     }
 
+    /**
+     * GetMapping Annotation for mapping HTTP GET requests onto specific handler methods.
+     */
     @GetMapping("appliedonIdea/{email}")
     public ResponseEntity<Iterable<Idea>> getIdeasByPreviousApplied(@PathVariable("email") String email) {
         Iterable<Idea> ideas = recommendedIdeaService.findByAppliedOnIdea(email);
-        return new ResponseEntity<>(ideas, HttpStatus.OK);
+        return new ResponseEntity<>(ideas, HttpStatus.FOUND);
     }
 
-    @GetMapping("sp/{title}")
-    public ResponseEntity<Collection<ServiceProvider>> getTeam(@PathVariable("title") String title, @RequestParam("roleName") String rname) {
-        List<ServiceProvider> serviceProviders = recommendedeamService.getTeam(title, rname);
-        return new ResponseEntity<>(serviceProviders, HttpStatus.OK);
-    }
+    /**
+     * GetMapping Annotation for mapping HTTP GET requests onto specific handler methods.
+     */
     @GetMapping("previouslyWorked/{title}")
-    public ResponseEntity<?> getautoTeam(@PathVariable("title") String title,@RequestParam("roleName") String roleName) {
+    public ResponseEntity<?> getautoTeam(@PathVariable("title") String title, @RequestParam("roleName") String roleName) {
         List<ServiceProvider> serviceProviders = recommendedeamService.getTeamBasedOnWorkedOnIdea(title, roleName);
 
-        return new ResponseEntity<>(serviceProviders, HttpStatus.OK);
+        return new ResponseEntity<>(serviceProviders, HttpStatus.FOUND);
     }
+
+    /**
+     * GetMapping Annotation for mapping HTTP GET requests onto specific handler methods.
+     */
     @GetMapping("applied/{title}")
-    public ResponseEntity<Collection<ServiceProvider>> getautoTeamrec(@PathVariable("title") String title, @RequestParam("roleName") String roleName) {
+    public ResponseEntity<Collection<ServiceProvider>> getRecommendedTeam(@PathVariable("title") String title, @RequestParam("roleName") String roleName) {
         Collection<ServiceProvider> serviceProviders = recommendedeamService.getdata(title, roleName);
-        return new ResponseEntity<>(serviceProviders, HttpStatus.OK);
+        return new ResponseEntity<>(serviceProviders, HttpStatus.FOUND);
     }
 
 }

@@ -29,7 +29,7 @@ public class RecommendedTeamServiceImpl implements RecommendedeamService {
 
     @Override
     public List<ServiceProvider> getTeamBasedOnAppliedIdea(String title, String roleName) {
-        List<ServiceProvider> sp=teamRecommendationRepository.getTeamBasedOnAppliedIdea(roleName, title);
+        List<ServiceProvider> sp=teamRecommendationRepository.getTeamBasedOnAppliedIdea(title,roleName);
         return sp;
     }
 

@@ -17,8 +17,10 @@ import java.util.List;
 public interface ServiceProviderRepository extends Neo4jRepository<ServiceProvider, Long> {
   public ServiceProvider findById(int id);
 
-  ServiceProvider findByEmail(String email);
 //Query for serviceprovider workedon idea
+  @Query("MATCH (sp:ServiceProvider) WHERE sp.email={email} RETURN sp")
+  ServiceProvider findByEmail(@Param("email") String email);
+
   @Query("MATCH (sp:ServiceProvider),(i:Idea) WHERE sp.email={email} and i.title={title} CREATE (sp)-[w:worked_on]->(i) RETURN sp")
   public ServiceProvider setWorkedOnRelation(@Param("email") String email, @Param("title") String title);
 //Query for serviceprovider playedby roles
