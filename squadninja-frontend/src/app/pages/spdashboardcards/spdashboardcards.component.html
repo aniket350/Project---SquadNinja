@@ -5,37 +5,37 @@
 <!-- idea -->
 <!-- <div class="wrapper">
   <div class="content" *ngFor="let x of ideaCardsData"> -->
-    <!-- card -->
-    <!-- <div class="card" data-toggle="modal" (click)="saveCardDetails(x)" data-target="#exampleModalScrollable">
+<!-- card -->
+<!-- <div class="card" data-toggle="modal" (click)="saveCardDetails(x)" data-target="#exampleModalScrollable">
       <div class="icon">
         <i class="material-icons md-36">alternate_email</i>
       </div>
       <p class="title">{{ x.title }}</p>
       <p class="text">{{ x.description }}</p>
     </div> -->
-    <!-- end card -->
-    <!-- card -->
-    <!-- <div class="card">
+<!-- end card -->
+<!-- card -->
+<!-- <div class="card">
            <div class="icon"><i class="material-icons md-36">alternate_email</i></div>
            <p class="title">{{x.ideaTitle}}</p>
            <p class="text">{{x.description}}</p>
      </div> -->
-    <!-- end card -->
-    <!-- card -->
-    <!-- <div class="card">
+<!-- end card -->
+<!-- card -->
+<!-- <div class="card">
            <div class="icon"><i class="material-icons md-36">alternate_email</i></div>
            <p class="title">{{x.ideaTitle}}</p>
            <p class="text">{{x.description}}</p>
      </div> -->
-    <!-- end card -->
-  <!-- </div>
+<!-- end card -->
+<!-- </div>
 </div> -->
 
 <!-- service -->
 <!-- <div class="wrapper">
   <div class="content" *ngFor="let y of spCardData"> -->
-    <!-- card -->
-    <!-- <div class="card" data-toggle="modal" (click)="saveCardDetails(x)" data-target="#exampleModalScrollable">
+<!-- card -->
+<!-- <div class="card" data-toggle="modal" (click)="saveCardDetails(x)" data-target="#exampleModalScrollable">
       <div class="icon"><i class="material-icons md-36">face</i></div>
       <p class="title">{{ y.name }}</p>
       <p class="text">{{ y.role.skills }}</p>
@@ -114,46 +114,65 @@
 <div class="header bg-gradient-dark opacity-8 pb-8 pt-5 pt-md-8">
 </div>
 <div class="container-fluid">
- <div class="row mt-9">
-   <div class="col-xl-11 mb-8 mb-xl-5">
-     <div class="card shadow">
-       <h2 class=" mb-3">
-         <span>Recommended Ideas</span>
-       </h2>
-       <div class="col-sm-12" >
-         <div class="col-sm-4" *ngFor="let x of ideaCardsData" >
-           <p>{{x.title}}</p>
-           <!-- <p>description</p> -->
-           <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">view</button>
-         </div>
-         <div class="container" *ngFor="let y of ideaCardsData">
-            
-            <!-- Trigger the modal with a button -->
-            
-          
-            <!-- Modal -->
-            <div class="modal fade" id="myModal" role="dialog">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">{{y.title}}</h4>
-                  </div>
-                  <div class="modal-body">
-                    <p>{{y.description}}</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Apply</button>
-                  </div>
+  <div class="row mt-9">
+    <div class="col-xl-11 mb-8 mb-xl-5">
+      <div class="card shadow">
+        <h2 class=" mb-3">
+          <span>Recommended Ideas</span>
+        </h2>
+        <div class="col-sm-12">
+          <div
+            class="col-sm-4"
+            *ngFor="let x of ideaCardsData; let index = index"
+          >
+            <p>{{ x.title }}</p>
+            <button
+              (click)="clicked(index)"
+              type="button"
+              class="btn btn-info btn-lg"
+              data-toggle="modal"
+              data-target="#myModal"
+            >
+              view
+            </button>
+            <!-- <p>description</p> -->
+          </div>
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                  </button>
+                  <h4 class="modal-title">
+                    {{ ideaCardsData[cardNumber].title }}
+                  </h4>
+                </div>
+                <div class="modal-body">
+                  <p>{{ ideaCardsData[cardNumber].description }}</p>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    (click)="apply(index)"
+                    type="button"
+                    class="btn btn-default"
+                    data-dismiss="modal"
+                  >
+                    Apply
+                  </button>
                 </div>
               </div>
             </div>
           </div>
+          <!-- <div class="container" *ngFor="let y of ideaCardsData"> -->
+
+          <!-- Trigger the modal with a button -->
+
+          <!-- Modal -->
+
+          <!-- </div> -->
         </div>
-
-       
-     </div>
-   </div>
- </div>
+      </div>
+    </div>
+  </div>
 </div>
-

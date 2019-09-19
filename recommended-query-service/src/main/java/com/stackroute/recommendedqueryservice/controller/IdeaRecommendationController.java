@@ -23,7 +23,7 @@ import java.util.List;
 @RequestMapping("api/v1/")
 public class IdeaRecommendationController {
     private RecommendedIdeaService recommendedIdeaService;
-    private RecommendedeamService recommendedeamService;
+    private RecommendedeamService recommendedTeamService;
 
     /**
      * Constructor based Dependency injection to inject Rrecmmendedideaservice and recommendedTeamService into controller
@@ -32,7 +32,7 @@ public class IdeaRecommendationController {
     @Autowired
     public IdeaRecommendationController(RecommendedIdeaService recommendedIdeaService, RecommendedeamService recommendedeamService) {
         this.recommendedIdeaService = recommendedIdeaService;
-        this.recommendedeamService = recommendedeamService;
+        this.recommendedTeamService = recommendedeamService;
     }
 
     /**
@@ -76,7 +76,7 @@ public class IdeaRecommendationController {
      */
     @GetMapping("previouslyWorked/{title}")
     public ResponseEntity<?> getautoTeam(@PathVariable("title") String title, @RequestParam("roleName") String roleName) {
-        List<ServiceProvider> serviceProviders = recommendedeamService.getTeamBasedOnWorkedOnIdea(title, roleName);
+        List<ServiceProvider> serviceProviders = recommendedTeamService.getTeamBasedOnWorkedOnIdea(title, roleName);
 
         return new ResponseEntity<>(serviceProviders, HttpStatus.OK);
     }
@@ -86,7 +86,7 @@ public class IdeaRecommendationController {
      */
     @GetMapping("applied/{title}")
     public ResponseEntity<Collection<ServiceProvider>> getRecommendedTeam(@PathVariable("title") String title, @RequestParam("roleName") String roleName) {
-        Collection<ServiceProvider> serviceProviders = recommendedeamService.getdata(title, roleName);
+        Collection<ServiceProvider> serviceProviders = recommendedTeamService.getdata(title, roleName);
         return new ResponseEntity<>(serviceProviders, HttpStatus.OK);
     }
 
