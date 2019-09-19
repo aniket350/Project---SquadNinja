@@ -25,4 +25,8 @@ export class IdeaviewService {
   updateOnJoin(title,emailId,status):Observable<any>{
     return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/joinedsp,{title=${title}&emailId=${emailId}&accepted=${status}`,(null));
   }
+
+  inviteTeam(idea):Observable<any>{
+    return this.http.put<any>(`http://13.235.10.115:8083/api/v1/invitedTeam`,idea);
+  }
 }

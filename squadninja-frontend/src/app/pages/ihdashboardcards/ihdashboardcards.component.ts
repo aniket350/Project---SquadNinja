@@ -66,8 +66,10 @@ export class IhdashboardcardsComponent implements OnInit {
       // console.log(data);
       this.ideaCardsDatas=data;
       console.log(this.ideaCardsDatas);
+      
     });
   }
+
 
 }
  

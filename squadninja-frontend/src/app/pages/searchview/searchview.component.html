@@ -15,6 +15,7 @@
                     <mat-card class="matCard" *ngFor="let x of searchbar" >
                       <mat-card-title>{{x.name}}</mat-card-title>
                       <p>{{x.currentLocation}}</p>
+                      <button (click)="onClickInvite()">Invite</button>
                     </mat-card>
                   </mat-card>
                 </div>

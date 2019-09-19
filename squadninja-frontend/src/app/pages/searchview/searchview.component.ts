@@ -10,6 +10,8 @@ export class SearchviewComponent implements OnInit {
 
   search:any;
   searchbar: any = [];
+  inviteIdea: string;
+  idea: any;
   constructor(private spprofileserService : SpprofileserService) { }
 
   ngOnInit() {
@@ -17,6 +19,13 @@ export class SearchviewComponent implements OnInit {
     this.spprofileserService.getSearchResults(this.search).subscribe((data) => this.searchbar = data);
   
     console.log(this.searchbar);
+  }
+
+  onClickInvite(){
+
+    this.inviteIdea=localStorage.getItem("forTeam");
+    this.idea = JSON.parse(this.inviteIdea);
+
   }
 
 
