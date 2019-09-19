@@ -27,6 +27,7 @@ export class IdeaviewService {
   }
 
   inviteTeam(idea):Observable<any>{
+    // console.log(idea);
     return this.http.put<any>(`http://13.235.10.115:8083/api/v1/invitedTeam`,idea);
   }
 }

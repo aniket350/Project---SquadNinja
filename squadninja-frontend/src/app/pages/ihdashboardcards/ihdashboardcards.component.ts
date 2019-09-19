@@ -20,7 +20,6 @@ export class IhdashboardcardsComponent implements OnInit {
   ideaCardsDatas: any = [];
 
 
-
   updated: any;
 
   cards:any=['one','two'];
@@ -65,11 +64,15 @@ export class IhdashboardcardsComponent implements OnInit {
     this.ihprofileserService.getIdea(this.emailId).subscribe((data)=>{
       // console.log(data);
       this.ideaCardsDatas=data;
-      console.log(this.ideaCardsDatas);
-      
+      // localStorage.setItem("forTeam", JSON.stringify(this.ideaCardsDatas));
+      // console.log(this.ideaCardsDatas);
     });
   }
 
-
+  getIdeaDetails(index:any){
+    console.log(index);
+    localStorage.setItem("forTeam", JSON.stringify(this.ideaCardsDatas[index]));
+    console.log(this.ideaCardsDatas[index]);
+  }
 }
  

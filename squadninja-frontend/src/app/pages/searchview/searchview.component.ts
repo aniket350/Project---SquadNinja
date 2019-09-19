@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SpprofileserService } from 'src/app/services/spprofileser/spprofileser.service';
+import { IdeaviewService } from 'src/app/services/ideaviewser/ideaview.service';
 
 @Component({
   selector: 'app-searchview',
@@ -12,7 +13,8 @@ export class SearchviewComponent implements OnInit {
   searchbar: any = [];
   inviteIdea: string;
   idea: any;
-  constructor(private spprofileserService : SpprofileserService) { }
+  invite:any;
+  constructor(private spprofileserService : SpprofileserService,private ideaviewservice:IdeaviewService) { }
 
   ngOnInit() {
     this.search=localStorage.getItem("search");
@@ -24,8 +26,10 @@ export class SearchviewComponent implements OnInit {
   onClickInvite(){
 
     this.inviteIdea=localStorage.getItem("forTeam");
+    // console.log(this.inviteIdea);
     this.idea = JSON.parse(this.inviteIdea);
-
+    console.log(this.idea);
+    this.ideaviewservice.inviteTeam(this.idea).subscribe((response)=>this.invite=response);
   }
 
 

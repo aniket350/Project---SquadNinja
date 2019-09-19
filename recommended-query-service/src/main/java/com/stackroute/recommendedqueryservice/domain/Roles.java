@@ -23,7 +23,7 @@ public class Roles {
      * Id annotation makes id variable as Primary key
      */
     @Id
-    private int id;
+    private Long id;
     private String roleName;
     private String noOfPeople;
     private String experience;
