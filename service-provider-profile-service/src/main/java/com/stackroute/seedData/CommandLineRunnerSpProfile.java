@@ -79,13 +79,9 @@ public class CommandLineRunnerSpProfile implements CommandLineRunner
             Role role = new Role();
             role.setExperience(xssfSheet.getRow(i).getCell(8).toString());
             role.setRole(xssfSheet.getRow(i).getCell(7).toString());
-            List<Role> list1 = new ArrayList<>();
-            list1.add(role);
-            serviceProvider.setRole(role);
-            ArrayList list = new ArrayList<>(Collections.singleton(xssfSheet.getRow(i).getCell(9).toString()));
-            role.setSkills(list);
-            ArrayList list2=new ArrayList<>(Collections.singleton(xssfSheet.getRow(i).getCell(6).toString()));
-            serviceProvider.setPreferredLocation(list2);
+            role.setSkills(List.of(xssfSheet.getRow(i).getCell(9).toString().split(",")));
+            serviceProvider.setPreferredLocation(List.of(xssfSheet.getRow(i).getCell(6).toString().split(",")));
+
 
             serviceProviderDto.setPassword(xssfSheet.getRow(i).getCell(10).toString());
             serviceProviderDto.setEmail(xssfSheet.getRow(i).getCell(1).toString());

@@ -1,4 +1,4 @@
-nodeId,name,nodeType,pid1,pid2,pid3,pid4
+nodeId,skillName,nodeType,pid1,pid2,pid3,pid4
 601,css,skill,801,805,null,null
 602,mysql,skill,801,805,null,null
 603,php,skill,801,805,null,null
