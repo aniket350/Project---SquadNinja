@@ -28,7 +28,7 @@ public class Idea
     private String title;
     private String description;
     private String duration;
-    private double cost;
+    private String cost;
     private String status;
     private String postedBy;
     private Date postedOn;
