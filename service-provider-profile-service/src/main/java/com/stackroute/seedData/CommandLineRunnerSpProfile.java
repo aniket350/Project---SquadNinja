@@ -63,7 +63,7 @@ public class CommandLineRunnerSpProfile implements CommandLineRunner
         fileInputStream.close();
 
         int noOfRow=xssfSheet.getLastRowNum();
-        for(int i=0;i<noOfRow;i++)
+        for(int i=1;i<noOfRow;i++)
         {
             ServiceProviderDto serviceProviderDto = new ServiceProviderDto();
             ServiceProvider serviceProvider=new ServiceProvider();

@@ -5,16 +5,25 @@ import {FormsModule} from '@angular/forms';
 import { SectionsComponent } from './sections.component';
 import {RouterModule} from '@angular/router';
 import { MDBBootstrapModule} from 'angular-bootstrap-md';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
+import { SlideshowModule } from 'ng-simple-slideshow';
+import { CarouselComponent } from './carousel/carousel.component';
+import { CarouselModule, WavesModule } from 'angular-bootstrap-md';
+
 
 @NgModule({
-  declarations: [SectionsComponent],
+  declarations: [SectionsComponent, CarouselComponent],
   imports: [
     CommonModule,
     NgbModule,
     FormsModule,
     RouterModule,
-    MDBBootstrapModule
+    MDBBootstrapModule,
+    MatCarouselModule,
+    SlideshowModule,
+    CarouselModule,
+    WavesModule
   ],
-  exports: [SectionsComponent]
+  exports: [SectionsComponent,CarouselComponent]
 })
 export class SectionsModule { }

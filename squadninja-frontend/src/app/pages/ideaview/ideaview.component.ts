@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { IdeaviewService } from 'src/app/services/ideaviewser/ideaview.service';
 import { Observable, interval, Subscription } from 'rxjs';
 
-
 @Component({
   selector: 'app-ideaview',
   templateUrl: './ideaview.component.html',
@@ -60,5 +59,12 @@ export class IdeaviewComponent implements OnInit {
     this.ideaviewService.updateOnJoin(this.title,emailId,this.status).subscribe((data) =>{
 
     });
+  }
+
+  onSearch(searchValue:string){
+
+    localStorage.setItem("search",searchValue);
+    console.log(searchValue);
+
   }
 }

@@ -32,6 +32,6 @@ public interface IdeaService {
     public List<Idea> getRecentIdeas() throws Exception;
 
     /*AbstractMethod to get All Ideas by emailId*/
-    public List <Idea> getPostedByIdeas() throws Exception;
+    public List <Idea> getPostedByIdeas(String postedBy) throws Exception;
 
 }
