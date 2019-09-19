@@ -63,7 +63,7 @@ public class CommandLineRunnerSpProfile implements CommandLineRunner
         fileInputStream.close();
 
         int noOfRow=xssfSheet.getLastRowNum();
-        for(int i=0;i<noOfRow;i++)
+        for(int i=1;i<noOfRow;i++)
         {
             ServiceProviderDto serviceProviderDto = new ServiceProviderDto();
             ServiceProvider serviceProvider=new ServiceProvider();
@@ -74,11 +74,11 @@ public class CommandLineRunnerSpProfile implements CommandLineRunner
             serviceProvider.setEmail(xssfSheet.getRow(i).getCell(1).toString());
             serviceProvider.setDomain(xssfSheet.getRow(i).getCell(3).toString());
             serviceProvider.setSubDomain(xssfSheet.getRow(i).getCell(4).toString());
-            serviceProvider.setMobileNo(new Long(xssfWorkbook.getSheetAt(0).getRow(i).getCell(2).getRawValue()));
+            serviceProvider.setMobileNo(xssfSheet.getRow(i).getCell(2).toString());
 
             Role role = new Role();
             role.setExperience(xssfSheet.getRow(i).getCell(8).toString());
-            role.setRoleName(xssfSheet.getRow(i).getCell(7).toString());
+            role.setRole(xssfSheet.getRow(i).getCell(7).toString());
             List<Role> list1 = new ArrayList<>();
             list1.add(role);
             serviceProvider.setRole(role);

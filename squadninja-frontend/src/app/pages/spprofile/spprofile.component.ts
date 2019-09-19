@@ -13,7 +13,7 @@ export class SpprofileComponent implements OnInit {
   // serviceProviderData: any;
   
   serviceProviderData={
-    name:"",mobileNo:"",domain:"",subDomain:"",currentLocation:"",preferredLocation:"",roleName:"",skills:"",experience:"",chargePerHour:""
+    name:"",mobileNo:"",domain:"",subDomain:"",currentLocation:"",preferredLocation:"",role:"",skills:"",experience:"",chargePerHour:""
  };
 
  updated: any;
@@ -41,12 +41,15 @@ export class SpprofileComponent implements OnInit {
       // console.log("this.user******", this.serviceProviderData);
       this.serviceProviderProfile.updateTheProfile(this1.serviceProviderData,this.emailId).subscribe((data)=> {
         console.log("data updated..", data);
+
         this1.updated=data;
         this1.getTheProfile();
+        window.location.reload();
         console.log("after getting back from service",this1.updated);
     }, err => {
       console.log(err);
     });
+   
 
     // onSubmitUpdate(){
     //   let this1=this;

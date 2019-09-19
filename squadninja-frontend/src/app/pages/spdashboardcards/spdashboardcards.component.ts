@@ -14,7 +14,8 @@ export class SpdashboardcardsComponent implements OnInit {
 private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
 
   sections: any = [];
-  private ideaCardsData: any;
+  ideaCardsData: any=[];
+  recommendCards: any = [];
   public emailId :string= "";
   // private spCardData: any;
 
@@ -29,15 +30,10 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
     subdomain: ''
                 
   }
-  recommendCards: any = [];
+  dialog: any;
+  
 
-  chunk(arr, chunkSize) {
-    let R = [];
-    for (let i = 0, len = arr.length; i < len; i += chunkSize) {
-      R.push(arr.slice(i, i + chunkSize));
-    }
-    return R;
-  }
+
   constructor(private sectionComponentService : SectionComponentService ,private spprofileserService : SpprofileserService){}
   ngOnInit() {
 
@@ -46,21 +42,22 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
     this.sectionComponentService.getIdeas()
       .subscribe(data => {
         this.ideaCardsData = data
-        console.log(this.ideaCardsData);
+        // console.log(this.ideaCardsData);
       });
 
-    this.spprofileserService.getRecommendationIdeas(this.emailId)
-    .subscribe(data => {
-        this.recommendCards = data
-        console.log(this.recommendCards);
-      });
+    // this.spprofileserService.getRecommendationIdeas(this.emailId)
+    // .subscribe(data => {
+    //     this.recommendCards = data
+    //     console.log(this.recommendCards);
+    //   });
 
       // this.sectionComponentSP.getSP()
       // .subscribe(data => {
       //   this.spCardData = data
       // });
-    this.sections = this.chunk(this.sections, 3);
-    
+    // this.sections = this.chunk(this.sections, 3);
+    console.log(this.ideaCardsData);
+
   }
 
   saveCardDetails(x: any) {
@@ -73,6 +70,14 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
   
   }
 
+  chunk(arr, chunkSize) {
+    let R = [];
+    for (let i = 0, len = arr.length; i < len; i += chunkSize) {
+      R.push(arr.slice(i, i + chunkSize));
+    }
+    return R;
+  }
+
   applyData() {
     this.sectionComponentService.addTeamManagement(this.modalCardDetails).subscribe(res => {
 
@@ -80,4 +85,6 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
       console.log(err)
     })
   }
+
+
 }

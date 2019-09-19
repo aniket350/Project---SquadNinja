@@ -16,6 +16,7 @@ public interface IdeaRepository extends MongoRepository<Idea, String> {
   /**findByLocation method to get idea by its location*/
   public Idea findByLocation(String location);
 
+  /**findByPostedBy method to get idea by its emailId*/
   public List<Idea> findByPostedBy(String postedBy);
 
 }

@@ -19,6 +19,7 @@ import { IhprofileserService } from 'src/app/services/ihprofileser/ihprofileser.
 import { IdeaviewComponent } from 'src/app/pages/ideaview/ideaview.component';
 import { AutoGenerateTeamComponent } from 'src/app/pages/auto-generate-team/auto-generate-team.component';
 import { IdeaviewService } from 'src/app/services/ideaviewser/ideaview.service';
+import { SearchviewComponent } from 'src/app/pages/searchview/searchview.component';
 
 
 
@@ -28,7 +29,8 @@ import { IdeaviewService } from 'src/app/services/ideaviewser/ideaview.service';
     IhprofileComponent,
     PostideaComponent,
     AutoGenerateTeamComponent,
-    IdeaviewComponent
+    IdeaviewComponent,
+    SearchviewComponent
   ],
   imports: [
     CommonModule,

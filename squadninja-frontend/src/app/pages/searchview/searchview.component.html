@@ -1,0 +1,23 @@
+
+
+<div class="header bg-gradient-dark opacity-1 pb-8 pt-5 pt-md-8">
+    </div>
+
+
+    <div class="container-fluid">
+            <div class="row mt-9">
+              <div class="col-xl-11 mb-8 mb-xl-5">
+                <div class="card shadow">
+                  <h2 class=" mb-3">
+                    <span>Search Results</span>
+                  </h2>
+                  <mat-card class="cardGroup" cols>
+                    <mat-card class="matCard" *ngFor="let x of searchbar" >
+                      <mat-card-title>{{x.name}}</mat-card-title>
+                      <p>{{x.currentLocation}}</p>
+                    </mat-card>
+                  </mat-card>
+                </div>
+              </div>
+            </div>
+           </div>

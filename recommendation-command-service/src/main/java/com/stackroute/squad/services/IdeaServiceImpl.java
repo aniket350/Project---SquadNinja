@@ -53,16 +53,18 @@ public class IdeaServiceImpl implements IdeaService {
     idea.setPostedOn(ideaDTO.getPostedOn());
     ideaRepository.save(idea);
     System.out.println("recieved="+idea.toString());
-    ideaRepository.setBelongsToRelation(ideaDTO.getTitle(), ideaDTO.getSubDomainName());
+    ideaRepository.setBelongsToRelation(ideaDTO.getTitle(), ideaDTO.getSubDomain());
 
     for (int i = 0; i < ideaDTO.getRole().size(); i++) {
-      ideaRepository.setRequiresRelation(ideaDTO.getTitle(), ideaDTO.getRole().get(i).getRoleName());
+      System.out.println("relationship ");
+      ideaRepository.setRequiresRelation(ideaDTO.getTitle(), ideaDTO.getRole().get(i).getRole());
     }
 
     for (int i = 0; i < ideaDTO.getRole().size(); i++) {
       Role role = new Role();
       role = ideaDTO.getRole().get(i);
       for (int j = 0; j < role.getSkills().size(); j++) {
+        System.out.println("relationship with skills");
         ideaRepository.setNeedsRelation(ideaDTO.getTitle(), role.getSkills().get(j));
       }
     }
@@ -74,7 +76,7 @@ public class IdeaServiceImpl implements IdeaService {
   @RabbitListener(queues = "${ideaDelete.rabbitmq.queue}")
   public void deleteIdea(IdeaDto ideaDto) throws IdeaNotFoundException {
     for (int i = 0; i < ideaDto.getRole().size(); i++) {
-      ideaRepository.deleteRequiresRelation(ideaDto.getTitle(), ideaDto.getRole().get(i).getRoleName());
+      ideaRepository.deleteRequiresRelation(ideaDto.getTitle(), ideaDto.getRole().get(i).getRole());
     }
 
   }

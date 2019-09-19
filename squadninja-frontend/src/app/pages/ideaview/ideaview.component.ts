@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { IdeaviewService } from 'src/app/services/ideaviewser/ideaview.service';
 import { Observable, interval, Subscription } from 'rxjs';
 
-
 @Component({
   selector: 'app-ideaview',
   templateUrl: './ideaview.component.html',
@@ -17,20 +16,29 @@ export class IdeaviewComponent implements OnInit {
   public status:boolean = false;
 
   constructor(private ideaviewService : IdeaviewService) { }
-  public titlehc = 'Application';
+  public titlehc = '';
+  public forTeam:any;
+  public obj:any;
 
   ngOnInit() {
+    this.forTeam=localStorage.getItem("forTeam");
+    this.obj=JSON.parse(this.forTeam);
     this.getIdeaDetails();
   }
   getIdeaDetails() {
+    this.titlehc=this.obj.title;
+    console.log(this.titlehc);
     this.ideaviewService.getIdeaForTitle(this.titlehc).subscribe((data) => {
      console.log("data fetched..",data.appliedTeam);
+
+
+
      this.title=data.title;
      this.description=data.description;
      this.appliedTeam=data.appliedTeam;
      this.selectedTeam=data.selectedTeam;
      this.invitedTeam=data.invitedTeam;
-    
+     
     });
    
   }
@@ -60,5 +68,12 @@ export class IdeaviewComponent implements OnInit {
     this.ideaviewService.updateOnJoin(this.title,emailId,this.status).subscribe((data) =>{
 
     });
+  }
+
+  onSearch(searchValue:string){
+
+    localStorage.setItem("search",searchValue);
+    console.log(searchValue);
+
   }
 }

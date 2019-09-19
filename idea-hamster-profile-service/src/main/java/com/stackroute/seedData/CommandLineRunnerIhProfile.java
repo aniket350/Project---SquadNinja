@@ -63,12 +63,12 @@ public class CommandLineRunnerIhProfile implements CommandLineRunner {
         fileInputStream.close();
 
         int rowNumber=xssfSheet.getLastRowNum();
-        for(int i=0;i<=rowNumber;i++)
+        for(int i=1;i<rowNumber;i++)
         {
             //using IdeaHamster object set xlsx data to IdeaHamster variables
             ideaHamster.setEmail(xssfSheet.getRow(i).getCell(1).toString());
             ideaHamster.setName(xssfSheet.getRow(i).getCell(0).toString());
-            ideaHamster.setMobileNo(new Long(xssfWorkbook.getSheetAt(0).getRow(i).getCell(2).getRawValue()));
+            ideaHamster.setMobileNo(xssfSheet.getRow(i).getCell(2).toString());
 
             ideaHamsterDto.setEmail(xssfSheet.getRow(i).getCell(1).toString());
             ideaHamsterDto.setUserName(xssfSheet.getRow(i).getCell(0).toString());
