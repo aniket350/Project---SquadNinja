@@ -1,14 +1,14 @@
 nodeid,roleName,nodetype
-501,Software engineer,role
-502,Systems analyst,role
-503,Business analyst,role
-504,Technical support,role
-505,Network engineer,role
-506,Technical consultant,role
-507,Technical sales,role
-508,Project manager,role
-509,Web developer,role
-510,Software tester,role
+501,software engineer,role
+502,systems analyst,role
+503,business analyst,role
+504,technical support,role
+505,network engineer,role
+506,technical consultant,role
+507,technical sales,role
+508,project manager,role
+509,web developer,role
+510,software tester,role
 511,java developer,role
 512,analyst,role
 513,cloud admin,role
