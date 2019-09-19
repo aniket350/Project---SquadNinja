@@ -171,7 +171,7 @@ public class TeamManagementServiceimpl implements TeamManagementService {
     /**
      * Annotation listens to the queue name called idea and store it in database
      */
-    @RabbitListener(queues = "${idea.rabbitmq.queue}")
+    @RabbitListener(queues = "${ideat.rabbitmq.queue}")
     public void receive(IdeaDto ideaDTO) {
 
         Idea idea = new Idea();
