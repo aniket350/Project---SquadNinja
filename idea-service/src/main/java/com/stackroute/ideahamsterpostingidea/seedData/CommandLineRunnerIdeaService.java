@@ -61,14 +61,14 @@ public class CommandLineRunnerIdeaService implements CommandLineRunner
         fileInputStream.close();
 
         int rowNum=xssfSheet.getLastRowNum();
-        for(int i=0;i<rowNum;i++)
+        for(int i=1;i<rowNum;i++)
         {
             Idea idea=new Idea();
             //using the Idea object set xlsx data to Idea variables
             idea.setTitle(xssfSheet.getRow(i).getCell(0).toString());
             idea.setDescription(xssfSheet.getRow(i).getCell(1).toString());
             idea.setDuration(xssfSheet.getRow(i).getCell(2).toString());
-            idea.setCost(new Double(xssfWorkbook.getSheetAt(0).getRow(i).getCell(3).getRawValue()));
+            idea.setCost(xssfSheet.getRow(i).getCell(3).toString());
             idea.setStatus(xssfSheet.getRow(i).getCell(4).toString());
             idea.setLocation(xssfSheet.getRow(i).getCell(9).toString());
             idea.setDomain(xssfSheet.getRow(i).getCell(10).toString());
@@ -88,6 +88,7 @@ public class CommandLineRunnerIdeaService implements CommandLineRunner
             Date dateobj = new Date();
             idea.setPostedOn(dateobj);
             ideaService.save(idea);
+            System.out.println(idea);
 
         }
     }

@@ -22,7 +22,7 @@ public class IdeaHamsterDto {
   @Id
   private String email;
   private String name;
-  private long mobile;
+  private String mobile;
   private List<IdeaDto> postedIdea;
   private Date timestamp;
 

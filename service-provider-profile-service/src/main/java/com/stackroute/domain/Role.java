@@ -13,7 +13,7 @@ import java.util.List;
 @ToString
 @Builder
 public class Role {
-    private String roleName;
+    private String role;
     private List<String> skills;
     private String experience;
 }
