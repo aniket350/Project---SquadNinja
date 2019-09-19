@@ -22,6 +22,7 @@ export class IdeaviewComponent implements OnInit {
 
   ngOnInit() {
     this.forTeam=localStorage.getItem("forTeam");
+    console.log("Forteam" ,this.forTeam);
     this.obj=JSON.parse(this.forTeam);
     this.getIdeaDetails();
   }
@@ -42,6 +43,7 @@ export class IdeaviewComponent implements OnInit {
     });
    
   }
+
   
   removeCard(emailId) {
     this.ideaviewService.remove(this.title,emailId).subscribe((data) =>{

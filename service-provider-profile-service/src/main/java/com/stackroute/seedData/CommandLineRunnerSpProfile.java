@@ -35,7 +35,7 @@ public class CommandLineRunnerSpProfile implements CommandLineRunner
     public void run(String... args) throws Exception
     {
         // need to load Excel XLSX file to read
-        File file = new File("sp-profile-service.xlsx");
+        File file = new File("/home/sushmitha/Videos/new-squadninja/service-provider-profile-service/src/main/resources/sp-profile-service.xlsx");
 
         FileInputStream fileInputStream=new FileInputStream(file);
 
@@ -81,7 +81,7 @@ public class CommandLineRunnerSpProfile implements CommandLineRunner
             role.setRole(xssfSheet.getRow(i).getCell(7).toString());
             role.setSkills(List.of(xssfSheet.getRow(i).getCell(9).toString().split(",")));
             serviceProvider.setPreferredLocation(List.of(xssfSheet.getRow(i).getCell(6).toString().split(",")));
-
+            serviceProvider.setRole(role);
 
             serviceProviderDto.setPassword(xssfSheet.getRow(i).getCell(10).toString());
             serviceProviderDto.setEmail(xssfSheet.getRow(i).getCell(1).toString());
@@ -89,6 +89,7 @@ public class CommandLineRunnerSpProfile implements CommandLineRunner
             serviceProviderDto.setRole(xssfSheet.getRow(i).getCell(11).toString());
 
             serviceProviderServiceImpl.saveServiceProvider(serviceProviderDto);
+            System.out.println(serviceProvider.toString());
             serviceProviderServiceImpl.updateTheProfile(serviceProvider);
 
         }
