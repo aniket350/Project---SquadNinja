@@ -26,8 +26,44 @@ export class IdeaviewService {
     return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/joinedsp,{title=${title}&emailId=${emailId}&accepted=${status}`,(null));
   }
 
-  inviteTeam(idea):Observable<any>{
-    // console.log(idea);
-    return this.http.put<any>(`http://13.235.10.115:8083/api/v1/invitedTeam`,idea);
+  inviteTeam(idea,invitedSP):Observable<IdeaView>{
+    let updated = {
+      "title":idea.title,
+      "description":"",
+      "domain":"",
+      "subDomain":"",
+      "cost":0,
+      "role":[{
+      "experience":"",
+      "noOfPeople":0,
+      "skills":[""],
+      "roleName":""}],
+      "selectedTeam":[
+             {
+         "name" : "",
+         "mobileNumber" : 0,
+         "emailId" :"",
+         "skills":[""],
+         "chargePerHour": ""
+         }
+         
+         ],
+         "invitedTeam":[
+                 {
+         "name" : invitedSP.name,
+         "mobileNumber" : invitedSP.mobileNo,
+         "emailId" :invitedSP.emailId,
+         "skills":[invitedSP.skills],
+         "chargePerHour": invitedSP.chargePerHour
+         }
+         ],
+      "status":"",
+      "location":""
+      }
+      
+  
+    console.log(updated);
+    return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/invitedTeam`,updated);
+      
   }
-}
+} 

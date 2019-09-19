@@ -14,23 +14,24 @@ export class SearchviewComponent implements OnInit {
   inviteIdea: string;
   idea: any;
   invite:any;
+  xyz: any;
   constructor(private spprofileserService : SpprofileserService,private ideaviewservice:IdeaviewService) { }
 
   ngOnInit() {
     this.search=localStorage.getItem("search");
     this.spprofileserService.getSearchResults(this.search).subscribe((data) => this.searchbar = data);
     console.log(this.searchbar);
-  }
 
-  onClickInvite(index:any){
-
-    this.inviteIdea=localStorage.getItem("forTeam");
+     this.inviteIdea=localStorage.getItem("forTeam");
     // console.log(this.inviteIdea);
     this.idea = JSON.parse(this.inviteIdea);
     console.log(this.idea);
-    console.log(this.searchbar[index]);
-    this.ideaviewservice.inviteTeam(this.idea).subscribe((response)=>this.invite=response);
   }
 
-
+  onClickInvite(index:any){
+    console.log(this.searchbar[index]);
+    this.xyz = JSON.parse(this.searchbar[index]);         
+    this.ideaviewservice.inviteTeam(this.idea,this.xyz).subscribe((response)=>this.invite=response);
+    console.log("invite team", this.invite);
+  }
 }
