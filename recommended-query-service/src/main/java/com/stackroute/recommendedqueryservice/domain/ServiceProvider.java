@@ -1,6 +1,8 @@
-package com.stackroute.squad.domain;
+package com.stackroute.recommendedqueryservice.domain;
 
 
+import com.stackroute.recommendedqueryservice.domain.Idea;
+import com.stackroute.recommendedqueryservice.domain.Skills;
 import lombok.*;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
@@ -25,7 +27,7 @@ public class ServiceProvider {
   @GeneratedValue
   private Long id;
   private String name;
-  private long mobileNo;
+  private String mobileNo;
   private String email;
   private String domain;
   private String subDomain;

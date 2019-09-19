@@ -41,15 +41,15 @@ public class RecommendedTeamServiceImpl implements RecommendedeamService {
 
     @Override
     public List<ServiceProvider> getdata(String title, String roleName) {
-                List<ServiceProvider> sp1=teamRecommendationRepository.getTeam(title, roleName);
+        List<ServiceProvider> sp1=teamRecommendationRepository.getTeam(title, roleName);
         List<ServiceProvider> sp2=teamRecommendationRepository.getTeamBasedOnWorkedOnIdea(title, roleName);
         List<ServiceProvider> sp3=teamRecommendationRepository.getTeamBasedOnAppliedIdea(title, roleName);
-        x.addAll(sp1);
+        x.addAll(sp2);
          int da=sp1.size();
-        System.out.println(da);
+       System.out.println(da);
 
-     System.out.println(x);
-        sp1.addAll(sp2);
+//     System.out.println(x);
+//        sp1.addAll(sp2);
      System.out.println(x);
         sp1.addAll(sp3);
      System.out.println(x);

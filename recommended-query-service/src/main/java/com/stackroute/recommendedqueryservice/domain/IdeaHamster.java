@@ -26,8 +26,8 @@ public class IdeaHamster {
      * Id annotation makes id variable as Primary key
      */
     @Id @GeneratedValue
-    private long id;
+    private Long id;
     private String name;
-    private int mobile;
+    private String mobile;
     private String email;
 }
