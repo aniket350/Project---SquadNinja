@@ -8,6 +8,7 @@ import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
+import java.util.Date;
 import java.util.List;
 
 @JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
@@ -31,14 +32,14 @@ public class Idea {
      * Id annotation makes id variable as Primary key
      */
     @Id @GeneratedValue
-    private long id;
+    private Long id;
     private String title;
     private String description;
     private String duration;
     private String cost;
     private String status;
     private String postedBy;
-    private String postedOn;
+    private Date postedOn;
     @Relationship(type = "belongs_to", direction = Relationship.OUTGOING)
     private SubDomain subDomain;
     @Relationship(type = "requires", direction = Relationship.OUTGOING)
@@ -47,6 +48,5 @@ public class Idea {
     private List<Skills> skills;
     @Relationship(type = "worked_on", direction = Relationship.INCOMING)
     private List<ServiceProvider> serviceProvider;
-    @Relationship(type = "posted_by", direction = Relationship.INCOMING)
-    private  IdeaHamster ideaHamster;
+
 }

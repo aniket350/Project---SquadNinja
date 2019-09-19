@@ -19,5 +19,4 @@ public interface IdeaRepository extends MongoRepository<Idea, String> {
   /**findByPostedBy method to get idea by its emailId*/
   public List<Idea> findByPostedBy(String postedBy);
 
-
 }

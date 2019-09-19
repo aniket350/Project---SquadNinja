@@ -115,7 +115,7 @@
 
 
 
-<div class="header bg-gradient-dark opacity-1 pb-8 pt-5 pt-md-8">
+<div class="header bg-gradient-dark opacity-8 pb-8 pt-5 pt-md-8">
 </div>
 <div class="container-fluid">
   <div class="row mt-9">
@@ -124,10 +124,10 @@
         <h2 class=" mb-3">
           <span>Posted Ideas</span>
         </h2>
-        <mat-card class="cardGroup" *ngFor="let card of ideaCardsDatas" cols>
+        <mat-card class="cardGroup" *ngFor="let card of ideaCardsDatas let index=index" cols>
           <mat-card class="matCard">
             <mat-card-title>{{card.title}}</mat-card-title>
-            <button type="button" [routerLink]="['ideaview']">View Idea Details</button>
+            <button type="button" (click)="getIdeaDetails(index)" [routerLink]="['ideaview']">View Idea Details</button>
           </mat-card>
         </mat-card>
       </div>
