@@ -17,6 +17,7 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
   ideaCardsData: any=[];
   recommendCards: any = [];
   public emailId :string= "";
+  public cardNumber:any;
   // private spCardData: any;
 
 //  cards = ['Idea1', 'Idea2','Idea1', 'Idea2','Idea1'];
@@ -84,7 +85,13 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
     }, err => {
       console.log(err)
     })
+
+    console.log();
   }
 
 
+  clicked(index:any){
+    console.log(index);
+    this.cardNumber=index;
+  }
 }

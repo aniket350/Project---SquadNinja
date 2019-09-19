@@ -68,7 +68,7 @@ public class CommandLineRunnerIdeaService implements CommandLineRunner
             idea.setTitle(xssfSheet.getRow(i).getCell(0).toString());
             idea.setDescription(xssfSheet.getRow(i).getCell(1).toString());
             idea.setDuration(xssfSheet.getRow(i).getCell(2).toString());
-            idea.setCost(new Double(xssfWorkbook.getSheetAt(0).getRow(i).getCell(3).getRawValue()));
+            idea.setCost(xssfSheet.getRow(i).getCell(3).toString());
             idea.setStatus(xssfSheet.getRow(i).getCell(4).toString());
             idea.setLocation(xssfSheet.getRow(i).getCell(9).toString());
             idea.setDomain(xssfSheet.getRow(i).getCell(10).toString());
@@ -79,15 +79,17 @@ public class CommandLineRunnerIdeaService implements CommandLineRunner
             role.setExperience(xssfSheet.getRow(i).getCell(6).toString());
             role.setRole(xssfSheet.getRow(i).getCell(5).toString());
             role.setNoOfPeople(xssfSheet.getRow(i).getCell(8).toString());
+            role.setSkills(List.of(xssfSheet.getRow(i).getCell(7).toString().split(",")));
+            System.out.println(role);
             List<Role> list1 = new ArrayList<>();
             list1.add(role);
-            ArrayList list = new ArrayList<>(Collections.singleton(xssfSheet.getRow(i).getCell(7).toString()));
-            role.setSkills(list);
             idea.setRole(list1);
             DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
             Date dateobj = new Date();
             idea.setPostedOn(dateobj);
             ideaService.save(idea);
+
+
 
         }
     }

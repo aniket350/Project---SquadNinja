@@ -7,7 +7,7 @@
         <span></span>
         <span></span>
     </div>
-    <mdb-carousel [animation]="'slide'" [isControls]="true" [type]="'carousel-multi-item'" class="carousel-multi-item multi-animation">
+    <mdb-carousel [animation]="'slide'" [isControls]="true"  class="carousel-multi-item multi-animation">
 
         <mdb-carousel-item *ngFor="let item of slides; let i = index">
             <div *ngFor="let card of item; let cardIndex = index" [ngClass]="{'d-none d-md-block': cardIndex !== 0}" class="col-md-4">

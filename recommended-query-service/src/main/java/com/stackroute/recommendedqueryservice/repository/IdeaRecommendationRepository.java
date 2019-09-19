@@ -14,8 +14,8 @@ import java.util.List;
 @Repository
 public interface IdeaRecommendationRepository extends Neo4jRepository<Idea, Long> {
 
-    @Query("MATCH(i:Idea),(sp:ServiceProvider)-[h:has_skill]->(s:Skills) with i,collect(s) as skills" +
-            " match (sp)-[h:has_skill]-(s)<-[n:needs]-(i) where sp.email={email} return i")
+    @Query("MATCH(i:Idea),(sp:ServiceProvider)-[h:has_skills]->(s:Skills) with i,collect(s) as skills" +
+            " match (sp)-[h:has_skills]-(s)<-[n:needs]-(i) where sp.email={email} return i")
     /**findBySkill method to get all ideas based on serviceprovider skill*/
     List<Idea> findBySkill(@Param("email") String email);
 
