@@ -13,9 +13,7 @@ import java.util.List;
 
 @Repository
 public interface TeamRecommendationRepository extends Neo4jRepository<SubDomain, Long> {
-    @Query("match(r:Roles)-[p:played_by]->(sp:ServiceProvider)," +
-            "(i:Idea)-[re:requires]->(r:Roles)-[h:have]->(s:Skills) where " +
-            "i.title={title} and r.roleName={roleName} return sp order by sp.experience desc ")
+    @Query("match(r:Roles)-[p:played_by]->(sp:ServiceProvider)-[hs:has_skills]-(sk:Skills),(i:Idea)-[re:requires]->(r:Roles)-[h:have]->(s:Skills) where i.title={title} and r.roleName={roleName} return sp ")
     List<ServiceProvider> getTeam(@Param("title") String title, @Param("roleName") String roleName);
 
     @Query("match (olr:Roles)-[p:played_by]->(s:ServiceProvider)-[w:worked_on]->(i:Idea)," +

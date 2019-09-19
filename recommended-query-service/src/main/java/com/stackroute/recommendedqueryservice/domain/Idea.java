@@ -48,4 +48,5 @@ public class Idea {
     private List<Skills> skills;
     @Relationship(type = "worked_on", direction = Relationship.INCOMING)
     private List<ServiceProvider> serviceProvider;
+
 }
