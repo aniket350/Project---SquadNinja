@@ -19,16 +19,16 @@ export class SearchviewComponent implements OnInit {
   ngOnInit() {
     this.search=localStorage.getItem("search");
     this.spprofileserService.getSearchResults(this.search).subscribe((data) => this.searchbar = data);
-  
     console.log(this.searchbar);
   }
 
-  onClickInvite(){
+  onClickInvite(index:any){
 
     this.inviteIdea=localStorage.getItem("forTeam");
     // console.log(this.inviteIdea);
     this.idea = JSON.parse(this.inviteIdea);
     console.log(this.idea);
+    console.log(this.searchbar[index]);
     this.ideaviewservice.inviteTeam(this.idea).subscribe((response)=>this.invite=response);
   }
 
