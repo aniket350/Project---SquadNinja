@@ -81,7 +81,7 @@ public class CommandLineRunnerIdeaService implements CommandLineRunner
             role.setNoOfPeople(xssfSheet.getRow(i).getCell(8).toString());
             List<Role> list1 = new ArrayList<>();
             list1.add(role);
-            ArrayList list = new ArrayList<>(Collections.singleton(xssfSheet.getRow(i).getCell(7).toString()));
+            ArrayList list = new ArrayList<>(Collections.singleton(xssfSheet.getRow(i).getCell(7).toString().split(",")));
             role.setSkills(list);
             idea.setRole(list1);
             DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");

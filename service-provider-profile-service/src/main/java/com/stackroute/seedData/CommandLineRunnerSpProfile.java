@@ -82,7 +82,7 @@ public class CommandLineRunnerSpProfile implements CommandLineRunner
             List<Role> list1 = new ArrayList<>();
             list1.add(role);
             serviceProvider.setRole(role);
-            ArrayList list = new ArrayList<>(Collections.singleton(xssfSheet.getRow(i).getCell(9).toString()));
+            ArrayList list = new ArrayList<>(Collections.singleton(xssfSheet.getRow(i).getCell(9).toString().split(",")));
             role.setSkills(list);
             ArrayList list2=new ArrayList<>(Collections.singleton(xssfSheet.getRow(i).getCell(6).toString()));
             serviceProvider.setPreferredLocation(list2);
