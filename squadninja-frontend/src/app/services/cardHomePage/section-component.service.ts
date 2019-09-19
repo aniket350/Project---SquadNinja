@@ -26,7 +26,12 @@ myIdeas(emailId):Observable<IdeaDetail[]>{
   return this.http.get<IdeaDetail[]>(`http://13.235.10.115:8090/api/v1/idea/${emailId}`);
 }
 
-addTeamManagement(modalCardDetails: { title: string; description: string; role: string; domain: string; subdomain: string; }) {
-  return this.http.post('http://localhost:8083/api/v1/appliedTeam', modalCardDetails);
+addTeamManagement(modalCardDetails: 
+  { title: string;
+    name:string;
+    emailId: string; 
+    mobileNumber: string;
+    chargePerHour: string; }) {
+  return this.http.post('http://13.235.10.115:8083/api/v1/appliedTeam', modalCardDetails);
 }
 }

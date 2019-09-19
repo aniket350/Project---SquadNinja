@@ -28,7 +28,6 @@ public class Roles {
   private String roleName;
   private String noOfPeople;
   private String experience;
-  @Relationship(type = "have", direction = Relationship.OUTGOING)
   private Skills skills;
   @Relationship(type = "played_by", direction = Relationship.OUTGOING)
   private ServiceProvider serviceProvider;
