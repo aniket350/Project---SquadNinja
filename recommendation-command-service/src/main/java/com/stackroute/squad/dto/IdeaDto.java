@@ -24,8 +24,8 @@ public class IdeaDto {
   private String description;
   private String duration;
   private String domain;
+  private String cost;
   private String subDomain;
-  private double cost;
   private List<Role> role;
   private String status;
   private Date postedOn;
