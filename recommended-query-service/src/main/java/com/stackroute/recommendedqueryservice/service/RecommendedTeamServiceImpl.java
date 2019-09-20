@@ -23,7 +23,9 @@ public class RecommendedTeamServiceImpl implements RecommendedeamService {
 
     @Override
     public List<ServiceProvider> getTeam(String title, String roleName) {
+        System.out.println("in service title, rolename***" + title+ roleName);
         List<ServiceProvider> serviceProvider1 = teamRecommendationRepository.getTeam(title, roleName);
+        System.out.println("in service serviceprovider1****" + serviceProvider1);
         return serviceProvider1;
     }
 
@@ -47,13 +49,13 @@ public class RecommendedTeamServiceImpl implements RecommendedeamService {
         List<ServiceProvider> sp3 = teamRecommendationRepository.getTeamBasedOnAppliedIdea(title, roleName);
         x.addAll(sp2);
         int da = sp1.size();
-        System.out.println(da);
+        System.out.println("size****"+ da);
 
-        System.out.println(x);
+        System.out.println("List*****"+ x);
         sp1.addAll(sp2);
-        System.out.println(x);
+        System.out.println("List2*****"+ x);
         sp1.addAll(sp3);
-        System.out.println(x);
+        System.out.println("List3*****"+ x);
         return x;
     }
 
