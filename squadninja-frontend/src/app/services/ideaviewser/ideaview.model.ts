@@ -1,5 +1,5 @@
 export class IdeaView  {
-    id: number;
+    id: string;
     title: string;
     description: string;
     duration: string;

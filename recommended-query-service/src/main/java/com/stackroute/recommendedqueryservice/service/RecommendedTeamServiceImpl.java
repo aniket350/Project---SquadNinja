@@ -16,20 +16,20 @@ public class RecommendedTeamServiceImpl implements RecommendedeamService {
     List<ServiceProvider> x;
 
     @Autowired
-    public RecommendedTeamServiceImpl(TeamRecommendationRepository teamRecommendationRepository,List<ServiceProvider> x) {
+    public RecommendedTeamServiceImpl(TeamRecommendationRepository teamRecommendationRepository, List<ServiceProvider> x) {
         this.teamRecommendationRepository = teamRecommendationRepository;
-        this.x=x;
+        this.x = x;
     }
 
     @Override
     public List<ServiceProvider> getTeam(String title, String roleName) {
         List<ServiceProvider> serviceProvider1 = teamRecommendationRepository.getTeam(title, roleName);
-    return serviceProvider1;
-       }
+        return serviceProvider1;
+    }
 
     @Override
     public List<ServiceProvider> getTeamBasedOnAppliedIdea(String title, String roleName) {
-        List<ServiceProvider> sp=teamRecommendationRepository.getTeamBasedOnAppliedIdea(title,roleName);
+        List<ServiceProvider> sp = teamRecommendationRepository.getTeamBasedOnAppliedIdea(title, roleName);
         return sp;
     }
 
@@ -41,18 +41,19 @@ public class RecommendedTeamServiceImpl implements RecommendedeamService {
 
     @Override
     public List<ServiceProvider> getdata(String title, String roleName) {
-        List<ServiceProvider> sp1=teamRecommendationRepository.getTeam(title, roleName);
-        List<ServiceProvider> sp2=teamRecommendationRepository.getTeamBasedOnWorkedOnIdea(title, roleName);
-        List<ServiceProvider> sp3=teamRecommendationRepository.getTeamBasedOnAppliedIdea(title, roleName);
+        System.out.println(roleName);
+        List<ServiceProvider> sp1 = teamRecommendationRepository.getTeam(title, roleName);
+        List<ServiceProvider> sp2 = teamRecommendationRepository.getTeamBasedOnWorkedOnIdea(title, roleName);
+        List<ServiceProvider> sp3 = teamRecommendationRepository.getTeamBasedOnAppliedIdea(title, roleName);
         x.addAll(sp2);
-         int da=sp1.size();
-       System.out.println(da);
+        int da = sp1.size();
+        System.out.println(da);
 
-//     System.out.println(x);
-//        sp1.addAll(sp2);
-     System.out.println(x);
+        System.out.println(x);
+        sp1.addAll(sp2);
+        System.out.println(x);
         sp1.addAll(sp3);
-     System.out.println(x);
+        System.out.println(x);
         return x;
     }
 

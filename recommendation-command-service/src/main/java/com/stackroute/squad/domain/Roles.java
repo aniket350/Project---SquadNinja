@@ -25,7 +25,7 @@ public class Roles {
   @Id
 @GeneratedValue
   private Long id;
-  private String roleName;
+  private String role;
   private String noOfPeople;
   private String experience;
   private Skills skills;

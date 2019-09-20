@@ -73,7 +73,20 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
 
 
   }
+  @RabbitListener(queues = "${appliedTeam.rabbitmq.queue}")
+  public void appliedTeam(ServiceProviderDto serviceProviderDto)throws Exception{
+    ServiceProvider serviceProviderData = serviceProviderRepository.findByEmail(serviceProviderDto.getEmail());
+    serviceProviderData.setChargePerHour(serviceProviderDto.getChargePerHour());
+    serviceProviderData.setDomain(serviceProviderDto.getDomain());
+    serviceProviderData.setMobileNo(serviceProviderDto.getMobileNo());
+    serviceProviderData.setName(serviceProviderDto.getName());
+    serviceProviderData.setPreferredLocation(serviceProviderDto.getPreferredLocation());
+    serviceProviderData.setCurrentLocation(serviceProviderDto.getCurrentLocation());
+    serviceProviderRepository.save(serviceProviderData);
+    IdeaDto ideaDto1 = new IdeaDto();
+    serviceProviderRepository.setAppliedForRelation(serviceProviderDto.getEmail(), ideaDto1.getTitle());
 
+  }
   /**
    * Implementation of get All Service provider method
    */
