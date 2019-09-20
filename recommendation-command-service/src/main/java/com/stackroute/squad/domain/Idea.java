@@ -37,7 +37,7 @@ public class Idea
     private SubDomain subDomain;
     //Idea requires roles
     @Relationship(type = "requires", direction = Relationship.OUTGOING)
-    private List<Roles> roles;
+    private List<Roles> role;
     //Idea needs skills
     @Relationship(type = "needs", direction = Relationship.OUTGOING)
     private List<Skills> skills;
