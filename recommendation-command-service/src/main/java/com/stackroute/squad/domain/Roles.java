@@ -25,10 +25,9 @@ public class Roles {
   @Id
 @GeneratedValue
   private Long id;
-  private String roleName;
+  private String role;
   private String noOfPeople;
   private String experience;
-  @Relationship(type = "have", direction = Relationship.OUTGOING)
   private Skills skills;
   @Relationship(type = "played_by", direction = Relationship.OUTGOING)
   private ServiceProvider serviceProvider;

@@ -32,6 +32,7 @@ export class SpprofileComponent implements OnInit {
     .subscribe((data)=> {
       console.log("data fetched..", data);
       this.serviceProviderData=data;
+      
       console.log("after getting back from service",this.serviceProviderData);
     });
   }

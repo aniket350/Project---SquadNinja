@@ -24,7 +24,7 @@ public class Roles {
      */
     @Id
     private Long id;
-    private String roleName;
+    private String role;
     private String noOfPeople;
     private String experience;
     @Relationship(type = "have", direction = Relationship.OUTGOING)
