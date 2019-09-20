@@ -3,6 +3,7 @@ package com.stackroute.teammanagementservice.domain;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
 import java.util.List;
 /**@NoArgsConstructor will generate constructor with no arguments*/
 @Data
@@ -15,9 +16,15 @@ import java.util.List;
 @Builder
 @ToString
 public class ServiceProvider {
-private String name;
-private int mobileNumber;
-private String emailId;
-private List<String> skills;
-private double chargePerHour;
+    private String email;
+    private String name;
+    private String mobileNo;
+    private String domain;
+    private String subDomain;
+    private RoleSp role;
+    private List<Idea> workedIdeas;
+    private String chargePerHour;
+    private String currentLocation;
+    private List<String> preferredLocation;
+    private Date timestamp;
 }
