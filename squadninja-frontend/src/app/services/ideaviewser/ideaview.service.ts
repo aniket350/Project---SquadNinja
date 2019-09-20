@@ -28,37 +28,59 @@ export class IdeaviewService {
 
   inviteTeam(idea,invitedSP):Observable<IdeaView>{
     let updated = {
-      "title":idea.title,
-      "description":"",
-      "domain":"",
-      "subDomain":"",
-      "cost":0,
+      "title":"Magento 2 Olegnax bug fix",
+      "description":"Online Delivery Pizza Application",
+      "domain":"java",
+      "subDomain":"js",
+      "cost":10000,
       "role":[{
-      "experience":"",
-      "noOfPeople":0,
-      "skills":[""],
-      "roleName":""}],
+      "experience":"5 years",
+      "noOfPeople":5,
+      "skills":["php","java"],
+      "roleName":"Developer"}],
       "selectedTeam":[
              {
-         "name" : "",
-         "mobileNumber" : 0,
-         "emailId" :"",
-         "skills":[""],
-         "chargePerHour": ""
+         "name" : "adithya",
+         "mobileNumber" : 12345678,
+         "emailId" :"adithya@gmail.com",
+         "skills":["tester","developer"],
+         "chargePerHour": "1000"
+         },
+             {
+         "name" : "mansi",
+         "mobileNumber" : 12345678,
+         "emailId" :"mansi@gmail.com",
+         "skills":["tester","developer"],
+         "chargePerHour": "1000"
+         },
+             {
+         "name" : "ramya",
+         "mobileNumber" : 12345678,
+         "emailId" :"ramya@gmail.com",
+         "skills":["tester","developer"],
+         "chargePerHour": "1000"
          }
-         
+         ],
+         "appliedTeam":[
+         {
+         "name" : "mehar",
+         "mobileNumber" : 12345678,
+         "emailId" :"mehar@gmail.com",
+         "skills":["tester","developer"],
+         "chargePerHour": "1000"
+         }
          ],
          "invitedTeam":[
                  {
-         "name" : invitedSP.name,
-         "mobileNumber" : invitedSP.mobileNo,
-         "emailId" :invitedSP.emailId,
-         "skills":[invitedSP.skills],
-         "chargePerHour": invitedSP.chargePerHour
+         "name" : "ramya",
+         "mobileNumber" : 12345678,
+         "emailId" :"manu@gmail.com",
+         "skills":["tester","developer"],
+         "chargePerHour": "1000"
          }
          ],
-      "status":"",
-      "location":""
+      "status":"yet to complete",
+      "location":"bangalore"
       }
       
   

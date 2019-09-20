@@ -42,8 +42,13 @@ public class Idea {
     private Date postedOn;
     @Relationship(type = "belongs_to", direction = Relationship.OUTGOING)
     private SubDomain subDomain;
+<<<<<<< HEAD
 //    @Relationship(type = "requires", direction = Relationship.OUTGOING)
 //    private List<Roles> roles;
+=======
+    @Relationship(type = "requires", direction = Relationship.OUTGOING)
+    private List<Roles> role;
+>>>>>>> a062e028235e269b5b4b2367d71cd4550291da99
     @Relationship(type = "requires", direction = Relationship.OUTGOING)//experience
     private List<Skills> skills;
     @Relationship(type = "worked_on", direction = Relationship.INCOMING)
