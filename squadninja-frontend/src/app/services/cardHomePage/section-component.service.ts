@@ -26,12 +26,61 @@ myIdeas(emailId):Observable<IdeaDetail[]>{
   return this.http.get<IdeaDetail[]>(`http://13.235.10.115:8090/api/v1/idea/${emailId}`);
 }
 
-addTeamManagement(modalCardDetails: 
-  { title: string;
-    name:string;
-    emailId: string; 
-    mobileNumber: string;
-    chargePerHour: string; }) {
-  return this.http.post('http://13.235.10.115:8083/api/v1/appliedTeam', modalCardDetails);
+addTeamManagement(modalCardDetails):any {
+  return this.http.post('http://13.235.10.115:8083/api/v1/appliedTeam', {
+    "title":"Magento 2 Olegnax bug fix",
+    "description":"Online Delivery Pizza Application",
+    "domain":"java",
+    "subDomain":"js",
+    "cost":10000,
+    "role":[{
+    "experience":"5 years",
+    "noOfPeople":5,
+    "skills":["php","java"],
+    "roleName":"Developer"}],
+    "selectedTeam":[
+           {
+       "name" : "adithya",
+       "mobileNumber" : 12345678,
+       "emailId" :"adithya@gmail.com",
+       "skills":["tester","developer"],
+       "chargePerHour": "1000"
+       },
+           {
+       "name" : "mansi",
+       "mobileNumber" : 12345678,
+       "emailId" :"mansi@gmail.com",
+       "skills":["tester","developer"],
+       "chargePerHour": "1000"
+       },
+           {
+       "name" : "ramya",
+       "mobileNumber" : 12345678,
+       "emailId" :"ramya@gmail.com",
+       "skills":["tester","developer"],
+       "chargePerHour": "1000"
+       }
+       ],
+       "appliedTeam":[
+       {
+       "name" : "krishnaaaa",
+       "mobileNumber" : 12345678,
+       "emailId" :"mehar@gmail.com",
+       "skills":["tester","developer"],
+       "chargePerHour": "1000"
+       }
+       ],
+       "invitedTeam":[
+               {
+       "name" : "manu",
+       "mobileNumber" : 12345678,
+       "emailId" :"manu@gmail.com",
+       "skills":["tester","developer"],
+       "chargePerHour": "1000"
+       }
+       ],
+    "status":"yet to complete",
+    "location":"bangalore"
+    });
 }
 }
