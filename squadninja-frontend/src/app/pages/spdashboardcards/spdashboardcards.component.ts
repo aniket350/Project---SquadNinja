@@ -18,6 +18,8 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
   recommendCards: any = [];
   public emailId :string= "";
   public cardNumber:any;
+  public serviceProviderData:any;
+  public data:any;
   // private spCardData: any;
 
 //  cards = ['Idea1', 'Idea2','Idea1', 'Idea2','Idea1'];
@@ -25,17 +27,16 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
 
   modalCardDetails = {
     title: '',
-    description: '',
-    role: '',
-    domain: '',
-    subdomain: ''
-                
+    name: '',
+    emailId: '',
+    mobileNumber: '',
+    chargePerHour: ''            
   }
   dialog: any;
   
 
 
-  constructor(private sectionComponentService : SectionComponentService ,private spprofileserService : SpprofileserService){}
+  constructor(private sectionComponentService : SectionComponentService ,private spprofileserService : SpprofileserService,private serviceProviderProfile: SpprofileserService){}
   ngOnInit() {
 
     this.emailId=localStorage.getItem("emailId");
@@ -46,6 +47,7 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
         // console.log(this.ideaCardsData);
       });
 
+      this.getTheProfile();
     // this.spprofileserService.getRecommendationIdeas(this.emailId)
     // .subscribe(data => {
     //     this.recommendCards = data
@@ -57,17 +59,19 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
       //   this.spCardData = data
       // });
     // this.sections = this.chunk(this.sections, 3);
-    console.log(this.ideaCardsData);
+    // console.log(this.ideaCardsData);
+
 
   }
 
   saveCardDetails(x: any) {
-    console.log(x);
+    // console.log(x);
+    console.log(this.serviceProviderData);
     this.modalCardDetails.title = x.title;
-    this.modalCardDetails.description = x.description;
-    this.modalCardDetails.role = x.role;
-    this.modalCardDetails.domain = x.domain;
-    this.modalCardDetails.subdomain = x.subDomain;
+    this.modalCardDetails.name = this.serviceProviderData.name;
+    this.modalCardDetails.emailId = this.serviceProviderData.email;
+    this.modalCardDetails.mobileNumber = this.serviceProviderData.mobileNo;
+    // this.modalCardDetails.chargePerHour = this.serviceProviderData.chargePerHour;
   
   }
 
@@ -79,19 +83,33 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
     return R;
   }
 
-  applyData() {
-    this.sectionComponentService.addTeamManagement(this.modalCardDetails).subscribe(res => {
+  getTheProfile(){
+    this.serviceProviderProfile.getByEmailIdForServiceProvider(this.emailId)
+    .subscribe((data)=> {
+      // console.log("data fetched..", data);
+      this.serviceProviderData=data;
+      // console.log("after getting back from service",this.serviceProviderData);
+    });
+  }
 
+  apply(){
+
+    console.log(this.cardNumber);
+    console.log(this.modalCardDetails);
+    this.sectionComponentService.addTeamManagement(this.modalCardDetails).subscribe(res => {
+         this.data=res;
     }, err => {
       console.log(err)
-    })
+    });
 
-    console.log();
+    
   }
 
 
   clicked(index:any){
+    console.log(this.ideaCardsData[index]);
     console.log(index);
     this.cardNumber=index;
+    this.saveCardDetails(this.ideaCardsData[index]);
   }
 }
