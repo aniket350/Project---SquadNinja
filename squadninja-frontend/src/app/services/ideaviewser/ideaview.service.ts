@@ -27,60 +27,62 @@ export class IdeaviewService {
   }
 
   inviteTeam(idea,invitedSP):Observable<IdeaView>{
+    console.log(idea.title);
+    console.log("invitedsp",invitedSP.role.skills);
     let updated = {
-      "title":"Magento 2 Olegnax bug fix",
-      "description":"Online Delivery Pizza Application",
+      "title":idea.title,
+      "description":"",
       "domain":"java",
       "subDomain":"js",
-      "cost":10000,
+      "cost":0,
       "role":[{
-      "experience":"5 years",
-      "noOfPeople":5,
-      "skills":["php","java"],
-      "roleName":"Developer"}],
+      "experience":"",
+      "noOfPeople":0,
+      "skills":[],
+      "roleName":""}],
       "selectedTeam":[
              {
-         "name" : "adithya",
-         "mobileNumber" : 12345678,
-         "emailId" :"adithya@gmail.com",
-         "skills":["tester","developer"],
-         "chargePerHour": "1000"
+         "name" : "",
+         "mobileNumber" : 0,
+         "emailId" :"",
+         "skills":[],
+         "chargePerHour": ""
          },
              {
-         "name" : "mansi",
-         "mobileNumber" : 12345678,
-         "emailId" :"mansi@gmail.com",
-         "skills":["tester","developer"],
-         "chargePerHour": "1000"
+         "name" : "",
+         "mobileNumber" :0,
+         "emailId" :"",
+         "skills":[],
+         "chargePerHour": ""
          },
              {
-         "name" : "ramya",
-         "mobileNumber" : 12345678,
-         "emailId" :"ramya@gmail.com",
-         "skills":["tester","developer"],
-         "chargePerHour": "1000"
+         "name" : "",
+         "mobileNumber" : 0,
+         "emailId" :"",
+         "skills":[],
+         "chargePerHour": ""
          }
          ],
          "appliedTeam":[
          {
-         "name" : "mehar",
-         "mobileNumber" : 12345678,
-         "emailId" :"mehar@gmail.com",
-         "skills":["tester","developer"],
-         "chargePerHour": "1000"
+         "name" : "",
+         "mobileNumber" : 0,
+         "emailId" :"",
+         "skills":[],
+         "chargePerHour": ""
          }
          ],
          "invitedTeam":[
                  {
-         "name" : "ramya",
-         "mobileNumber" : 12345678,
-         "emailId" :"manu@gmail.com",
-         "skills":["tester","developer"],
-         "chargePerHour": "1000"
+         "name" : invitedSP.name,
+         "mobileNumber" : "",
+         "emailId" :"",
+         "skills":invitedSP.role.skills,
+         "chargePerHour": invitedSP.chargePerHour
          }
          ],
-      "status":"yet to complete",
-      "location":"bangalore"
+      "status":"",
+      "location":""
       }
       
   
