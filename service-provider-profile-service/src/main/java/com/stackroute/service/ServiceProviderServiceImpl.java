@@ -75,8 +75,8 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
             sp.setName(provider.getUserName());
             sp.setEmail(provider.getEmail());
             //for recommendation
-//            rabbitTemplate.convertAndSend(exchange, routingkey, provider);
-//            rabbitTemplate.convertAndSend(profileExchange, profilRoutingkey, sp);
+            rabbitTemplate.convertAndSend(exchange, routingkey, provider);
+            rabbitTemplate.convertAndSend(profileExchange, profilRoutingkey, sp);
             return serviceProviderRepository.save(sp);
         }
 
@@ -115,7 +115,7 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
 
         System.out.println(updateServiceProvider.toString());
         System.out.println("sent="+serviceProvider);
-//        rabbitTemplate.convertAndSend(updateExchange,updateRoutingKey, serviceProvider);
+        rabbitTemplate.convertAndSend(updateExchange,updateRoutingKey, serviceProvider);
         return updateServiceProvider;
     }
 
