@@ -86,7 +86,7 @@ public class IdeaRecommendationController {
      */
     @GetMapping("applied/{title}")
     public ResponseEntity<Collection<ServiceProvider>> getRecommendedTeam(@PathVariable("title") String title, @RequestParam("roleName") String roleName) {
-        Collection<ServiceProvider> serviceProviders = recommendedTeamService.getdata(title, roleName);
+        Collection<ServiceProvider> serviceProviders = recommendedTeamService.getTeam(title, roleName);
         return new ResponseEntity<>(serviceProviders, HttpStatus.OK);
     }
 

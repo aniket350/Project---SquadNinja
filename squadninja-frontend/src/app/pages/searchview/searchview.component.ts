@@ -30,8 +30,7 @@ export class SearchviewComponent implements OnInit {
 
   onClickInvite(index:any){
     console.log(this.searchbar[index]);
-    this.xyz = JSON.parse(this.searchbar[index]);         
-    this.ideaviewservice.inviteTeam(this.idea,this.xyz).subscribe((response)=>this.invite=response);
+    this.ideaviewservice.inviteTeam(this.idea,this.searchbar[index]).subscribe((response)=>this.invite=response);
     console.log("invite team", this.invite);
   }
 }
