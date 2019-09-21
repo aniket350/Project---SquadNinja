@@ -24,29 +24,30 @@ public class RecommendedTeamServiceImpl implements RecommendedeamService {
     @Override
     public List<ServiceProvider> getTeam(String title, String roleName) {
         System.out.println("in service title, rolename***" + title+ roleName);
-        List<ServiceProvider> serviceProvider1 = teamRecommendationRepository.getTeam(title, roleName);
+        List<ServiceProvider> serviceProvider1 = teamRecommendationRepository.getTeam(title, roleName.toLowerCase());
         System.out.println("in service serviceprovider1****" + serviceProvider1);
         return serviceProvider1;
     }
 
     @Override
     public List<ServiceProvider> getTeamBasedOnAppliedIdea(String title, String roleName) {
-        List<ServiceProvider> sp = teamRecommendationRepository.getTeamBasedOnAppliedIdea(title, roleName);
+        List<ServiceProvider> sp = teamRecommendationRepository.getTeamBasedOnAppliedIdea(title, roleName.toLowerCase());
         return sp;
     }
 
     @Override
     public List<ServiceProvider> getTeamBasedOnWorkedOnIdea(String title, String roleName) {
-        List<ServiceProvider> serviceProvider2 = teamRecommendationRepository.getTeamBasedOnWorkedOnIdea(title, roleName);
+        System.out.println("rolename"+roleName);
+        List<ServiceProvider> serviceProvider2 = teamRecommendationRepository.getTeamBasedOnWorkedOnIdea(title, roleName.toLowerCase());
         return serviceProvider2;
     }
 
     @Override
     public List<ServiceProvider> getdata(String title, String roleName) {
         System.out.println(roleName);
-        List<ServiceProvider> sp1 = teamRecommendationRepository.getTeam(title, roleName);
-        List<ServiceProvider> sp2 = teamRecommendationRepository.getTeamBasedOnWorkedOnIdea(title, roleName);
-        List<ServiceProvider> sp3 = teamRecommendationRepository.getTeamBasedOnAppliedIdea(title, roleName);
+        List<ServiceProvider> sp1 = teamRecommendationRepository.getTeam(title, roleName.toLowerCase());
+        List<ServiceProvider> sp2 = teamRecommendationRepository.getTeamBasedOnWorkedOnIdea(title, roleName.toLowerCase());
+        List<ServiceProvider> sp3 = teamRecommendationRepository.getTeamBasedOnAppliedIdea(title, roleName.toLowerCase());
         x.addAll(sp2);
         int da = sp1.size();
         System.out.println("size****"+ da);

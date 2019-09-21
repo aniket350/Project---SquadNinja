@@ -5,12 +5,12 @@ export class IdeaView  {
     duration: string;
     domain: string;
     subDomain: string;
-    cost: number;
+    cost: string;
     role: [
         {
             experience: string,
-            noOfPeople: string,
-            skills: [string,string],
+            noOfPeople: number,
+            skills: [string],
             role: string
         }
     ];
@@ -27,7 +27,7 @@ export class IdeaView  {
                 }];
                 chargePerHour : string
             }
-        ]; 
+        ];
     invitedTeam: [
         {
             name: string,
@@ -41,7 +41,7 @@ export class IdeaView  {
                 }];
                 chargePerHour : string
             }
-        ]; 
+        ];
     selectedTeam: [
         {
             name: string,
@@ -55,9 +55,9 @@ export class IdeaView  {
                 }];
                 chargePerHour : string
             }
-        ]; 
+        ];
     status: string;
     postedOn: string;
     postedBy: string;
     location: string;
-} 
+}
