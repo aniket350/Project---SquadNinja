@@ -1,6 +1,7 @@
 package com.stackroute.squad.services;
 
 import com.stackroute.squad.domain.ServiceProvider;
+import com.stackroute.squad.dto.AppliedTeamDto;
 import com.stackroute.squad.dto.IdeaDto;
 import com.stackroute.squad.dto.ServiceProviderDto;
 import com.stackroute.squad.exceptions.ServiceProviderNotFound;
@@ -62,9 +63,9 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
     retrievedServiceProvider.setCurrentLocation(serviceProviderDto.getCurrentLocation());
     serviceProviderRepository.save(retrievedServiceProvider);
     System.out.println(serviceProviderDto.getRole());
-    serviceProviderRepository.setPlayedByRelation(serviceProviderDto.getEmail(), serviceProviderDto.getRole().getRole());
+    serviceProviderRepository.setPlayedByRelation(serviceProviderDto.getEmail(), serviceProviderDto.getRole().getRole().toLowerCase());
     for (int i = 0; i < serviceProviderDto.getRole().getSkills().size(); i++) {
-      serviceProviderRepository.setHasSkillsRelation(serviceProviderDto.getEmail(), serviceProviderDto.getRole().getSkills().get(i));
+      serviceProviderRepository.setHasSkillsRelation(serviceProviderDto.getEmail(), serviceProviderDto.getRole().getSkills().get(i).toLowerCase());
     }
 //    IdeaDto ideaDto = new IdeaDto();
 //    serviceProviderRepository.setWorkedOnRelation(serviceProviderDto.getEmail(), ideaDto.getTitle());
@@ -73,7 +74,13 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
 
 
   }
+  @RabbitListener(queues = "${appliedTeam.rabbitmq.queue}")
+  public void appliedTeam(AppliedTeamDto appliedTeamDto)throws Exception{
+    ServiceProvider serviceProviderData = serviceProviderRepository.findByEmail(appliedTeamDto.getEmail());
+    IdeaDto ideaDto1 = new IdeaDto();
+    serviceProviderRepository.setAppliedForRelation(appliedTeamDto.getEmail(), appliedTeamDto.getIdeaTitle());
 
+  }
   /**
    * Implementation of get All Service provider method
    */
