@@ -75,8 +75,8 @@ export class IdeaviewService {
          "invitedTeam":[
                  {
          "name" : invitedSP.name,
-         "mobileNumber" : "",
-         "emailId" :"",
+         "mobileNo" : invitedSP.mobileNo,
+         "email" : invitedSP.email,
          "skills":invitedSP.role.skills,
          "chargePerHour": invitedSP.chargePerHour
          }
@@ -86,7 +86,7 @@ export class IdeaviewService {
       }
       
   
-    console.log(updated);
+    console.log("after adding all the data",updated);
     return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/invitedTeam`,updated);
       
   }

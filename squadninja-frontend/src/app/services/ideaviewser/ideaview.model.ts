@@ -5,63 +5,57 @@ export class IdeaView  {
     duration: string;
     domain: string;
     subDomain: string;
-    cost: number;
+    cost: string;
     role: [
         {
             experience: string,
             noOfPeople: number,
-            skills: [string,string],
-            roleName: string
+            skills: [string],
+            role: string
         }
     ];
     appliedTeam: [
         {
             name: string;
-            mobileNumber: number;
-            emailId: string;
-            skills: [
-                string,
-                string
-            ],
-            chargePerHour: number
+            mobileNo: string;
+            email: string;
+            role : [{
+                role : string,
+                skills : [string],
+                experience : string
+            }];
+            chargePerHour: string
         }
     ];
     invitedTeam: [
         {
             name: string;
-            mobileNumber: number;
-            emailId: string;
-            skills: [
-                string,
-                string
-            ],
-            chargePerHour: number
+            mobileNo: string;
+            email: string;
+            role : [{
+                role : string,
+                skills : [string],
+                experience : string
+            }];
+            chargePerHour: string
         }
     ];
     selectedTeam: [
         {
             name: string;
-            mobileNumber: number;
-            emailId: string;
-            skills: [
-                string,
-                string
-            ],
-            chargePerHour: number
-        },
-        {
-            name : string;
-            mobileNumber: 12345678,
-            emailId: string;
-            skills: [
-                string,
-                string
-            ],
-            chargePerHour: number;
+            mobileNo: string;
+            email: string;
+            role : [{
+                role : string,
+                skills : [string],
+                experience : string
+            }];
+            chargePerHour: string
         }
+       
     ];
     status: string;
-    postedOn: number;
+    postedOn: string;
     postedBy: string;
     location: string;
 } 
