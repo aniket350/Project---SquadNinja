@@ -9,59 +9,55 @@ export class IdeaView  {
     role: [
         {
             experience: string,
-            noOfPeople: number,
+            noOfPeople: string,
             skills: [string,string],
-            roleName: string
+            role: string
         }
     ];
     appliedTeam: [
         {
-            name: string;
-            mobileNumber: number;
-            emailId: string;
-            skills: [
-                string,
-                string
-            ],
-            chargePerHour: number
-        }
-    ];
+            name: string,
+            email: string,
+            mobileNo: number,
+            role : [
+                {
+                    role : string,
+                    skills : [string],
+                    experience : string,
+                }];
+                chargePerHour : string
+            }
+        ]; 
     invitedTeam: [
         {
-            name: string;
-            mobileNumber: number;
-            emailId: string;
-            skills: [
-                string,
-                string
-            ],
-            chargePerHour: number
-        }
-    ];
+            name: string,
+            email: string,
+            mobileNo: number,
+            role : [
+                {
+                    role : string,
+                    skills : [string],
+                    experience : string,
+                }];
+                chargePerHour : string
+            }
+        ]; 
     selectedTeam: [
         {
-            name: string;
-            mobileNumber: number;
-            emailId: string;
-            skills: [
-                string,
-                string
-            ],
-            chargePerHour: number
-        },
-        {
-            name : string;
-            mobileNumber: 12345678,
-            emailId: string;
-            skills: [
-                string,
-                string
-            ],
-            chargePerHour: number;
-        }
-    ];
+            name: string,
+            email: string,
+            mobileNo: number,
+            role : [
+                {
+                    role : string,
+                    skills : [string],
+                    experience : string,
+                }];
+                chargePerHour : string
+            }
+        ]; 
     status: string;
-    postedOn: number;
+    postedOn: string;
     postedBy: string;
     location: string;
 } 
