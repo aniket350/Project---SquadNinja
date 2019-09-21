@@ -37,6 +37,7 @@ public class RecommendedTeamServiceImpl implements RecommendedeamService {
 
     @Override
     public List<ServiceProvider> getTeamBasedOnWorkedOnIdea(String title, String roleName) {
+        System.out.println("rolename"+roleName);
         List<ServiceProvider> serviceProvider2 = teamRecommendationRepository.getTeamBasedOnWorkedOnIdea(title, roleName.toLowerCase());
         return serviceProvider2;
     }
