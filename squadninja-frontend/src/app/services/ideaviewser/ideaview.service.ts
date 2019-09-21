@@ -29,65 +29,62 @@ export class IdeaviewService {
   inviteTeam(idea,invitedSP):Observable<IdeaView>{
     console.log(idea.title);
     console.log("invitedsp",invitedSP.role.skills);
-    let updated = {
-      "title":idea.title,
-      "description":"",
+
+    return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/invitedTeam`,{
+      "title":"Magento 2 Olegnax bug fix",
+      "description":"Online Delivery Pizza Application",
       "domain":"java",
       "subDomain":"js",
-      "cost":0,
+      "cost":10000,
       "role":[{
-      "experience":"",
-      "noOfPeople":0,
-      "skills":[],
-      "roleName":""}],
+      "experience":"5 years",
+      "noOfPeople":5,
+      "skills":["php","java"],
+      "roleName":"Developer"}],
       "selectedTeam":[
              {
-         "name" : "",
-         "mobileNumber" : 0,
-         "emailId" :"",
-         "skills":[],
-         "chargePerHour": ""
+         "name" : "adithya",
+         "mobileNumber" : 12345678,
+         "emailId" :"adithya@gmail.com",
+         "skills":["tester","developer"],
+         "chargePerHour": "1000"
          },
              {
-         "name" : "",
-         "mobileNumber" :0,
-         "emailId" :"",
-         "skills":[],
-         "chargePerHour": ""
+         "name" : "mansi",
+         "mobileNumber" : 12345678,
+         "emailId" :"mansi@gmail.com",
+         "skills":["tester","developer"],
+         "chargePerHour": "1000"
          },
              {
-         "name" : "",
-         "mobileNumber" : 0,
-         "emailId" :"",
-         "skills":[],
-         "chargePerHour": ""
+         "name" : "ramya",
+         "mobileNumber" : 12345678,
+         "emailId" :"ramya@gmail.com",
+         "skills":["tester","developer"],
+         "chargePerHour": "1000"
          }
          ],
          "appliedTeam":[
          {
-         "name" : "",
-         "mobileNumber" : 0,
-         "emailId" :"",
-         "skills":[],
-         "chargePerHour": ""
+         "name" : "mehar",
+         "mobileNumber" : 12345678,
+         "emailId" :"mehar@gmail.com",
+         "skills":["tester","developer"],
+         "chargePerHour": "1000"
          }
          ],
          "invitedTeam":[
                  {
-         "name" : invitedSP.name,
-         "mobileNo" : invitedSP.mobileNo,
-         "email" : invitedSP.email,
-         "skills":invitedSP.role.skills,
-         "chargePerHour": invitedSP.chargePerHour
+         "name" : "lol",
+         "mobileNumber" : 12345678,
+         "emailId" :"manu@gmail.com",
+         "skills":["tester","developer"],
+         "chargePerHour": "1000"
          }
          ],
-      "status":"",
-      "location":""
-      }
-      
-  
-    console.log("after adding all the data",updated);
-    return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/invitedTeam`,updated);
+      "status":"yet to complete",
+      "location":"bangalore"
+      });
       
   }
 } 
