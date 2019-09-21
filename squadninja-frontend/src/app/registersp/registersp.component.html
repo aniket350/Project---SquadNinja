@@ -44,8 +44,55 @@
                         <div class="text-center text-muted mb-4">
                             <small>Or sign up with credentials</small>
                         </div>
-                        <form role="form" (ngsubmit)="onSubmit()">
-                            <div class="form-group">
+                        <form role="form" #registrationspForm= "ngForm">
+<!-- 
+                                <div class="form-group" [class.has-error]="emaill?.touched">
+                                        <label for="username" class="control-label">Username*</label>
+                                        <input required id="username" type="text" class="form-control" name="email"
+                                               [(ngModel)]="user.userName" #emaill="ngModel">
+                                        <span class="help-block" *ngIf="emaill?.errors?.required && emaill?.touched">
+                                          Username is required
+                                        </span>
+                                </div>
+                                <div class="form-group" [class.has-error]="emaill?.invalid && emaill?.touched">
+                                                       <label for="email" class="control-label">Email*</label>
+                                                       <input required pattern= "^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                                                              id="email" type="text" class="form-control" name="email"
+                                                              [(ngModel)]="user.email" #emaill="ngModel">
+                                                       <span class="help-block" *ngIf="emaill?.errors?.required && emaill?.touched">
+                                                               Email is required
+                                                       </span>
+                                                       <span class="help-block" *ngIf="emaill?.errors?.pattern && emaill?.touched">
+                                                         Email is Invalid
+                                                       </span>
+                                                     </div>
+                                                     <div class="form-group " [class.has-error]="passwordd?.invalid && passwordd?.touched">
+                                                           <label for="password" class="control-label">Password*</label>
+                                                           <input required pattern= "^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,15}$"
+                                                                  id="password" type="password" class="form-control" name="password"
+                                                                  [(ngModel)]="user.password" #passwordd="ngModel" >
+                                                           <button id = "passwordFormatButton" mat-raised-button
+                                                                  matTooltip="Password must contain
+                                                                   One Upper case character,
+                                                                   One Lower case character ,
+                                                                   One Numeric value,
+                                                                   One special character
+                                                                   and minimum 8 character & maximum 15 character."
+                                                                  aria-label="Button that displays a tooltip when focused or hovered over" >
+                                                           Pwd Format
+                                                          </button>
+                                                          <span class="help-block" *ngIf="passwordd?.errors?.required && passwordd?.touched">
+                                                                   Password is required
+                                                           </span>
+                                                           <span class="help-block" *ngIf="passwordd?.errors?.pattern && passwordd?.touched">
+                                                             Password is Invalid
+                                                           </span>
+                                                   </div> -->
+                                        
+
+
+
+                             <div class="form-group">
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
@@ -83,9 +130,9 @@
                                         </label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> 
                             <div class="text-center">
-                                <button type="button" [routerLink]="['/login']" routerLinkActive="router-link-active" class="btn btn-primary mt-4" (click)="saveDetails()">Create account</button>
+                                <button type="button" [routerLink]="['/login']" routerLinkActive="router-link-active" class="btn btn-primary mt-4" (click)="saveDetails()" [disabled]="registrationspForm.invalid">Create account</button>
                             </div>
                         </form>
                     </div>
