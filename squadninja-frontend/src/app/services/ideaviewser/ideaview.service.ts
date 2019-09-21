@@ -14,9 +14,11 @@ export class IdeaviewService {
     return this.http.get<IdeaView>(`http://13.235.10.115:8083/api/v1/idea/${title}`);
   }
   remove(title,email):Observable<any>{
+    console.log(title,email);
     return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/removeSelectedSp?title=${title}&emailId=${email}`,(null));
   }
   updateOnAccept(title,email,status):Observable<any>{
+    console.log(title,email,status);
     return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/acceptssp?title=${title}&emailId=${email}&accepted=${status}`,(null));
   }
   updateOnReject(title,email,status):Observable<any>{

@@ -33,7 +33,7 @@
                  <mat-card-title >{{abc.name}}</mat-card-title> 
                 <mat-card-subtitle>Mobile : {{ abc.mobileNo }}</mat-card-subtitle>
                 <mat-card-subtitle>EmailId : {{ abc.email }}</mat-card-subtitle>
-                <mat-card-subtitle>Role : {{abc.role.skills}}</mat-card-subtitle>
+                <mat-card-subtitle>Role : {{abc.role}}</mat-card-subtitle>
                 <mat-card-subtitle>Charge : {{abc.chargePerHour}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
@@ -55,15 +55,15 @@
                 <mat-card-title>{{abc.name}}</mat-card-title>
                 <mat-card-subtitle>Mobile : {{abc.mobileNo}}</mat-card-subtitle>
                 <mat-card-subtitle>EmailId : {{abc.email}}</mat-card-subtitle>
-                <mat-card-subtitle>Role : {{abc.role.skills}</mat-card-subtitle>
+                <mat-card-subtitle>Role : {{abc.role}}</mat-card-subtitle>
                 <mat-card-subtitle>Charge : {{abc.chargePerHour}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
                 <p>
                 </p>
             </mat-card-content>
-            <button type="button" (click)="save(abc.emailId,abc.title)" color="Success">Accept</button>
-            <button type="button" (click)="reject(abc.emailId,abc.title)" color="Success">Reject</button>
+            <button type="button" (click)="save(abc.email,abc.title)" color="Success">Accept</button>
+            <button type="button" (click)="reject(abc.email,abc.title)" color="Success">Reject</button>
         </mat-card> 
      </div> 
      <br>
@@ -76,7 +76,7 @@
                 <mat-card-title>{{abc.name}}</mat-card-title>
                 <mat-card-subtitle>Mobile : {{abc.mobileNo}}</mat-card-subtitle>
                 <mat-card-subtitle>EmailId : {{abc.email}}</mat-card-subtitle>
-                <mat-card-subtitle>Role : {{abc.role.skills}}</mat-card-subtitle>
+                <mat-card-subtitle>Role : {{abc.role}}</mat-card-subtitle>
                 <mat-card-subtitle>Charge : {{abc.chargePerHour}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
