@@ -1,6 +1,7 @@
 package com.stackroute.teammanagementservice.service;
 
 import com.stackroute.teammanagementservice.domain.Idea;
+import com.stackroute.teammanagementservice.dto.AppliedTeamDto;
 import com.stackroute.teammanagementservice.dto.IdeaDto;
 import com.stackroute.teammanagementservice.dto.ServiceProviderDto;
 import com.stackroute.teammanagementservice.exception.IdeaTitleAlreadyExistException;
@@ -29,8 +30,9 @@ public class TeamManagementServiceimpl implements TeamManagementService {
      * Constructor based Dependency injection to inject TeamManagementRepository here
      */
     @Autowired
-    public TeamManagementServiceimpl(TeamManagementRepository teamManagementRepository) {
+    public TeamManagementServiceimpl(TeamManagementRepository teamManagementRepository, RabbitTemplate rabbitTemplate) {
         this.teamManagementRepository = teamManagementRepository;
+        this.rabbitTemplate = rabbitTemplate;
     }
 
     @Value("${appliedTeam.rabbitmq.exchange}")
@@ -76,7 +78,10 @@ public class TeamManagementServiceimpl implements TeamManagementService {
             serviceProviders = retrievedIdea.getAppliedTeam();
         }
         serviceProviders.add(idea.getAppliedTeam().get(0));
-        rabbitTemplate.convertAndSend(appliedTeamExchange,appliedTeamRoutingkey,retrievedIdea);
+        AppliedTeamDto appliedTeamDto = new AppliedTeamDto();
+        appliedTeamDto.setEmail(idea.getAppliedTeam().get(0).getEmail());
+        appliedTeamDto.setIdeaTitle(idea.getTitle());
+        rabbitTemplate.convertAndSend(appliedTeamExchange,appliedTeamRoutingkey,appliedTeamDto);
         return teamManagementRepository.save(retrievedIdea);
     }
     /**

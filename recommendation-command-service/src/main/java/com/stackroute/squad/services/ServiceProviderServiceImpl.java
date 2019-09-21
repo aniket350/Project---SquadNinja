@@ -1,6 +1,7 @@
 package com.stackroute.squad.services;
 
 import com.stackroute.squad.domain.ServiceProvider;
+import com.stackroute.squad.dto.AppliedTeamDto;
 import com.stackroute.squad.dto.IdeaDto;
 import com.stackroute.squad.dto.ServiceProviderDto;
 import com.stackroute.squad.exceptions.ServiceProviderNotFound;
@@ -74,17 +75,10 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
 
   }
   @RabbitListener(queues = "${appliedTeam.rabbitmq.queue}")
-  public void appliedTeam(ServiceProviderDto serviceProviderDto)throws Exception{
-    ServiceProvider serviceProviderData = serviceProviderRepository.findByEmail(serviceProviderDto.getEmail());
-    serviceProviderData.setChargePerHour(serviceProviderDto.getChargePerHour());
-    serviceProviderData.setDomain(serviceProviderDto.getDomain());
-    serviceProviderData.setMobileNo(serviceProviderDto.getMobileNo());
-    serviceProviderData.setName(serviceProviderDto.getName());
-    serviceProviderData.setPreferredLocation(serviceProviderDto.getPreferredLocation());
-    serviceProviderData.setCurrentLocation(serviceProviderDto.getCurrentLocation());
-    serviceProviderRepository.save(serviceProviderData);
+  public void appliedTeam(AppliedTeamDto appliedTeamDto)throws Exception{
+    ServiceProvider serviceProviderData = serviceProviderRepository.findByEmail(appliedTeamDto.getEmail());
     IdeaDto ideaDto1 = new IdeaDto();
-    serviceProviderRepository.setAppliedForRelation(serviceProviderDto.getEmail(), ideaDto1.getTitle());
+    serviceProviderRepository.setAppliedForRelation(appliedTeamDto.getEmail(), appliedTeamDto.getIdeaTitle());
 
   }
   /**
