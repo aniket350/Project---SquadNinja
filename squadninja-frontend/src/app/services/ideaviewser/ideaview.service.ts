@@ -13,17 +13,17 @@ export class IdeaviewService {
     console.log("in getIdea of reg service "+title);
     return this.http.get<IdeaView>(`http://13.235.10.115:8083/api/v1/idea/${title}`);
   }
-  remove(title,emailId):Observable<any>{
-    return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/removeSelectedSp?title=${title}&emailId=${emailId}`,(null));
+  remove(title,email):Observable<any>{
+    return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/removeSelectedSp?title=${title}&emailId=${email}`,(null));
   }
-  updateOnAccept(title,emailId,status):Observable<any>{
-    return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/acceptssp?title=${title}&emailId=${emailId}&accepted=${status}`,(null));
+  updateOnAccept(title,email,status):Observable<any>{
+    return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/acceptssp?title=${title}&emailId=${email}&accepted=${status}`,(null));
   }
-  updateOnReject(title,emailId,status):Observable<any>{
-    return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/acceptssp?title=${title}&emailId=${emailId}&accepted=${status}`,(null));
+  updateOnReject(title,email,status):Observable<any>{
+    return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/acceptssp?title=${title}&emailId=${email}&accepted=${status}`,(null));
   }
-  updateOnJoin(title,emailId,status):Observable<any>{
-    return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/joinedsp,{title=${title}&emailId=${emailId}&accepted=${status}`,(null));
+  updateOnJoin(title,email,status):Observable<any>{
+    return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/joinedsp,{title=${title}&emailId=${email}&accepted=${status}`,(null));
   }
 
   inviteTeam(idea,invitedSP):Observable<IdeaView>{

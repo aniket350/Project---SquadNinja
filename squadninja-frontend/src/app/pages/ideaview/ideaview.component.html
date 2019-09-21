@@ -31,9 +31,9 @@
             <mat-card-header >
                 <div mat-card-avatar class="example-header-image" ></div>
                  <mat-card-title >{{abc.name}}</mat-card-title> 
-                <mat-card-subtitle>Mobile : {{ abc.mobileNumber }}</mat-card-subtitle>
-                <mat-card-subtitle>EmailId : {{ abc.emailId }}</mat-card-subtitle>
-                <mat-card-subtitle>Role : {{abc.skills}}</mat-card-subtitle>
+                <mat-card-subtitle>Mobile : {{ abc.mobileNo }}</mat-card-subtitle>
+                <mat-card-subtitle>EmailId : {{ abc.email }}</mat-card-subtitle>
+                <mat-card-subtitle>Role : {{abc.role.skills}}</mat-card-subtitle>
                 <mat-card-subtitle>Charge : {{abc.chargePerHour}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
@@ -41,7 +41,7 @@
                    
                 </p>
             </mat-card-content>
-            <button type="button" color="Success" (click)="removeCard(abc.emailId)">Remove</button>
+            <button type="button" color="Success" (click)="removeCard(abc.email)">Remove</button>
         </mat-card>
     </div>
     <br />
@@ -53,9 +53,9 @@
             <mat-card-header>
                  <div mat-card-avatar class="example-header-image"></div>
                 <mat-card-title>{{abc.name}}</mat-card-title>
-                <mat-card-subtitle>Mobile : {{abc.mobileNumber}}</mat-card-subtitle>
-                <mat-card-subtitle>EmailId : {{abc.emailId}}</mat-card-subtitle>
-                <mat-card-subtitle>Role : {{abc.skills}}</mat-card-subtitle>
+                <mat-card-subtitle>Mobile : {{abc.mobileNo}}</mat-card-subtitle>
+                <mat-card-subtitle>EmailId : {{abc.email}}</mat-card-subtitle>
+                <mat-card-subtitle>Role : {{abc.role.skills}</mat-card-subtitle>
                 <mat-card-subtitle>Charge : {{abc.chargePerHour}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
@@ -74,9 +74,10 @@
             <mat-card-header>
                 <div mat-card-avatar class="example-header-image"></div>
                 <mat-card-title>{{abc.name}}</mat-card-title>
-                <mat-card-subtitle>Mobile : {{abc.mobileNumber}}</mat-card-subtitle>
-                <mat-card-subtitle>EmailId : {{abc.emailId}}</mat-card-subtitle>
-                <mat-card-subtitle>Role : {{abc.skills}}</mat-card-subtitle>
+                <mat-card-subtitle>Mobile : {{abc.mobileNo}}</mat-card-subtitle>
+                <mat-card-subtitle>EmailId : {{abc.email}}</mat-card-subtitle>
+                <mat-card-subtitle>Role : {{abc.role.skills}}</mat-card-subtitle>
+                <mat-card-subtitle>Charge : {{abc.chargePerHour}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
                 <p>

@@ -16,46 +16,48 @@ export class IdeaView  {
     ];
     appliedTeam: [
         {
-            name: string;
-            mobileNo: string;
-            email: string;
-            role : [{
-                role : string,
-                skills : [string],
-                experience : string
-            }];
-            chargePerHour: string
-        }
-    ];
+            name: string,
+            email: string,
+            mobileNo: number,
+            role : [
+                {
+                    role : string,
+                    skills : [string],
+                    experience : string,
+                }];
+                chargePerHour : string
+            }
+        ];
     invitedTeam: [
         {
-            name: string;
-            mobileNo: string;
-            email: string;
-            role : [{
-                role : string,
-                skills : [string],
-                experience : string
-            }];
-            chargePerHour: string
-        }
-    ];
+            name: string,
+            email: string,
+            mobileNo: number,
+            role : [
+                {
+                    role : string,
+                    skills : [string],
+                    experience : string,
+                }];
+                chargePerHour : string
+            }
+        ];
     selectedTeam: [
         {
-            name: string;
-            mobileNo: string;
-            email: string;
-            role : [{
-                role : string,
-                skills : [string],
-                experience : string
-            }];
-            chargePerHour: string
-        }
-       
-    ];
+            name: string,
+            email: string,
+            mobileNo: number,
+            role : [
+                {
+                    role : string,
+                    skills : [string],
+                    experience : string,
+                }];
+                chargePerHour : string
+            }
+        ];
     status: string;
     postedOn: string;
     postedBy: string;
     location: string;
-} 
+}

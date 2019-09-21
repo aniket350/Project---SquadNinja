@@ -32,7 +32,7 @@ public class TeamManagementServiceimpl implements TeamManagementService {
     @Autowired
     public TeamManagementServiceimpl(TeamManagementRepository teamManagementRepository, RabbitTemplate rabbitTemplate) {
         this.teamManagementRepository = teamManagementRepository;
-        this.rabbitTemplate = rabbitTemplate;
+       this.rabbitTemplate = rabbitTemplate;
     }
 
     @Value("${appliedTeam.rabbitmq.exchange}")
@@ -76,8 +76,10 @@ public class TeamManagementServiceimpl implements TeamManagementService {
             serviceProviders = new ArrayList<>();
         } else {
             serviceProviders = retrievedIdea.getAppliedTeam();
+
         }
         serviceProviders.add(idea.getAppliedTeam().get(0));
+        retrievedIdea.setAppliedTeam(serviceProviders);
         AppliedTeamDto appliedTeamDto = new AppliedTeamDto();
         appliedTeamDto.setEmail(idea.getAppliedTeam().get(0).getEmail());
         appliedTeamDto.setIdeaTitle(idea.getTitle());
@@ -97,6 +99,7 @@ public class TeamManagementServiceimpl implements TeamManagementService {
             serviceProviders = retrievedIdea.getInvitedTeam();
         }
         serviceProviders.add(idea.getInvitedTeam().get(0));
+        retrievedIdea.setInvitedTeam(serviceProviders);
         return teamManagementRepository.save(retrievedIdea);
     }
 
