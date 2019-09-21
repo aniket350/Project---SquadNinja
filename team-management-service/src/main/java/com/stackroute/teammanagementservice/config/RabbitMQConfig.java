@@ -32,6 +32,57 @@ public class RabbitMQConfig {
     }
 
 
+    @Value("${appliedTeam.rabbitmq.queue}")
+    String appliedTeamQueueName;
+
+    @Value("${appliedTeam.rabbitmq.exchange}")
+    String appliedTeamExchange;
+
+    @Value("${appliedTeam.rabbitmq.routingkey}")
+    String appliedTeamRoutingkey;
+
+    @Bean
+    Queue appliedTeamQueue() {
+        return new Queue(appliedTeamQueueName, true);
+    }
+
+    @Bean
+    TopicExchange appliedTeamExchange() {
+        return new TopicExchange(appliedTeamExchange);
+    }
+
+    @Bean
+    Binding bindAppliedTeam(Queue appliedTeamQueue, TopicExchange appliedTeamExchange) {
+        return BindingBuilder.bind(appliedTeamQueue).to(appliedTeamExchange).with(appliedTeamRoutingkey);
+    }
+
+
+
+    @Value("${emailt.rabbitmq.queue}")
+    String emailTeamQueueName;
+
+    @Value("${emailt.rabbitmq.exchange}")
+    String emaileTeamExchange;
+
+    @Value("${appliedTeam.rabbitmq.routingkey}")
+    String emailTeamRoutingkey;
+
+    @Bean
+    Queue emailTeamQueue() {
+        return new Queue(emailTeamQueueName, true);
+    }
+
+    @Bean
+    TopicExchange emailTeamExchange() {
+        return new TopicExchange(emaileTeamExchange);
+    }
+
+    @Bean
+    Binding bindEmailTeam(Queue emailTeamQueue, TopicExchange emailTeamExchange) {
+        return BindingBuilder.bind(emailTeamQueue).to(emailTeamExchange).with(emailTeamRoutingkey);
+    }
+
+
     @Bean
     public Jackson2JsonMessageConverter jsonMessageConverter() {
         return new Jackson2JsonMessageConverter();

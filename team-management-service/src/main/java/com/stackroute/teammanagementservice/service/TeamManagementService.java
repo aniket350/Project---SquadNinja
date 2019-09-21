@@ -26,14 +26,14 @@ public interface TeamManagementService {
     /**
      * AbstractMethod to update if IH accepts particular SP from applied list, delete SP from aplied users and updated to selected team list
      */
-   public  Idea acceptedsp(String tite,String emailId,boolean accepted);
+   public  Idea acceptedsp(String tite,String email,boolean accepted);
 
     /**
      * AbstractMethod to update When SP joins invited ideas. Delete SP from invited list and add him to selected team list
      */
-   public Idea joinsp(String title, String emailId, boolean joined);
+   public Idea joinsp(String title, String email, boolean joined);
 
    public  Idea getDetails(String title);
 
-  public Idea getUpdatedSt(String title,String emailId);
+  public Idea getUpdatedSt(String title,String email);
 }
