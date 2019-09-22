@@ -22,15 +22,16 @@ export class SearchviewComponent implements OnInit {
     this.spprofileserService.getSearchResults(this.search).subscribe((data) => this.searchbar = data);
     console.log(this.searchbar);
 
-     this.inviteIdea=localStorage.getItem("forTeam");
-    // console.log(this.inviteIdea);
-    this.idea = JSON.parse(this.inviteIdea);
-    console.log(this.idea);
+     this.inviteIdea=localStorage.getItem("title");
+    console.log("oninit",this.inviteIdea);
+    // this.idea = JSON.parse(this.inviteIdea);
+    // console.log(this.idea);
   }
 
   onClickInvite(index:any){
     console.log(this.searchbar[index]);
-    this.ideaviewservice.inviteTeam(this.idea,this.searchbar[index]).subscribe((response)=>this.invite=response);
+    console.log("sending from here",this.inviteIdea);
+    this.ideaviewservice.inviteTeam(this.inviteIdea,this.searchbar[index]).subscribe((response)=>this.invite=response);
     console.log("invite team", this.invite);
   }
 }

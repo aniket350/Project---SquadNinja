@@ -24,6 +24,8 @@ export class IdeaviewComponent implements OnInit {
     this.forTeam=localStorage.getItem("forTeam");
     console.log("Forteam" ,this.forTeam);
     this.obj=JSON.parse(this.forTeam);
+    console.log("titleeeeeeeeeeee",this.obj.title);
+    localStorage.setItem("title",this.obj.title);
     this.getIdeaDetails();
   }
   getIdeaDetails() {

@@ -46,7 +46,7 @@ export class  SpprofileserService {
 
   getRecommendationIdeas(emailId):Observable<RecommendCards>{
     console.log("in getbyemail of reg service "+emailId);
-    return this.http.get<RecommendCards>(`http://13.235.10.115:8081/api/v1/skill/${emailId}`);
+    return this.http.get<RecommendCards>(`http://13.235.10.115:8081/api/v1/role/${emailId}`);
   }
 
   getSearchResults(roleName):Observable<SearchData>{
