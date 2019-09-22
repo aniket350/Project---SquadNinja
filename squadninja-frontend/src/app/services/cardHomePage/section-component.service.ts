@@ -1,3 +1,4 @@
+import { IdeaView } from './../ideaviewser/ideaview.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SectionComponentData } from 'src/app/services/cardHomePage/section-component-model';
@@ -26,94 +27,67 @@ myIdeas(emailId):Observable<IdeaDetail[]>{
   return this.http.get<IdeaDetail[]>(`http://13.235.10.115:8090/api/v1/idea/${emailId}`);
 }
 
-addTeamManagement():any {
-  return this.http.post('http://13.235.10.115:8083/api/v1/appliedTeam',
-    {
-      "title":"Magento 2 Olegnax bug fix",
-      "description":"Online Delivery Pizza Application",
-      "duration":"6 months",
-      "domain":"java",
-      "subDomain":"js",
-      "cost":10000,
-      "role":[{
-      "experience":"5 years",
-      "noOfPeople":5,
-      "skills":["php","java"],
-      "roleName":"Developer"}],
-      "selectedTeam":[
-            {
-        "name" : "suri",
-        "mobileNo" : 12345678,
-        "email" :"suri@gmail.com",
-        "role":{
-        "role" : "developer",
-        "experience": "5 years",
-        "skills": ["java","j2ee"]
-        },
-        "chargePerHour": "1000"
-        },
-            {
-        "name" : "shiv",
-        "mobileNo" : 12345678,
-        "email" :"shiv@gmail.com",
-       "role":{
-        "role" : "developer",
-        "experience": "5 years",
-        "skills": ["java","j2ee"]
-        },
-        "chargePerHour": "1000"
-        },
-            {
-        "name" : "sruthi",
-        "mobileNo" : 12345678,
-        "email" :"sruthi@gmail.com",
-        "role":{
-        "role" : "developer",
-        "experience": "5 years",
-        "skills": ["java","j2ee"]
-        },
-        "chargePerHour": "1000"
-        },
-        {
-        "name" : "chintu",
-        "mobileNo" : 12345678,
-        "email" :"chintu@gmail.com",
-          "role":{
-        "role" : "developer",
-        "experience": "5 years",
-        "skills": ["java","j2ee"]
-        },
-        "chargePerHour": "1000"
-        }
-        ],
-        "appliedTeam":[
-            {
-        "name" : "sushmita",
-        "mobileNo" : 12345678,
-        "email" :"sushmita@gmail.com",
-        "role":{
-        "role" : "developer",
-        "experience": "5 years",
-        "skills": ["java","j2ee"]
-        },
-        "chargePerHour": "1000"
-        }
-        ],
-        "invitedTeam":[
-                {
-        "name" : "don",
-        "mobileNo" : 12345678,
-        "email" :"don@gmail.com",
-        "role":{
-        "role" : "developer",
-        "experience": "5 years",
-        "skills": ["java","j2ee"]
-        },
-        "chargePerHour": "1000"
-        }
-        ],
-      "status":"yet to complete",
-      "location":"bangalore"
-      });
+addTeamManagement(ideaTitle,spApplied):Observable<IdeaView> {
+  console.log(ideaTitle);
+  console.log(ideaTitle.title);
+  console.log("naruto5");
+  console.log("@@@@@@@@@@@@@@",spApplied);
+  
+  
+  return this.http.put<IdeaView>('http://13.235.10.115:8083/api/v1/appliedTeam',
+  {
+    "title":ideaTitle.title.trim(),
+    "description":"",
+    "duration":"",
+    "domain":"",
+    "subDomain":"",
+    "cost":0,
+    "role":[{
+    "experience":"",
+    "noOfPeople":0,
+    "skills":["",""],
+    "roleName":""}],
+    "selectedTeam":[
+          {
+      "name" : "",
+      "mobileNo" : 0,
+      "email" :"",
+      "role":{
+      "role" : "",
+      "experience": "",
+      "skills": ["",""]
+      },
+      "chargePerHour": ""
+      }
+      ],
+      "appliedTeam":[
+          {
+      "name" : spApplied.name,
+      "mobileNo" : spApplied.mobileNo,
+      "email" :spApplied.email,
+      "role":{
+      "role" : spApplied.role.role,
+      "experience": spApplied.role.experience,
+      "skills": spApplied.role.skills
+      },
+      "chargePerHour": "1000"
+      }
+      ],
+      "invitedTeam":[
+              {
+      "name" : "",
+      "mobileNo" : 0,
+      "email" :"",
+      "role":{
+      "role" : "",
+      "experience": "",
+      "skills": ["",""]
+      },
+      "chargePerHour": ""
+      }
+      ],
+    "status":"",
+    "location":""
+    });
 }
 }

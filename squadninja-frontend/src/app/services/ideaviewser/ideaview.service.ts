@@ -40,8 +40,6 @@ export class IdeaviewService {
     console.log("invitedsp", invitedSP.role.skills);
     // console.log("Magento 2 Olegnax bug fix");
     console.log(idea);
-    
-    console.log(localStorage.getItem("forTeam"));
 
     return this.http.put<IdeaView>(
       `http://13.235.10.115:8083/api/v1/invitedTeam`,

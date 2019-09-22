@@ -79,10 +79,13 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
 
   apply(cardNumber){
 
-    console.log(this.cardNumber);
+    console.log(cardNumber);
+    console.log(this.recommendCards[cardNumber]);
+    console.log(this.serviceProviderData);
   
-    this.sectionComponentService.addTeamManagement().subscribe(res => {
+    this.sectionComponentService.addTeamManagement(this.recommendCards[cardNumber],this.serviceProviderData).subscribe(res => {
          this.data=res;
+         console.log("#################",this.data);
     }, err => {
       console.log(err)
     });
