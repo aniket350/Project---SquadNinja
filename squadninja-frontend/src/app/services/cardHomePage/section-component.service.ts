@@ -1,3 +1,4 @@
+import { IdeaView } from './../ideaviewser/ideaview.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SectionComponentData } from 'src/app/services/cardHomePage/section-component-model';
@@ -26,61 +27,67 @@ myIdeas(emailId):Observable<IdeaDetail[]>{
   return this.http.get<IdeaDetail[]>(`http://13.235.10.115:8090/api/v1/idea/${emailId}`);
 }
 
-addTeamManagement(modalCardDetails):any {
-  return this.http.post('http://13.235.10.115:8083/api/v1/appliedTeam', {
-    "title":"Magento 2 Olegnax bug fix",
-    "description":"Online Delivery Pizza Application",
-    "domain":"java",
-    "subDomain":"js",
-    "cost":10000,
+addTeamManagement(ideaTitle,spApplied):Observable<IdeaView> {
+  console.log(ideaTitle);
+  console.log(ideaTitle.title);
+  console.log("naruto5");
+  console.log("@@@@@@@@@@@@@@",spApplied);
+  
+  
+  return this.http.put<IdeaView>('http://13.235.10.115:8083/api/v1/appliedTeam',
+  {
+    "title":ideaTitle.title.trim(),
+    "description":"",
+    "duration":"",
+    "domain":"",
+    "subDomain":"",
+    "cost":0,
     "role":[{
-    "experience":"5 years",
-    "noOfPeople":5,
-    "skills":["php","java"],
-    "roleName":"Developer"}],
+    "experience":"",
+    "noOfPeople":0,
+    "skills":["",""],
+    "roleName":""}],
     "selectedTeam":[
-           {
-       "name" : "adithya",
-       "mobileNumber" : 12345678,
-       "emailId" :"adithya@gmail.com",
-       "skills":["tester","developer"],
-       "chargePerHour": "1000"
-       },
-           {
-       "name" : "mansi",
-       "mobileNumber" : 12345678,
-       "emailId" :"mansi@gmail.com",
-       "skills":["tester","developer"],
-       "chargePerHour": "1000"
-       },
-           {
-       "name" : "ramya",
-       "mobileNumber" : 12345678,
-       "emailId" :"ramya@gmail.com",
-       "skills":["tester","developer"],
-       "chargePerHour": "1000"
-       }
-       ],
-       "appliedTeam":[
-       {
-       "name" : "krishnaaaa",
-       "mobileNumber" : 12345678,
-       "emailId" :"mehar@gmail.com",
-       "skills":["tester","developer"],
-       "chargePerHour": "1000"
-       }
-       ],
-       "invitedTeam":[
-               {
-       "name" : "manu",
-       "mobileNumber" : 12345678,
-       "emailId" :"manu@gmail.com",
-       "skills":["tester","developer"],
-       "chargePerHour": "1000"
-       }
-       ],
-    "status":"yet to complete",
-    "location":"bangalore"
+          {
+      "name" : "",
+      "mobileNo" : 0,
+      "email" :"",
+      "role":{
+      "role" : "",
+      "experience": "",
+      "skills": ["",""]
+      },
+      "chargePerHour": ""
+      }
+      ],
+      "appliedTeam":[
+          {
+      "name" : spApplied.name,
+      "mobileNo" : spApplied.mobileNo,
+      "email" :spApplied.email,
+      "role":{
+      "role" : spApplied.role.role,
+      "experience": spApplied.role.experience,
+      "skills": spApplied.role.skills
+      },
+      "chargePerHour": "1000"
+      }
+      ],
+      "invitedTeam":[
+              {
+      "name" : "",
+      "mobileNo" : 0,
+      "email" :"",
+      "role":{
+      "role" : "",
+      "experience": "",
+      "skills": ["",""]
+      },
+      "chargePerHour": ""
+      }
+      ],
+    "status":"",
+    "location":""
     });
 }
 }
