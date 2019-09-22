@@ -48,9 +48,10 @@ export class IdeaviewComponent implements OnInit {
 
   
   removeCard(email) {
+    console.log(email,this.title);
     this.ideaviewService.remove(this.title,email).subscribe((data) =>{
     });
-    // window.location.reload();
+    //window.location.reload();
   }
   save(email){
     console.log(email);
@@ -58,13 +59,14 @@ export class IdeaviewComponent implements OnInit {
     console.log(status);
     this.ideaviewService.updateOnAccept(this.title,email,this.status).subscribe((data) =>{
     });
-    // window.location.reload();
+   // window.location.reload();
   }
   reject(email){
      this.status=false;
+     console.log(email,this.status,this.title);
      this.ideaviewService.updateOnReject(this.title,email,this.status).subscribe((data) =>{
   });
-  // window.location.reload();
+  //window.location.reload();
 }
 
   join(email) {
