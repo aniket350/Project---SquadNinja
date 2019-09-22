@@ -46,6 +46,7 @@ public class IdeaHamsterServiceImpl implements IdeaHamsterService {
 
     @Value("${ihProfile.rabbitmq.exchange}")
     String profileExchange;
+
     @Value("${ihProfile.rabbitmq.routingkey}")
     String profilRoutingkey;
     /**

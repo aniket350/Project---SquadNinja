@@ -36,8 +36,6 @@ export class IdeaviewService {
   }
 
   inviteTeam(idea:string, invitedSP): Observable<IdeaView> {
-    console.log(idea);
-    let title: any =idea ;
     let name: string = invitedSP.name;
     let mobileNo: string = invitedSP.mobileNo;
     let email: string = invitedSP.email;
@@ -46,13 +44,15 @@ export class IdeaviewService {
     let skill: [string] = invitedSP.role.skills;
     let charge: string = invitedSP.chargePerHour;
     console.log("invitedsp", invitedSP.role.skills);
-    console.log("Magento 2 Olegnax bug fix");
+    // console.log("Magento 2 Olegnax bug fix");
     console.log(idea);
+    
+    console.log(localStorage.getItem("forTeam"));
 
     return this.http.put<IdeaView>(
       `http://13.235.10.115:8083/api/v1/invitedTeam`,
       {
-        title: title,
+        title: idea.trim(),
         description: "",
         duration: "",
         domain: "",
