@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IdeaviewService } from 'src/app/services/ideaviewser/ideaview.service';
 import { Observable, interval, Subscription } from 'rxjs';
+import { delay } from 'q';
 
 @Component({
   selector: 'app-ideaview',
@@ -49,7 +50,7 @@ export class IdeaviewComponent implements OnInit {
     console.log(email,this.title);
     this.ideaviewService.remove(this.title,email).subscribe((data) =>{
     });
-    window.location.reload();
+   //window.location.reload();
   }
   save(email){
     console.log(email);
