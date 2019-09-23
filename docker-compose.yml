@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  
+
   eureka-server:
     build: eureka-server/
     restart: always
@@ -54,12 +54,11 @@ services:
       - mysql
       - eureka-server
       - config-service
-      - zuul-api
     restart: always
     network_mode: "host"
     image: email-service
     environment:
-      WAIT_HOSTS: localhost:8761 ,localhost:8888, localhost:8082
+      WAIT_HOSTS: localhost:8761 ,localhost:8888
       WAIT_BEFORE_HOSTS: 20
     ports:
       - 8052:8052
@@ -145,6 +144,7 @@ services:
       - config-service
       - eureka-server
       - rabbitmq
+      - zuul-api
     ports:
       - 8095:8095
 
@@ -158,6 +158,7 @@ services:
       - config-service
       - eureka-server
       - rabbitmq
+      - zuul-api
     ports:
       - 8084:8084
 
@@ -171,6 +172,7 @@ services:
      - config-service
      - eureka-server
      - rabbitmq
+     - zuul-api
     ports:
        - 8090:8090
 
@@ -184,6 +186,7 @@ services:
       - config-service
       - eureka-server
       - rabbitmq
+      - zuul-api
     ports:
       - 8083:8083
   squadninja-frontend:
@@ -203,6 +206,7 @@ services:
       - neo4j
       - config-service
       - eureka-server
+      - zuul-api
     ports:
       - 8081:8081
 

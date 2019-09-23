@@ -24,7 +24,7 @@ public class SkillsServiceImpl implements SkillService {
   }
 
   /**
-   * Implementation of save skills method
+   * Implementation of the method to save the skills
    */
   @Override
   public Skills save(Skills skills) {
@@ -32,7 +32,7 @@ public class SkillsServiceImpl implements SkillService {
   }
 
   /**
-   * Implementation of getAll Skills method
+   * Implementation of the method to get all skills
    */
   @Override
   public List<Skills> getAllSkills() {
@@ -43,7 +43,7 @@ public class SkillsServiceImpl implements SkillService {
 
 
   /**
-   * Implementation of update skills method
+   * Implementation of the method to update the skills
    */
   @Override
   public Skills updateSkills(Skills skills) {

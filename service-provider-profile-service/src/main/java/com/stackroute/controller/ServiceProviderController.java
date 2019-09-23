@@ -29,7 +29,7 @@ public class ServiceProviderController {
     }
 
     /**
-     * PostMapping Annotation for mapping HTTP POST requests onto specific handler methods.
+     * this post mapping is to save the serviceProvider details
      */
     @PostMapping("serviceprovider")
     public ResponseEntity<?> saveTheUser(@RequestBody ServiceProviderDto serviceProviderDto) throws UserAlreadyFoundException {
@@ -53,7 +53,6 @@ public class ServiceProviderController {
      */
     @PutMapping("serviceprovider")
     public ResponseEntity<?> updateTheUser(@RequestBody ServiceProvider provider) throws Exception {
-        System.out.println(provider.toString());
         return new ResponseEntity<ServiceProvider>(serviceProviderService.updateTheProfile(provider), HttpStatus.OK);
 
     }

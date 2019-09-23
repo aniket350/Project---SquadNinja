@@ -36,11 +36,10 @@ public class IdeaServiceImpl implements IdeaService {
 
   @Override
   public Idea saveIdea(Idea idea) throws IdeaAlreadyExistsException {
-    System.out.println(ideaRepository.save(idea));
     return ideaRepository.save(idea);
   }
 
-  /*It recieves the data from idea service*/
+  /*It consumes the data of the idea-service*/
   @RabbitListener(queues = "${idea.rabbitmq.queue}")
   public void receiveData(IdeaDto ideaDTO) throws IdeaAlreadyExistsException {
     Idea idea = new Idea();
@@ -56,13 +55,14 @@ public class IdeaServiceImpl implements IdeaService {
     idea.setPostedOn(ideaDTO.getPostedOn());
     ideaRepository.save(idea);
 
-
+/*it is used for establishing the belongsTo relationship between the idea title and subdomain */
     ideaRepository.setBelongsToRelation(ideaDTO.getTitle(), ideaDTO.getSubDomain().toLowerCase());
-
+/*it is used for setting the requires relationship between the idea title and role*/
     for (int i = 0; i < ideaDTO.getRole().size(); i++) {
       ideaRepository.setRequiresRelation(ideaDTO.getTitle(), ideaDTO.getRole().get(i).getRole().toLowerCase());
 
     }
+    /*It is used for setting the needs relationship between the idea title and skills */
     for (int i = 0; i < ideaDTO.getRole().size(); i++) {
       Role role = new Role();
       role = ideaDTO.getRole().get(i);
@@ -85,7 +85,7 @@ public class IdeaServiceImpl implements IdeaService {
   }
 
   /**
-   * Implementation of getAllIdeas method
+   * Implementation of the method to get all the ideas
    */
   @Override
   public List<Idea> getAllIdeas() throws IdeaNotFoundException {
@@ -95,10 +95,7 @@ public class IdeaServiceImpl implements IdeaService {
 
 
   /**
-   * Implementation of deleteIdea method
-   */
-  /**
-   * Implementation of updateIdea method
+   * Implementation of the method to update the idea
    */
   @Override
   public Idea updateIdea(Idea idea) throws IdeaNotFoundException {
