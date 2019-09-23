@@ -21,5 +21,10 @@
     { "rolename": "tester"},
     { "rolename": "machine learning engineer"},
     { "rolename": "data engineer"},
-    { "rolename": "dotnet developer"}
+    { "rolename": "dotnet developer"},
+    { "rolename": "conference planner"},
+    { "rolename": "event analyst"},
+    { "rolename": "event co-ordinator"},
+    { "rolename": "wedding planner"},
+    { "rolename": "catering"}
 ]

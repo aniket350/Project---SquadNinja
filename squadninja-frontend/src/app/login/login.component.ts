@@ -72,15 +72,18 @@ Login() {
         this.decodedroletoken = this.getDecodedAccessToken(this.token.token);
         this.decodedTokenWithRoleSub = this.decodedroletoken.sub;
         console.log(this.decodedTokenWithRoleSub);
-
         if (this.decodedTokenWithRoleSub === "ideaHamster") {
           // console.log('ideahamster');
+         
           this.router.navigate(['/ihdashboard']);
-        }
+     }
          else {
-         this.router.navigate(['/spdashboard']);
+          this.router.navigate(['/spdashboard']);
+          
+          
         }
         
+
   }},
   (err) => {
     console.log(err);
