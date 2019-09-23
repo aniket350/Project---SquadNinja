@@ -11,92 +11,95 @@ import {HttpClient} from '@angular/common/http';
 export class AutoGenerateTeamComponent implements OnInit {
   public items: any;
   public postedIdeaDetails: any;
-
+ 
+​
   title="";
   obj1:any="";
   obj:any="";
  
-
+​
   tabs=[];
   cards = [];
   x: any = [];
-  // sel = new FormControl(0);
-  // public serviceproviders = [];
-​
-// tslint:disable-next-line:max-line-length
-  constructor(private http:HttpClient,private autogeneratesp:AutogenerateService) { }
+
+  constructor(private autogenerate : AutogenerateService, private http:HttpClient,private autogeneratesp:AutogenerateService) { }
   ngOnInit() {
+​
+// this.getPostedIdeas(); //Aniket code
 
-    // this.autogeneratesp.get().subscribe(res =>{
-    //   this.x=res;
-    //   console.log(this.x);
-    // })
 
-   // this.getPostedIdeas().then(() => this.getTab(0));
     this.title=localStorage.getItem("title");
-    console.log(this.title);
     this.obj=localStorage.getItem("Role");
-    console.log(this.obj);
     this.obj1=JSON.parse(this.obj);
-  
     for(let role of this.obj1){
         this.tabs.push(role.role);
-        console.log("came0");
-        if(role.role===this.x.role){
-          console.log("came1");
-        }
+        this.getAnyTeam(role.role);
       }
-  console.log("came2");
-  this.getAnyTeam();
 }
-
-getAnyTeam(){
-  
-  
-  this.autogeneratesp.getByIdeaTitleAndRoleName(this.title,this.obj1)
+​
+getAnyTeam(role:any){
+  // console.log(role);
+  this.autogeneratesp.getByIdeaTitleAndRoleName(this.title,role)
   .subscribe(data =>{
-    console.log("data from posting an idea "+ this.title,this.obj1);
     this.autogeneratesp=data;
     console.log("after getting back from service",this.autogeneratesp);
   }
   ); 
 }
 
-​
- clickedAccept(item, role) {
-    item.statusA = "Accepted";
-    let designerpath: string = 'http://localhost:3000/' + role + '/' + item.id;
-    console.log(designerpath);
-    let value = 'Accepted';
-    let statusR = 'Reject';
-​
-    this.http.patch(designerpath,{'statusA' : value, 'statusR' : statusR}).subscribe();
 
-  }
-​
-  clickedReject(id) {
-    let despath: string = 'http://localhost:3000/designers/' + id;
-    let value = 'Accept';
-    let statusR = 'Rejected';
-    this.http.patch(despath, {'statusR': statusR,'statusA': value}).subscribe();
-​
-  }
-​
-​
-​
-​
-​
-  // async getPostedIdeas() {
-  //   return new Promise((resolve, reject) =>
-  //   this.autoGenerateTeam.posetedIdeas().subscribe((response) => {
-  //       console.log(response);
-  //       if (response) {
-  //         this.postedIdeaDetails = response;
-  //         }
-  //       }, (err) => {
-  //         console.log(err);
-  //     }
-  //     )
-  //     );
-  // }
+// //Aniket code for autogeneration team
+
+// getTab(value: any) {
+//   console.log(value, 'currentIndex');
+//   this.autogenerate.participantsByRole(this.postedIdeaDetails.role[value].role).subscribe((response) => {
+//   console.log(response);
+//   if (response) {
+//      response = response.map(e => {
+//       e.acceptStatus = 'Accept';
+//       e.rejectStatus = 'Reject';
+//       return e
+//     })
+//     this.items = response;
+//     console.log(this.items);
+//     }
+//     }, (err) => {
+//     console.log(err);
+//   });
+// }
+
+// getPostedIdeas() {
+//   this.autogenerate.posetedIdeas().subscribe((response) => {
+//     console.log(response);
+//     if (response) {
+//       this.postedIdeaDetails = response;
+//       console.log(response);
+//       this.getTab(0);
+//       }
+//     }, (err) => {
+//       console.log(err);
+//   });
+//  }​
+
+// clickedAccept(item, role) {
+//   this.items = this.items.map(e => {
+//     if (item.Emailid == e.Emailid) {
+//       e.rejectStatus = 'Reject';
+//       e.acceptStatus = 'Accepted';
+//     }
+//     return e;
+//  })
+// }
+
+// clickedReject(item , role) {
+//   console.log(item, role);
+//   this.items = this.items.map(e => {
+//       if (item.Emailid == e.Emailid) {
+//         e.rejectStatus = 'Rejected';
+//         e.acceptStatus = 'Accept';
+//       }
+//       return e;
+//   })
+
+// }
 }

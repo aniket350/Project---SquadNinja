@@ -10,15 +10,24 @@ import java.util.Date;
 import java.util.List;
 
 @NodeEntity
+
+/**With @Data, Lombok will generate getter and setter methods, toString methods, Equal & Hashcode methods*/
 @Data
+
+/**@NoArgsConstructor will generate constructor with no arguments*/
 @NoArgsConstructor
+
+/**@AllArgsConstructor will generate constructor with all properties in the class*/
 @AllArgsConstructor
 @Getter
 @Setter
 public class IdeaHamster {
+    /**
+     * Id annotation makes id variable as Primary key
+     */
     @Id @GeneratedValue
-    private long id;
+    private Long id;
     private String name;
-    private int mobile;
+    private String mobile;
     private String email;
 }

@@ -1,53 +1,89 @@
+<div class="header bg-gradient-blue opacity-15 pb-8 pt-5 pt-md-8">
+</div>
 <div class="container">
     <div class="example-button-row">
-        <button mat-button color="primary">Chat</button>
+        <!-- <button mat-button color="primary">Chat</button>
         <button mat-button color="accent">Update Idea</button>
-        <button mat-button color="warn">Delete</button>
-        <button mat-button>Search Service Provider</button>
+        <button mat-button color="warn">Delete</button> -->
+        <!-- <input type="text" placeholder="Search Service Provider"> -->
+  
+        <form class="form-inline md-form mr-auto mb-4">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search Servie Provider" aria-label="Search" #mysearch>
+                <button class="btn btn-outline-warning btn-rounded btn-sm my-0" [routerLink]="['searchsp']" routerLinkActive="router-link-active" (click)="onSearch(mysearch.value)">Search</button>
+              </form>
     </div>
-    <section>
-        <div class="example-container">
-            <mat-form-field>
-                <input matInput placeholder="Project Title" />
-            </mat-form-field>
-            <mat-form-field>
+      <section>
+        <div class="example-container" >
+            <h4><span>Idea Title </span> : {{title}}</h4>
+            <h4> <span> Description </span> : {{description}} </h4>
+         <!-- <mat-form-field>
+                <input matInput  placeholder="Project Title" />
+            </mat-form-field> 
+             <mat-form-field>
                 <textarea matInput placeholder="Project Description"></textarea>
-            </mat-form-field>
+            </mat-form-field>  -->
         </div>
         <h4>Selected Team :</h4>
-    </section>
-    <div class="cards">
-        <mat-card *ngFor="let detail of details; let index = index">
-            <mat-card-header>
-                <div mat-card-avatar class="example-header-image"></div>
-                <mat-card-title>{{ detail.name }}</mat-card-title>
-                <mat-card-subtitle>{{ detail.Domain }}</mat-card-subtitle>
+    </section> 
+    <div class="cards text-white">
+            <div class="example-card" ></div>
+        <mat-card class="example-card " *ngFor="let abc of selectedTeam" >
+            <mat-card-header >
+                <div mat-card-avatar class="example-header-image" ></div>
+                 <mat-card-title >{{abc.name}}</mat-card-title> 
+                <mat-card-subtitle>Mobile : {{ abc.mobileNo }}</mat-card-subtitle>
+                <mat-card-subtitle>EmailId : {{ abc.email }}</mat-card-subtitle>
+                <mat-card-subtitle>Role : {{abc.role}}</mat-card-subtitle>
+                <mat-card-subtitle>Charge : {{abc.chargePerHour}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
                 <p>
-                    Description Of Developer
+                   
                 </p>
             </mat-card-content>
-            <button type="button" color="Success" (click)="removeCard(index)">Remove</button>
+            <button type="button" color="Success" (click)="removeCard(abc.email)">Remove</button>
         </mat-card>
     </div>
     <br />
     <h4>Applied Service Providers :</h4>
     <br />
-    <div class="cards">
-        <mat-card *ngFor="let detail of details; let index = index">
+    <div class="cards" >
+            <div class="example-card" ></div>
+             <mat-card class="example-card" *ngFor = "let abc of appliedTeam">
             <mat-card-header>
-                <div mat-card-avatar class="example-header-image"></div>
-                <mat-card-title>{{ detail.name }}</mat-card-title>
-                <mat-card-subtitle>{{ detail.Domain }}</mat-card-subtitle>
+                 <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{abc.name}}</mat-card-title>
+                <mat-card-subtitle>Mobile : {{abc.mobileNo}}</mat-card-subtitle>
+                <mat-card-subtitle>EmailId : {{abc.email}}</mat-card-subtitle>
+                <mat-card-subtitle>Role : {{abc.role}}</mat-card-subtitle>
+                <mat-card-subtitle>Charge : {{abc.chargePerHour}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
                 <p>
-                    Description Of Developer
                 </p>
             </mat-card-content>
-            <button type="button" color="Success">Accept</button>
-            <button type="button" color="Success">Reject</button>
-        </mat-card>
-    </div>
+            <button type="button" (click)="save(abc.email,abc.title)" color="Success">Accept</button>
+            <button type="button" (click)="reject(abc.email,abc.title)" color="Success">Reject</button>
+        </mat-card> 
+     </div> 
+     <br>
+     <h4> Invited Team :</h4>Remove
+     <div class="cards" >
+        <div class="example-card" ></div>
+        <mat-card class="example-card" *ngFor = "let abc of invitedTeam">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{abc.name}}</mat-card-title>
+                <mat-card-subtitle>Mobile : {{abc.mobileNo}}</mat-card-subtitle>
+                <mat-card-subtitle>EmailId : {{abc.email}}</mat-card-subtitle>
+                <mat-card-subtitle>Role : {{abc.role}}</mat-card-subtitle>
+                <mat-card-subtitle>Charge : {{abc.chargePerHour}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p>
+                </p>
+            </mat-card-content>
+            <button type="button" color="Success">Cancel Invite</button>
+        </mat-card> 
+     </div>  
 </div>

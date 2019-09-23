@@ -1,5 +1,6 @@
 package com.stackroute.teammanagementservice.domain;
 
+import com.stackroute.teammanagementservice.dto.ServiceProviderDto;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -32,11 +33,11 @@ public class Idea {
     private String duration;
     private String domain;
     private String subDomain;
-    private double cost;
+    private String cost;
     private List<Role> role;
-    private List<ServiceProvider> appliedTeam;
-    private List<ServiceProvider> invitedTeam;
-    private List<ServiceProvider> selectedTeam;
+    private List<ServiceProviderDto> appliedTeam;
+    private List<ServiceProviderDto> invitedTeam;
+    private List<ServiceProviderDto> selectedTeam;
     private String status;
     private Date postedOn;
     private String postedBy;

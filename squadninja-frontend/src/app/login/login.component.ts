@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserserviceService } from '../services/userser/userservice.service';
 import {Router} from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
-
-
+// import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+// import {  TemplateRef } from '@angular/core';
 import { RegisterserService } from '../services/registerser/registerser.service';
 
 @Component({
@@ -20,17 +20,19 @@ constructor(private registerser: RegisterserService, private userservice: Userse
 
   focus;
   focus1;
-
+  // private modalService: BsModalService;
+  invalid:boolean=false;
   public role: any;
   // public roles: any;
   public email: any;
   public password: any;
   public token: any;
   public decodedroletoken: any;
-
+  // public modalService: any;
   public ideaHamster:any = "ideaHamster";
 
   public hello:any;
+ 
 
   ngOnInit() {
   }
@@ -52,7 +54,10 @@ constructor(private registerser: RegisterserService, private userservice: Userse
     // console.log(this.tokenInfo);
     this.role = 'ideahamster';
   }
-
+//   closeModal()
+//   {
+//   this.modalService.close();
+// }
   selectSp() {
     this.role = 'serviceprovider';
   }
@@ -86,7 +91,11 @@ Login() {
 
   }},
   (err) => {
+    this.invalid=true;
     console.log(err);
+    //this.closeModal();
+
+    // this.modalRef = this.modalService.show(template);
 });
 
 

@@ -13,26 +13,13 @@ import java.util.List;
 
 @Repository
 public interface TeamRecommendationRepository extends Neo4jRepository<SubDomain, Long> {
-    @Query("match(r:Roles)-[p:played_by]->(sp:ServiceProvider)," +
-            "(i:Idea)-[re:requires]->(r:Roles)-[h:have]->(s:Skills) where " +
-            "i.title={title} and r.roleName={roleName} return sp order by sp.experience desc ")
+    @Query("match (ro:Roles)-[p:played_by]->(s:ServiceProvider),(i:Idea)-[r:requires]->(ro:Roles) where i.title={title} and ro.roleName={roleName} return  s order by s.experience desc ")
     List<ServiceProvider> getTeam(@Param("title") String title, @Param("roleName") String roleName);
 
-    @Query("match (olr:Roles)-[p:played_by]->(s:ServiceProvider)-[w:worked_on]->(i:Idea)," +
-            "(i:Idea)-[r:requires]->(ro:Roles)-[ha:have]->(n:Skills)<-[hav:have]-(re:Roles)<-[req:requires]-" +
-            "(rec:Idea) where not((s:ServiceProvider)-[w:worked_on]->(rec:Idea)) and olr.roleName={roleName} and" +
-            " rec.title={title} with s, collect(n) as na unwind na as ski match (i:Idea)-[r:requires]->(ro:Roles)" +
-            "-[ha:have]->(n:Skills)<-[hav:have]-(re:Roles)<-[req:requires]-(rec:Idea) " +
-            "  return distinct s order by s.experience desc")
+    @Query("match (ro:Roles)-[p:played_by]->(s:ServiceProvider)-[w:worked_on]->(i:Idea),(i:Idea)-[r:requires]->(ro:Roles)<-[re:requires]-(rec:Idea) where not((s:ServiceProvider)-[w:worked_on]->(rec:Idea)) and rec.title={title} and ro.roleName={roleName} return  s")
     List<ServiceProvider> getTeamBasedOnWorkedOnIdea(@Param("title") String title, @Param("roleName") String roleName);
 
-@Query("match (olr:Roles)-[p:played_by]->(s:ServiceProvider)-[w:applied_for]->(i:Idea)," +
-        "(i:Idea)-[r:requires]->(ro:Roles)-[ha:have]->(n:Skills)" +
-        "<-[hav:have]-(re:Roles)<-[req:requires]-(rec:Idea) where not((s:ServiceProvider)-[w:worked_on]" +
-        "->(rec:Idea)) and olr.roleName={roleName} and rec.title={title} with s, collect(n) as na" +
-        " unwind na as ski match (i:Idea)-[r:requires]->(ro:Roles)" +
-        "-[ha:have]->(n:Skills)<-[hav:have]-(olr:Roles)<-[req:requires]-(rec:Idea)" +
-        " where olr.roleName={roleName}  return distinct s order by s.experience desc")
+@Query("match (ro:Roles)-[p:played_by]->(s:ServiceProvider)-[w:applied_for]->(i:Idea),(i:Idea)-[r:requires]->(ro:Roles)<-[re:requires]-(rec:Idea) where not((s:ServiceProvider)-[w:applied_for]->(rec:Idea)) and rec.title={title} and ro.roleName={roleName} return  s")
 List<ServiceProvider> getTeamBasedOnAppliedIdea(@Param("roleName") String rname,@Param("title") String title);
 
 

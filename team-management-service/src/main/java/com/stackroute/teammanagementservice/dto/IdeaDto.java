@@ -4,6 +4,7 @@ import com.stackroute.teammanagementservice.domain.Role;
 import com.stackroute.teammanagementservice.domain.ServiceProvider;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
@@ -19,14 +20,15 @@ import java.util.List;
 
 @Builder
 @ToString
+@Component
 public class IdeaDto {
-    private int id;
+    private String id;
     private String title;
     private String description;
     private String duration;
     private String domain;
     private String subDomain;
-    private double cost;
+    private String cost;
     private List<Role> role;
     private String status;
     private Date postedOn;

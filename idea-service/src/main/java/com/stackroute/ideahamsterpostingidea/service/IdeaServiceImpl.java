@@ -38,6 +38,26 @@ public class IdeaServiceImpl implements IdeaService {
     @Value("${idea.rabbitmq.routingkey}")
     public String routingkey;
 
+    @Value("${ideat.rabbitmq.exchange}")
+    public String teamExchange;
+
+    @Value("${ideat.rabbitmq.routingkey}")
+    public String teamRoutingkey;
+
+    @Value("${ideah.rabbitmq.exchange}")
+    public String hamsterExchange;
+
+    @Value("${ideah.rabbitmq.routingkey}")
+    public String hamsterRoutingkey;
+
+
+    //deleting idea
+    @Value("${ideaDelete.rabbitmq.exchange}")
+    public String deleteExchange;
+
+    @Value("${ideaDelete.rabbitmq.routingkey}")
+    public String deleteRoutingKey;
+
 
     /*
       Implementation of saveTrack method
@@ -51,6 +71,11 @@ public class IdeaServiceImpl implements IdeaService {
 
         Idea savedIdea = ideaRepository.save(idea);
         rabbitTemplate.convertAndSend(exchange, routingkey, idea);
+<<<<<<< HEAD
+=======
+        rabbitTemplate.convertAndSend(teamExchange, teamRoutingkey, idea);
+        rabbitTemplate.convertAndSend(hamsterExchange, hamsterRoutingkey, idea);
+>>>>>>> 9da0b6c67b06cdcadc210947400578278177012b
         if (savedIdea == null) {
             throw new IdeaAlreadyExistException("idea is null");
         }
@@ -109,6 +134,8 @@ public class IdeaServiceImpl implements IdeaService {
     @Override
     public Idea deleteIdeaByTitle(String title) throws IdeaNotFoundException {
         Idea deleteIdeaByTitle = ideaRepository.findByTitle(title);
+        rabbitTemplate.convertAndSend(deleteExchange,deleteRoutingKey,deleteIdeaByTitle);
+        ideaRepository.delete(deleteIdeaByTitle);
         return deleteIdeaByTitle;
     }
 
@@ -121,6 +148,16 @@ public class IdeaServiceImpl implements IdeaService {
     public List<Idea> getRecentIdeas() {
         List<Idea> getRecentIdea = ideaRepository.findAll(Sort.by(Sort.Direction.DESC, "postedOn"));
         return getRecentIdea;
+    }
+
+
+    /**
+     * Implementation of get All ideas by emailId method
+     */
+    @Override
+    public List<Idea> getPostedByIdeas(String postedBy) {
+        List<Idea> getPostedIdea=ideaRepository.findByPostedBy(postedBy);
+        return getPostedIdea;
     }
 
 }

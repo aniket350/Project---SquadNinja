@@ -1,7 +1,7 @@
-<nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--top headroom--pinned">
-    <div class="container">
+ <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom--top headroom--pinned">
+    <div class="container align-items-right">
       <a class="navbar-brand mr-lg-5" [routerLink]="['/home']">
-        <!-- <img src="/"> -->
+         <!-- <img src="/">  -->
       </a>
       <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
             [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
@@ -12,7 +12,7 @@
           <div class="row">
             <div class="col-6 collapse-brand">
               <a [routerLink]="['/home']">
-                <img src="./assets/img/brand/logo.png(with out background)">
+                <img src="./assets/img/brand/logo.png">
               </a>
             </div>
             <div class="col-6 collapse-close">
@@ -25,10 +25,12 @@
           </div>
         </div>
         <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+           <img src="./assets/img/brand/logo.png" height="80px" > 
           <li class="nav-item dropdown">
+            
             <a class="nav-link no-caret" data-toggle="dropdown" role="button">
               <i class="ni ni-ui-04 d-lg-none"></i>
-              <span class="nav-link-inner--text">Take a Tour</span>
+              <span class="nav-link-inner--text">Tour</span>
             </a>
             <div class="dropdown-menu-xl dropdown-menu" >
               <div class="dropdown-menu-inner">
@@ -63,17 +65,13 @@
             </div>
           </li>
         </ul>
-        <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
-          <div class="form-group mb-0" [ngClass]="{ 'focused': focus === true }">
-            <div class="input-group input-group-alternative">
-              <input class="form-control" placeholder="Search" type="text" (focus)="focus = true"
-              (blur)="focus = false">
-              <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fa fa-search"></i></span>
-                </div>
-            </div>
+
+        <div class="input-group md-form form-sm form-1 pl-0">
+            <div class="input-group-prepend">
+              </div>
+            <input name="title" class="form-control my-0 py-1" type="text" placeholder="Search for ideas" aria-label="Search" #searchBar>
+            <button (click)=searchLogs(searchBar.value)>search</button>
           </div>
-        </form>
         <ul class="navbar-nav align-items-lg-center ml-lg-auto">
           <li class="nav-item d-none d-lg-block ml-lg-4">
             <a  [routerLink]="['/login']" class="btn btn-neutral btn-icon">
@@ -87,3 +85,5 @@
     </div>
   </nav>
   
+  
+

@@ -15,27 +15,27 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class IdeaHamsterRabbitMqConfig {
 
-    /* -----------------profile------------------- */
-    @Value("${ihProfile.rabbitmq.queue}")
-    String profileQueueName;
-    @Value("${ihProfile.rabbitmq.exchange}")
-    String profileExchange;
-    @Value("${ihProfile.rabbitmq.routingkey}")
-    String profilRoutingkey;
-    @Bean
-    Queue queueProfile() {
-        return new Queue(profileQueueName, true);
-    }
-    @Bean
-    TopicExchange exchangeProfile() {
-        return new TopicExchange(profileExchange);
-    }
-    @Bean
-    Binding bindingProfile(Queue queueProfile, TopicExchange exchangeProfile) {
-        return  BindingBuilder.bind(queueProfile).to(exchangeProfile).with(profilRoutingkey);
-    }
-//    configuration for consuming ide
-    @Value("${idea.rabbitmq.queue}")
+//    /* -----------------profile------------------- */
+//    @Value("${ihProfile.rabbitmq.queue}")
+//    String profileQueueName;
+//    @Value("${ihProfile.rabbitmq.exchange}")
+//    String profileExchange;
+//    @Value("${ihProfile.rabbitmq.routingkey}")
+//    String profilRoutingkey;
+//    @Bean
+//    Queue queueProfile() {
+//        return new Queue(profileQueueName, true);
+//    }
+//    @Bean
+//    TopicExchange exchangeProfile() {
+//        return new TopicExchange(profileExchange);
+//    }
+//    @Bean
+//    Binding bindingProfile(Queue queueProfile, TopicExchange exchangeProfile) {
+//        return  BindingBuilder.bind(queueProfile).to(exchangeProfile).with(profilRoutingkey);
+//    }
+//    configuration for consuming idea
+    @Value("${ideah.rabbitmq.queue}")
     String ideaQueue;
     @Value("${idea.rabbitmq.exchange}")
     String ideaExchange;
@@ -55,6 +55,32 @@ public class IdeaHamsterRabbitMqConfig {
         return BindingBuilder.bind(queueIdea).to(exchangeIdea).with(ideaKey);
     }
 
+
+// for recommendation command
+
+    @Value("${ihProfile.rabbitmq.queue}")
+    String profileQueue;
+
+    @Value("${ihProfile.rabbitmq.exchange}")
+    String profileExchange;
+
+    @Value("${ihProfile.rabbitmq.routingkey}")
+    String profileRoutingkey;
+
+    @Bean
+    Queue queueProfile() {
+        return new Queue(profileQueue, true);
+    }
+
+    @Bean
+    TopicExchange exchangeProfile() {
+        return new TopicExchange(profileExchange);
+    }
+
+    @Bean
+    Binding bindProfile(Queue queueProfile, TopicExchange exchangeProfile) {
+        return BindingBuilder.bind(queueProfile).to(exchangeProfile).with(profileRoutingkey);
+    }
     @Bean
     public MessageConverter jsonMessageConverter() {
         return new Jackson2JsonMessageConverter();

@@ -1,4 +1,7 @@
-import { Component ,OnInit } from '@angular/core';
+import { Component ,OnInit, ɵɵinjectAttribute } from '@angular/core';
+import { TeamManagementServiceService } from '../team-management-service.service';
+import { from } from 'rxjs';
+import { log } from 'util';
 
 @Component({
   selector: 'app-fussion-chart',
@@ -7,46 +10,62 @@ import { Component ,OnInit } from '@angular/core';
 })
 export class FussionChartComponent {
   dataSource: Object;
-  
-  
-
-  constructor() {
-    this.dataSource = {
-      chart: {
-        caption: " IdeaHamster [2018-19]",
-        subCaption: "In Idea = One Million barrels",
-        xAxisName: "MyIdea",
-        yAxisName: "Work on Idea",
-        numberSuffix: "k",
-        theme: "fusion"
-      },
-      // Chart Data
-      data: [
-        {
-          label: "InvitedTeam",
-          value: "2"
-        },
-        {
-          label: "AppliedTeam",
-          value: "5"
-        },
-        {
-          label: "SelectedTeam",
-          value: "5"
-        },
-        {
-          label: "PostedIdea",
-          value: "6"
-        },
-       
-      ]
-    }; // end of this
+  label:any;
+  value:any;
+  constructor(
+    private teamManagementService: TeamManagementServiceService) {
    }
+   //public title : 'Application';
 
   ngOnInit() {
     
+    this.teamManagementService.getRecentEntity('Application').subscribe(data => {
+      const invitedTeam = data.invitedTeam.length;
+      const selectedTeam = data.selectedTeam.length;
+      const appliedTeam = data.appliedTeam.length;
+
+      this.dataSource = {
+        chart: {
+          caption: " IdeaHamster [2018-19]",
+          subCaption: "In Idea = One Million barrels",
+          xAxisName: "MyIdea",
+          yAxisName: "Work on Idea",
+          numberSuffix: "k",
+          theme: "fusion"
+        },
+        
+        // Chart Data
+        data: [
+          {
+            label: "InvitedTeam",
+            value: invitedTeam
+          },
+          {
+            label: "AppliedTeam",
+            value: appliedTeam
+          },
+          {
+            label: "SelectedTeam",
+            value: selectedTeam
+
+          }, 
+
+        ]
+
+      }
+      console.log(this.dataSource)
+    });
   }
-
-
-
+  
+// getCharts()
+// this.TeamManagementServiceService.getFusion().subscribe((response)=>
+// {
+//   console.log(`Response: $(response)`);
+//   if(response)
+//   {
+//     this
+//   }
+  
 }
+
+

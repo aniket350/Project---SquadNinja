@@ -1,3 +1,4 @@
+<!-- <app-navbar></app-navbar> -->
 <main>
     <section class="section section-shaped section-lg">
       <div class="shape shape-style-1 bg-gradient-default">
@@ -14,7 +15,7 @@
         <div class="row justify-content-center">
           <div class="col-lg-5">
             <div class="card bg-secondary shadow border-0">
-              <div class="card-header bg-white pb-5">
+              <!-- <div class="card-header bg-white pb-5">
                 <div class="text-muted text-center mb-3">
                   <small>Sign in with</small>
                 </div>
@@ -26,13 +27,52 @@
                     <span class="btn-inner--text">Google</span>
                   </a>
                 </div>
-              </div>
+              </div> -->
               <div class="card-body px-lg-5 py-lg-5">
                 <div class="text-center text-muted mb-4">
-                  <small>Or sign in with credentials</small>
+                  <h5> Sign In </h5>
                 </div>
-                <form role="form">
-                  <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                <!-- <h2 *ngIf="invalid">Invalid credentials!!</h2> -->
+                <form role="form" #loginForm= "ngForm">
+                  <h2 *ngIf="invalid">Invalid credentials!!</h2>
+
+                  <!-- ---------Aniket code------------ -->
+
+                  <!-- email  -->
+
+                  <div class="form-group" [class.has-error]="emaill?.invalid && emaill?.touched">
+                    <label for="email" class="control-label">Email*</label>
+                    <input required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                           id="email" type="text" class="form-control" name="email"
+                           [(ngModel)]="email" #emaill="ngModel">
+                    <span class="help-block" *ngIf="emaill?.errors?.required && emaill?.touched" style="color:red">
+                      Email is required
+                    </span>
+                    <span class="help-block" *ngIf="emaill?.errors?.pattern && emaill?.touched" style="color:red">
+                      Email is invalid
+                    </span>
+                  </div>
+
+                  <!-- password -->
+
+                  <div class="form-group" [class.has-error]="passwordd.touched && passwordd.invalid">
+                    <label for="password" class="control-label">Password*</label>
+                    <input id="password" required type="password" class="form-control" name="password" [(ngModel)]="password" #passwordd="ngModel">
+                    <span class="help-block" *ngIf="passwordd?.touched && passwordd?.errors?.required" style="color:red">
+                      Password is required
+                    </span>
+                  </div>
+
+
+
+
+
+
+
+
+
+
+                  <!-- <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
                     <div class="input-group input-group-alternative">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-email-83"></i></span>
@@ -47,7 +87,7 @@
                       </div>
                       <input class="form-control" placeholder="Password" type="password"  name="password  " [(ngModel)]="password" (focus)="focus1=true" (blur)="focus1=false" >
                     </div>
-                  </div>
+                  </div> -->
                   <div class="custom-control custom-control-alternative custom-checkbox">
                     <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
                     <label class="custom-control-label" for=" customCheckLogin">
@@ -55,33 +95,55 @@
                     </label>
                   </div>
                   <div class="text-center">
-                    <button  type="button" class="btn btn-primary my-4" (click)="Login()">Sign in</button>
+                    <button  type="button" class="btn btn-primary my-4" (click)="Login()" [disabled]="loginForm.invalid">Sign in</button>
                     <!-- <button [routerLink]="['/ihdashboard']" routerLinkActive="router-link-active" type="button" class="btn btn-primary my-4">Sign in</button> -->
                     <!-- <button [routerLink]="['/spdashboard']" routerLinkActive="router-link-active" type="button" class="btn btn-primary my-4">Sign sp</button> -->
+
+
+                    <!-- <ng-template  #template>
+                        <div class="modal-header">
+                           <button
+                            type="button"
+                            class="close pull-right"
+                            aria-label="Close"
+                            (click)="modalRef.hide()"
+                          >
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                        <h2>Invalid</h2>
+                        </div>
+                      </ng-template> -->
+
+
+
+                      <div class="col-14 text-right">
+                          <a href="/" class="text-light">
+                            <a [routerLink]="['/register']" routerLinkActive="router-link-active" (click)="selectIh()">New Idea hamster?</a> <br>
+                          </a>
+                          <a href="javascript:void(0)" class="text-light"  >
+                          <a [routerLink]="['/registersp']" routerLinkActive="router-link-active" (click)="selectSp()">New Service provider?</a>
+                          </a>
+                        </div>
 
                   </div>
                 </form>
               </div>
             </div>
             <div class="row mt-3">
-              <div class="col-6">
+              <!-- <div class="col-6">
                 <a href="javascript:void(0)" class="text-light">
                   <small>Forgot password?</small>
                 </a>
-              </div>
-              <div class="col-6 text-right">
-                <a href="/" class="text-light">
-                  <a [routerLink]="['/register']" routerLinkActive="router-link-active" (click)="selectIh()">New Idea hamster?</a> <br>
-                </a>
-                <a href="javascript:void(0)" class="text-light"  >
-                <a [routerLink]="['/registersp']" routerLinkActive="router-link-active" (click)="selectSp()">New Service provider?</a>
-                </a>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
       </div>
+
     </section>
+
   </main>
   <!-- <router-outlet></router-outlet> -->
 

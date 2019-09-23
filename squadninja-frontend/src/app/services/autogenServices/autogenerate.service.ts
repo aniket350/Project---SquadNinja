@@ -9,13 +9,21 @@ import { Observable } from 'rxjs';
 export class AutogenerateService {
 
   constructor(private http:HttpClient) { }
+
   getByIdeaTitleAndRoleName(title,role):any{
     console.log("in getbyemail of reg service ",title,role);
-    return this.http.get<any>(`http://13.235.10.115:8081/api/v1/applied/${title}?roleName=${role.role} `);
+    console.log();
+    return this.http.get<any>(`http://13.235.10.115:8081/api/v1/applied/${title}?roleName=${role} `);
   }
 
-  // get():any{
-  //   return this.http.get<any>(`http://localhost:3000/ServiceProviderTest`);
-  // }
+  //Aniket code
+
+//   posetedIdeas(): Observable <any> {
+//    return this.http.get('http://localhost:3000/postAnIdeaDetails');
+//  }
+//  participantsByRole(role): Observable <any> {
+//    return this.http.get('http://localhost:3000/' + role);
+//  }
+
 
 }

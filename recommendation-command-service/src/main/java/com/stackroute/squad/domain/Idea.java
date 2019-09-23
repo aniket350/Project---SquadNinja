@@ -28,7 +28,7 @@ public class Idea
     private String title;
     private String description;
     private String duration;
-    private double cost;
+    private String cost;
     private String status;
     private String postedBy;
     private Date postedOn;
@@ -37,7 +37,7 @@ public class Idea
     private SubDomain subDomain;
     //Idea requires roles
     @Relationship(type = "requires", direction = Relationship.OUTGOING)
-    private List<Roles> roles;
+    private List<Roles> role;
     //Idea needs skills
     @Relationship(type = "needs", direction = Relationship.OUTGOING)
     private List<Skills> skills;

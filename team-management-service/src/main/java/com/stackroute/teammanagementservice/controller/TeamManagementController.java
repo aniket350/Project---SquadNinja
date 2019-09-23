@@ -38,6 +38,19 @@ public class TeamManagementController {
         return responseEntity;
     }
 
+    @GetMapping("idea/{title}")
+    public ResponseEntity<?> getIdeaDetails(@PathVariable String title){
+        Idea retrievedDetails = teamManagementService.getDetails(title);
+        return new ResponseEntity<>(retrievedDetails,HttpStatus.ACCEPTED);
+    }
+
+    @PutMapping("removeSelectedSp")
+        public ResponseEntity<?> getUpdatedst(@RequestParam ("title") String title,@RequestParam ("email") String email){
+            Idea retrievedst = teamManagementService.getUpdatedSt(title,email);
+            return new ResponseEntity<>(retrievedst,HttpStatus.OK);
+        }
+
+
 
     /**
      * PutMapping Annotation for mapping HTTP PuT requests onto specific handler methods.
@@ -78,8 +91,8 @@ public class TeamManagementController {
      * It Takes title,emailId and boolean status to delete and update particular ServiceProvider.
      */
     @PutMapping("acceptssp")
-    public ResponseEntity<?> acceptServiceProvider(@RequestParam("title") String title, @RequestParam("emailId") String emailId,@RequestParam boolean accepted){
-        Idea acceptedsp = teamManagementService.acceptedsp(title,emailId,accepted);
+    public ResponseEntity<?> acceptServiceProvider(@RequestParam("title") String title, @RequestParam("email") String email,@RequestParam boolean accepted){
+        Idea acceptedsp = teamManagementService.acceptedsp(title,email,accepted);
         return new ResponseEntity<>(acceptedsp, HttpStatus.ACCEPTED);
 
     }
@@ -91,16 +104,11 @@ public class TeamManagementController {
      * It Takes title,emailId and boolean status to delete and update particular ServiceProvider.
      */
     @PutMapping("joinedsp")
-    public ResponseEntity<?> joinedServiceProvider(@RequestParam("title") String title,@RequestParam("emailId") String emailId,@RequestParam boolean joined){
-        Idea joinedsp = teamManagementService.joinsp(title,emailId,joined);
+    public ResponseEntity<?> joinedServiceProvider(@RequestParam("title") String title,@RequestParam("email") String email,@RequestParam boolean joined){
+        Idea joinedsp = teamManagementService.joinsp(title,email,joined);
         return new ResponseEntity<>(joinedsp,HttpStatus.ACCEPTED);
     }
 
 
-    @GetMapping("idea/{title}")
-    public ResponseEntity<?> getIdeaDetails(@PathVariable String title){
-        Idea retrievedDetails = teamManagementService.getDetails(title);
-        return new ResponseEntity<>(retrievedDetails,HttpStatus.ACCEPTED);
-    }
 
 }

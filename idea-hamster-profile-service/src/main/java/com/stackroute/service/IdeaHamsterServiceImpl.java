@@ -55,10 +55,12 @@ public class IdeaHamsterServiceImpl implements IdeaHamsterService {
     public IdeaHamster saveIdeaHamster(IdeaHamsterDto provider) {
 
         amqpTemplate.convertAndSend(exchange, routingkey, provider);
-
+        System.out.println("sent to login="+provider);
         IdeaHamster ih = new IdeaHamster();
         ih.setName(provider.getUserName());
         ih.setEmail(provider.getEmail());
+        System.out.println("sent to recommendation="+ih.toString());
+        amqpTemplate.convertAndSend(profileExchange,profilRoutingkey, ih);
 
         return ideaHamsterRepository.save(ih);
     }
@@ -85,14 +87,13 @@ public class IdeaHamsterServiceImpl implements IdeaHamsterService {
 
         System.out.println(ideaHamster.toString());
         IdeaHamster updateServiceProvider = ideaHamsterRepository.save(ideaHamster);
-        amqpTemplate.convertAndSend(profileExchange,profilRoutingkey, ideaHamster);
         return updateServiceProvider;
     }
 
 
 
 //    annotations is performed by registering a RabbitListenerAnnotationBeanPostProcessor.
-    @RabbitListener(queues = "${idea.rabbitmq.queue}")
+    @RabbitListener(queues = "${ideah.rabbitmq.queue}")
     public void getPostedIdea(IdeaDto ideaDto) {
         System.out.println("recieved="+ideaDto.toString());
         Optional optional = ideaHamsterRepository.findById(ideaDto.getPostedBy());
