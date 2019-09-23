@@ -14,13 +14,13 @@ import java.util.List;
 @Repository
 public interface TeamRecommendationRepository extends Neo4jRepository<SubDomain, Long> {
     @Query("match (ro:Roles)-[p:played_by]->(s:ServiceProvider),(i:Idea)-[r:requires]->(ro:Roles) where i.title={title} and ro.roleName={roleName} return  s order by s.experience desc ")
-    List<ServiceProvider> getTeam(@Param("title") String title, @Param("roleName") String roleName);
+    List<ServiceProvider> findTeam(@Param("title") String title, @Param("roleName") String roleName);
 
     @Query("match (ro:Roles)-[p:played_by]->(s:ServiceProvider)-[w:worked_on]->(i:Idea),(i:Idea)-[r:requires]->(ro:Roles)<-[re:requires]-(rec:Idea) where not((s:ServiceProvider)-[w:worked_on]->(rec:Idea)) and rec.title={title} and ro.roleName={roleName} return  s")
-    List<ServiceProvider> getTeamBasedOnWorkedOnIdea(@Param("title") String title, @Param("roleName") String roleName);
+    List<ServiceProvider> findTeamBasedOnWorkedOnIdea(@Param("title") String title, @Param("roleName") String roleName);
 
 @Query("match (ro:Roles)-[p:played_by]->(s:ServiceProvider)-[w:applied_for]->(i:Idea),(i:Idea)-[r:requires]->(ro:Roles)<-[re:requires]-(rec:Idea) where not((s:ServiceProvider)-[w:applied_for]->(rec:Idea)) and rec.title={title} and ro.roleName={roleName} return  s")
-List<ServiceProvider> getTeamBasedOnAppliedIdea(@Param("roleName") String rname,@Param("title") String title);
+List<ServiceProvider> findTeamBasedOnAppliedIdea(@Param("roleName") String rname,@Param("title") String title);
 
 
 }
