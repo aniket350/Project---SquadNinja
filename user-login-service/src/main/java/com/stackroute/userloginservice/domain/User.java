@@ -19,14 +19,4 @@ public class User {
     private String role;
     private String password;
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "emailId='" + emailId + '\'' +
-                ", role='" + role + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
-
-
 }
