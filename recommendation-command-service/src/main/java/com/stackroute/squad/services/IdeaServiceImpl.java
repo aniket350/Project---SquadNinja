@@ -43,29 +43,32 @@ public class IdeaServiceImpl implements IdeaService {
   /*It recieves the data from idea service*/
   @RabbitListener(queues = "${idea.rabbitmq.queue}")
   public void receiveData(IdeaDto ideaDTO) throws IdeaAlreadyExistsException {
-    System.out.println("received in recommendation"+ideaDTO.toString());
     Idea idea = new Idea();
     idea.setTitle(ideaDTO.getTitle());
+    if (ideaRepository.findByTitle(idea.getTitle()) != null) {
+
+      throw new IdeaAlreadyExistsException("idea already exist");
+    }
     idea.setDescription(ideaDTO.getDescription());
     idea.setDuration(ideaDTO.getDuration());
     idea.setCost(ideaDTO.getCost());
     idea.setStatus(ideaDTO.getStatus());
     idea.setPostedOn(ideaDTO.getPostedOn());
     ideaRepository.save(idea);
-    System.out.println("recieved="+idea.toString());
+
+
     ideaRepository.setBelongsToRelation(ideaDTO.getTitle(), ideaDTO.getSubDomain().toLowerCase());
 
     for (int i = 0; i < ideaDTO.getRole().size(); i++) {
-      System.out.println("relationship "+ ideaDTO.getTitle()+ ideaDTO.getRole().get(i).getRole());
       ideaRepository.setRequiresRelation(ideaDTO.getTitle(), ideaDTO.getRole().get(i).getRole().toLowerCase());
-    }
 
+    }
     for (int i = 0; i < ideaDTO.getRole().size(); i++) {
       Role role = new Role();
       role = ideaDTO.getRole().get(i);
       for (int j = 0; j < role.getSkills().size(); j++) {
-        System.out.println("relationship with skills");
         ideaRepository.setNeedsRelation(ideaDTO.getTitle(), role.getSkills().get(j).toLowerCase());
+
       }
     }
 

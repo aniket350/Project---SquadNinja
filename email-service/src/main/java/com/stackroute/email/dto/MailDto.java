@@ -24,6 +24,8 @@ getter and setter methods
 @Component
 public class MailDto {
     private String to;
+    private String from;
     private String subject;
     private String body;
+    private String title;
 }

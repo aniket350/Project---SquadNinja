@@ -1,4 +1,4 @@
-package com.stackroute.teammanagementservice.dto;
+package com.stackroute.squad.dto;
 
 import lombok.*;
 import org.springframework.stereotype.Component;
@@ -16,12 +16,7 @@ import org.springframework.stereotype.Component;
 @Builder
 @ToString
 @Component
-public class EmailDto {
-    //@Value("${email.subject}")
-    private String subject = "Squad Ninja";
-    private String title;
-    private String to;
-   // @Value("${email.from}")
-    private String from ="squadninjasr@gmail.com";
-    private String body;
+public class WorkedTeamDto {
+  private String email;
+  private String ideaTitle;
 }

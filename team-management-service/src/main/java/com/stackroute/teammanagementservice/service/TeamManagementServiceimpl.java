@@ -1,10 +1,7 @@
 package com.stackroute.teammanagementservice.service;
 
 import com.stackroute.teammanagementservice.domain.Idea;
-import com.stackroute.teammanagementservice.dto.AppliedTeamDto;
-import com.stackroute.teammanagementservice.dto.EmailDto;
-import com.stackroute.teammanagementservice.dto.IdeaDto;
-import com.stackroute.teammanagementservice.dto.ServiceProviderDto;
+import com.stackroute.teammanagementservice.dto.*;
 import com.stackroute.teammanagementservice.exception.IdeaTitleAlreadyExistException;
 import com.stackroute.teammanagementservice.repository.TeamManagementRepository;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -42,6 +39,21 @@ public class TeamManagementServiceimpl implements TeamManagementService {
     @Value("${appliedTeam.rabbitmq.routingkey}")
     String appliedTeamRoutingkey;
 
+
+    @Value("${email.rabbitmq.exchange}")
+    String emailTeamExchange;
+
+    @Value("${email.rabbitmq.routingkey}")
+    String emailTeamRoutingkey;
+
+
+
+
+    @Value("${invitedIdea.rabbitmq.exchange}")
+    String invitedTeamExchange;
+
+    @Value("${invitedIdea.rabbitmq.routingkey}")
+    String invitedTeamRoutingkey;
 
     /**
      * Implementation of saveIdea method
@@ -101,9 +113,34 @@ public class TeamManagementServiceimpl implements TeamManagementService {
         }
         serviceProviders.add(idea.getInvitedTeam().get(0));
         retrievedIdea.setInvitedTeam(serviceProviders);
+
         EmailDto emailDto = new EmailDto();
-        emailDto.setEmail(idea.getInvitedTeam().get(0).getEmail());
+        emailDto.setTo(idea.getInvitedTeam().get(0).getEmail());
+        emailDto.setTitle(idea.getTitle());
+        emailDto.setBody("You Are Invited For"+emailDto.getTitle());
+        rabbitTemplate.convertAndSend(emailTeamExchange,emailTeamRoutingkey,emailDto);
+
+        InvitedDto invitedDto = new InvitedDto();
+       // IdeaDto ideaDto = new IdeaDto();
+        invitedDto.setTitle(retrievedIdea.getTitle());
+        invitedDto.setDescription(retrievedIdea.getDescription());
+        invitedDto.setDuration(retrievedIdea.getDuration());
+        invitedDto.setDomain(retrievedIdea.getDomain());
+        invitedDto.setSubDomain(retrievedIdea.getSubDomain());
+        invitedDto.setCost(retrievedIdea.getCost());
+        invitedDto.setRole(retrievedIdea.getRole());
+        invitedDto.setStatus(retrievedIdea.getStatus());
+        invitedDto.setPostedOn(retrievedIdea.getPostedOn());
+        invitedDto.setPostedBy(retrievedIdea.getPostedBy());
+        invitedDto.setLocation(retrievedIdea.getLocation());
+        invitedDto.setInviteeEmailId(idea.getInvitedTeam().get(0).getEmail());
+        System.out.println(invitedDto);
+        rabbitTemplate.convertAndSend(invitedTeamExchange,invitedTeamRoutingkey,invitedDto);
+
+
+        System.out.println(emailDto);
         return teamManagementRepository.save(retrievedIdea);
+
     }
 
     /**

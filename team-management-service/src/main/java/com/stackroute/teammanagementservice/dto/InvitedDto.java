@@ -1,7 +1,11 @@
 package com.stackroute.teammanagementservice.dto;
 
+import com.stackroute.teammanagementservice.domain.Role;
 import lombok.*;
 import org.springframework.stereotype.Component;
+
+import java.util.Date;
+import java.util.List;
 
 /**With @Data, Lombok will generate getter and setter methods, toString methods, Equal & Hashcode methods*/
 @Data
@@ -16,12 +20,17 @@ import org.springframework.stereotype.Component;
 @Builder
 @ToString
 @Component
-public class EmailDto {
-    //@Value("${email.subject}")
-    private String subject = "Squad Ninja";
+public class InvitedDto {
     private String title;
-    private String to;
-   // @Value("${email.from}")
-    private String from ="squadninjasr@gmail.com";
-    private String body;
+    private String description;
+    private String duration;
+    private String domain;
+    private String subDomain;
+    private String cost;
+    private List<Role> role;
+    private String status;
+    private Date postedOn;
+    private String postedBy;
+    private String location;
+    private String inviteeEmailId;
 }

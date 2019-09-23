@@ -52,35 +52,35 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    Binding bindAppliedTeam(Queue appliedTeamQueue, TopicExchange appliedTeamExchange) {
+    Binding bindinvitedTeam(Queue appliedTeamQueue, TopicExchange appliedTeamExchange) {
         return BindingBuilder.bind(appliedTeamQueue).to(appliedTeamExchange).with(appliedTeamRoutingkey);
     }
 
 
+    @Value("${invitedIdea.rabbitmq.queue}")
+    String invitedTeamQueueName;
 
-    @Value("${emailt.rabbitmq.queue}")
-    String emailTeamQueueName;
+    @Value("${invitedIdea.rabbitmq.exchange}")
+    String invitedTeamExchange;
 
-    @Value("${emailt.rabbitmq.exchange}")
-    String emaileTeamExchange;
-
-    @Value("${appliedTeam.rabbitmq.routingkey}")
-    String emailTeamRoutingkey;
+    @Value("${invitedIdea.rabbitmq.routingkey}")
+    String invitedTeamRoutingkey;
 
     @Bean
-    Queue emailTeamQueue() {
-        return new Queue(emailTeamQueueName, true);
+    Queue invitedTeamQueue() {
+        return new Queue(invitedTeamQueueName, true);
     }
 
     @Bean
-    TopicExchange emailTeamExchange() {
-        return new TopicExchange(emaileTeamExchange);
+    TopicExchange invitedTeamExchange() {
+        return new TopicExchange(invitedTeamExchange);
     }
 
     @Bean
-    Binding bindEmailTeam(Queue emailTeamQueue, TopicExchange emailTeamExchange) {
-        return BindingBuilder.bind(emailTeamQueue).to(emailTeamExchange).with(emailTeamRoutingkey);
+    Binding bindAppliedTeam(Queue appliedTeamQueue, TopicExchange appliedTeamExchange) {
+        return BindingBuilder.bind(appliedTeamQueue).to(appliedTeamExchange).with(invitedTeamRoutingkey);
     }
+
 
 
     @Bean
