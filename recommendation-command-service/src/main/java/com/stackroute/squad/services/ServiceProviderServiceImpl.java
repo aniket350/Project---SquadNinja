@@ -30,14 +30,14 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
   }
 
   /**
-   * Implementation of save Service provider method
+   * Implementation of the  method to save the new service provider
    */
   @Override
   public ServiceProvider save(ServiceProvider serviceProvider) throws ServiceProviderAlreadyExistException {
     return serviceProviderRepository.save(serviceProvider);
   }
 
-  /*It will listen the data from spProfile queue*/
+  /*It will consume the data from spProfile queue*/
   @RabbitListener(queues = "${spProfile.rabbitmq.queue}")
   public void receiveData(ServiceProviderDto serviceProviderDto) throws ServiceProviderAlreadyExistException {
 
@@ -56,7 +56,7 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
     serviceProviderRepository.save(serviceProvider);
   }
 
-  /*It will listen the data from spProfile queue*/
+  /*It will listen the data from spProfile queue used for updating the serviceProvider profile data*/
   @RabbitListener(queues = "${spUpdate.rabbitmq.queue}")
   public void updatedServiceProvider(ServiceProviderDto serviceProviderDto) throws ServiceProviderNotFoundException {
 
@@ -73,8 +73,9 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
     retrievedServiceProvider.setPreferredLocation(serviceProviderDto.getPreferredLocation());
     retrievedServiceProvider.setCurrentLocation(serviceProviderDto.getCurrentLocation());
     serviceProviderRepository.save(retrievedServiceProvider);
-    System.out.println(serviceProviderDto.getRole());
+    /*it is used for setting the relationship between the serviceProvider emailId and the role of the serviceProvider*/
     serviceProviderRepository.setPlayedByRelation(serviceProviderDto.getEmail(), serviceProviderDto.getRole().getRole().toLowerCase());
+    /*it is used for setting the relationshiip between the serviceprovider emailId and the serviceprovider skills*/
     for (int i = 0; i < serviceProviderDto.getRole().getSkills().size(); i++) {
       serviceProviderRepository.setHasSkillsRelation(serviceProviderDto.getEmail(), serviceProviderDto.getRole().getSkills().get(i).toLowerCase());
     }
@@ -82,13 +83,16 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
 
   }
 
+  /*it is used for consuming the data from team-management-service and get the appliedTeam*/
   @RabbitListener(queues = "${appliedTeam.rabbitmq.queue}")
   public void appliedTeam(AppliedTeamDto appliedTeamDto) throws ServiceProviderAlreadyExistException {
     ServiceProvider serviceProviderData = serviceProviderRepository.findByEmail(appliedTeamDto.getEmail());
     IdeaDto ideaDto1 = new IdeaDto();
+    /*it is used for setting the relationship between the service provider email and idea title*/
     serviceProviderRepository.setAppliedForRelation(appliedTeamDto.getEmail(), appliedTeamDto.getIdeaTitle());
 
   }
+  /*it is used for consuming the data from team-management-service and get the workedTeam*/
   @RabbitListener(queues = "${workedOn.rabbitmq.queue}")
   public void workedOn(WorkedTeamDto workedTeamDto) throws ServiceProviderAlreadyExistException {
     ServiceProvider serviceProviderData1 = serviceProviderRepository.findByEmail(workedTeamDto.getEmail());
