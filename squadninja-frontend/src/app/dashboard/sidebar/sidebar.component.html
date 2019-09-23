@@ -1,26 +1,22 @@
 <nav class="navbar navbar-vertical align-items-center navbar-expand-md navbar-light bg-gradient-blue opacity-17" id="sidenav-main">
     <div class="container-fluid">
       
-      <button class="navbar-toggler" type="button" (click)="isCollapsed=!isCollapsed"
-         aria-controls="sidenav-collapse-main">
+      <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <img class="navbar-brand" src="./assets/img/brand/logo.png" style="height:150px; width: 110px;margin-left: 40px; margin-top: 0px;"  alt="Squad-ninja logo">
+      <img class="navbar-brand" src="./assets/img/brand/logo.png" style="height:100px; width:100px;margin-left:10px; margin-top: 0px;"  alt="Squad-ninja logo">
       <a class="navbar-brand " routerLinkActive="active" [routerLink]="['/ihdashboardcards']"> 
       </a>
       
       
       <ul class="nav align-items-center d-md-none">
-        <li class="nav-item" ngbDropdown placement="bottom-right">
-          <a class="nav-link nav-link-icon" role="button" ngbDropdownToggle>
-            
-          </a>
-        </li>
-        <li class="nav-item" ngbDropdown placement="bottom-right">
+
+        <li class="nav-item" ngbDropdown placement="bottom-right ">
           <a class="nav-link" role="button" ngbDropdownToggle>
             <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src="./assets/img/theme/rty.jpg">
+                <img  src="../../../assets/img/theme/rty1.png" alt="Image placeholder">
               </span>
             </div>
           </a>
@@ -31,18 +27,6 @@
             <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
               <i class="ni ni-single-02"></i>
               <span>My profile</span>
-            </a>
-            <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
-              <i class="ni ni-settings-gear-65"></i>
-              <span>Settings</span>
-            </a>
-            <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
-              <i class="ni ni-calendar-grid-58"></i>
-              <span>Activity</span>
-            </a>
-            <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
-              <i class="ni ni-support-16"></i>
-              <span>Support</span>
             </a>
             <div class="dropdown-divider"></div>
             <a href="#!" class="dropdown-item">
@@ -59,7 +43,7 @@
           <div class="row">
             <div class="col-6 collapse-brand">
               <a  routerLinkActive="active" [routerLink]="['/ihdashboardcards']">
-                <img src="/">
+                <!-- <img src="/"> -->
               </a>
             </div>
             <div class="col-6 collapse-close">

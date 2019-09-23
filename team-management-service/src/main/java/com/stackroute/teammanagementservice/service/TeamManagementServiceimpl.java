@@ -55,6 +55,12 @@ public class TeamManagementServiceimpl implements TeamManagementService {
     @Value("${invitedIdea.rabbitmq.routingkey}")
     String invitedTeamRoutingkey;
 
+
+
+    @Value("${workedOn.rabbitmq.exchange}")
+    String workedOnExchange;
+    @Value("${workedOn.rabbitmq.routingkey}")
+    String workedOnRoutingkey;
     /**
      * Implementation of saveIdea method
      */
@@ -75,6 +81,13 @@ public class TeamManagementServiceimpl implements TeamManagementService {
         Idea retrievedIdea = teamManagementRepository.findByTitle(idea.getTitle());
         List<ServiceProviderDto> serviceProviders = new ArrayList<>();
         serviceProviders = idea.getSelectedTeam();
+        for(int i =0;i< serviceProviders.size();i++){
+            WorkedTeamDto workedTeamDto = new WorkedTeamDto();
+            workedTeamDto.setEmail(serviceProviders.get(i).getEmail());
+            workedTeamDto.setIdeaTitle(idea.getTitle());
+            rabbitTemplate.convertAndSend(workedOnExchange,workedOnRoutingkey,workedTeamDto);
+            System.out.println("sent worked on to recommendation="+workedTeamDto);
+        }
         retrievedIdea.setSelectedTeam(serviceProviders);
         return teamManagementRepository.save(retrievedIdea);
     }
