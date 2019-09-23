@@ -15,14 +15,16 @@ export class IdeaviewService {
     );
   }
   remove(title,email):Observable<any>{
-    console.log("in service",title,email);
+  console.log("in service",title,email);
     return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/removeSelectedSp?title=${title}&email=${email}`,(null));
   }
   updateOnAccept(title,email,status):Observable<any>{
     console.log(title,email,status);
+
     return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/acceptssp?title=${title}&email=${email}&accepted=${status}`,(null));
   }
   updateOnReject(title,email,status):Observable<any>{
+
     return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/acceptssp?title=${title}&email=${email}&accepted=${status}`,(null));
   }
   updateOnJoin(title,email,status):Observable<any>{

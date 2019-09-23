@@ -17,6 +17,6 @@ import org.springframework.stereotype.Component;
 @ToString
 @Component
 public class AppliedTeamDto {
-    String email;
-    String ideaTitle;
+    private String email;
+    private String ideaTitle;
 }
