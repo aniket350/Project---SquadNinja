@@ -2,7 +2,7 @@ package com.stackroute.domain;
 
 import java.util.Date;
 import java.util.List;
-
+//Idea domain class
 public class Idea {
 
     private String title;

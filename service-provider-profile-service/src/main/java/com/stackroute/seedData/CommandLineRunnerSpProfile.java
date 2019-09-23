@@ -18,25 +18,28 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-
+/*Component annotation is used to denote a class as Component.It means that Spring framework
+ will autodetect these classes for dependency injection when annotation-based configuration and classpath scanning is used*/
 @Component
 public class CommandLineRunnerSpProfile implements CommandLineRunner
 {
   private ServiceProviderServiceImpl serviceProviderServiceImpl;
-
+/*enables you to inject the object dependency implicitly. It internally uses setter or constructor injection.*/
   @Autowired
   public CommandLineRunnerSpProfile( ServiceProviderServiceImpl serviceProviderServiceImpl)
   {
        this.serviceProviderServiceImpl = serviceProviderServiceImpl;
   }
 
-
+/*@Override annotation informs the compiler that the element is meant to override an element declared in a superclass*/
     @Override
     public void run(String... args) throws Exception
     {
         // need to load Excel XLSX file to read
         File file = new File("sp-profile-service.xlsx");
-
+        /*FileInputStream is meant for reading streams of raw bytes such as image data.
+          For reading streams of characters, consider using FileReader .
+         */
         FileInputStream fileInputStream=new FileInputStream(file);
 
 

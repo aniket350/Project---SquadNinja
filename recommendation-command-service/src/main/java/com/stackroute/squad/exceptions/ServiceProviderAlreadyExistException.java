@@ -2,13 +2,13 @@ package com.stackroute.squad.exceptions;
 /**
  * Custom Exception to throw if Service provider Not Found
  */
-public class ServiceProviderNotFound extends Exception {
+public class ServiceProviderAlreadyExistException extends Exception {
   private String message;
 
-  public  ServiceProviderNotFound() {
+  public ServiceProviderAlreadyExistException() {
   }
 
-  public  ServiceProviderNotFound(String message) {
+  public ServiceProviderAlreadyExistException(String message) {
     super(message);
     this.message = message;
   }
