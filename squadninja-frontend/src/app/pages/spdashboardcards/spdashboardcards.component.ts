@@ -25,13 +25,7 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
 //  cards = ['Idea1', 'Idea2','Idea1', 'Idea2','Idea1'];
  sel = new FormControl(0);
 
-  modalCardDetails = {
-    title: '',
-    name: '',
-    emailId: '',
-    mobileNumber: '',
-    chargePerHour: ''            
-  }
+
   dialog: any;
   
 
@@ -41,18 +35,18 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
 
     this.emailId=localStorage.getItem("emailId");
 
-    this.sectionComponentService.getIdeas()
-      .subscribe(data => {
-        this.ideaCardsData = data
-        // console.log(this.ideaCardsData);
-      });
+    // this.sectionComponentService.getIdeas()
+    //   .subscribe(data => {
+    //     this.ideaCardsData = data
+    //     // console.log(this.ideaCardsData);
+    //   });
 
       this.getTheProfile();
-    // this.spprofileserService.getRecommendationIdeas(this.emailId)
-    // .subscribe(data => {
-    //     this.recommendCards = data
-    //     console.log(this.recommendCards);
-    //   });
+    this.spprofileserService.getRecommendationIdeas(this.emailId)
+    .subscribe(data => {
+        this.recommendCards = data
+        console.log(this.recommendCards);
+      });
 
       // this.sectionComponentSP.getSP()
       // .subscribe(data => {
@@ -64,16 +58,7 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
 
   }
 
-  saveCardDetails(x: any) {
-    // console.log(x);
-    console.log(this.serviceProviderData);
-    this.modalCardDetails.title = x.title;
-    this.modalCardDetails.name = this.serviceProviderData.name;
-    this.modalCardDetails.emailId = this.serviceProviderData.email;
-    this.modalCardDetails.mobileNumber = this.serviceProviderData.mobileNo;
-    // this.modalCardDetails.chargePerHour = this.serviceProviderData.chargePerHour;
-  
-  }
+
 
   chunk(arr, chunkSize) {
     let R = [];
@@ -92,12 +77,15 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
     });
   }
 
-  apply(){
+  apply(cardNumber){
 
-    console.log(this.cardNumber);
-    console.log(this.modalCardDetails);
-    this.sectionComponentService.addTeamManagement(this.modalCardDetails).subscribe(res => {
+    console.log(cardNumber);
+    console.log(this.recommendCards[cardNumber]);
+    console.log(this.serviceProviderData);
+  
+    this.sectionComponentService.addTeamManagement(this.recommendCards[cardNumber],this.serviceProviderData).subscribe(res => {
          this.data=res;
+         console.log("#################",this.data);
     }, err => {
       console.log(err)
     });
@@ -110,6 +98,6 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
     console.log(this.ideaCardsData[index]);
     console.log(index);
     this.cardNumber=index;
-    this.saveCardDetails(this.ideaCardsData[index]);
+    // this.saveCardDetails(this.ideaCardsData[index]);
   }
 }

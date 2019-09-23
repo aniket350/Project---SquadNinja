@@ -26,6 +26,8 @@ import { RegisterserService } from './services/registerser/registerser.service';
 import { RegisterspComponent } from './registersp/registersp.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {MatButtonModule} from '@angular/material/button';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 
 // import { HttpModule } from "@angular/http";
 
@@ -66,7 +68,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     FusionChartsModule,
     SpdashboardModule,
     MatAutocompleteModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTooltipModule
   ],
   providers: [
     HttpClient,
@@ -74,6 +77,9 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     SpprofileserService,
     RegisterserService,
     MatButtonModule
+  ],
+  exports : [MatTooltipModule,
+    MatButtonModule,
   ],
   bootstrap: [AppComponent]
 })

@@ -2,14 +2,13 @@ package com.stackroute.recommendedqueryservice.controller;
 
 import com.stackroute.recommendedqueryservice.domain.*;
 import com.stackroute.recommendedqueryservice.service.RecommendedIdeaService;
-import com.stackroute.recommendedqueryservice.service.RecommendedeamService;
+import com.stackroute.recommendedqueryservice.service.RecommendedTeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
@@ -23,16 +22,16 @@ import java.util.List;
 @RequestMapping("api/v1/")
 public class IdeaRecommendationController {
     private RecommendedIdeaService recommendedIdeaService;
-    private RecommendedeamService recommendedTeamService;
+    private RecommendedTeamService recommendedTeamService;
 
     /**
      * Constructor based Dependency injection to inject Rrecmmendedideaservice and recommendedTeamService into controller
      */
 
     @Autowired
-    public IdeaRecommendationController(RecommendedIdeaService recommendedIdeaService, RecommendedeamService recommendedeamService) {
+    public IdeaRecommendationController(RecommendedIdeaService recommendedIdeaService, RecommendedTeamService recommendedTeamService) {
         this.recommendedIdeaService = recommendedIdeaService;
-        this.recommendedTeamService = recommendedeamService;
+        this.recommendedTeamService = recommendedTeamService;
     }
 
     /**

@@ -25,6 +25,8 @@ export class IdeaviewComponent implements OnInit {
     this.forTeam=localStorage.getItem("forTeam");
     console.log("Forteam" ,this.forTeam);
     this.obj=JSON.parse(this.forTeam);
+    console.log("titleeeeeeeeeeee",this.obj.title);
+    localStorage.setItem("title",this.obj.title);
     this.getIdeaDetails();
   }
   getIdeaDetails() {
@@ -40,12 +42,12 @@ export class IdeaviewComponent implements OnInit {
      this.appliedTeam=data.appliedTeam;
      this.selectedTeam=data.selectedTeam;
      this.invitedTeam=data.invitedTeam;
-     
+
     });
-   
+
   }
 
-  
+
   removeCard(email) {
     console.log(email,this.title);
     this.ideaviewService.remove(this.title,email).subscribe((data) =>{
@@ -58,14 +60,14 @@ export class IdeaviewComponent implements OnInit {
     console.log(status);
     this.ideaviewService.updateOnAccept(this.title,email,this.status).subscribe((data) =>{
     });
-    window.location.reload();
+   // window.location.reload();
   }
   reject(email){
      this.status=false;
      console.log(email,this.status,this.title);
      this.ideaviewService.updateOnReject(this.title,email,this.status).subscribe((data) =>{
   });
-  window.location.reload();
+  //window.location.reload();
 }
 
   join(email) {
