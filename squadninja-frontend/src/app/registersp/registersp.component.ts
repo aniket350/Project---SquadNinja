@@ -25,7 +25,6 @@ export class RegisterspComponent implements OnInit {
     this.user.role='serviceprovider';
     this.spservice.createUser(this.user)
     .subscribe(data=>{
-      console.log(data);
       this.submitted=true;
     },
     error=>console.log(error));

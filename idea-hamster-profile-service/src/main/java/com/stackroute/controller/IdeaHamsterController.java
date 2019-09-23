@@ -27,7 +27,7 @@ public class  IdeaHamsterController {
     private IdeaHamsterService ideaHamsterService;
 
     /**
-     * Constructor based Dependency injection to inject TrackService into controller
+     * Constructor based Dependency injection to inject ideaHamsterService into controller
      */
     @Autowired
     public IdeaHamsterController(IdeaHamsterService ideaHamsterService) {
@@ -35,7 +35,7 @@ public class  IdeaHamsterController {
     }
 
     /**
-     * PostMapping Annotation for mapping HTTP POST requests onto specific handler methods.
+     * PostMapping Annotation for mapping HTTP POST requests onto saveTheUser  methods.
      */
     @PostMapping("ihdto")
     public ResponseEntity<?> saveTheUser(@RequestBody IdeaHamsterDto provider) throws Exception,UserAlreadyFoundException{
@@ -45,7 +45,7 @@ public class  IdeaHamsterController {
     }
 
     /**
-     * GetMapping Annotation for mapping HTTP GET requests onto specific handler methods.
+     * GetMapping Annotation for mapping HTTP GET requests onto getTheUser methods.
      */
     @GetMapping("ideahamster/{email}")
     public ResponseEntity<?> getTheUser(@PathVariable ("email") String email) throws Exception {
@@ -54,7 +54,7 @@ public class  IdeaHamsterController {
     }
 
     /**
-     * PutMapping Annotation for mapping HTTP PuT requests onto specific handler methods.
+     * PutMapping Annotation for mapping HTTP PuT requests onto  updateTheUser methods.
      */
     @PutMapping("ideahamster")
     public ResponseEntity<?> updateTheUser(@RequestBody IdeaHamster ideaHamster) throws Exception, UserNotFoundException {

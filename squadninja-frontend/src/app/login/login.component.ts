@@ -43,7 +43,6 @@ constructor(private registerser: RegisterserService, private userservice: Userse
 
   getDecodedAccessToken(token: string): any {
     try {
-        console.log(jwt_decode(token));
         return jwt_decode(token) ;
     } catch (Error) {
         return Error;
@@ -51,34 +50,23 @@ constructor(private registerser: RegisterserService, private userservice: Userse
   }
 
   selectIh() {
-    // console.log(this.tokenInfo);
     this.role = 'ideahamster';
   }
-//   closeModal()
-//   {
-//   this.modalService.close();
-// }
+
   selectSp() {
     this.role = 'serviceprovider';
   }
-  // selectIh(){
-  //   this.registerser.selectIh();
-  // }
+  
 
 Login() {
     this.userservice.Login (this.email, this.password).subscribe((response) => {
       let data = response;
-      console.log(data);
       if (response) {
-        console.log(response);
         localStorage.setItem("emailId",this.email);
         this.token = response;
-        console.log(this.getDecodedAccessToken(this.token.token));
         this.decodedroletoken = this.getDecodedAccessToken(this.token.token);
         this.decodedTokenWithRoleSub = this.decodedroletoken.sub;
-        console.log(this.decodedTokenWithRoleSub);
         if (this.decodedTokenWithRoleSub === "ideaHamster") {
-          // console.log('ideahamster');
          
           this.router.navigate(['/ihdashboard']);
      }
@@ -93,9 +81,7 @@ Login() {
   (err) => {
     this.invalid=true;
     console.log(err);
-    //this.closeModal();
 
-    // this.modalRef = this.modalService.show(template);
 });
 
 

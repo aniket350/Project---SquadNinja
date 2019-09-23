@@ -43,11 +43,6 @@ export class AppComponent {
 
     if (st > lastScrollTop && st > navbarHeight) {
 
-      // if (navbar.classList.contains("headroom--pinned")) {
-      //   navbar.classList.remove("headroom--pinned");
-      //   navbar.classList.add("headroom--unpinned");
-      // }
-
     } else {
 
       if (st + window.innerHeight < document.body.scrollHeight) {

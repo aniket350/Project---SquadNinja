@@ -59,7 +59,7 @@
           [matAutocomplete]="auto1" [(ngModel)]="subdomain" name="subdomain">
         <mat-autocomplete #auto1="matAutocomplete">
           <mat-option *ngFor="let subdomain of filteredOptions1 | async" [value]="subdomain">
-        {{subdomain}}
+          {{subdomain}}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
@@ -69,7 +69,7 @@
 
   <!-- role starts -->
   <div class="role">
-    <!-- <table class="roletable"> -->
+    <table class="roletable">
       <thead class="threadclass">
         <tr>
           <td>Role :</td>
@@ -79,32 +79,32 @@
           
         </tr>
       </thead>
-      <!-- <tbody class="rolebody"> -->
+      <tbody class="rolebody">
         <tr *ngFor="let field of fieldArray; let i = index">
-          <!-- <td> -->
+          <td>
             <input [(ngModel)]="field.role" class="form-control" type="text" name={{field.role}} />
-          <!-- </td> -->
+          </td>
 
-          <!-- <td> -->
+          <td>
             <input [(ngModel)]="field.experience" class="form-control" type="text" name={{field.experience}} />
-          <!-- </td> -->
+          </td>
 
 
-          <!-- <td> -->
+          <td>
             <input [(ngModel)]="field.skills" class="form-control" type="text" name={{field.skills}} />
-          <!-- </td> -->
+          </td>
 
-          <!-- <td> -->
+          <td>
             <input [(ngModel)]="firoletableeld.noofpeople" class="form-control" type="number" name={{field.noofpeople}} />
-          <!-- </td> -->
+          </td>
 
-          <!-- <td> -->
+          <td>
             <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
-          <!-- </td> -->
+          </td>
         </tr>
 
         <tr>
-          <!-- <td> -->
+          <td>
             <mat-form-field class="projectrole">
               <input type="text" placeholder="" aria-label="role" matInput [formControl]="myControlrole"
                 [matAutocomplete]="auto" [(ngModel)]="newAttribute.role" name="roleName">
@@ -120,9 +120,9 @@
               <input matInput placeholder="" type="text" [(ngModel)]="newAttribute.experience"
                 name="newAttributeexperience" />
             </mat-form-field>
-          <!-- </td> -->
+          </td>
 
-          <!-- <td> -->
+          <td>
             <mat-form-field class="projectskills">
               <mat-chip-list #chipList aria-label="Fruit selection">
                 <mat-chip *ngFor="let skill of newAttribute.skills" [selectable]="selectable" [removable]="removable"
@@ -140,23 +140,23 @@
                 </mat-option>
               </mat-autocomplete>
             </mat-form-field>
-          <!-- </td> -->
+          </td>
 
-          <!-- <td> -->
+          <td>
             <mat-form-field class="projectnoofpeople">
               <input matInput placeholder="" type="number" [(ngModel)]="newAttribute.noofpeople"
                 name="newAttributenoofpeople" />
             </mat-form-field>
-          <!-- </td> -->
+          </td>
 
       
 
-          <!-- <td> -->
+          <td>
             <button class="btn btn-default" type="button" (click)="addFieldValue()">Add</button>
-          <!-- </td> -->
+          </td>
         </tr>
-      <!-- </tbody> -->
-    <!-- </table> -->
+      </tbody>
+    </table>
   </div>
   <!-- role ends -->
 
