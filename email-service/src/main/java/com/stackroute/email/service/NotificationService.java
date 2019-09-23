@@ -30,7 +30,6 @@ public class NotificationService {
     //performing rabbitListener
     @RabbitListener(queues = "${email.rabbitmq.queue}")
     public void notificationSender(MailDto mailDto) throws MailException {
-        System.out.println("Recieved Message From RabbitMQ: " + mailDto);
         //send mail The class having to,from,cc,subject,text
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         //to mail id getting from rabbit consume

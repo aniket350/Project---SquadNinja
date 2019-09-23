@@ -8,11 +8,6 @@
         <groupId>com.stackroute</groupId>
         <artifactId>squad-ninja</artifactId>
         <version>1.0.0</version>
-
-        <!--		<groupId>org.springframework.boot</groupId>-->
-        <!--		<artifactId>spring-boot-starter-parent</artifactId>-->
-        <!--		<version>2.1.7.RELEASE</version>-->
-        <!--		<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
     </parent>
     <groupId>com.stackroute</groupId>
     <artifactId>email</artifactId>

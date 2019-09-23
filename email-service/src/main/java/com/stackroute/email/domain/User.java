@@ -17,7 +17,7 @@ lombok performed.
 getter and setter methods
 */
 @Setter
-public class Domain {
+public class User {
 
     private String email;
 }
