@@ -54,12 +54,11 @@ services:
       - mysql
       - eureka-server
       - config-service
-      - zuul-api
     restart: always
     network_mode: "host"
     image: email-service
     environment:
-      WAIT_HOSTS: localhost:8761 ,localhost:8888, localhost:8082
+      WAIT_HOSTS: localhost:8761 ,localhost:8888
       WAIT_BEFORE_HOSTS: 20
     ports:
       - 8052:8052
@@ -120,7 +119,6 @@ services:
       - config-service
       - eureka-server
       - rabbitmq
-      - zuul-api
     ports:
       - 8065:8065
 
