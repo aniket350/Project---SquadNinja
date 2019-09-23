@@ -152,13 +152,14 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
     @Value("${invitedIdea.rabbitmq.queue}")
     public void saveInvitedIdeas(InvitedIdeaDto idea){
         System.out.println(idea.toString());
+
         List<Idea> invitedIdeas;
         ServiceProvider sp = serviceProviderRepository.findByEmail(idea.getInviteeEmailId());
         if(sp.getInvitedIdeas() == null){
             invitedIdeas = new ArrayList<>();
         }
         else{
-            invitedIdeas= sp.getInvitedIdeas();
+            invitedIdeas = sp.getInvitedIdeas();
         }
 
         Idea inviteIdea = new Idea();
@@ -166,12 +167,14 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
         inviteIdea.setDescription(idea.getDescription());
         inviteIdea.setDuration(idea.getDuration());
         inviteIdea.setDomain(idea.getDomain());
-        inviteIdea.setSubDomain(idea.getCost());
+        inviteIdea.setSubDomain(idea.getSubDomain());
+        inviteIdea.setCost(idea.getCost());
         inviteIdea.setStatus(idea.getStatus());
         inviteIdea.setPostedBy(idea.getPostedBy());
         inviteIdea.setPostedOn(idea.getPostedOn());
         inviteIdea.setRole(idea.getRole());
         inviteIdea.setLocation(idea.getLocation());
+
         invitedIdeas.add(inviteIdea);
         sp.setInvitedIdeas(invitedIdeas);
         serviceProviderRepository.save(sp);
