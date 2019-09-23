@@ -35,7 +35,7 @@ export class  SpprofileserService {
       "currentLocation": profile.currentLocation,
       "preferredLocation": [profile.prefferedLocation],
       "role":{
-      "roleName" : profile.roleName,
+      "role" : profile.role,
       "experience": profile.experience,
       "skills": [profile.skills]
     	}

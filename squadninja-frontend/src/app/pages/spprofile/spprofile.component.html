@@ -53,7 +53,7 @@
               {{serviceProviderData.name}}<span class="font-weight-light"></span>
             </h3>
             <div class="h5 font-weight-300">
-              <i class="ni location_pin mr-2" ></i>{{serviceProviderData.currentLocation}}
+              <i class="ni location_pin mr-2"></i>{{serviceProviderData.currentLocation}}
             </div>
             <div class="h5 mt-4">
               <i class="ni business_briefcase-24 mr-2">{{serviceProviderData?.roleName}}</i>
@@ -93,13 +93,14 @@
                   <div class="form-group">
                     <label class="form-control-label" for="email">Email Id</label>
                     <input name="email" [(ngModel)]="serviceProviderData.email" type="email" id="input-email"
-                      class="form-control form-control-alternative" placeholder={{serviceProviderData.email}} readonly="readonly">
+                      class="form-control form-control-alternative" placeholder={{serviceProviderData.email}}
+                      readonly="readonly">
                   </div>
                 </div>
-                
+
               </div>
-             
-             
+
+
             </div>
             <hr class="my-4" />
 
@@ -109,104 +110,146 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label class="form-control-label" for="input-address">Mobile number</label>
-                    <input name="mobileno" [(ngModel)]="serviceProviderData.mobileNo" class="form-control form-control-alternative"
-                      placeholder={{serviceProviderData.mobileNo}}>
+                    <input name="mobileno" [(ngModel)]="serviceProviderData.mobileNo"
+                      class="form-control form-control-alternative" placeholder={{serviceProviderData.mobileNo}}>
                   </div>
                 </div>
               </div>
             </div>
             <div class="pl-lg-4">
-                <div class="row">
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="currentLocation">Current Location</label>
-                        <input type="text" name="currentLocation" [(ngModel)]="serviceProviderData.currentLocation" class="form-control form-control-alternative"
-                          placeholder={{serviceProviderData.currentLocation}}>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="preferredLocation">Preffered Location</label>
-                        <input type="text" name="preferredLocation" [(ngModel)]="serviceProviderData.preferredLocation" class="form-control form-control-alternative"
-                          placeholder={{serviceProviderData.preferredLocation}}>
-                      </div>
-                    </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="currentLocation">Current Location</label>
+                    <input type="text" name="currentLocation" [(ngModel)]="serviceProviderData.currentLocation"
+                      class="form-control form-control-alternative" placeholder={{serviceProviderData.currentLocation}}>
                   </div>
-       
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="preferredLocation">Preffered Location</label>
+                    <input type="text" name="preferredLocation" [(ngModel)]="serviceProviderData.preferredLocation"
+                      class="form-control form-control-alternative"
+                      placeholder={{serviceProviderData.preferredLocation}}>
+                  </div>
+                </div>
+              </div>
+
             </div>
             <hr class="my-4" />
 
             <h6 class="heading-small text-muted mb-4">Additional Information</h6>
             <div class="row">
-                <!-- <div class="col-md-12">
+              <!-- <div class="col-md-12">
                   <div class="form-group">
                     <label class="form-control-label" for="input-address">Address</label>
                     <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address"
                       value="Kormanagala" type="text">
                   </div>
                 </div> -->
-              </div>
-              <div class="pl-lg-4">
-              <div class="row">
-                <div class="col-lg-4">
+            </div>
+
+
+            <!-- <div class="col-lg-4">
                   <div class="form-group">
+<<<<<<< HEAD
+                    
+=======
                     <label class="form-control-label" for="roleName">Role</label>
+>>>>>>> 9da0b6c67b06cdcadc210947400578278177012b
                     <input type="text" name="role" [(ngModel)]="serviceProviderData.role" class="form-control form-control-alternative" placeholder={{serviceProviderData.role?.role}} >
                   </div>
-                </div>
-                <!-- <mat-form-field class="projectrole">
-                  <input type="text" placeholder="Role" aria-label="role" matInput [formControl]="myControlrole"
-                    [matAutocomplete]="auto" [(ngModel)]="newAttribute.role" name="roleName">
-                  <mat-autocomplete #auto="matAutocomplete">
-                    <mat-option *ngFor="let role of filteredRoles | async" [value]="role">
-                      {{role}}
-                    </mat-option>
-                  </mat-autocomplete>
-                </mat-form-field> -->
-                
+                </div> -->
+
+            <div class="pl-lg-4">
+              <div class="row">
                 <div class="col-lg-4">
+                  <label class="form-control-label role" for="Role">Role</label>
+
+                  <form class="example-form">
+
+                    <mat-form-field class="example-full-width roleform">
+                      <input type="text" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto"
+                        [(ngModel)]="serviceProviderData.role.role" placeholder={{serviceProviderData.role?.roleName}}>
+                      <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let role of filteredRoles | async" [value]="role">
+                          {{role}}
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field>
+                  </form>
+                </div>
+
+                <div class="col-lg-4">
+                  <label class="form-control-label" for="skills">Skills</label>
                   <div class="form-group">
-                    <label class="form-control-label" for="skills">Skills</label>
+                    <mat-form-field class="projectskills">
+                      <mat-chip-list #chipList aria-label="Fruit selection">
+                        <mat-chip *ngFor="let skill of skills" [selectable]="selectable" [removable]="removable"
+                          (removed)="remove(skill)">
+                          {{skill}}
+                          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                        </mat-chip>
+                        <input placeholder="" #skillInput [formControl]="skillCtrl" [matAutocomplete]="auto2"
+                          [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                          [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)"
+                          [(ngModel)]="serviceProviderData.role.skills"
+                          placeholder={{serviceProviderData.role?.skills}}>
+                      </mat-chip-list>
+                      <mat-autocomplete #auto2="matAutocomplete" (optionSelected)="selected($event)">
+                        <mat-option *ngFor="let skill of filteredSkills | async" [value]="skill">
+                          {{skill}}
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field>
+                  </div>
+
+
+                  <!-- <div class="form-group">
+                    
                     <input type="text" name="skills" [(ngModel)]="serviceProviderData.skills" class="form-control form-control-alternative"
                       placeholder={{serviceProviderData.role?.skills}} >
-                  </div>
+                  </div> -->
                 </div>
+
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label" for="experience">Experience</label>
-                    <input type="text" name="experience" [(ngModel)]="serviceProviderData.experience" class="form-control form-control-alternative"
-                      placeholder={{serviceProviderData.role?.experience}}>
+                    <mat-form-field class="projectexperience">
+                      <input matInput type="text" name="experience" [(ngModel)]="serviceProviderData.role.experience"
+                        placeholder={{serviceProviderData.role?.experiences}}>
+                    </mat-form-field>
                   </div>
                 </div>
               </div>
               <div class="row">
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label class="form-control-label" for="domain">Domain</label>
-                      <input type="text" name="domain" [(ngModel)]="serviceProviderData.domain" class="form-control form-control-alternative"
-                        placeholder={{serviceProviderData.domain}}>
-                    </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="domain">Domain</label>
+                    <input type="text" name="domain" [(ngModel)]="serviceProviderData.domain"
+                      class="form-control form-control-alternative" placeholder={{serviceProviderData.domain}}>
                   </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label class="form-control-label" for="subDomain">Sub Domain</label>
-                      <input type="text" name="subDomain" [(ngModel)]="serviceProviderData.subDomain" class="form-control form-control-alternative"
-                        placeholder={{serviceProviderData.subDomain}}>
-                    </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="subDomain">Sub Domain</label>
+                    <input type="text" name="subDomain" [(ngModel)]="serviceProviderData.subDomain"
+                      class="form-control form-control-alternative" placeholder={{serviceProviderData.subDomain}}>
                   </div>
-                  <div class="col-md-12">
-                      <div class="form-group">
-                        <label class="form-control-label" for="chargePerHour">Charge Per Hour</label>
-                        <input name="chargePerHour" [(ngModel)]="serviceProviderData.chargePerHour" class="form-control form-control-alternative"
-                          placeholder={{serviceProviderData.chargePerHour}}>
-                      </div>
-                    </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="form-control-label" for="chargePerHour">Charge Per Hour</label>
+                    <input name="chargePerHour" [(ngModel)]="serviceProviderData.chargePerHour"
+                      class="form-control form-control-alternative" placeholder={{serviceProviderData.chargePerHour}}>
+                  </div>
                 </div>
                 <div class="col-4 text-center">
                   <a (click)="onSubmitUpdate()" class="btn btn-sm btn-primary">Save Profile</a>
                 </div>
               </div>
-            
+            </div>
+
           </form>
         </div>
       </div>

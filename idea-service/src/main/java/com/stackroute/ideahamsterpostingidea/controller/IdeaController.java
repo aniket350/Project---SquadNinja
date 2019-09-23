@@ -34,6 +34,7 @@ public class IdeaController {
     }
 
     /*handle the HTTP POST requests matched with given URI expression.*/
+    /*by this PostMapping it will save the idea*/
     @PostMapping("idea")
     public ResponseEntity<?> savedIdea(@RequestBody Idea idea) throws IdeaAlreadyExistException {
         DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");

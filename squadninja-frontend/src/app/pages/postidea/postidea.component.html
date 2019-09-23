@@ -7,7 +7,7 @@
   <div class="title">
     <h6>Project Title :</h6>
     <mat-form-field class="projecttitle">
-      <input matInput placeholder="Project Title" [(ngModel)]="title" name="title">
+      <input matInput placeholder="" [(ngModel)]="title" name="title">
       <mat-hint align="start"><strong>You have to enter the Title</strong> </mat-hint>
     </mat-form-field>
   </div>
@@ -17,7 +17,7 @@
   <div class="description">
     <h6>Project Description :</h6>
     <mat-form-field class="projectdescription">
-      <textarea matInput placeholder="Project Description" [(ngModel)]="description" name="description"></textarea>
+      <textarea matInput placeholder="" [(ngModel)]="description" name="description"></textarea>
     </mat-form-field>
   </div>
   <!-- project description ends -->
@@ -26,41 +26,47 @@
   <div class="duration">
     <h6>Duration :</h6>
     <mat-form-field class="projectduration">
-      <input matInput placeholder="Duration" type="text" [(ngModel)]="duration" name="duration">
+      <input matInput placeholder="" type="text" [(ngModel)]="duration" name="duration">
       <mat-hint align="start"><strong>You have to enter the Duration in the form of Year, Month, Days </strong>
       </mat-hint>
     </mat-form-field>
   </div>
   <!-- project duration ends -->
 
-  <!-- domain starts -->
-  <div class="domain">
-    <h6>Domain :</h6>
-    <mat-form-field class="projectdomain">
-      <mat-label>Domain</mat-label>
-      <mat-select name="domain" [(ngModel)]="domain">
-        <mat-option *ngFor="let domain of domains" [value]="domain.name">
-          {{domain.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <!-- domain ends -->
-  ​
-  <!-- subdomain starts -->
-  <div class="subdomains">
-    <h6>SubDomain :</h6>
-    <mat-form-field class="projectsubdomains">
-      <input type="text" placeholder="SubDomain" aria-label="subDomain" matInput [formControl]="myControls"
-        [matAutocomplete]="auto1" [(ngModel)]="subdomain" name="subdomain">
-      <mat-autocomplete #auto1="matAutocomplete">
-        <mat-option *ngFor="let subdomain of filteredOptions1 | async" [value]="subdomain">
-          {{subdomain}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-  </div>
-  <!-- subdomain ends-->
+
+   
+  <form fxLayout="column" [formGroup]="contactForm">
+    <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+        <table class="domainSubdomian">
+            <tr>
+              <td>Domain :</td> 
+              <td class="subdomain">SubDomain :</td>
+             </tr>
+          </table>
+        <mat-form-field fxFlex class="projectdomain">
+          <mat-label></mat-label>
+          <mat-select name="domain" [(ngModel)]="domain">
+            <mat-option *ngFor="let domain of domains" [value]="domain.name">
+              {{domain.name}}
+            </mat-option>
+          </mat-select>
+        <!-- <input matInput type="text" placeholder="FIRSTNAME" formControlName="firstName"> -->
+      </mat-form-field>
+      
+      <!-- <h5>SubDomain :</h5>  -->
+
+      <mat-form-field fxFlex class="projectsubdomains">
+          <input type="text" placeholder="" aria-label="subDomain" matInput [formControl]="myControls"
+          [matAutocomplete]="auto1" [(ngModel)]="subdomain" name="subdomain">
+        <mat-autocomplete #auto1="matAutocomplete">
+          <mat-option *ngFor="let subdomain of filteredOptions1 | async" [value]="subdomain">
+            {{subdomain}}
+          </mat-option>
+        </mat-autocomplete>
+        <!-- <input matInput type="text" placeholder="LASTNAME" formControlName="lastName"> -->
+      </mat-form-field>
+    </div>
+    </form>
 
 
   <!-- role starts -->
@@ -68,10 +74,11 @@
     <table class="roletable">
       <thead class="threadclass">
         <tr>
-          <th>Role :</th>
-          <th>Skills :</th>
-          <th>No Of People :</th>
-          <th>Experience :</th>
+          <td>Role :</td>
+          <td class="experience">Experience In Role:</td>
+          <td class="skills">Skills :</td>
+          <td>No Of People :</td>
+          
         </tr>
       </thead>
       <tbody class="rolebody">
@@ -81,15 +88,16 @@
           </td>
 
           <td>
+            <input [(ngModel)]="field.experience" class="form-control" type="text" name={{field.experience}} />
+          </td>
+
+
+          <td>
             <input [(ngModel)]="field.skills" class="form-control" type="text" name={{field.skills}} />
           </td>
 
           <td>
-            <input [(ngModel)]="field.noofpeople" class="form-control" type="number" name={{field.noofpeople}} />
-          </td>
-
-          <td>
-            <input [(ngModel)]="field.experience" class="form-control" type="text" name={{field.experience}} />
+            <input [(ngModel)]="firoletableeld.noofpeople" class="form-control" type="number" name={{field.noofpeople}} />
           </td>
 
           <td>
@@ -100,13 +108,19 @@
         <tr>
           <td>
             <mat-form-field class="projectrole">
-              <input type="text" placeholder="Role" aria-label="role" matInput [formControl]="myControlrole"
+              <input type="text" placeholder="" aria-label="role" matInput [formControl]="myControlrole"
                 [matAutocomplete]="auto" [(ngModel)]="newAttribute.role" name="roleName">
               <mat-autocomplete #auto="matAutocomplete">
                 <mat-option *ngFor="let role of filteredRoles | async" [value]="role">
                   {{role}}
                 </mat-option>
               </mat-autocomplete>
+            </mat-form-field>
+          </td> 
+          <td>
+            <mat-form-field class="projectexperience">
+              <input matInput placeholder="" type="text" [(ngModel)]="newAttribute.experience"
+                name="newAttributeexperience" />
             </mat-form-field>
           </td>
 
@@ -118,7 +132,7 @@
                   {{skill}}
                   <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
                 </mat-chip>
-                <input placeholder="Skills" #skillInput [formControl]="skillCtrl" [matAutocomplete]="auto2"
+                <input placeholder="" #skillInput [formControl]="skillCtrl" [matAutocomplete]="auto2"
                   [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                   [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
               </mat-chip-list>
@@ -132,17 +146,12 @@
 
           <td>
             <mat-form-field class="projectnoofpeople">
-              <input matInput placeholder="No Of People" type="number" [(ngModel)]="newAttribute.noofpeople"
+              <input matInput placeholder="" type="number" [(ngModel)]="newAttribute.noofpeople"
                 name="newAttributenoofpeople" />
             </mat-form-field>
           </td>
 
-          <td>
-            <mat-form-field class="projectexperience">
-              <input matInput placeholder="Experience" type="text" [(ngModel)]="newAttribute.experience"
-                name="newAttributeexperience" />
-            </mat-form-field>
-          </td>
+      
 
           <td>
             <button class="btn btn-default" type="button" (click)="addFieldValue()">Add</button>
@@ -159,7 +168,7 @@
   <div class="location">
     <h6>Location :</h6>
     <mat-form-field class="projectlocation">
-      <input matInput placeholder="Location" [(ngModel)]="location" name="location">
+      <input matInput placeholder="" [(ngModel)]="location" name="location">
     </mat-form-field>
   </div>
   <!-- location ends -->
@@ -169,7 +178,7 @@
   <div class="cost">
     <h6>Cost :</h6>
     <mat-form-field class="projectcost">
-      <input matInput placeholder="Cost" type="number" [(ngModel)]="cost" name="cost">
+      <input matInput placeholder="" type="number" [(ngModel)]="cost" name="cost">
       <span matPrefix>$&nbsp;</span>
       <span matSuffix>.00</span>
     </mat-form-field> <br>
