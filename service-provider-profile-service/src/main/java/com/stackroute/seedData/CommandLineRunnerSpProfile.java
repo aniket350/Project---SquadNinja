@@ -1,3 +1,4 @@
+
 package com.stackroute.seedData;
 
 import com.stackroute.domain.Role;
@@ -98,3 +99,4 @@ public class CommandLineRunnerSpProfile implements CommandLineRunner
         }
     }
 }
+

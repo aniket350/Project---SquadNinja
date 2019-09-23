@@ -10,6 +10,7 @@ import com.stackroute.dto.ServiceProviderDto;
 import com.stackroute.exception.UserAlreadyFoundException;
 import com.stackroute.repository.SearchServiceProviderRepository;
 import com.stackroute.repository.ServiceProviderRepository;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -147,9 +148,9 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
     }
 
 
-    @Value("${invitedIdea.rabbitmq.queue}")
+    @RabbitListener(queues = "${invitedIdea.rabbitmq.queue}")
     public void saveInvitedIdeas(InvitedIdeaDto idea){
-        System.out.println(idea.toString());
+//        System.out.println(idea.toString());
 
         List<Idea> invitedIdeas;
         ServiceProvider sp = serviceProviderRepository.findByEmail(idea.getInviteeEmailId());
