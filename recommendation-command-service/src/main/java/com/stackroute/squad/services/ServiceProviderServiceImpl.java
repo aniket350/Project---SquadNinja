@@ -62,7 +62,7 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
 
 
     ServiceProvider retrievedServiceProvider = serviceProviderRepository.findByEmail(serviceProviderDto.getEmail());
-    if (serviceProviderRepository.findByEmail(retrievedServiceProvider.getEmail()) != null) {
+    if (serviceProviderRepository.findByEmail(retrievedServiceProvider.getEmail()) == null) {
 
       throw new ServiceProviderNotFoundException("serviceprovider not found");
     }
