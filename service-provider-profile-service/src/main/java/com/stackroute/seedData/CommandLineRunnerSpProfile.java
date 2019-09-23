@@ -81,7 +81,7 @@ public class CommandLineRunnerSpProfile implements CommandLineRunner
             role.setRole(xssfSheet.getRow(i).getCell(7).toString());
             role.setSkills(List.of(xssfSheet.getRow(i).getCell(9).toString().split(",")));
             serviceProvider.setPreferredLocation(List.of(xssfSheet.getRow(i).getCell(6).toString().split(",")));
-
+            serviceProvider.setRole(role);
 
             serviceProviderDto.setPassword(xssfSheet.getRow(i).getCell(10).toString());
             serviceProviderDto.setEmail(xssfSheet.getRow(i).getCell(1).toString());
@@ -89,6 +89,7 @@ public class CommandLineRunnerSpProfile implements CommandLineRunner
             serviceProviderDto.setRole(xssfSheet.getRow(i).getCell(11).toString());
 
             serviceProviderServiceImpl.saveServiceProvider(serviceProviderDto);
+            System.out.println(serviceProvider.toString());
             serviceProviderServiceImpl.updateTheProfile(serviceProvider);
 
         }

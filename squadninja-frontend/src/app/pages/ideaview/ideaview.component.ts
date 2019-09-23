@@ -22,14 +22,17 @@ export class IdeaviewComponent implements OnInit {
 
   ngOnInit() {
     this.forTeam=localStorage.getItem("forTeam");
+    console.log("Forteam" ,this.forTeam);
     this.obj=JSON.parse(this.forTeam);
+    console.log("titleeeeeeeeeeee",this.obj.title);
+    localStorage.setItem("title",this.obj.title);
     this.getIdeaDetails();
   }
   getIdeaDetails() {
     this.titlehc=this.obj.title;
     console.log(this.titlehc);
     this.ideaviewService.getIdeaForTitle(this.titlehc).subscribe((data) => {
-     console.log("data fetched..",data.appliedTeam);
+     console.log("data fetched..",data.selectedTeam);
 
 
 
@@ -42,30 +45,33 @@ export class IdeaviewComponent implements OnInit {
     });
    
   }
+
   
-  removeCard(emailId) {
-    this.ideaviewService.remove(this.title,emailId).subscribe((data) =>{
+  removeCard(email) {
+    console.log(email,this.title);
+    this.ideaviewService.remove(this.title,email).subscribe((data) =>{
     });
-    window.location.reload();
+    //window.location.reload();
   }
-  save(emailId){
-    console.log(emailId);
+  save(email){
+    console.log(email);
     this.status=true;
     console.log(status);
-    this.ideaviewService.updateOnAccept(this.title,emailId,this.status).subscribe((data) =>{
+    this.ideaviewService.updateOnAccept(this.title,email,this.status).subscribe((data) =>{
     });
-    window.location.reload();
+   // window.location.reload();
   }
-  reject(emailId){
+  reject(email){
      this.status=false;
-     this.ideaviewService.updateOnReject(this.title,emailId,this.status).subscribe((data) =>{
+     console.log(email,this.status,this.title);
+     this.ideaviewService.updateOnReject(this.title,email,this.status).subscribe((data) =>{
   });
-  window.location.reload();
+  //window.location.reload();
 }
 
-  join(emailId) {
+  join(email) {
     this.status=true;
-    this.ideaviewService.updateOnJoin(this.title,emailId,this.status).subscribe((data) =>{
+    this.ideaviewService.updateOnJoin(this.title,email,this.status).subscribe((data) =>{
 
     });
   }

@@ -12,9 +12,11 @@
                     <span>Search Results</span>
                   </h2>
                   <mat-card class="cardGroup" cols>
-                    <mat-card class="matCard" *ngFor="let x of searchbar" >
+                    <mat-card class="matCard" *ngFor="let x of searchbar let index=index" >
                       <mat-card-title>{{x.name}}</mat-card-title>
                       <p>{{x.currentLocation}}</p>
+                      <p>{{x.chargePerHour}}</p>
+                      <button (click)="onClickInvite(index)">Invite</button>
                     </mat-card>
                   </mat-card>
                 </div>

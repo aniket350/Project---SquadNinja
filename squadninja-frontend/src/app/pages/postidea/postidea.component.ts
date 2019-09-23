@@ -89,6 +89,7 @@ export class PostideaComponent implements OnInit {
     this._ideahamsterservice.getSkills()
       .subscribe(data => {
         this.skills = data.map(e => e.name);
+        console.log(this.skills);
         this.filteredSkills = this.skillCtrl.valueChanges
           .pipe(
             startWith(''),
@@ -144,7 +145,7 @@ export class PostideaComponent implements OnInit {
       }],
       location: this.location
     }
-
+ console.log(obj);
 
     if (this.fieldArray.length >= 1 && this.newAttribute.skills > 0) {
       this.fieldArray.push(this.newAttribute);
@@ -153,9 +154,10 @@ export class PostideaComponent implements OnInit {
     else if (this.fieldArray.length >= 1) {
       obj.role = this.fieldArray;
     }
+    console.log("second one-----------",obj);
     this._ideahamsterservice.save(obj)
       .subscribe((response) => {
-        //  console.log(response);
+         console.log("response::::::",response);
         if (response) { }
       }, (err) => {
         console.log(err);
@@ -170,6 +172,7 @@ export class PostideaComponent implements OnInit {
     this.newAttribute = {};
     this.newAttribute.skills = [];
   }
+
   deleteFieldValue(index) {
     this.fieldArray.splice(index, 1);
   }

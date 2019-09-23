@@ -53,11 +53,11 @@ public class IdeaServiceImpl implements IdeaService {
     idea.setPostedOn(ideaDTO.getPostedOn());
     ideaRepository.save(idea);
     System.out.println("recieved="+idea.toString());
-    ideaRepository.setBelongsToRelation(ideaDTO.getTitle(), ideaDTO.getSubDomain());
+    ideaRepository.setBelongsToRelation(ideaDTO.getTitle(), ideaDTO.getSubDomain().toLowerCase());
 
     for (int i = 0; i < ideaDTO.getRole().size(); i++) {
-      System.out.println("relationship ");
-      ideaRepository.setRequiresRelation(ideaDTO.getTitle(), ideaDTO.getRole().get(i).getRole());
+      System.out.println("relationship "+ ideaDTO.getTitle()+ ideaDTO.getRole().get(i).getRole());
+      ideaRepository.setRequiresRelation(ideaDTO.getTitle(), ideaDTO.getRole().get(i).getRole().toLowerCase());
     }
 
     for (int i = 0; i < ideaDTO.getRole().size(); i++) {
@@ -65,7 +65,7 @@ public class IdeaServiceImpl implements IdeaService {
       role = ideaDTO.getRole().get(i);
       for (int j = 0; j < role.getSkills().size(); j++) {
         System.out.println("relationship with skills");
-        ideaRepository.setNeedsRelation(ideaDTO.getTitle(), role.getSkills().get(j));
+        ideaRepository.setNeedsRelation(ideaDTO.getTitle(), role.getSkills().get(j).toLowerCase());
       }
     }
 

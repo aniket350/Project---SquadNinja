@@ -23,6 +23,7 @@ updateTheProfile(profile: any):Observable<any> {
 }
 
 getIdea(postedBy):any{
+    console.log("**********",postedBy);
     return this.http.get<any>(`http://13.235.10.115:8090/api/v1/postedIdeas/${postedBy}`);
  }
 

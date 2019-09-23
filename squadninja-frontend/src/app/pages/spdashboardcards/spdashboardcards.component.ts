@@ -18,58 +18,47 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
   recommendCards: any = [];
   public emailId :string= "";
   public cardNumber:any;
+  public serviceProviderData:any;
+  public data:any;
   // private spCardData: any;
 
 //  cards = ['Idea1', 'Idea2','Idea1', 'Idea2','Idea1'];
  sel = new FormControl(0);
 
-  modalCardDetails = {
-    title: '',
-    description: '',
-    role: '',
-    domain: '',
-    subdomain: ''
-                
-  }
+
   dialog: any;
   
 
 
-  constructor(private sectionComponentService : SectionComponentService ,private spprofileserService : SpprofileserService){}
+  constructor(private sectionComponentService : SectionComponentService ,private spprofileserService : SpprofileserService,private serviceProviderProfile: SpprofileserService){}
   ngOnInit() {
 
     this.emailId=localStorage.getItem("emailId");
 
-    this.sectionComponentService.getIdeas()
-      .subscribe(data => {
-        this.ideaCardsData = data
-        // console.log(this.ideaCardsData);
-      });
-
-    // this.spprofileserService.getRecommendationIdeas(this.emailId)
-    // .subscribe(data => {
-    //     this.recommendCards = data
-    //     console.log(this.recommendCards);
+    // this.sectionComponentService.getIdeas()
+    //   .subscribe(data => {
+    //     this.ideaCardsData = data
+    //     // console.log(this.ideaCardsData);
     //   });
+
+      this.getTheProfile();
+    this.spprofileserService.getRecommendationIdeas(this.emailId)
+    .subscribe(data => {
+        this.recommendCards = data
+        console.log(this.recommendCards);
+      });
 
       // this.sectionComponentSP.getSP()
       // .subscribe(data => {
       //   this.spCardData = data
       // });
     // this.sections = this.chunk(this.sections, 3);
-    console.log(this.ideaCardsData);
+    // console.log(this.ideaCardsData);
+
 
   }
 
-  saveCardDetails(x: any) {
-    console.log(x);
-    this.modalCardDetails.title = x.title;
-    this.modalCardDetails.description = x.description;
-    this.modalCardDetails.role = x.role;
-    this.modalCardDetails.domain = x.domain;
-    this.modalCardDetails.subdomain = x.subDomain;
-  
-  }
+
 
   chunk(arr, chunkSize) {
     let R = [];
@@ -79,19 +68,36 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
     return R;
   }
 
-  applyData() {
-    this.sectionComponentService.addTeamManagement(this.modalCardDetails).subscribe(res => {
+  getTheProfile(){
+    this.serviceProviderProfile.getByEmailIdForServiceProvider(this.emailId)
+    .subscribe((data)=> {
+      // console.log("data fetched..", data);
+      this.serviceProviderData=data;
+      // console.log("after getting back from service",this.serviceProviderData);
+    });
+  }
 
+  apply(cardNumber){
+
+    console.log(cardNumber);
+    console.log(this.recommendCards[cardNumber]);
+    console.log(this.serviceProviderData);
+  
+    this.sectionComponentService.addTeamManagement(this.recommendCards[cardNumber],this.serviceProviderData).subscribe(res => {
+         this.data=res;
+         console.log("#################",this.data);
     }, err => {
       console.log(err)
-    })
+    });
 
-    console.log();
+    
   }
 
 
   clicked(index:any){
+    console.log(this.ideaCardsData[index]);
     console.log(index);
     this.cardNumber=index;
+    // this.saveCardDetails(this.ideaCardsData[index]);
   }
 }
