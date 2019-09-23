@@ -20,8 +20,13 @@ public class GlobalExceptions {
     return new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
   }
   /*@ExceptionHandler allows you to define a method that, as the name suggests, handles exceptions*/
-  @ExceptionHandler(ServiceProviderNotFound.class)
-  public ResponseEntity<?> alreadyExistException(final ServiceProviderNotFound e) {
+  @ExceptionHandler(ServiceProviderAlreadyExistException.class)
+  public ResponseEntity<?> alreadyExistException(final ServiceProviderAlreadyExistException e) {
+    return new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
+  }
+  /*@ExceptionHandler allows you to define a method that, as the name suggests, handles exceptions*/
+  @ExceptionHandler(ServiceProviderNotFoundException.class)
+  public ResponseEntity<?> notFoundException(final ServiceProviderNotFoundException e) {
     return new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
   }
   /*@ExceptionHandler allows you to define a method that, as the name suggests, handles exceptions*/

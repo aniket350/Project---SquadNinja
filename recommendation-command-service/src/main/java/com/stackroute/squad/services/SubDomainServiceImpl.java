@@ -23,7 +23,7 @@ public class SubDomainServiceImpl implements SubDomainService {
   }
 
   /**
-   * Implementation of save subdomain method
+   * Implementation of saving the subdomain
    */
   @Override
   public SubDomain save(SubDomain subDomain) {
@@ -31,7 +31,7 @@ public class SubDomainServiceImpl implements SubDomainService {
   }
 
   /**
-   * Implementation of getAllSubDomaains method
+   * Implementation of hte method to get All the subdomains
    */
   @Override
   public List<SubDomain> getAllSubDomains() {
@@ -40,8 +40,7 @@ public class SubDomainServiceImpl implements SubDomainService {
   }
 
   /**
-   * Implementation of save skills method
-   */
+   * Implementation method to update the subdomain*/
   @Override
   public SubDomain updateSubDomain(SubDomain subDomain) {
     SubDomain updateSubDomain = subDomainRepository.save(subDomain);

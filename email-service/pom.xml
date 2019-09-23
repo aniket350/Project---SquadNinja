@@ -8,11 +8,6 @@
         <groupId>com.stackroute</groupId>
         <artifactId>squad-ninja</artifactId>
         <version>1.0.0</version>
-
-        <!--		<groupId>org.springframework.boot</groupId>-->
-        <!--		<artifactId>spring-boot-starter-parent</artifactId>-->
-        <!--		<version>2.1.7.RELEASE</version>-->
-        <!--		<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
     </parent>
     <groupId>com.stackroute</groupId>
     <artifactId>email</artifactId>
@@ -35,13 +30,6 @@
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
 
-
-        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-zuul -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
-            <version>2.1.1.RELEASE</version>
-        </dependency>
 
 
         <dependency>

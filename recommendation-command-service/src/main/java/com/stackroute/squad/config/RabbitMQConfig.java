@@ -161,7 +161,33 @@ public class RabbitMQConfig {
   Binding bindAppliedTeam(Queue appliedTeamQueue, TopicExchange appliedTeamExchange) {
     return BindingBuilder.bind(appliedTeamQueue).to(appliedTeamExchange).with(appliedTeamRoutingkey);
   }
-  /*....................................................................................*/
+  /*...............................workedOn .....................................................*/
+  @Value("${workedOn.rabbitmq.queue}")
+  String workedOnQueueName;
+
+  @Value("${workedOn.rabbitmq.exchange}")
+  String workedOnExchange;
+
+  @Value("${workedOn.rabbitmq.routingkey}")
+  String workedOnRoutingkey;
+
+  @Bean
+  Queue workedOnQueue() {
+    return new Queue(workedOnQueueName, true);
+  }
+
+  @Bean
+  TopicExchange workedOnExchange() {
+    return new TopicExchange(workedOnExchange);
+  }
+
+  @Bean
+  Binding bindWorkedOn(Queue workedOnQueue, TopicExchange workedOnExchange) {
+    return BindingBuilder.bind(workedOnQueue).to(workedOnExchange).with(workedOnRoutingkey);
+  }
+
+
+/*................................................................................*/
   @Bean
   public Jackson2JsonMessageConverter jsonMessageConverter() {
 

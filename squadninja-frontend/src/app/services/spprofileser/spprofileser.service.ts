@@ -16,15 +16,12 @@ export class  SpprofileserService {
   private _url: string = "http://13.235.10.115:8084/api/v1/serviceprovider";
   constructor(private http: HttpClient) { }
   getByEmailIdForServiceProvider(emailId):any{
-    console.log("in getbyemail of reg service "+emailId);
     return this.http.get<SpProfile>(`http://13.235.10.115:8084/api/v1/serviceprovider/${emailId}`);
   }
   createUser(user: any):Observable<any> {
-    console.log(user);
     return this.http.post<Register>(this._url, user);
   }
   updateTheProfile(profile: any,emailId):Observable<any> {
-    console.log("*******in service", profile);
     let profileUpdated = {
       "email": emailId,
       "name": profile.name,
@@ -40,17 +37,14 @@ export class  SpprofileserService {
       "skills": [profile.skills]
     	}
     }
-    console.log(profileUpdated)
     return this.http.put<any>(`http://13.235.10.115:8084/api/v1/serviceprovider`,profileUpdated);
   }
 
   getRecommendationIdeas(emailId):Observable<RecommendCards>{
-    console.log("in getbyemail of reg service "+emailId);
     return this.http.get<RecommendCards>(`http://13.235.10.115:8081/api/v1/role/${emailId}`);
   }
 
   getSearchResults(roleName):Observable<SearchData>{
-    console.log(roleName);
     return this.http.get<SearchData>(`http://13.235.10.115:8084/api/v1/serviceproviders/${roleName}`);
   }
 

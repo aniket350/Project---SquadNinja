@@ -1,22 +1,20 @@
-package com.stackroute.domain;
+package com.stackroute.dto;
 
+import com.stackroute.domain.RequiredRole;
 import lombok.*;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
 
-//Idea domain class
-
+@Component
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
-@ToString
-@Builder
-public class Idea {
+public class InvitedIdeaDto {
 
-    private String id;
     private String title;
     private String description;
     private String duration;
@@ -28,5 +26,5 @@ public class Idea {
     private Date postedOn;
     private String postedBy;
     private String location;
-
+    private String inviteeEmailId;
 }

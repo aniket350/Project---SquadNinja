@@ -9,9 +9,30 @@ import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
+/*@Configuration annotation indicates that a class declares one or more @Bean methods and may be processed by the Spring
+container to generate bean definitions and service requests for those beans at runtime. */
 @Configuration
 public class ServiceProviderRabbitMq {
+
+    @Value("${invitedIdea.rabbitmq.queue}")
+    String invitedIdeaQueue;
+    @Value("${invitedIdea.rabbitmq.exchange}")
+    String invitedIdeaExchange;
+    @Value("${invitedIdea.rabbitmq.routingkey}")
+    String invitedIdeaRoutingKey;
+
+    @Bean
+    Queue queueInvitedIdea(){
+        return new Queue(invitedIdeaQueue,true);
+    }
+    @Bean
+    TopicExchange exchangeInvitedIdea(){
+        return new TopicExchange(invitedIdeaExchange);
+    }
+    @Bean
+    Binding bindingIdea(Queue queueInvitedIdea,TopicExchange exchangeInvitedIdea){
+        return BindingBuilder.bind(queueInvitedIdea).to(exchangeInvitedIdea).with(invitedIdeaRoutingKey);
+    }
 
 
     @Bean

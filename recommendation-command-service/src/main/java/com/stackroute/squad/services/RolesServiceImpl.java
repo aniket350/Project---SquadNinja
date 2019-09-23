@@ -23,7 +23,7 @@ public class RolesServiceImpl implements RolesService {
   }
 
   /**
-   * Implementation of saveRoles method
+   * Implementation of the method to save the roles
    */
   @Override
   public Roles save(Roles roles) {
@@ -31,7 +31,7 @@ public class RolesServiceImpl implements RolesService {
   }
 
   /**
-   * Implementation of getAllRoles method
+   * Implementation of the method to get all the roles
    */
   @Override
   public List<Roles> getAllRoles() {
@@ -41,8 +41,8 @@ public class RolesServiceImpl implements RolesService {
   }
 
   /**
-   * Implementation of updateRoles method
-   */
+   * Implementation of the method to update the roles
+    */
   @Override
   public Roles updateRoles(Roles roles) {
     Roles updateRoles = rolesRepository.save(roles);

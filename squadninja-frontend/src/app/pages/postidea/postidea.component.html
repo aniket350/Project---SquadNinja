@@ -50,7 +50,6 @@
               {{domain.name}}
             </mat-option>
           </mat-select>
-        <!-- <input matInput type="text" placeholder="FIRSTNAME" formControlName="firstName"> -->
       </mat-form-field>
       
       <!-- <h5>SubDomain :</h5>  -->
@@ -60,10 +59,9 @@
           [matAutocomplete]="auto1" [(ngModel)]="subdomain" name="subdomain">
         <mat-autocomplete #auto1="matAutocomplete">
           <mat-option *ngFor="let subdomain of filteredOptions1 | async" [value]="subdomain">
-            {{subdomain}}
+          {{subdomain}}
           </mat-option>
         </mat-autocomplete>
-        <!-- <input matInput type="text" placeholder="LASTNAME" formControlName="lastName"> -->
       </mat-form-field>
     </div>
     </form>

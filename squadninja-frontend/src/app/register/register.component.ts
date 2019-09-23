@@ -25,11 +25,9 @@ export class RegisterComponent implements OnInit {
     this.user.role='ideaHamster';
     this.ihservice.createUser(this.user)
     .subscribe(data=>{
-      console.log(data);
       this.submitted=true;
     },
     error=>console.log(error));
-    // this.router.navigate(['/login']);
   }
 
 }

@@ -29,8 +29,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
 
 
-// import { HttpModule } from "@angular/http";
-
 // Import angular-fusioncharts
 import { FusionChartsModule } from "angular-fusioncharts";
 
