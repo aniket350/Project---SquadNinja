@@ -1,9 +1,7 @@
 package com.stackroute.teammanagementservice.service;
 
 import com.stackroute.teammanagementservice.domain.Idea;
-import com.stackroute.teammanagementservice.dto.AppliedTeamDto;
-import com.stackroute.teammanagementservice.dto.IdeaDto;
-import com.stackroute.teammanagementservice.dto.ServiceProviderDto;
+import com.stackroute.teammanagementservice.dto.*;
 import com.stackroute.teammanagementservice.exception.IdeaTitleAlreadyExistException;
 import com.stackroute.teammanagementservice.repository.TeamManagementRepository;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -32,7 +30,7 @@ public class TeamManagementServiceimpl implements TeamManagementService {
     @Autowired
     public TeamManagementServiceimpl(TeamManagementRepository teamManagementRepository, RabbitTemplate rabbitTemplate) {
         this.teamManagementRepository = teamManagementRepository;
-        this.rabbitTemplate = rabbitTemplate;
+       this.rabbitTemplate = rabbitTemplate;
     }
 
     @Value("${appliedTeam.rabbitmq.exchange}")
@@ -41,6 +39,21 @@ public class TeamManagementServiceimpl implements TeamManagementService {
     @Value("${appliedTeam.rabbitmq.routingkey}")
     String appliedTeamRoutingkey;
 
+
+    @Value("${email.rabbitmq.exchange}")
+    String emailTeamExchange;
+
+    @Value("${email.rabbitmq.routingkey}")
+    String emailTeamRoutingkey;
+
+
+
+
+    @Value("${invitedIdea.rabbitmq.exchange}")
+    String invitedTeamExchange;
+
+    @Value("${invitedIdea.rabbitmq.routingkey}")
+    String invitedTeamRoutingkey;
 
     /**
      * Implementation of saveIdea method
@@ -76,8 +89,10 @@ public class TeamManagementServiceimpl implements TeamManagementService {
             serviceProviders = new ArrayList<>();
         } else {
             serviceProviders = retrievedIdea.getAppliedTeam();
+
         }
         serviceProviders.add(idea.getAppliedTeam().get(0));
+        retrievedIdea.setAppliedTeam(serviceProviders);
         AppliedTeamDto appliedTeamDto = new AppliedTeamDto();
         appliedTeamDto.setEmail(idea.getAppliedTeam().get(0).getEmail());
         appliedTeamDto.setIdeaTitle(idea.getTitle());
@@ -97,21 +112,49 @@ public class TeamManagementServiceimpl implements TeamManagementService {
             serviceProviders = retrievedIdea.getInvitedTeam();
         }
         serviceProviders.add(idea.getInvitedTeam().get(0));
+        retrievedIdea.setInvitedTeam(serviceProviders);
+
+        EmailDto emailDto = new EmailDto();
+        emailDto.setTo(idea.getInvitedTeam().get(0).getEmail());
+        emailDto.setTitle(idea.getTitle());
+        emailDto.setBody("You Are Invited For"+emailDto.getTitle());
+        rabbitTemplate.convertAndSend(emailTeamExchange,emailTeamRoutingkey,emailDto);
+
+        InvitedDto invitedDto = new InvitedDto();
+       // IdeaDto ideaDto = new IdeaDto();
+        invitedDto.setTitle(retrievedIdea.getTitle());
+        invitedDto.setDescription(retrievedIdea.getDescription());
+        invitedDto.setDuration(retrievedIdea.getDuration());
+        invitedDto.setDomain(retrievedIdea.getDomain());
+        invitedDto.setSubDomain(retrievedIdea.getSubDomain());
+        invitedDto.setCost(retrievedIdea.getCost());
+        invitedDto.setRole(retrievedIdea.getRole());
+        invitedDto.setStatus(retrievedIdea.getStatus());
+        invitedDto.setPostedOn(retrievedIdea.getPostedOn());
+        invitedDto.setPostedBy(retrievedIdea.getPostedBy());
+        invitedDto.setLocation(retrievedIdea.getLocation());
+        invitedDto.setInviteeEmailId(idea.getInvitedTeam().get(0).getEmail());
+        System.out.println(invitedDto);
+        rabbitTemplate.convertAndSend(invitedTeamExchange,invitedTeamRoutingkey,invitedDto);
+
+
+        System.out.println(emailDto);
         return teamManagementRepository.save(retrievedIdea);
+
     }
 
     /**
      * Implementation of acceptedsp/rejectedsp method
      */
     @Override
-    public Idea acceptedsp(String title, String emailId, boolean accepted) {
+    public Idea acceptedsp(String title, String email, boolean accepted) {
         Idea retrievedIdea = teamManagementRepository.findByTitle(title);
         List<ServiceProviderDto> appliedList = retrievedIdea.getAppliedTeam();
         List<ServiceProviderDto> selectedList = retrievedIdea.getSelectedTeam();
         Idea updatedIdea = null;
         if (accepted) {
             for (int i = 0; i < appliedList.size(); i++) {
-                if (appliedList.get(i).getEmail().equals(emailId)) {
+                if (appliedList.get(i).getEmail().equals(email)) {
                     selectedList.add(appliedList.get(i));
                     retrievedIdea.setSelectedTeam(selectedList);
                     appliedList.remove(i);
@@ -121,7 +164,7 @@ public class TeamManagementServiceimpl implements TeamManagementService {
         }
         else {
             for (int i = 0; i < appliedList.size(); i++) {
-                if (appliedList.get(i).getEmail().equals(emailId)) {
+                if (appliedList.get(i).getEmail().equals(email)) {
                     appliedList.remove(i);
                      updatedIdea = teamManagementRepository.save(retrievedIdea);
                 }
@@ -134,14 +177,14 @@ public class TeamManagementServiceimpl implements TeamManagementService {
      * Implementation of joinedsp method
      */
     @Override
-    public Idea joinsp(String title,String emailId,boolean joined){
+    public Idea joinsp(String title,String email,boolean joined){
         Idea retrievedIdea = teamManagementRepository.findByTitle(title);
         List<ServiceProviderDto> invitedList = retrievedIdea.getInvitedTeam();
         List<ServiceProviderDto> selectedList = retrievedIdea.getSelectedTeam();
         Idea updatedIdea = null;
         if(joined){
             for(int i = 0;i < invitedList.size();i++){
-                if(invitedList.get(i).getEmail().equals(emailId)){
+                if(invitedList.get(i).getEmail().equals(email)){
                     selectedList.add(invitedList.get(i));
                     retrievedIdea.setSelectedTeam(selectedList);
                     invitedList.remove(i);
@@ -151,7 +194,7 @@ public class TeamManagementServiceimpl implements TeamManagementService {
         }
         else{
             for(int i = 0; i<invitedList.size();i++){
-                if(invitedList.get(i).getEmail().equals(emailId)){
+                if(invitedList.get(i).getEmail().equals(email)){
                     invitedList.remove(i);
                     updatedIdea = teamManagementRepository.save(retrievedIdea);
                 }
@@ -171,12 +214,12 @@ public class TeamManagementServiceimpl implements TeamManagementService {
     }
 
     @Override
-    public Idea getUpdatedSt(String title,String emailId) {
+    public Idea getUpdatedSt(String title,String email) {
         Idea retrieved = teamManagementRepository.findByTitle(title);
         List<ServiceProviderDto> selectedTeam = retrieved.getSelectedTeam();
         Idea updatedSt = null;
         for (int i = 0; i < selectedTeam.size(); i++) {
-            if (selectedTeam.get(i).getEmail().equals(emailId)) {
+            if (selectedTeam.get(i).getEmail().equals(email)) {
                 selectedTeam.remove(i);
                 updatedSt = teamManagementRepository.save(retrieved);
             }

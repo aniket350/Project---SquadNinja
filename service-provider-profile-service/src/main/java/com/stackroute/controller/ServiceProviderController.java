@@ -44,7 +44,7 @@ public class ServiceProviderController {
 
     @GetMapping("serviceprovider/{email}")
     public ResponseEntity<?> getTheUser(@PathVariable("email") String email) throws UserNotFoundException {
-        return new ResponseEntity<ServiceProvider>(serviceProviderService.getTheProfile(email),HttpStatus.OK);
+        return new ResponseEntity<ServiceProvider>(serviceProviderService.getTheProfile(email), HttpStatus.OK);
 
     }
 
@@ -54,9 +54,8 @@ public class ServiceProviderController {
     @PutMapping("serviceprovider")
     public ResponseEntity<?> updateTheUser(@RequestBody ServiceProvider provider) throws Exception {
         System.out.println(provider.toString());
-        return new ResponseEntity<ServiceProvider>(serviceProviderService.updateTheProfile(provider),HttpStatus.OK);
+        return new ResponseEntity<ServiceProvider>(serviceProviderService.updateTheProfile(provider), HttpStatus.OK);
 
     }
-
 
 }

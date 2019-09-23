@@ -38,30 +38,41 @@
  .duration h6{
     font-size: 22px;
  }
- .domain{
-    margin-left: 10%;
-    margin-top: 40px;
+
+.input-row .domainSubdomian{
+   font-size: 22px;
+   margin-left: 10%;
+   margin-top:40px;
+}
+.domainSubdomian {
+   border-collapse: separate;
+ }
+ 
+ .subdomain {
+   padding-left: 350px;
  }
  .projectdomain{
-    width:86%;
- }
- .domain h6{
-    font-size: 22px;
- }
- .subdomains{
     margin-left: 10%;
+    width: 32%;
+ }
  
- }
  .projectsubdomains{
-    width:86%;
+    width:33%;
+   margin-left: 12%;
+  
  }
- .subdomains h6{
-    font-size: 22px;
- }
+.skills{
+   padding-left: 10px;
+} 
+.experience{
+   padding-right: 50px;
+}
+
+ 
  .role{
     margin-left: 10%;
-    margin-top: 25px;
-    width:75%;
+    margin-top: 30px;
+   //  width:75%;
  }
  
  .rolebody .projectrole {
@@ -69,12 +80,14 @@
  }
  .rolebody .projectskills{
     width:80%;
+    padding-left: 10px;
  }
  .rolebody .projectnoofpeople{
     width: 80%;
  }
  .rolebody .projectexperience{
     width:80%;
+    padding-right: 20px;
  }
  .rolebody input {
     width:80%;

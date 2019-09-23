@@ -55,17 +55,20 @@ public class IdeaServiceImpl implements IdeaService {
     idea.setStatus(ideaDTO.getStatus());
     idea.setPostedOn(ideaDTO.getPostedOn());
     ideaRepository.save(idea);
-    ideaRepository.setBelongsToRelation(ideaDTO.getTitle(), ideaDTO.getSubDomain());
+
+
+    ideaRepository.setBelongsToRelation(ideaDTO.getTitle(), ideaDTO.getSubDomain().toLowerCase());
 
     for (int i = 0; i < ideaDTO.getRole().size(); i++) {
-      ideaRepository.setRequiresRelation(ideaDTO.getTitle(), ideaDTO.getRole().get(i).getRole());
-    }
+      ideaRepository.setRequiresRelation(ideaDTO.getTitle(), ideaDTO.getRole().get(i).getRole().toLowerCase());
 
+    }
     for (int i = 0; i < ideaDTO.getRole().size(); i++) {
       Role role = new Role();
       role = ideaDTO.getRole().get(i);
       for (int j = 0; j < role.getSkills().size(); j++) {
-        ideaRepository.setNeedsRelation(ideaDTO.getTitle(), role.getSkills().get(j));
+        ideaRepository.setNeedsRelation(ideaDTO.getTitle(), role.getSkills().get(j).toLowerCase());
+
       }
     }
 

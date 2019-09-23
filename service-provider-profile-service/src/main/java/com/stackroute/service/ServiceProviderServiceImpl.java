@@ -1,9 +1,11 @@
 package com.stackroute.service;
 
 
+import com.stackroute.domain.Idea;
 import com.stackroute.domain.Role;
 import com.stackroute.domain.SearchServiceProvider;
 import com.stackroute.domain.ServiceProvider;
+import com.stackroute.dto.InvitedIdeaDto;
 import com.stackroute.dto.ServiceProviderDto;
 import com.stackroute.exception.UserAlreadyFoundException;
 import com.stackroute.repository.SearchServiceProviderRepository;
@@ -143,4 +145,35 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
             }
 
     }
+
+
+    @Value("${invitedIdea.rabbitmq.queue}")
+    public void saveInvitedIdeas(InvitedIdeaDto idea){
+        System.out.println(idea.toString());
+        List<Idea> invitedIdeas;
+        ServiceProvider sp = serviceProviderRepository.findByEmail(idea.getInviteeEmailId());
+        if(sp.getInvitedIdeas() == null){
+            invitedIdeas = new ArrayList<>();
+        }
+        else{
+            invitedIdeas= sp.getInvitedIdeas();
+        }
+
+        Idea inviteIdea = new Idea();
+        inviteIdea.setTitle(idea.getTitle());
+        inviteIdea.setDescription(idea.getDescription());
+        inviteIdea.setDuration(idea.getDuration());
+        inviteIdea.setDomain(idea.getDomain());
+        inviteIdea.setSubDomain(idea.getCost());
+        inviteIdea.setStatus(idea.getStatus());
+        inviteIdea.setPostedBy(idea.getPostedBy());
+        inviteIdea.setPostedOn(idea.getPostedOn());
+        inviteIdea.setRole(idea.getRole());
+        inviteIdea.setLocation(idea.getLocation());
+        invitedIdeas.add(inviteIdea);
+        sp.setInvitedIdeas(invitedIdeas);
+        serviceProviderRepository.save(sp);
+
+    }
+
 }

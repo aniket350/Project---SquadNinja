@@ -31,17 +31,20 @@ import java.util.List;
 @Document(collection = "ServiceProvider")
 public class ServiceProvider {
 
-  @Id
-  private String email;
-  private String name;
-  private String mobileNo;
-  private String domain;
-  private String subDomain;
-  private Role role;
-  private List<Idea> workedIdeas;
-  private String chargePerHour;
-  private String currentLocation;
-  private List<String> preferredLocation;
-  private Date timestamp;
+
+    @Id
+    private String email;
+    private String name;
+    private String mobileNo;
+    private String domain;
+    private String subDomain;
+    private Role role;
+    private List<Idea> workedIdeas;
+    private List<Idea> invitedIdeas;
+    private String chargePerHour;
+    private String currentLocation;
+    private List<String> preferredLocation;
+    private Date timestamp;
+
 
 }

@@ -31,9 +31,9 @@
             <mat-card-header >
                 <div mat-card-avatar class="example-header-image" ></div>
                  <mat-card-title >{{abc.name}}</mat-card-title> 
-                <mat-card-subtitle>Mobile : {{ abc.mobileNumber }}</mat-card-subtitle>
-                <mat-card-subtitle>EmailId : {{ abc.emailId }}</mat-card-subtitle>
-                <mat-card-subtitle>Role : {{abc.skills}}</mat-card-subtitle>
+                <mat-card-subtitle>Mobile : {{ abc.mobileNo }}</mat-card-subtitle>
+                <mat-card-subtitle>EmailId : {{ abc.email }}</mat-card-subtitle>
+                <mat-card-subtitle>Role : {{abc.role}}</mat-card-subtitle>
                 <mat-card-subtitle>Charge : {{abc.chargePerHour}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
@@ -41,7 +41,7 @@
                    
                 </p>
             </mat-card-content>
-            <button type="button" color="Success" (click)="removeCard(abc.emailId)">Remove</button>
+            <button type="button" color="Success" (click)="removeCard(abc.email)">Remove</button>
         </mat-card>
     </div>
     <br />
@@ -53,17 +53,17 @@
             <mat-card-header>
                  <div mat-card-avatar class="example-header-image"></div>
                 <mat-card-title>{{abc.name}}</mat-card-title>
-                <mat-card-subtitle>Mobile : {{abc.mobileNumber}}</mat-card-subtitle>
-                <mat-card-subtitle>EmailId : {{abc.emailId}}</mat-card-subtitle>
-                <mat-card-subtitle>Role : {{abc.skills}}</mat-card-subtitle>
+                <mat-card-subtitle>Mobile : {{abc.mobileNo}}</mat-card-subtitle>
+                <mat-card-subtitle>EmailId : {{abc.email}}</mat-card-subtitle>
+                <mat-card-subtitle>Role : {{abc.role}}</mat-card-subtitle>
                 <mat-card-subtitle>Charge : {{abc.chargePerHour}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
                 <p>
                 </p>
             </mat-card-content>
-            <button type="button" (click)="save(abc.emailId,abc.title)" color="Success">Accept</button>
-            <button type="button" (click)="reject(abc.emailId,abc.title)" color="Success">Reject</button>
+            <button type="button" (click)="save(abc.email,abc.title)" color="Success">Accept</button>
+            <button type="button" (click)="reject(abc.email,abc.title)" color="Success">Reject</button>
         </mat-card> 
      </div> 
      <br>
@@ -74,9 +74,10 @@
             <mat-card-header>
                 <div mat-card-avatar class="example-header-image"></div>
                 <mat-card-title>{{abc.name}}</mat-card-title>
-                <mat-card-subtitle>Mobile : {{abc.mobileNumber}}</mat-card-subtitle>
-                <mat-card-subtitle>EmailId : {{abc.emailId}}</mat-card-subtitle>
-                <mat-card-subtitle>Role : {{abc.skills}}</mat-card-subtitle>
+                <mat-card-subtitle>Mobile : {{abc.mobileNo}}</mat-card-subtitle>
+                <mat-card-subtitle>EmailId : {{abc.email}}</mat-card-subtitle>
+                <mat-card-subtitle>Role : {{abc.role}}</mat-card-subtitle>
+                <mat-card-subtitle>Charge : {{abc.chargePerHour}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
                 <p>

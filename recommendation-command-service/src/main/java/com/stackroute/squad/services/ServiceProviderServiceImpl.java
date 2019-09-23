@@ -74,9 +74,9 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
     retrievedServiceProvider.setCurrentLocation(serviceProviderDto.getCurrentLocation());
     serviceProviderRepository.save(retrievedServiceProvider);
     System.out.println(serviceProviderDto.getRole());
-    serviceProviderRepository.setPlayedByRelation(serviceProviderDto.getEmail(), serviceProviderDto.getRole().getRole());
+    serviceProviderRepository.setPlayedByRelation(serviceProviderDto.getEmail(), serviceProviderDto.getRole().getRole().toLowerCase());
     for (int i = 0; i < serviceProviderDto.getRole().getSkills().size(); i++) {
-      serviceProviderRepository.setHasSkillsRelation(serviceProviderDto.getEmail(), serviceProviderDto.getRole().getSkills().get(i));
+      serviceProviderRepository.setHasSkillsRelation(serviceProviderDto.getEmail(), serviceProviderDto.getRole().getSkills().get(i).toLowerCase());
     }
 
 

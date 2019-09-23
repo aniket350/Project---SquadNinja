@@ -10,7 +10,7 @@
         <div class="col-sm-12">
           <div
             class="col-sm-4"
-            *ngFor="let x of ideaCardsData; let index = index"
+            *ngFor="let x of recommendCards; let index = index"
           >
             <p>{{ x?.title }}</p>
             <button
@@ -32,11 +32,11 @@
                     &times;
                   </button>
                   <h4 class="modal-title">
-                    {{ ideaCardsData[cardNumber]?.title }}
+                    {{ recommendCards[cardNumber]?.title }}
                   </h4>
                 </div>
                 <div class="modal-body">
-                  <p>{{ ideaCardsData[cardNumber]?.description }}</p>
+                  <p>{{ recommendCards[cardNumber]?.description }}</p>
                 </div>
                 <div class="modal-footer">
                   <button  type="button"  class="btn btn-default" data-dismiss="modal" (click)="apply(cardNumber)">

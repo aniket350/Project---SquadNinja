@@ -44,6 +44,31 @@ public class RabbitMQConfig
     }
 
 
+    @Value("${email.rabbitmq.queue}")
+    String emailTeamQueueName;
+
+    @Value("${email.rabbitmq.exchange}")
+    String emaileTeamExchange;
+
+    @Value("${email.rabbitmq.routingkey}")
+    String emailTeamRoutingkey;
+
+    @Bean
+    Queue emailTeamQueue() {
+        return new Queue(emailTeamQueueName, true);
+    }
+
+    @Bean
+    TopicExchange emailTeamExchange() {
+        return new TopicExchange(emaileTeamExchange);
+    }
+
+    @Bean
+    Binding bindEmailTeam(Queue emailTeamQueue, TopicExchange emailTeamExchange) {
+        return BindingBuilder.bind(emailTeamQueue).to(emailTeamExchange).with(emailTeamRoutingkey);
+    }
+
+
     @Bean
     public MessageConverter jsonMessageConverter()
     {
