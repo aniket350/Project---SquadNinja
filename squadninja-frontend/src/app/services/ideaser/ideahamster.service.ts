@@ -18,7 +18,6 @@ export class IdeahamsterService {
   private _url3:string='/assets/data/roles.json';
 
     constructor(private http : HttpClient){
-       //  this.http=http;
     }
     getDomains():Observable<IDomain[]>{
         return this.http.get<IDomain[]>(this._url);

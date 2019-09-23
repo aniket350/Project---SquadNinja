@@ -25,15 +25,14 @@
         </div>
         <h4>Selected Team :</h4>
     </section> 
-    <div class="cards text-white">
-            <div class="example-card" ></div>
+    <div class="cards">    
         <mat-card class="example-card " *ngFor="let abc of selectedTeam" >
             <mat-card-header >
                 <div mat-card-avatar class="example-header-image" ></div>
                  <mat-card-title >{{abc.name}}</mat-card-title> 
                 <mat-card-subtitle>Mobile : {{ abc.mobileNo }}</mat-card-subtitle>
                 <mat-card-subtitle>EmailId : {{ abc.email }}</mat-card-subtitle>
-                <mat-card-subtitle>Role : {{abc.role}}</mat-card-subtitle>
+                <mat-card-subtitle>Role : {{abc.role.role}}</mat-card-subtitle>
                 <mat-card-subtitle>Charge : {{abc.chargePerHour}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
@@ -48,14 +47,13 @@
     <h4>Applied Service Providers :</h4>
     <br />
     <div class="cards" >
-            <div class="example-card" ></div>
              <mat-card class="example-card" *ngFor = "let abc of appliedTeam">
             <mat-card-header>
                  <div mat-card-avatar class="example-header-image"></div>
                 <mat-card-title>{{abc.name}}</mat-card-title>
                 <mat-card-subtitle>Mobile : {{abc.mobileNo}}</mat-card-subtitle>
                 <mat-card-subtitle>EmailId : {{abc.email}}</mat-card-subtitle>
-                <mat-card-subtitle>Role : {{abc.role}}</mat-card-subtitle>
+                <mat-card-subtitle>Role : {{abc.role.skills}}</mat-card-subtitle>
                 <mat-card-subtitle>Charge : {{abc.chargePerHour}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
@@ -69,7 +67,6 @@
      <br>
      <h4> Invited Team :</h4>
      <div class="cards" >
-        <div class="example-card" ></div>
         <mat-card class="example-card" *ngFor = "let abc of invitedTeam">
             <mat-card-header>
                 <div mat-card-avatar class="example-header-image"></div>
@@ -85,5 +82,6 @@
             </mat-card-content>
             <button type="button" color="Success">Cancel Invite</button>
         </mat-card> 
-     </div>  
+         </div>
+     
 </div>

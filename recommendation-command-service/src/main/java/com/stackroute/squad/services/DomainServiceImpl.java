@@ -23,7 +23,7 @@ public class DomainServiceImpl implements DomainService {
   }
 
   /**
-   * Implementation of saveDomain method
+   * Implementation of the method to save the domain
    */
   @Override
   public Domain saveDomain(Domain domain) {
@@ -32,7 +32,7 @@ public class DomainServiceImpl implements DomainService {
   }
 
   /**
-   * Implementation of getAllDomains method
+   * Implementation of the method to get all the domains
    */
   @Override
   public List<Domain> getAllDomains() {
@@ -42,7 +42,7 @@ public class DomainServiceImpl implements DomainService {
   }
 
   /**
-   * Implementation of update Domains method
+   * Implementation of the method to update the domain
    */
   @Override
   public Domain updateDomain(Domain domain) {
