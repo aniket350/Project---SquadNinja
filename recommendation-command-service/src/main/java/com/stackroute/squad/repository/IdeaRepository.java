@@ -18,6 +18,7 @@ import java.util.List;
 public interface IdeaRepository extends Neo4jRepository<Idea, Long> {
   public Idea findById(long id);
   public Idea deleteByTitle(String title);
+  public Idea findByTitle(String title);
 //Query for idea requires roles
  @Query("MATCH (x:Idea),(y:Roles) WHERE x.title={title} and y.roleName={roleName} CREATE (x)-[r:requires]->(y) RETURN x")
  public Idea setRequiresRelation(@Param("title")String title, @Param("roleName")String roleName);

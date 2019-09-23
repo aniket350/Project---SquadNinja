@@ -1,7 +1,7 @@
 package com.stackroute.domain;
 
 import java.util.List;
-
+//Roles domain class
 public class RequiredRole {
 
     private String experience;
