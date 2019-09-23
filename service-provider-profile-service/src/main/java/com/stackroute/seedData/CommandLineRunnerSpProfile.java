@@ -73,7 +73,7 @@ public class CommandLineRunnerSpProfile implements CommandLineRunner
             ServiceProvider serviceProvider=new ServiceProvider();
             //using the ServiceProvider object set xlsx data to ServiceProvider variables
             serviceProvider.setName(xssfSheet.getRow(i).getCell(0).toString());
-            serviceProvider.setChargePerHour(xssfSheet.getRow(i).getCell(12).toString());
+            serviceProvider.setChargePerHour(xssfSheet.getRow(i).getCell(14).toString());
             serviceProvider.setCurrentLocation(xssfSheet.getRow(i).getCell(5).toString());
             serviceProvider.setEmail(xssfSheet.getRow(i).getCell(1).toString());
             serviceProvider.setDomain(xssfSheet.getRow(i).getCell(3).toString());

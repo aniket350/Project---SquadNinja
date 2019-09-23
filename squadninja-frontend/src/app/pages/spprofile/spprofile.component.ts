@@ -10,6 +10,8 @@ import { map, startWith } from 'rxjs/operators';
 import { ISkill } from 'src/app/skill';
 import { MatAutocomplete, MatAutocompleteSelectedEvent, MatChipInputEvent } from '@angular/material';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { IDomain } from 'src/app/domain';
+import { ISubDomain } from 'src/app/subdomain';
 
 @Component({
   selector: 'app-spprofile',
@@ -18,6 +20,12 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 })
 export class SpprofileComponent implements OnInit {
   
+  public domains: IDomain[] = [];
+  public subdomains: any[];
+
+  myControls = new FormControl();
+  filteredOptions1: Observable<ISubDomain[]>;
+
   myControl = new FormControl();
   filteredRoles: Observable<IRole[]>;
 
@@ -48,6 +56,22 @@ export class SpprofileComponent implements OnInit {
  
   ngOnInit() {
     this.emailId =localStorage.getItem("emailId");
+    
+    this._ideahamsterservice.getDomains()
+    .subscribe(data => {
+      this.domains = data
+    });
+
+    this._ideahamsterservice.getSubDomains()
+      .subscribe(data => {
+        this.subdomains = data.map(e => e.name);
+        this.filteredOptions1 = this.myControls.valueChanges
+          .pipe(
+            startWith(''),
+            map(value => this._filter1(value))
+          );
+
+      });
 
     this._ideahamsterservice.getroles()
     .subscribe(data => {
@@ -70,6 +94,7 @@ export class SpprofileComponent implements OnInit {
           map((skill: string | null) => skill ? this._filter2(skill) : this.skillsArray.slice()));
     });
     this.skills = [];
+
     this.getTheProfile();
   }
 
@@ -161,6 +186,10 @@ private _filter(value: any) {
   private _filter2(value2: any) {
     const filterValue2 = value2.toLowerCase();
     return this.skillsArray.filter(skill => skill.toLowerCase().indexOf(filterValue2) === 0);
+  }
+  private _filter1(value: any) {
+    const filterValue = value.toLowerCase();
+    return this.subdomains.filter(subdomain => subdomain.toLowerCase().includes(filterValue));
   }
 
 
