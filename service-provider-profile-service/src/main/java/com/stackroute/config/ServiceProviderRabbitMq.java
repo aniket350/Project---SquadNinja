@@ -13,6 +13,26 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ServiceProviderRabbitMq {
 
+    @Value("${invitedIdea.rabbitmq.queue}")
+    String invitedIdeaQueue;
+    @Value("${invitedIdea.rabbitmq.exchange}")
+    String invitedIdeaExchange;
+    @Value("${invitedIdea.rabbitmq.routingkey}")
+    String invitedIdeaRoutingKey;
+
+    @Bean
+    Queue queueInvitedIdea(){
+        return new Queue(invitedIdeaQueue,true);
+    }
+    @Bean
+    TopicExchange exchangeInvitedIdea(){
+        return new TopicExchange(invitedIdeaExchange);
+    }
+    @Bean
+    Binding bindingIdea(Queue queueInvitedIdea,TopicExchange exchangeInvitedIdea){
+        return BindingBuilder.bind(queueInvitedIdea).to(exchangeInvitedIdea).with(invitedIdeaRoutingKey);
+    }
+
 
     @Bean
     public MessageConverter jsonMessageConverter() {

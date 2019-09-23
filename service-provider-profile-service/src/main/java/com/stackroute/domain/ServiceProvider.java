@@ -31,6 +31,7 @@ public class ServiceProvider {
     private String subDomain;
     private Role role;
     private List<Idea> workedIdeas;
+    private List<Idea> invitedIdeas;
     private String chargePerHour;
     private String currentLocation;
     private List<String> preferredLocation;
