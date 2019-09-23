@@ -4,7 +4,9 @@ import com.stackroute.squad.domain.ServiceProvider;
 import com.stackroute.squad.dto.AppliedTeamDto;
 import com.stackroute.squad.dto.IdeaDto;
 import com.stackroute.squad.dto.ServiceProviderDto;
-import com.stackroute.squad.exceptions.ServiceProviderNotFound;
+import com.stackroute.squad.dto.WorkedTeamDto;
+import com.stackroute.squad.exceptions.ServiceProviderAlreadyExistException;
+import com.stackroute.squad.exceptions.ServiceProviderNotFoundException;
 import com.stackroute.squad.repository.ServiceProviderRepository;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,14 +33,19 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
    * Implementation of save Service provider method
    */
   @Override
-  public ServiceProvider save(ServiceProvider serviceProvider) throws Exception {
+  public ServiceProvider save(ServiceProvider serviceProvider) throws ServiceProviderAlreadyExistException {
     return serviceProviderRepository.save(serviceProvider);
   }
 
   /*It will listen the data from spProfile queue*/
   @RabbitListener(queues = "${spProfile.rabbitmq.queue}")
-  public void receiveData(ServiceProviderDto serviceProviderDto) throws Exception {
+  public void receiveData(ServiceProviderDto serviceProviderDto) throws ServiceProviderAlreadyExistException {
+
     ServiceProvider serviceProvider = new ServiceProvider();
+    if (serviceProviderRepository.findByEmail(serviceProvider.getEmail()) != null) {
+
+      throw new ServiceProviderAlreadyExistException("serviceprovider already exist");
+    }
     serviceProvider.setChargePerHour(serviceProviderDto.getChargePerHour());
     serviceProvider.setDomain(serviceProviderDto.getDomain());
     serviceProvider.setEmail(serviceProviderDto.getEmail());
@@ -51,10 +58,14 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
 
   /*It will listen the data from spProfile queue*/
   @RabbitListener(queues = "${spUpdate.rabbitmq.queue}")
-  public void updatedServiceProvider(ServiceProviderDto serviceProviderDto) throws Exception {
+  public void updatedServiceProvider(ServiceProviderDto serviceProviderDto) throws ServiceProviderNotFoundException {
 
 
     ServiceProvider retrievedServiceProvider = serviceProviderRepository.findByEmail(serviceProviderDto.getEmail());
+    if (serviceProviderRepository.findByEmail(retrievedServiceProvider.getEmail()) != null) {
+
+      throw new ServiceProviderNotFoundException("serviceprovider not found");
+    }
     retrievedServiceProvider.setChargePerHour(serviceProviderDto.getChargePerHour());
     retrievedServiceProvider.setDomain(serviceProviderDto.getDomain());
     retrievedServiceProvider.setMobileNo(serviceProviderDto.getMobileNo());
@@ -67,26 +78,31 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
     for (int i = 0; i < serviceProviderDto.getRole().getSkills().size(); i++) {
       serviceProviderRepository.setHasSkillsRelation(serviceProviderDto.getEmail(), serviceProviderDto.getRole().getSkills().get(i).toLowerCase());
     }
-//    IdeaDto ideaDto = new IdeaDto();
-//    serviceProviderRepository.setWorkedOnRelation(serviceProviderDto.getEmail(), ideaDto.getTitle());
-//    IdeaDto ideaDto1 = new IdeaDto();
-//    serviceProviderRepository.setAppliedForRelation(serviceProviderDto.getEmail(), ideaDto1.getTitle());
 
 
   }
+
   @RabbitListener(queues = "${appliedTeam.rabbitmq.queue}")
-  public void appliedTeam(AppliedTeamDto appliedTeamDto)throws Exception{
+  public void appliedTeam(AppliedTeamDto appliedTeamDto) throws ServiceProviderAlreadyExistException {
     ServiceProvider serviceProviderData = serviceProviderRepository.findByEmail(appliedTeamDto.getEmail());
     IdeaDto ideaDto1 = new IdeaDto();
     serviceProviderRepository.setAppliedForRelation(appliedTeamDto.getEmail(), appliedTeamDto.getIdeaTitle());
 
   }
+  @RabbitListener(queues = "${workedOn.rabbitmq.queue}")
+  public void workedOn(WorkedTeamDto workedTeamDto) throws ServiceProviderAlreadyExistException {
+    ServiceProvider serviceProviderData1 = serviceProviderRepository.findByEmail(workedTeamDto.getEmail());
+    IdeaDto ideaDto = new IdeaDto();
+    serviceProviderRepository.setAppliedForRelation(workedTeamDto.getEmail(), workedTeamDto.getIdeaTitle());
+
+  }
+
   /**
    * Implementation of get All Service provider method
    */
 
   @Override
-  public List<ServiceProvider> getAllServiceProvider() throws ServiceProviderNotFound {
+  public List<ServiceProvider> getAllServiceProvider() throws ServiceProviderAlreadyExistException {
     List<ServiceProvider> allServiceProviders = (List<ServiceProvider>) serviceProviderRepository.findAll();
     return allServiceProviders;
 
@@ -96,7 +112,7 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
    * Implementation of update Service provider method
    */
   @Override
-  public ServiceProvider updateServiceProvider(ServiceProvider serviceProvider) throws ServiceProviderNotFound {
+  public ServiceProvider updateServiceProvider(ServiceProvider serviceProvider) throws ServiceProviderAlreadyExistException {
     ServiceProvider updateServiceProvider = serviceProviderRepository.save(serviceProvider);
     return updateServiceProvider;
 
@@ -106,7 +122,7 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
    * Implementation of get Service provider by email method
    */
   @Override
-  public ServiceProvider getByEmail(String email) throws ServiceProviderNotFound {
+  public ServiceProvider getByEmail(String email) throws ServiceProviderAlreadyExistException {
     return serviceProviderRepository.findByEmail(email);
   }
 }

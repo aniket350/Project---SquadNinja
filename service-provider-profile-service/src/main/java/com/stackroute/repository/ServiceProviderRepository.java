@@ -12,6 +12,6 @@ import java.util.List;
  */
 @Repository
 public interface ServiceProviderRepository extends MongoRepository<ServiceProvider,String> {
-
+  /**findByEmail method to get Serviceprovider by its email*/
     public ServiceProvider findByEmail(String email);
 }
