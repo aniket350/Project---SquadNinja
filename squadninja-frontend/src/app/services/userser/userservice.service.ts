@@ -25,11 +25,7 @@ export class UserserviceService{
       emailId : email,
       password : pass
     };
-    //  JSON.stringify(obj);
 
-    console.log(JSON.stringify(obj));
-
-    // this.http.get("http://localhost:8080/hello", {responseType: 'text'}).subscribe(console.log)
     return this.http.post(`http://13.235.10.115:8085/api/v1/user`, JSON.stringify(obj), httpOptions);
 
   }

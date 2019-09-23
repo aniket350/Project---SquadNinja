@@ -15,7 +15,7 @@ public class RecommendedTeamServiceImpl implements RecommendedTeamService {
     List<ServiceProvider> x;
 
     /**
-     * Constructor based Dependency injection to inject TrackRepository here
+     * Constructor based Dependency injection to inject TeamRecommendationRepository here
      */
     @Autowired
     public RecommendedTeamServiceImpl(TeamRecommendationRepository teamRecommendationRepository, List<ServiceProvider> x) {

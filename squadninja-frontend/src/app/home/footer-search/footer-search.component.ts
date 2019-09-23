@@ -22,7 +22,6 @@ export class FooterSearchComponent implements OnInit {
         this.SearchComponentService.getSearch(this.searchedTerm)
             .subscribe(data => {
                 this.searchbarComponenet = data
-                console.log(this.searchbarComponenet);
             });
 
     }

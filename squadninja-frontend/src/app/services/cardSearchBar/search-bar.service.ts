@@ -13,7 +13,6 @@ export class SearchComponentService {
        }
 
        getSearch(title): any {
-        // console.log(this.http.get<SearchComponenet[]>(`http://13.235.10.115:8090/api/v1/ideas/${title}`));
         return this.http.get<SearchComponenet[]>(`http://13.235.10.115:8090/api/v1/idea/${title}`);
 
     }

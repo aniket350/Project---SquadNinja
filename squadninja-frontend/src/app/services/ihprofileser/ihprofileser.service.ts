@@ -11,11 +11,9 @@ export class IhprofileserService {
 private_url: string = "http://13.235.10.115:8095/api/v1/ihdto"
  constructor(private http: HttpClient) { }
 createUser(user:any):Observable<any> {
- console.log(user);
  return this.http.post<Register>(this.private_url,user);
 }
 getByEmailIdForIdeaHamster(emailId):any{
- console.log("in getbyemail of reg service "+emailId);
  return this.http.get(`http://13.235.10.115:8095/api/v1/ideahamster/${emailId}`);
 }
 updateTheProfile(profile: any):Observable<any> {
@@ -23,7 +21,6 @@ updateTheProfile(profile: any):Observable<any> {
 }
 
 getIdea(postedBy):any{
-    console.log("**********",postedBy);
     return this.http.get<any>(`http://13.235.10.115:8090/api/v1/postedIdeas/${postedBy}`);
  }
 

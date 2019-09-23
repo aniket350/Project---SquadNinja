@@ -59,11 +59,7 @@ export class NavbarComponent implements OnInit {
 
 
     searchLogs(searchTerm: string) {
-        // console.log(1234);
-        // console.log(this.title);
-        console.log(searchTerm);
         this.searchComponentService.getSearch(searchTerm).subscribe((val) => this.searchbar = val);
-        console.log(this.searchbar);
         this.router.navigate(['footersearch', {searchTerm}])
     }
 

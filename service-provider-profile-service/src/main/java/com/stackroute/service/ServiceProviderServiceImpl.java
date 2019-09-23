@@ -146,7 +146,6 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
 
   }
 
-
   @RabbitListener(queues = "${invitedIdea.rabbitmq.queue}")
   public void saveInvitedIdeas(InvitedIdeaDto idea) {
 

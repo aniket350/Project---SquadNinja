@@ -20,14 +20,6 @@ export class TeamManagementServiceService {
       })
     };
 
-    
-
-
-    //  //  this.title.http.get("http://localhost:8083/idea/${title}", {responseType: 'text'}).subscribe(console.log)
-    //   // return this.http.get(`http://localhost:8083/api/v1/idea/${title}`);
-
-    //  return this.http.get(`http://13.235.10.115:8083/api/v1/idea/${title}`); 
-    // }
   };
 
 
@@ -36,9 +28,6 @@ export class TeamManagementServiceService {
 
   }
 
-  // getCard(title: string): Observable<any> {
-  //   return this.http.get('http://13.235.10.115:8000/api/v1/idea/' + title);
-  // }
 }
 
 

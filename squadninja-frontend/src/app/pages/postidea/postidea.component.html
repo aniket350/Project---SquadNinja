@@ -59,7 +59,7 @@
           [matAutocomplete]="auto1" [(ngModel)]="subdomain" name="subdomain">
         <mat-autocomplete #auto1="matAutocomplete">
           <mat-option *ngFor="let subdomain of filteredOptions1 | async" [value]="subdomain">
-        {{subdomain}}
+          {{subdomain}}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>

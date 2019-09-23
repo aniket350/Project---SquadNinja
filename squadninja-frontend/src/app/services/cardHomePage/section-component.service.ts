@@ -28,10 +28,6 @@ myIdeas(emailId):Observable<IdeaDetail[]>{
 }
 
 addTeamManagement(ideaTitle,spApplied):Observable<IdeaView> {
-  console.log(ideaTitle);
-  console.log(ideaTitle.title);
-  console.log("naruto5");
-  console.log("@@@@@@@@@@@@@@",spApplied);
   
   
   return this.http.put<IdeaView>('http://13.235.10.115:8083/api/v1/appliedTeam',
