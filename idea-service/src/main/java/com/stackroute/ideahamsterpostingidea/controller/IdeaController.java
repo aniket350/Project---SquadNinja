@@ -34,6 +34,7 @@ public class IdeaController {
     }
 
     /*handle the HTTP POST requests matched with given URI expression.*/
+    /*by this PostMapping it will save the idea*/
     @PostMapping("idea")
     public ResponseEntity<?> savedIdea(@RequestBody Idea idea) throws IdeaAlreadyExistException {
         DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
@@ -46,21 +47,21 @@ public class IdeaController {
     /* @GetMapping annotated methods handle the HTTP GET requests matched with given URI expression.get the idea by id*/
 
 
-    /*Get the idea by title*/
+    /*by this GetMapping it will get the idea which belongs to that title*/
     @GetMapping("idea/{title}")
     public ResponseEntity<?> getIdeaByTitle(@PathVariable String title) throws IdeaNotFoundException,Exception {
         Idea getIdeaByTitle = ideaService.getIdeaByTitle(title);
         return new ResponseEntity<>(getIdeaByTitle, HttpStatus.OK);
     }
 
-    /*Get the idea by location*/
+    /*by this GetMapping it will get the idea which belongs to that location*/
     @GetMapping("idea/get/{location}")
     public ResponseEntity<?> getIdeaByLocation(@PathVariable String location) throws IdeaNotFoundException,Exception {
         Idea getIdeaBylocation = ideaService.getIdeaByLocation(location);
         return new ResponseEntity<>(getIdeaBylocation, HttpStatus.OK);
     }
 
-    /*get All ideas*/
+    /*by this GetMapping it will get all ideas*/
     @GetMapping("ideas")
     public ResponseEntity<?> getAllIdeas() throws Exception {
         List<Idea> getAllIdeas = ideaService.getAllIdeas();
@@ -68,21 +69,21 @@ public class IdeaController {
     }
 
 
-    /*Delete the idea by title*/
+    /*by this DeleteMapping it will delete the idea which belongs to that title*/
     @DeleteMapping("idea/{title}")
     public ResponseEntity<?> deletIdeaByTitle(@PathVariable String title) throws IdeaNotFoundException,Exception {
         Idea deleteIdeaByTitle = ideaService.deleteIdeaByTitle(title);
         return new ResponseEntity<>(deleteIdeaByTitle, HttpStatus.OK);
     }
 
-    /*update the idea by id*/
+    /*by this UpdateMapping it will Update the idea*/
     @PutMapping("ideas")
     public ResponseEntity<?> updateIdea(@RequestBody Idea idea) throws IdeaNotFoundException,Exception {
         Idea updateIdea = ideaService.updateIdea(idea);
         return new ResponseEntity<>(updateIdea, HttpStatus.OK);
     }
 
-    /*get the recentIdeas by the time he have updated*/
+    /*by this GetMapping it will get All recent ideas*/
     @GetMapping("recentIdeas")
     public ResponseEntity<?> getRecentIdeas() throws Exception {
         List<Idea> recentIdeas = ideaService.getRecentIdeas();
