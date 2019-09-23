@@ -10,6 +10,7 @@ import com.stackroute.dto.ServiceProviderDto;
 import com.stackroute.exception.UserAlreadyFoundException;
 import com.stackroute.repository.SearchServiceProviderRepository;
 import com.stackroute.repository.ServiceProviderRepository;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -41,7 +42,8 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
 
     public ServiceProviderServiceImpl() {
     }
-
+  /*@Value annotation is found on a method, Spring context will invoke
+    it when all the spring configurations and beans are getting loaded. */
     @Value("${spRegister.rabbitmq.exchange}")
     public String exchange;
 
@@ -62,11 +64,13 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
     String updateRoutingKey;
 
 
-
+  /*
+   * Implementation of saving the serviceProvider
+   */
 
     @Override
     public ServiceProvider saveServiceProvider(ServiceProviderDto provider) throws UserAlreadyFoundException {
-        //for authentication
+        //for registering the new  serviceProvider if the emailId of the serviceProvider already exist it throws an exception like ServiceProviderAlreadyExistException
 
         ServiceProvider sp = new ServiceProvider();
         if(serviceProviderRepository.findByEmail(provider.getEmail())!=null) {
@@ -97,7 +101,6 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
 
         ServiceProvider serviceProvider = serviceProviderRepository.findByEmail(provider.getEmail());
 
-        System.out.println(serviceProvider.toString());
         serviceProvider.setName(provider.getName());
         serviceProvider.setMobileNo(provider.getMobileNo());
         serviceProvider.setDomain(provider.getDomain());
@@ -110,13 +113,10 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
         role.setExperience(provider.getRole().getExperience());
         role.setSkills(provider.getRole().getSkills());
         serviceProvider.setRole(role);
-        System.out.println(serviceProvider.toString());
         ServiceProvider updateServiceProvider = serviceProviderRepository.save(serviceProvider);
 
         saveForSearch(serviceProvider);
 
-        System.out.println(updateServiceProvider.toString());
-        System.out.println("sent="+serviceProvider);
         rabbitTemplate.convertAndSend(updateExchange,updateRoutingKey, serviceProvider);
         return updateServiceProvider;
     }
@@ -124,7 +124,6 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
 
     public void saveForSearch(ServiceProvider serviceProvider){
 
-            System.out.println(serviceProvider.toString());
             List<ServiceProvider> serviceProviderList;
             SearchServiceProvider fetchedSearchServiceProvider = searchServiceProviderRepository.findByRoleName(serviceProvider.getRole().getRole());
             if (fetchedSearchServiceProvider != null) {
@@ -149,9 +148,9 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
     }
 
 
-    @Value("${invitedIdea.rabbitmq.queue}")
+    @RabbitListener(queues = "${invitedIdea.rabbitmq.queue}")
     public void saveInvitedIdeas(InvitedIdeaDto idea){
-        System.out.println(idea.toString());
+//        System.out.println(idea.toString());
 
         List<Idea> invitedIdeas;
         ServiceProvider sp = serviceProviderRepository.findByEmail(idea.getInviteeEmailId());
