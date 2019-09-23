@@ -15,7 +15,6 @@ export class FussionChartComponent {
   constructor(
     private teamManagementService: TeamManagementServiceService) {
    }
-   //public title : 'Application';
 
   ngOnInit() {
     
@@ -57,14 +56,6 @@ export class FussionChartComponent {
     });
   }
   
-// getCharts()
-// this.TeamManagementServiceService.getFusion().subscribe((response)=>
-// {
-//   console.log(`Response: $(response)`);
-//   if(response)
-//   {
-//     this
-//   }
   
 }
 

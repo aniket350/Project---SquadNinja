@@ -36,19 +36,11 @@ export class SectionsComponent implements OnInit
     this.sectionComponentService.getIdeas()
       .subscribe(data => {
         this.ideaCardsData = data
-        console.log(this.ideaCardsData);
+    
         
       });
       this.slides = this.chunk(this.ideaCardsData,5);
-      
-      // console.log(`Sections: ${this.slides}`);
-      
-      // this.sectionComponentSP.getSP()
-      // .subscribe(data => {
-      //   this.spCardData = data
-      //   console.log(this.spCardData);
-      // });
-    // this.sections = this.chunk(this.sections,4);
+     
   }
   openCard()
   {
