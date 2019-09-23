@@ -13,8 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 @Setter
 @Getter
-@ToString
-@Builder
 public class InvitedIdeaDto {
 
     private String title;
