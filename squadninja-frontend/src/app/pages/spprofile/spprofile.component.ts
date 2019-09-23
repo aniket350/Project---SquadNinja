@@ -82,25 +82,6 @@ export class SpprofileComponent implements OnInit {
       
       console.log("after getting back from service",this.serviceProviderData);
     });
-<<<<<<< HEAD
-=======
-  }
-    onSubmitUpdate(){
-      let this1=this;
-      console.log("this.serviceProviderData", this.serviceProviderData);
-      // console.log("this.user******", this.serviceProviderData);
-      this.serviceProviderProfile.updateTheProfile(this1.serviceProviderData,this.emailId).subscribe((data)=> {
-        console.log("data updated..", data);
-
-        this1.updated=data;
-        this1.getTheProfile();
-        window.location.reload();
-        console.log("after getting back from service",this1.updated);
-    }, err => {
-      console.log(err);
-    });
-   
->>>>>>> 9da0b6c67b06cdcadc210947400578278177012b
 
  //  console.log(this.filteredSkills);
   

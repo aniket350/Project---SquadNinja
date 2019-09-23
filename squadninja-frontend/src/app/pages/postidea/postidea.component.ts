@@ -157,11 +157,7 @@ export class PostideaComponent implements OnInit {
     console.log("second one-----------",obj);
     this._ideahamsterservice.save(obj)
       .subscribe((response) => {
-<<<<<<< HEAD
-        //  console.log(obj.role);
-=======
          console.log("response::::::",response);
->>>>>>> 9da0b6c67b06cdcadc210947400578278177012b
         if (response) { }
       }, (err) => {
         console.log(err);
