@@ -63,7 +63,7 @@
             </div>
             <hr class="my-4" />
             <!-- <p>Likes music</p> -->
-            <a href="javascript:void(0)">Show more</a>
+            <a href="javascript:void(0)"></a>
           </div>
         </div>
       </div>
@@ -241,7 +241,7 @@
                       <mat-form-field fxFlex class="projectsubdomains">
                           <input type="text" placeholder="" aria-label="subDomain" matInput [formControl]="myControls"
                           [matAutocomplete]="auto1" [(ngModel)]="serviceProviderData.subDomain"
-                          placeholder={{serviceProviderData.chargePerHour}}>
+                          placeholder={{serviceProviderData.subDomains}}>
                         <mat-autocomplete #auto1="matAutocomplete">
                           <mat-option *ngFor="let subdomain of filteredOptions1 | async" [value]="subdomain">
                             {{subdomain}}

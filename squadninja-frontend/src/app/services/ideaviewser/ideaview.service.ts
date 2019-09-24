@@ -9,27 +9,26 @@ import { Observable } from "rxjs";
 export class IdeaviewService {
   constructor(private http: HttpClient) {}
   getIdeaForTitle(title): Observable<any> {
-    console.log("in getIdea of reg service " + title);
     return this.http.get<IdeaView>(
       `http://13.235.10.115:8083/api/v1/idea/${title}`
     );
   }
   remove(title,email):Observable<any>{
-  console.log("in service",title,email);
     return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/removeSelectedSp?title=${title}&email=${email}`,(null));
   }
   updateOnAccept(title,email,status):Observable<any>{
-    console.log(title,email,status);
-
     return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/acceptssp?title=${title}&email=${email}&accepted=${status}`,(null));
   }
   updateOnReject(title,email,status):Observable<any>{
-
     return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/acceptssp?title=${title}&email=${email}&accepted=${status}`,(null));
   }
-  updateOnJoin(title,email,status):Observable<any>{
-    return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/joinedsp,{title=${title}&email=${email}&accepted=${status}`,(null));
-  }
+  // updateOnJoin(title,email,status):Observable<any>{
+  //   return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/joinedsp?{title=${title}&email=${email}&joined=${status}`,(null));
+  // }
+
+  // updateOnRejectInvite(title,email,status):Observable<any>{
+  //   return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/joinedsp?{title=${title}&email=${email}&joined=${status}`,(null)); 
+  // }
 
   inviteTeam(idea:string, invitedSP): Observable<IdeaView> {
     let name: string = invitedSP.name;

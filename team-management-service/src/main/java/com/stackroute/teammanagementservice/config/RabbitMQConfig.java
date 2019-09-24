@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 //Rabbit Configuration
 @Configuration
 public class RabbitMQConfig {
+    //-----------------idea
     @Value("${ideat.rabbitmq.queue}")
     String queueName;
     @Value("${ideat.rabbitmq.exchange}")
@@ -30,8 +31,28 @@ public class RabbitMQConfig {
     Binding binding(Queue queue, TopicExchange exchange) {
         return BindingBuilder.bind(queue).to(exchange).with(routingkey);
     }
+//----------------------------sp
+@Value("${invitedIdea.rabbitmq.queue}")
+String invitedIdeaQueue;
+    @Value("${invitedIdea.rabbitmq.exchange}")
+    String invitedIdeaExchange;
+    @Value("${invitedIdea.rabbitmq.routingkey}")
+    String invitedIdeaRoutingKey;
 
+    @Bean
+    Queue queueInvitedIdea(){
+        return new Queue(invitedIdeaQueue,true);
+    }
+    @Bean
+    TopicExchange exchangeInvitedIdea(){
+        return new TopicExchange(invitedIdeaExchange);
+    }
+    @Bean
+    Binding bindingIdea(Queue queueInvitedIdea,TopicExchange exchangeInvitedIdea){
+        return BindingBuilder.bind(queueInvitedIdea).to(exchangeInvitedIdea).with(invitedIdeaRoutingKey);
+    }
 
+//------------------team
     @Value("${appliedTeam.rabbitmq.queue}")
     String appliedTeamQueueName;
 

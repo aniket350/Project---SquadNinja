@@ -69,12 +69,13 @@ Login() {
         if (this.decodedTokenWithRoleSub === "ideaHamster") {
          
           this.router.navigate(['/ihdashboard']);
-     }
+        }
          else {
           this.router.navigate(['/spdashboard']);
           
           
         }
+        
         
 
   }},
@@ -83,6 +84,7 @@ Login() {
     console.log(err);
 
 });
+
 
 
 }
