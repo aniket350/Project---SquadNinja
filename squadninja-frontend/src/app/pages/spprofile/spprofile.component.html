@@ -240,7 +240,8 @@
                   <div class="form-group">
                       <mat-form-field fxFlex class="projectsubdomains">
                           <input type="text" placeholder="" aria-label="subDomain" matInput [formControl]="myControls"
-                          [matAutocomplete]="auto1" [(ngModel)]="subdomain" name="subdomain">
+                          [matAutocomplete]="auto1" [(ngModel)]="serviceProviderData.subDomain"
+                          placeholder={{serviceProviderData.chargePerHour}}>
                         <mat-autocomplete #auto1="matAutocomplete">
                           <mat-option *ngFor="let subdomain of filteredOptions1 | async" [value]="subdomain">
                             {{subdomain}}
