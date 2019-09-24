@@ -25,7 +25,7 @@ public class IdeaRecommendationController {
     private RecommendedTeamService recommendedTeamService;
 
     /**
-     * Constructor based Dependency injection to inject Rrecmmendedideaservice and recommendedTeamService into controller
+     * Constructor based Dependency injection to inject Recommended ideaService and recommendedTeamService into controller
      */
 
     @Autowired
@@ -35,7 +35,7 @@ public class IdeaRecommendationController {
     }
 
     /**
-     * GetMapping Annotation for mapping HTTP GET requests onto specific handler methods.
+     * by the get mapping it is used for getting the idea by the skills and by the email of specific serviceProvider
      */
     @GetMapping("skill/{email}")
     public ResponseEntity<Collection<Idea>> getIdeasBySkill(@PathVariable("email") String email) {
@@ -44,7 +44,7 @@ public class IdeaRecommendationController {
     }
 
     /**
-     * GetMapping Annotation for mapping HTTP GET requests onto specific handler methods.
+     * by these get mapping it is used for getting the idea throw role and by giving the email of specific serviceProvider
      */
     @GetMapping("role/{email}")
     public ResponseEntity<Iterable<Idea>> getIdeasByRole(@PathVariable("email") String email) {
@@ -53,7 +53,7 @@ public class IdeaRecommendationController {
     }
 
     /**
-     * GetMapping Annotation for mapping HTTP GET requests onto specific handler methods.
+     * by these get mapping it is used for getting the serviceprovider worked ideas by the email of specific serviceprovider
      */
     @GetMapping("workedonIdea/{email}")
     public ResponseEntity<Iterable<Idea>> getIdeasByPreviousWork(@PathVariable("email") String name) {
@@ -62,7 +62,7 @@ public class IdeaRecommendationController {
     }
 
     /**
-     * GetMapping Annotation for mapping HTTP GET requests onto specific handler methods.
+     * by these get mapping it is used for getting the serviceprovider appliedon ideas by the email of specific serviceprovider
      */
     @GetMapping("appliedonIdea/{email}")
     public ResponseEntity<Iterable<Idea>> getIdeasByPreviousApplied(@PathVariable("email") String email) {
@@ -71,7 +71,7 @@ public class IdeaRecommendationController {
     }
 
     /**
-     * GetMapping Annotation for mapping HTTP GET requests onto specific handler methods.
+     * by these get mapping it is used for getting the serviceprovider previously worked ideas by the title
      */
     @GetMapping("previouslyWorked/{title}")
     public ResponseEntity<?> getautoTeam(@PathVariable("title") String title, @RequestParam("roleName") String roleName) {
@@ -81,7 +81,7 @@ public class IdeaRecommendationController {
     }
 
     /**
-     * GetMapping Annotation for mapping HTTP GET requests onto specific handler methods.
+     * by these get mapping it is used for getting the serviceprovider applied ideas by the title
      */
     @GetMapping("applied/{title}")
     public ResponseEntity<Collection<ServiceProvider>> getRecommendedTeam(@PathVariable("title") String title, @RequestParam("roleName") String roleName) {
