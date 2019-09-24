@@ -29,7 +29,8 @@ export class PostideaComponent implements OnInit {
   experience: any;
   location: any;
   cost: any;
-
+  emailId:any;
+  postedBy:any;
   private fieldArray: Array<any> = [];
   private newAttribute: any = {};
   public domains: IDomain[] = [];
@@ -130,6 +131,7 @@ export class PostideaComponent implements OnInit {
   }
 
   save() {
+    this.emailId=localStorage.getItem("emailId");
     let obj = {
       title: this.title,
       description: this.description,
@@ -143,7 +145,8 @@ export class PostideaComponent implements OnInit {
         noOfPeople: this.newAttribute.noofpeople,
         experience: this.newAttribute.experience,
       }],
-      location: this.location
+      location: this.location,
+      postedBy:this.emailId
     }
 //  console.log(obj);
 
