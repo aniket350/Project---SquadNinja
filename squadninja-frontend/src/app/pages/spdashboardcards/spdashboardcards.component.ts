@@ -95,7 +95,7 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
 
 
   clicked(index:any){
-    console.log(this.ideaCardsData[index]);
+    console.log(this.recommendCards[index]);
     console.log(index);
     this.cardNumber=index;
     // this.saveCardDetails(this.ideaCardsData[index]);

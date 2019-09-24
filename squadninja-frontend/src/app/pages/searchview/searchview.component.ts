@@ -34,6 +34,6 @@ export class SearchviewComponent implements OnInit {
     console.log("sending from here",this.inviteIdea);
     this.ideaviewservice.inviteTeam(this.inviteIdea,this.searchbar[index]).subscribe((response)=>this.invite=response);
     console.log("invite team", this.invite);
-    alert("Successfully Invited!");
+   
   }
 }
