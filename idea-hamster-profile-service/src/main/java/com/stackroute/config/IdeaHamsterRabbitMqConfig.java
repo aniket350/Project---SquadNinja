@@ -17,9 +17,9 @@ public class IdeaHamsterRabbitMqConfig {
 
     @Value("${ideah.rabbitmq.queue}")
     String ideaQueue;
-    @Value("${idea.rabbitmq.exchange}")
+    @Value("${ideah.rabbitmq.exchange}")
     String ideaExchange;
-    @Value("${idea.rabbitmq.routingkey}")
+    @Value("${ideah.rabbitmq.routingkey}")
     String ideaKey;
 
     @Bean
