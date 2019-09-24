@@ -21,8 +21,9 @@ import java.util.List;
 @Component
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id", scope = ServiceProviderDto.class)
 public class Role {
-  private String role;
   private String experience;
+  private String noOfPeople;
   private List<String> skills;
+  private String role;
 
 }

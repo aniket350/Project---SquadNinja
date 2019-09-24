@@ -62,7 +62,7 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
 
 
     ServiceProvider retrievedServiceProvider = serviceProviderRepository.findByEmail(serviceProviderDto.getEmail());
-    if (serviceProviderRepository.findByEmail(retrievedServiceProvider.getEmail()) != null) {
+    if (serviceProviderRepository.findByEmail(retrievedServiceProvider.getEmail()) == null) {
 
       throw new ServiceProviderNotFoundException("serviceprovider not found");
     }
@@ -72,7 +72,7 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
     retrievedServiceProvider.setName(serviceProviderDto.getName());
     retrievedServiceProvider.setPreferredLocation(serviceProviderDto.getPreferredLocation());
     retrievedServiceProvider.setCurrentLocation(serviceProviderDto.getCurrentLocation());
-    serviceProviderRepository.save(retrievedServiceProvider);
+     serviceProviderRepository.save(retrievedServiceProvider);
     /*it is used for setting the relationship between the serviceProvider emailId and the role of the serviceProvider*/
     serviceProviderRepository.setPlayedByRelation(serviceProviderDto.getEmail(), serviceProviderDto.getRole().getRole().toLowerCase());
     /*it is used for setting the relationshiip between the serviceprovider emailId and the serviceprovider skills*/

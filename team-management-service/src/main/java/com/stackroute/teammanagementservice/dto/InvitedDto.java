@@ -21,6 +21,7 @@ import java.util.List;
 @ToString
 @Component
 public class InvitedDto {
+
     private String title;
     private String description;
     private String duration;
@@ -33,4 +34,5 @@ public class InvitedDto {
     private String postedBy;
     private String location;
     private String inviteeEmailId;
+
 }
