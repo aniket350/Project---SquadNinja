@@ -1,9 +1,8 @@
-
+<div>
   <div class="heading">
     <h1>Idea Details</h1>
   </div>
   <!-- project title starts -->
-
   <div class="title">
     <h6>Project Title :</h6>
     <mat-form-field class="projecttitle">
@@ -32,7 +31,6 @@
     </mat-form-field>
   </div>
   <!-- project duration ends -->
-
   <form fxLayout="column" [formGroup]="contactForm">
     <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
       <table class="domainSubdomian">
@@ -60,101 +58,89 @@
         </mat-autocomplete>
       </mat-form-field>
     </div>
-   </form>
-
-
+  </form>
   <!-- role starts -->
   <div class="role">
-    <table class="roletable">
-      <thead class="threadclass">
-        <tr>
-          <th>Role :</th>
-          <th>Skills :</th>
-          <th>No Of People :</th>
-          <th>Experience :</th>
-        </tr>
-      </thead>
-      <tbody class="rolebody">
-        <tr *ngFor="let field of fieldArray; let i = index">
-          <td>
-            <input [(ngModel)]="field.role" class="form-control" type="text" name={{field.role}} />
-          </td>
-
-          <td>
-            <input [(ngModel)]="field.skills" class="form-control" type="text" name={{field.skills}} />
-          </td>
-
-          <td>
-            <input [(ngModel)]="field.noofpeople" class="form-control" type="number" name={{field.noofpeople}} />
-          </td>
-
-          <td>
-            <input [(ngModel)]="field.experience" class="form-control" type="text" name={{field.experience}} />
-          </td>
-
-          <td>
-            <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            <mat-form-field class="projectrole">
-              <input type="text" placeholder="Role" aria-label="role" matInput [formControl]="myControlrole"
-                [matAutocomplete]="auto" [(ngModel)]="newAttribute.role" name="roleName">
-              <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let role of filteredRoles | async" [value]="role">
-                  {{role}}
-                </mat-option>
-              </mat-autocomplete>
-            </mat-form-field>
-          </td>
-
-          <td>
-            <mat-form-field class="projectskills">
-              <mat-chip-list #chipList aria-label="Fruit selection">
-                <mat-chip *ngFor="let skill of newAttribute.skills" [selectable]="selectable" [removable]="removable"
-                  (removed)="remove(skill)">
-                  {{skill}}
-                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-                </mat-chip>
-                <input placeholder="Skills" #skillInput [formControl]="skillCtrl" [matAutocomplete]="auto2"
-                  [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                  [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
-              </mat-chip-list>
-              <mat-autocomplete #auto2="matAutocomplete" (optionSelected)="selected($event)">
-                <mat-option *ngFor="let skill of filteredSkills | async" [value]="skill">
-                  {{skill}}
-                </mat-option>
-              </mat-autocomplete>
-            </mat-form-field>
-          </td>
-
-          <td>
-            <mat-form-field class="projectnoofpeople">
-              <input matInput placeholder="No Of People" type="number" [(ngModel)]="newAttribute.noofpeople"
-                name="newAttributenoofpeople" />
-            </mat-form-field>
-          </td>
-
-          <td>
-            <mat-form-field class="projectexperience">
-              <input matInput placeholder="Experience" type="text" [(ngModel)]="newAttribute.experience"
-                name="newAttributeexperience" />
-            </mat-form-field>
-          </td>
-
-          <td>
-            <button class="btn btn-default" type="button" (click)="addFieldValue()">Add</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+      <table class="roletable">
+        <thead class="threadclass">
+          <tr>
+            <th>Role :</th>
+            <th>Experience in Role :</th>
+            <th>Skills :</th>
+            <th>No Of People :</th>
+           
+          </tr>
+        </thead>
+        <tbody class="rolebody">
+          <tr *ngFor="let field of fieldArray; let i = index">
+            <td>
+              <input [(ngModel)]="field.role" class="form-control" type="text" name={{field.role}} />
+            </td>
+            <td>
+                <input [(ngModel)]="field.experience" class="form-control" type="text" name={{field.experience}} />
+              </td>
+            <td>
+              <input [(ngModel)]="field.skills" class="form-control" type="text" name={{field.skills}} />
+            </td>
+            <td>
+              <input [(ngModel)]="field.noofpeople" class="form-control" type="number" name={{field.noofpeople}} />
+            </td>
+           
+            <td>
+              <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="projectrole">
+                <input type="text" placeholder="Role" aria-label="role" matInput [formControl]="myControlrole"
+                  [matAutocomplete]="auto" [(ngModel)]="newAttribute.role" name="roleName">
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let role of filteredRoles | async" [value]="role">
+                    {{role}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="projectexperience">
+                  <input matInput placeholder="Experience" type="text" [(ngModel)]="newAttribute.experience"
+                    name="newAttributeexperience" />
+                </mat-form-field>
+              </td>
+            <td>
+              <mat-form-field class="projectskills">
+                <mat-chip-list #chipList aria-label="Fruit selection">
+                  <mat-chip *ngFor="let skill of newAttribute.skills" [selectable]="selectable" [removable]="removable"
+                    (removed)="remove(skill)">
+                    {{skill}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                  </mat-chip>
+                  <input placeholder="Skills" #skillInput [formControl]="skillCtrl" [matAutocomplete]="auto2"
+                    [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+                <mat-autocomplete #auto2="matAutocomplete" (optionSelected)="selected($event)">
+                  <mat-option *ngFor="let skill of filteredSkills | async" [value]="skill">
+                    {{skill}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="projectnoofpeople">
+                <input matInput placeholder="No Of People" type="number" [(ngModel)]="newAttribute.noofpeople"
+                  name="newAttributenoofpeople" />
+              </mat-form-field>
+            </td>
+            <td>
+              <button class="btn btn-default" type="button" (click)="addFieldValue()">Add</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   <!-- role ends -->
-
-
-
   <!-- lacation starts -->
   <div class="location">
     <h6>Location :</h6>
@@ -176,5 +162,7 @@
   </div>
   <!-- cost ends -->
   <div class="submit">
-    ​<button mat-raised-button color="Submit" (click)="save()" [routerLink] = "['autogenerateTeam']" routerLinkActive="router-link-active" >Submit</button>
+    ​<button mat-raised-button color="Submit" (click)="save()" [routerLink]="['autogenerateTeam']"
+      routerLinkActive="router-link-active">Submit</button>
+  </div>
   </div>

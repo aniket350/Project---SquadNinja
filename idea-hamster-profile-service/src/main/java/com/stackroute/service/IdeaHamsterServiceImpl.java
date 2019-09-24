@@ -89,6 +89,7 @@ public class IdeaHamsterServiceImpl implements IdeaHamsterService {
 //    annotations is performed by registering a RabbitListenerAnnotationBeanPostProcessor.
     @RabbitListener(queues = "${ideah.rabbitmq.queue}")
     public void getPostedIdea(IdeaDto ideaDto) {
+        System.out.println("postedby="+ideaDto.getPostedBy());
         Optional optional = ideaHamsterRepository.findById(ideaDto.getPostedBy());
         List<Idea> ideaList;
         IdeaHamster retrievedIdeaHamster;

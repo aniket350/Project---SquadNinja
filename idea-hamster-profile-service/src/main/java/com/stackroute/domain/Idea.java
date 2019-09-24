@@ -1,6 +1,7 @@
 package com.stackroute.domain;
 
 import lombok.*;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 @Getter
 @ToString
 @Builder
+@Component
 public class Idea {
     private String title;
     private String description;
