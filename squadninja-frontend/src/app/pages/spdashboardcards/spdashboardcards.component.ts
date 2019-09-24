@@ -79,11 +79,29 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
 
   apply(cardNumber){
 
+   let spApplied= {
+          name: "",
+          mobileNo: "",
+          email: "",
+          role: {
+            role: "",
+            experience: "",
+            skills: []
+          },
+          chargePerHour: ""
+        }
+
     console.log(cardNumber);
     console.log(this.recommendCards[cardNumber]);
     console.log(this.serviceProviderData);
-  
-    this.sectionComponentService.addTeamManagement(this.recommendCards[cardNumber],this.serviceProviderData).subscribe(res => {
+    spApplied.name=this.serviceProviderData.name;
+    spApplied.mobileNo=this.serviceProviderData.mobileNo;
+    spApplied.email=this.serviceProviderData.email;
+    spApplied.role.skills=this.serviceProviderData.role.skills;
+    spApplied.chargePerHour=this.serviceProviderData.chargePerHour;
+
+
+    this.sectionComponentService.addTeamManagement(this.recommendCards[cardNumber],spApplied).subscribe(res => {
          this.data=res;
          console.log("#################",this.data);
     }, err => {
