@@ -1,43 +1,51 @@
 <div class="header bg-gradient-dark opacity-8 pb-8 pt-5 pt-md-8">
 </div>
 <div class="container-fluid">
-  <div class="row mt-9">
+    <div class="card" style="width: 18rem;"></div>
+    <div class="row mt-9">
     <div class="col-xl-11 mb-8 mb-xl-5">
       <div class="card shadow">
         <h2 class=" mb-3">
           <span>Recommended Ideas</span>
         </h2>
         <div class="col-sm-12">
-          <div
-            class="col-sm-4"
-            *ngFor="let x of recommendCards; let index = index"
-          >
-            <p>{{ x?.title }}</p>
-            <button
-              (click)="clicked(index)"
-              type="button"
-              class="btn btn-info btn-lg"
-              data-toggle="modal"
-              data-target="#myModal"
+          <div class="row">
+              <div style="min-height: 100px"
+              class="col-sm-3"
+              *ngFor="let x of recommendCards; let index = index"
             >
-              view
-            </button>
-            <!-- <p>description</p> -->
+              
+              <button
+                (click)="clicked(index)"
+                type="button"
+                class="btn btn-info btn-lg w-100"
+                data-toggle="modal"
+                data-target="#myModal"
+              >
+                view
+              </button>
+              <p>{{ x?.title }}</p>
+            </div>
           </div>
+          
           <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">
-                    &times;
-                  </button>
+                 
                   <h4 class="modal-title">
                     {{ recommendCards[cardNumber]?.title }}
                   </h4>
+                  <button type="button" class="close" data-dismiss="modal">
+                      &times;
+                    </button>
                 </div>
                 <div class="modal-body">
                   <p>{{ recommendCards[cardNumber]?.description }}</p>
                 </div>
+                <div class="modal-body">
+                    <p>{{ recommendCards[cardNumber]?.cost}}</p>
+                  </div>
                 <div class="modal-footer">
                   <button type="button"  class="btn btn-default" data-dismiss="modal" (click)="apply(cardNumber)">
                     Apply
