@@ -2,6 +2,8 @@ package com.stackroute.squad.dto;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.stackroute.squad.domain.Roles;
+import com.stackroute.squad.domain.Skills;
 import lombok.*;
 import org.springframework.stereotype.Component;
 
