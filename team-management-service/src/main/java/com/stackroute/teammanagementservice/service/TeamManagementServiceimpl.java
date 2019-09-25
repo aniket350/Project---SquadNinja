@@ -130,7 +130,7 @@ public class TeamManagementServiceimpl implements TeamManagementService {
         EmailDto emailDto = new EmailDto();
         emailDto.setTo(idea.getInvitedTeam().get(0).getEmail());
         emailDto.setTitle(idea.getTitle());
-        emailDto.setBody("You Are Invited For"+emailDto.getTitle());
+        emailDto.setBody("You Are Invited For" +emailDto.getTitle());
         rabbitTemplate.convertAndSend(emailTeamExchange,emailTeamRoutingkey,emailDto);
 
         InvitedDto invitedDto = new InvitedDto();

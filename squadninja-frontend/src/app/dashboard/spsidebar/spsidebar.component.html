@@ -1,13 +1,13 @@
-<nav class="navbar navbar-vertical navbar-expand-md navbar-light bg-gradient-blue opacity-8" id="sidenav-main">
+<nav class="navbar navbar-vertical navbar-expand-md navbar-light opacity-8" id="sidenav-main">
     <div class="container-fluid">
       
       <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
             [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
         <span class="navbar-toggler-icon"></span>
       </button>
-     
+      <img class="navbar-brand" src="./assets/img/brand/logo.png" style="height:100px; width:100px;margin-left:10px; margin-top: 0px;"  alt="Squad-ninja logo">
       <a class="navbar-brand pt-0" routerLinkActive="active" [routerLink]="['/spdashboardcards']">
-        <img src="/" class="navbar-brand-img" alt="...">
+        <!-- <img src="/" class="navbar-brand-img" alt="..."> -->
       </a>
       
       <ul class="nav align-items-center d-md-none">

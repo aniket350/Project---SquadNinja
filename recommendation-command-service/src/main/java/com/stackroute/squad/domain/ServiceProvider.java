@@ -34,7 +34,9 @@ public class ServiceProvider {
   private String chargePerHour;
   private String currentLocation;
   private List<String> preferredLocation;
-  private Role role;
+  private String role;
+  private List<String> skillList;
+  private String experience;
   @Relationship(type = "has_skills", direction = Relationship.OUTGOING)
   private List<Skills> skills;
   @Relationship(type = "worked_on", direction = Relationship.OUTGOING)

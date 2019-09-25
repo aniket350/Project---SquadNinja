@@ -11,6 +11,10 @@ export class CarouselComponent implements OnInit {
   private router:Router;
   slides: any = [[]];
   ideaCardsData:any=[];
+  slideNo:any;
+  cardNo:any;
+  title:any;
+  description:any;
 
   constructor(private sectionComponentService : SectionComponentService, private sectionComponentSP: SectionComponentSP){}
   
@@ -29,8 +33,18 @@ export class CarouselComponent implements OnInit {
     }
     return R;
   }
-  openCard()
+  openCard(i,cardIndex)
   {
-    this.router.navigate(['/login']);
+    this.slideNo=i;
+    this.cardNo=cardIndex;
+    console.log(this.slideNo);
+    console.log(this.cardNo);
+    this.title=this.slides[this.slideNo][this.cardNo].title;
+    this.description=this.slides[this.slideNo][this.cardNo].description;
+    console.log(this.title);
+  }
+
+  apply(){
+    this.router.navigate(['login']);
   }
 }

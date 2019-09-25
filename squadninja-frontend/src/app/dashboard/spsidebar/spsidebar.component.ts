@@ -10,7 +10,7 @@ declare interface RouteInfo {
 
 export const ROUTES: RouteInfo[] = [
   { path: 'spdashboardcards', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
-  { path: 'user-profile', title: 'User profile',  icon:'ni-single-02 text-yellow', class: '' }
+  { path: 'user-profile', title: 'User Profile',  icon:'ni-single-02 text-yellow', class: '' }
 ];
 
 @Component({
