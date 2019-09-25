@@ -68,6 +68,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     MatAutocompleteModule,
     MatButtonModule,
     MatTooltipModule
+    
   ],
   providers: [
     HttpClient,

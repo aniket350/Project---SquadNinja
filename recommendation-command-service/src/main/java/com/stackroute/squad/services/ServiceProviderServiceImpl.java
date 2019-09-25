@@ -58,7 +58,6 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
   @RabbitListener(queues = "${spUpdate.rabbitmq.queue}")
   public void updatedServiceProvider(ServiceProviderDto serviceProviderDto) throws ServiceProviderNotFoundException {
 
-
     ServiceProvider retrievedServiceProvider = serviceProviderRepository.findByEmail(serviceProviderDto.getEmail());
     if (serviceProviderRepository.findByEmail(retrievedServiceProvider.getEmail()) == null) {
 

@@ -30,7 +30,7 @@ public class RecommendedIdeaServiceImpl implements RecommendedIdeaService {
     }
 
     /**
-     * Implementation of findBySkill method
+     * Implementation the method to find the idea by skills
      */
 
     @Override
@@ -39,7 +39,7 @@ public class RecommendedIdeaServiceImpl implements RecommendedIdeaService {
     }
 
     /**
-     * Implementation of findByRole method
+     * Implementation the method to find the idea by role
      */
 
     @Override
@@ -48,7 +48,7 @@ public class RecommendedIdeaServiceImpl implements RecommendedIdeaService {
     }
 
     /**
-     * Implementation of findByWorkedOnIdea method
+     * Implementation of the method to get the worked ideas
      */
 
     @Override
@@ -58,7 +58,7 @@ public class RecommendedIdeaServiceImpl implements RecommendedIdeaService {
     }
 
     /**
-     * Implementation of findByAppliedOnIdea method
+     * Implementation of the method to get the applied tea of an idea
      */
 
     @Override

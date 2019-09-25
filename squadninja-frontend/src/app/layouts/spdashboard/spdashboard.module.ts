@@ -12,11 +12,14 @@ import { ClipboardModule } from 'ngx-clipboard';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SpprofileserService } from 'src/app/services/spprofileser/spprofileser.service';
 import { RouterModule } from '@angular/router';
+import { MDBBootstrapModule} from 'angular-bootstrap-md'
+import { TruncateModule } from 'ng2-truncate';
 
 @NgModule({
   declarations: [
     SpdashboardcardsComponent,
     SpprofileComponent
+   
   ],
   imports: [
     CommonModule,
@@ -34,7 +37,9 @@ import { RouterModule } from '@angular/router';
     MatIconModule,
     MatInputModule,
     MatAutocompleteModule ,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MDBBootstrapModule,
+    TruncateModule
   ],
   exports: [
   ],
