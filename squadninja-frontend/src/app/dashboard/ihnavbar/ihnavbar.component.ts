@@ -22,6 +22,11 @@ export class IhnavbarComponent implements OnInit {
     this.listTitles = ROUTES.filter(listTitle => listTitle);
 
   }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/']);
+  }
   getTitle(){
     var titlee = this.location.prepareExternalUrl(this.location.path());
     if(titlee.charAt(0) === '#'){

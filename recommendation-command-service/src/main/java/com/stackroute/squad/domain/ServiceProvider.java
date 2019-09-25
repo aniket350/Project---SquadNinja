@@ -1,6 +1,7 @@
 package com.stackroute.squad.domain;
 
 
+import com.stackroute.squad.dto.Role;
 import lombok.*;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
@@ -33,6 +34,7 @@ public class ServiceProvider {
   private String chargePerHour;
   private String currentLocation;
   private List<String> preferredLocation;
+  private Role role;
   @Relationship(type = "has_skills", direction = Relationship.OUTGOING)
   private List<Skills> skills;
   @Relationship(type = "worked_on", direction = Relationship.OUTGOING)

@@ -13,6 +13,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SpprofileserService } from 'src/app/services/spprofileser/spprofileser.service';
 import { RouterModule } from '@angular/router';
 import { MDBBootstrapModule} from 'angular-bootstrap-md'
+import { TruncateModule } from 'ng2-truncate';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MDBBootstrapModule} from 'angular-bootstrap-md'
     MatInputModule,
     MatAutocompleteModule ,
     ReactiveFormsModule,
-    MDBBootstrapModule
+    MDBBootstrapModule,
+    TruncateModule
   ],
   exports: [
   ],

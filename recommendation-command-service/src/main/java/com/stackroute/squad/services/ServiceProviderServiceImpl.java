@@ -1,6 +1,7 @@
 package com.stackroute.squad.services;
 
 import com.stackroute.squad.domain.ServiceProvider;
+import com.stackroute.squad.domain.Skills;
 import com.stackroute.squad.dto.AppliedTeamDto;
 import com.stackroute.squad.dto.IdeaDto;
 import com.stackroute.squad.dto.ServiceProviderDto;
@@ -60,7 +61,6 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
   @RabbitListener(queues = "${spUpdate.rabbitmq.queue}")
   public void updatedServiceProvider(ServiceProviderDto serviceProviderDto) throws ServiceProviderNotFoundException {
 
-
     ServiceProvider retrievedServiceProvider = serviceProviderRepository.findByEmail(serviceProviderDto.getEmail());
     if (serviceProviderRepository.findByEmail(retrievedServiceProvider.getEmail()) == null) {
 
@@ -72,6 +72,7 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
     retrievedServiceProvider.setName(serviceProviderDto.getName());
     retrievedServiceProvider.setPreferredLocation(serviceProviderDto.getPreferredLocation());
     retrievedServiceProvider.setCurrentLocation(serviceProviderDto.getCurrentLocation());
+    retrievedServiceProvider.setRole(serviceProviderDto.getRole());
      serviceProviderRepository.save(retrievedServiceProvider);
     /*it is used for setting the relationship between the serviceProvider emailId and the role of the serviceProvider*/
     serviceProviderRepository.setPlayedByRelation(serviceProviderDto.getEmail(), serviceProviderDto.getRole().getRole().toLowerCase());

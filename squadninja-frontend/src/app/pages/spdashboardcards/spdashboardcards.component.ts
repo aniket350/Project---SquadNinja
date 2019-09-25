@@ -16,6 +16,7 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
   sections: any = [];
   ideaCardsData: any=[];
   recommendCards: any = [];
+  recommendedCarouselCards: any = [[]];
   public emailId :string= "";
   public cardNumber:any;
   public serviceProviderData:any;
@@ -44,8 +45,11 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
       this.getTheProfile();
     this.spprofileserService.getRecommendationIdeas(this.emailId)
     .subscribe(data => {
-        this.recommendCards = data
+        this.recommendCards = data;
         console.log(this.recommendCards);
+        console.log(this.recommendCards[0].title);
+        this.recommendedCarouselCards = this.chunk(this.recommendCards, 5);
+        
       });
 
       // this.sectionComponentSP.getSP()
@@ -117,5 +121,13 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
     console.log(index);
     this.cardNumber=index;
     // this.saveCardDetails(this.ideaCardsData[index]);
+  }
+
+  accept(cardnumber){
+    
+  }
+
+  reject(cardnumber){
+
   }
 }
