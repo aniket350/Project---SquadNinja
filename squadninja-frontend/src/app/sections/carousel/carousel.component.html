@@ -12,10 +12,12 @@
             <div *ngFor="let card of item; let cardIndex = index" [ngClass]="{'d-none d-md-block': cardIndex !== 0}" class="col-md-4">
                 <mdb-card class="my-1">
                     <mdb-card-body>
+                        <div class="lower">
                         <div (click)="openCard(i,cardIndex)" data-target="#myModal" data-toggle="modal" class="card">
                             <p class="title">{{card.title}}</p>
                             <!-- <p class="text">{{card.description}}</p> -->
                         </div>
+                    </div>
                     </mdb-card-body>
                 </mdb-card>
             </div>

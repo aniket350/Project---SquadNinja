@@ -62,20 +62,20 @@ export class IdeaviewComponent implements OnInit {
   //window.location.reload();
 }
 
-  // join(email) {
-  //   this.status=true;
-  //   this.ideaviewService.updateOnJoin(this.title,email,this.status).subscribe((data) =>{
+  join(email) {
+    this.status=true;
+    this.ideaviewService.updateOnJoin(this.title,email,this.status).subscribe((data) =>{
 
-  //   });
-  // }
+    });
+  }
 
 
-  // rejectInvite(email) {
-  //   this.status=false;
-  //   this.ideaviewService.updateOnRejectInvite(this.title,email,this.status).subscribe((data) =>{
+  rejectInvite(email) {
+    this.status=false;
+    this.ideaviewService.updateOnRejectInvite(this.title,email,this.status).subscribe((data) =>{
 
-  //   });
-  // }
+    });
+  }
 
   onSearch(searchValue:string){
 

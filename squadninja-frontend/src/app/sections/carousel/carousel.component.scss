@@ -196,6 +196,6 @@ body {
   opacity: 1;
   transition: all 0.3s ease;
 }
-.lower {
-  text-transform: lowercase;
+.lower .title {
+  text-transform: capitalize;
 }

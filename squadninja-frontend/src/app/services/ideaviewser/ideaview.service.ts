@@ -22,13 +22,13 @@ export class IdeaviewService {
   updateOnReject(title,email,status):Observable<any>{
     return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/acceptssp?title=${title}&email=${email}&accepted=${status}`,(null));
   }
-  // updateOnJoin(title,email,status):Observable<any>{
-  //   return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/joinedsp?{title=${title}&email=${email}&joined=${status}`,(null));
-  // }
+  updateOnJoin(title,email,status):Observable<any>{
+    return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/joinedsp?{title=${title}&email=${email}&joined=${status}`,(null));
+  }
 
-  // updateOnRejectInvite(title,email,status):Observable<any>{
-  //   return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/joinedsp?{title=${title}&email=${email}&joined=${status}`,(null)); 
-  // }
+  updateOnRejectInvite(title,email,status):Observable<any>{
+    return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/joinedsp?{title=${title}&email=${email}&joined=${status}`,(null)); 
+  }
 
   inviteTeam(idea:string, invitedSP): Observable<IdeaView> {
     let name: string = invitedSP.name;
