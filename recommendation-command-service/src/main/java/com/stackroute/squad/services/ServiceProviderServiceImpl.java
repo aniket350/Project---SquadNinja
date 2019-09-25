@@ -2,10 +2,7 @@ package com.stackroute.squad.services;
 
 import com.stackroute.squad.domain.ServiceProvider;
 import com.stackroute.squad.domain.Skills;
-import com.stackroute.squad.dto.AppliedTeamDto;
-import com.stackroute.squad.dto.IdeaDto;
-import com.stackroute.squad.dto.ServiceProviderDto;
-import com.stackroute.squad.dto.WorkedTeamDto;
+import com.stackroute.squad.dto.*;
 import com.stackroute.squad.exceptions.ServiceProviderAlreadyExistException;
 import com.stackroute.squad.exceptions.ServiceProviderNotFoundException;
 import com.stackroute.squad.repository.ServiceProviderRepository;
@@ -73,7 +70,12 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
     retrievedServiceProvider.setName(serviceProviderDto.getName());
     retrievedServiceProvider.setPreferredLocation(serviceProviderDto.getPreferredLocation());
     retrievedServiceProvider.setCurrentLocation(serviceProviderDto.getCurrentLocation());
-    retrievedServiceProvider.setRole(serviceProviderDto.getRole());
+    RoleSp role = new RoleSp();
+    role.setRole(serviceProviderDto.getRole().getRole());
+    role.setSkills(serviceProviderDto.getRole().getSkills());
+    role.setExperience(serviceProviderDto.getRole().getExperience());
+
+    retrievedServiceProvider.setRole(role);
      serviceProviderRepository.save(retrievedServiceProvider);
     /*it is used for setting the relationship between the serviceProvider emailId and the role of the serviceProvider*/
     serviceProviderRepository.setPlayedByRelation(serviceProviderDto.getEmail(), serviceProviderDto.getRole().getRole().toLowerCase());
