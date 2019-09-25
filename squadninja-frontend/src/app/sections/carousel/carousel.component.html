@@ -7,25 +7,41 @@
         <span></span>
         <span></span>
     </div>
-    <mdb-carousel [animation]="'slide'" [isControls]="true"  class="carousel-multi-item multi-animation">
-
+    <mdb-carousel [animation]="'slide'" [isControls]="true" class="carousel-multi-item multi-animation">
         <mdb-carousel-item *ngFor="let item of slides; let i = index">
             <div *ngFor="let card of item; let cardIndex = index" [ngClass]="{'d-none d-md-block': cardIndex !== 0}" class="col-md-4">
-                <mdb-card
-                    class="my-1">
+                <mdb-card class="my-1">
                     <mdb-card-body>
-                            <div class="card"  [routerLink]="['/login']" routerLinkActive="router-link-active"  (click)="openCard()">      
-                            <div class="icon"><i class="material-icons md-36">alternate_email</i></div>
-                        
-                        <p class="title">{{card.title}}</p>
-                        <p class="text">{{card.description}}</p>
-                    </div>
+                        <div (click)="openCard(i,cardIndex)" data-target="#myModal" data-toggle="modal" class="card">
+                            <p class="title">{{card.title}}</p>
+                            <!-- <p class="text">{{card.description}}</p> -->
+                        </div>
                     </mdb-card-body>
-
-                
                 </mdb-card>
-                
             </div>
         </mdb-carousel-item>
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal" type="button">
+                            &times;
+                        </button>
+                        <h4 class="modal-title">
+                            {{title}}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{description}}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button (click)="apply()" 
+                         [routerLink]="['/login']" routerLinkActive="router-link-active"  class="btn btn-default" data-dismiss="modal" type="button">
+                            Apply
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </mdb-carousel>
 </section>
