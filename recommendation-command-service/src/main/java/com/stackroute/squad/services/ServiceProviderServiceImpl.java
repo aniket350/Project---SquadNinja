@@ -70,14 +70,12 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
     retrievedServiceProvider.setName(serviceProviderDto.getName());
     retrievedServiceProvider.setPreferredLocation(serviceProviderDto.getPreferredLocation());
     retrievedServiceProvider.setCurrentLocation(serviceProviderDto.getCurrentLocation());
-    Role role = new Role();
     System.out.println(serviceProviderDto.getRole().getRole());
     System.out.println(serviceProviderDto.getRole().getSkills());
-    role.setRole(serviceProviderDto.getRole().getRole());
-    role.setSkills(serviceProviderDto.getRole().getSkills());
-    role.setExperience(serviceProviderDto.getRole().getExperience());
+    retrievedServiceProvider.setRole(serviceProviderDto.getRole().getRole());
+    retrievedServiceProvider.setSkillList(serviceProviderDto.getRole().getSkills());
+    retrievedServiceProvider.setExperience(serviceProviderDto.getRole().getExperience());
 
-    retrievedServiceProvider.setRole(role);
      serviceProviderRepository.save(retrievedServiceProvider);
     /*it is used for setting the relationship between the serviceProvider emailId and the role of the serviceProvider*/
     serviceProviderRepository.setPlayedByRelation(serviceProviderDto.getEmail(), serviceProviderDto.getRole().getRole().toLowerCase());
