@@ -28,7 +28,7 @@ public class ServiceProviderDto {
   private String mobileNo;
   private String domain;
   private String subDomain;
-  private Role role;
+  private RoleSp role;
   private List<IdeaDto> workedIdeas;
   private List<IdeaDto> invitedIdeas;
   private String chargePerHour;
