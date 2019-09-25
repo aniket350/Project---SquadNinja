@@ -1,5 +1,5 @@
 <section class="section section-shaped">
-    <div class="shape shape-style-1 shape-default">
+    <div class="shape shape-style-1 bg-white">
         <span></span>
         <span></span>
         <span></span>
@@ -14,11 +14,11 @@
                 <mdb-card
                     class="my-1">
                     <mdb-card-body>
-                            <div class="card"  [routerLink]="['/login']" routerLinkActive="router-link-active"  (click)="openCard()">      
-                            <div class="icon"><i class="material-icons md-36">alternate_email</i></div>
-                        
-                        <p class="title">{{card.title}}</p>
-                        <p class="text">{{card.description}}</p>
+                     <div class="card"  [routerLink]="['/login']" routerLinkActive="router-link-active"  (click)="openCard()">     
+                     <div class="lower">
+                    <div class="title">
+                    <p >{{card.title}}</p></div>
+                     <p>{{card.description}}</p></div>
                     </div>
                     </mdb-card-body>
 

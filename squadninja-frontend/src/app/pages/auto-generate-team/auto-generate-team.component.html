@@ -1,10 +1,11 @@
 <div class="header bg-gradient-dark opacity-1 pb-8 pt-5 pt-md-8">
 </div>
 <span aria-expanded="true">{{title}}</span>
+<button (click)="sendAutogenTeam()">Done</button>
 <mat-tab-group >
     <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
       <div class="cardGroup">
-        <mat-card class="card" *ngFor="let card of autogeneratesp" let index="index" >
+        <mat-card class="card" *ngFor="let card of roleCards[index] let i=index" >
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>{{card.name}}</mat-card-title>
@@ -16,16 +17,14 @@
             </p>
           </mat-card-content>
           <mat-card-actions>
-      <button type="button"  mat-button  (click)="clickedAccept(item, tab)">{{buttonAccept}}</button>
-      <button type="button"  mat-button (click)="clickedReject(item, tab)" >{{buttonReject}}</button>
+      <button type="button"  mat-button (click)="clickedAccept(index,i)">Accept</button>
+      <button type="button"  mat-button (click)="clickedReject(index,i)" >Reject</button>
           </mat-card-actions>
         </mat-card>
       </div>
     </mat-tab>
   </mat-tab-group>
-
   <!-- Aniket code ---------
-
   <p>Auto Genetarated Team</p>
 <mat-tab-group (selectedIndexChange)="getTab($event)">
  <mat-tab *ngFor= "let tab of postedIdeaDetails.role; let index = index"  [label]="tab.role" >
