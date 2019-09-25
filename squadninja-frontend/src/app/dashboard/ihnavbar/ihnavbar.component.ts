@@ -20,7 +20,7 @@ export class IhnavbarComponent implements OnInit {
 
   ngOnInit() {
     this.listTitles = ROUTES.filter(listTitle => listTitle);
-
+    console.log(this.listTitles);
   }
 
 }
