@@ -1,9 +1,7 @@
 package com.stackroute.squad.dto;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import lombok.*;
-import org.neo4j.ogm.annotation.NodeEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -19,10 +17,9 @@ import java.util.List;
 @Setter
 @ToString
 @Component
-public class Role {
-  private String experience;
-  private String noOfPeople;
-  private List<String> skills;
-  private String role;
+public class RoleSp {
 
+    private String experience;
+    private List<String> skills;
+    private String role;
 }

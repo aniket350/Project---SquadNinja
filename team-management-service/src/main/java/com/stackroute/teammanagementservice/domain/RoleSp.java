@@ -14,6 +14,7 @@ import java.util.List;
 @Builder
 @ToString
 public class RoleSp {
+
     private String role;
     private String experience;
     private List<String> skills;

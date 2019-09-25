@@ -22,13 +22,7 @@ export class SectionsComponent implements OnInit
   private spCardData: any;
   private images: string[];
 
-  chunk(arr, chunkSize) {
-    let R = [];
-    for (let i = 0, len = arr.length; i < len; i += chunkSize) {
-      R.push(arr.slice(i, i + chunkSize));
-    }
-    return R;
-  }
+
   slides: any = [[]];
 
   constructor(private sectionComponentService : SectionComponentService, private sectionComponentSP: SectionComponentSP){}
@@ -36,15 +30,11 @@ export class SectionsComponent implements OnInit
     this.sectionComponentService.getIdeas()
       .subscribe(data => {
         this.ideaCardsData = data
-    
-        
       });
-      this.slides = this.chunk(this.ideaCardsData,5);
-     
   }
   openCard()
   {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 
 }

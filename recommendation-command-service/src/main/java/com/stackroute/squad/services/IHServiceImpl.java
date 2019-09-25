@@ -1,6 +1,7 @@
 package com.stackroute.squad.services;
 
 import com.stackroute.squad.domain.IdeaHamster;
+import com.stackroute.squad.dto.IdeaDto;
 import com.stackroute.squad.dto.IdeaHamsterDto;
 import com.stackroute.squad.repository.IHRepository;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -41,6 +42,8 @@ public class IHServiceImpl implements IHService {
     ideaHamster.setMobile(ideaHamsterDto.getMobile());
     ideaHamster.setName(ideaHamsterDto.getName());
     ihRepository.save(ideaHamster);
+    IdeaDto ideaDto = new IdeaDto();
+    ihRepository.setPlayedByRelation(ideaHamsterDto.getEmail(),ideaDto.getTitle());
   }
 
   /**

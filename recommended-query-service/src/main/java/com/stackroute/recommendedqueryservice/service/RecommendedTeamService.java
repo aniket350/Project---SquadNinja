@@ -2,6 +2,7 @@ package com.stackroute.recommendedqueryservice.service;
 
 import com.stackroute.recommendedqueryservice.domain.Idea;
 import com.stackroute.recommendedqueryservice.domain.ServiceProvider;
+import com.stackroute.recommendedqueryservice.domain.Skills;
 import org.springframework.data.repository.query.Param;
 
 import java.util.Collection;

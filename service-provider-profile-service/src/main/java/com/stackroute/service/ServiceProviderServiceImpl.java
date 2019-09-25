@@ -168,7 +168,7 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
     inviteIdea.setStatus(idea.getStatus());
     inviteIdea.setPostedBy(idea.getPostedBy());
     inviteIdea.setPostedOn(idea.getPostedOn());
-    inviteIdea.setRole(idea.getRole());
+//    inviteIdea.setRole(idea.getRole());
     inviteIdea.setLocation(idea.getLocation());
 
     invitedIdeas.add(inviteIdea);

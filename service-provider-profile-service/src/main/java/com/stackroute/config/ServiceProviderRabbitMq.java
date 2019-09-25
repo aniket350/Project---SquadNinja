@@ -14,6 +14,30 @@ container to generate bean definitions and service requests for those beans at r
 @Configuration
 public class ServiceProviderRabbitMq {
 
+    @Value("${spRegister.rabbitmq.queue}")
+    String spQueueName;
+
+    @Value("${spRegister.rabbitmq.exchange}")
+    String spExchange;
+
+    @Value("${spRegister.rabbitmq.routingkey}")
+    String spRoutingkey;
+
+    @Bean
+    Queue queueProfile() {
+        return new Queue(spQueueName, true);
+    }
+
+    @Bean
+    TopicExchange exchangeProfile() {
+        return new TopicExchange(spExchange);
+    }
+
+    @Bean
+    Binding bindingProfile(Queue queueProfile, TopicExchange exchangeProfile) {
+        return BindingBuilder.bind(queueProfile).to(exchangeProfile).with(spRoutingkey);
+    }
+
     @Value("${invitedIdea.rabbitmq.queue}")
     String invitedIdeaQueue;
     @Value("${invitedIdea.rabbitmq.exchange}")
