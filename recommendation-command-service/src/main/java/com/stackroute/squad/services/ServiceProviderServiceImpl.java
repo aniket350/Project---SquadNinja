@@ -70,7 +70,9 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
     retrievedServiceProvider.setName(serviceProviderDto.getName());
     retrievedServiceProvider.setPreferredLocation(serviceProviderDto.getPreferredLocation());
     retrievedServiceProvider.setCurrentLocation(serviceProviderDto.getCurrentLocation());
-    RoleSp role = new RoleSp();
+    Role role = new Role();
+    System.out.println(serviceProviderDto.getRole().getRole());
+    System.out.println(serviceProviderDto.getRole().getSkills());
     role.setRole(serviceProviderDto.getRole().getRole());
     role.setSkills(serviceProviderDto.getRole().getSkills());
     role.setExperience(serviceProviderDto.getRole().getExperience());
