@@ -66,5 +66,7 @@
   { "name": "Client Relation"},
   { "name": "Wedding Theme"},
   { "name": "Quality Control"},
-  { "name": "Photography"}
+  { "name": "Photography"},
+  { "name": "Accountant"},
+  { "name": "Manager"}
 ]

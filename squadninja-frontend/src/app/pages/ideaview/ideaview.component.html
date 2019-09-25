@@ -1,4 +1,4 @@
-<div class="header bg-gradient-blue opacity-15 pb-8 pt-5 pt-md-8">
+<div class="header bg-cyan  pb-8 pt-5 pt-md-8">
 </div>
 <div class="container">
     <div class="example-button-row">
@@ -44,7 +44,7 @@
         </mat-card>
     </div>
     <br />
-    <h4>Applied Service Providers :</h4>
+    <h4>Applied Team :</h4>
     <br />
     <div class="cards" >
              <mat-card class="example-card" *ngFor = "let abc of appliedTeam">
@@ -80,7 +80,8 @@
                 <p>
                 </p>
             </mat-card-content>
-            <button type="button" color="Success">Cancel Invite</button>
+            <button type="button"  color="Success">Cancel Invite</button>
+            <!-- <button type="button" ((click)="rejectInvite(abc.email)" color="Success">Join</button> -->
         </mat-card> 
          </div>
      

@@ -1,11 +1,11 @@
 <!-- image for profile background -->
 <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
-  style="min-height: 460px; background-image: url(assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
-  <span class="mask bg-gradient-dark opacity-8"></span>
+  style="min-height: 230px; background-image: url(assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+  <span class="mask"></span>
   <div class="container-fluid d-flex align-items-center">
     <div class="row">
       <div class="col-lg-7 col-md-10">
-        <h1 class="display-2 text-white">Hello {{serviceProviderData.name}}</h1>
+        <!-- <h1 class="display-2 text-white">Hello {{serviceProviderData.name}}</h1> -->
         <!-- <p class="text-white mt-0 mb-5">Welcome</p> -->
         <!-- <a (click)="onSubmitUpdate()" class="btn btn-info">Save profile</a> -->
       </div>
@@ -63,7 +63,7 @@
             </div>
             <hr class="my-4" />
             <!-- <p>Likes music</p> -->
-            <a href="javascript:void(0)">Show more</a>
+            <a href="javascript:void(0)"></a>
           </div>
         </div>
       </div>
@@ -241,7 +241,7 @@
                       <mat-form-field fxFlex class="projectsubdomains">
                           <input type="text" placeholder="" aria-label="subDomain" matInput [formControl]="myControls"
                           [matAutocomplete]="auto1" [(ngModel)]="serviceProviderData.subDomain"
-                          placeholder={{serviceProviderData.chargePerHour}}>
+                          placeholder={{serviceProviderData.subDomains}}>
                         <mat-autocomplete #auto1="matAutocomplete">
                           <mat-option *ngFor="let subdomain of filteredOptions1 | async" [value]="subdomain">
                             {{subdomain}}
@@ -262,7 +262,7 @@
                   </div>
                 </div>
                 <div class="col-4 text-center">
-                  <a (click)="onSubmitUpdate()" class="btn btn-sm btn-primary">Save Profile</a>
+                  <button class="button3" (click)="onSubmitUpdate()">Save Profile</button>
                 </div>
               </div>
             </div>

@@ -8,6 +8,7 @@ export class SpProfile{
        skills : [string],
        experience : string
    }];
+   invitedIdeas : [string];
    workedIdeas : [string];
    chargePerHour : string;
    currentLocation : string;

@@ -1,14 +1,13 @@
-<div class="header bg-gradient-dark opacity-1 pb-8 pt-3 pt-md-8">
-</div>
-<div class="mainclass">
-<div class="heading">
-  <h1>Idea Details</h1>
-</div>
-<!-- project title starts -->
-
-<div class="title">
-  
-  <mat-form-field class="projecttitle">
+<!-- <div class="header opacity-8 pb-8 pt-5 pt-md-8"> -->
+    <div class="header bg-cyan opacity-15 pb-8 pt-1 pt-md-8"></div>
+<!-- </div> -->
+<div>
+  <div class="heading">
+    <h1>Idea Details</h1>
+  </div>
+  <!-- project title starts -->
+  <div class="title">
+    <mat-form-field class="projecttitle">
     <h6>Project Title :</h6>
     <input matInput placeholder="" [(ngModel)]="title" name="title">
     <mat-hint align="start"><strong>You have to enter the Title</strong> </mat-hint>
@@ -78,14 +77,11 @@
           <th class="noofpeople">No Of People :</th>
          
         </tr>
-      </thead>
-      <tbody class="rolebody">
-        <tr *ngFor="let field of fieldArray; let i = index">
-          <td>
-            <input [(ngModel)]="field.role" class="form-control" type="text" name={{field.role}} />
-          </td>
-          <td>
-              <input [(ngModel)]="field.experience" class="form-control" type="text" name={{field.experience}} />
+ 
+        <tbody class="rolebody">
+          <tr *ngFor="let field of fieldArray; let i = index">
+            <td>
+              <input [(ngModel)]="field.role" class="form-control" type="text" name={{field.role}} />
             </td>
 
           <td>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SpprofileserService } from 'src/app/services/spprofileser/spprofileser.service';
 import { IdeaviewService } from 'src/app/services/ideaviewser/ideaview.service';
-import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-searchview',
@@ -16,7 +16,7 @@ export class SearchviewComponent implements OnInit {
   idea: any;
   invite:any;
   xyz: any;
-  constructor(private spprofileserService : SpprofileserService,private ideaviewservice:IdeaviewService,private dialog:MatDialog) { }
+  constructor(private spprofileserService : SpprofileserService,private ideaviewservice:IdeaviewService) { }
 
   ngOnInit() {
     this.search=localStorage.getItem("search");
@@ -34,5 +34,6 @@ export class SearchviewComponent implements OnInit {
     console.log("sending from here",this.inviteIdea);
     this.ideaviewservice.inviteTeam(this.inviteIdea,this.searchbar[index]).subscribe((response)=>this.invite=response);
     console.log("invite team", this.invite);
+   
   }
 }

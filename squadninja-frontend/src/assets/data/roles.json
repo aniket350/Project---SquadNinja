@@ -26,5 +26,6 @@
     { "rolename": "Event Analyst"},
     { "rolename": "Event Co-Ordinator"},
     { "rolename": "Wedding Planner"},
-    { "rolename": "Catering"}
+    { "rolename": "Catering"},
+    { "roleName": "CA"}
 ]

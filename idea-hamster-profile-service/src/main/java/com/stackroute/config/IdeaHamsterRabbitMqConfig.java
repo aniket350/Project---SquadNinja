@@ -17,9 +17,9 @@ public class IdeaHamsterRabbitMqConfig {
 
     @Value("${ideah.rabbitmq.queue}")
     String ideaQueue;
-    @Value("${idea.rabbitmq.exchange}")
+    @Value("${ideah.rabbitmq.exchange}")
     String ideaExchange;
-    @Value("${idea.rabbitmq.routingkey}")
+    @Value("${ideah.rabbitmq.routingkey}")
     String ideaKey;
 
     @Bean
@@ -55,5 +55,30 @@ public class IdeaHamsterRabbitMqConfig {
         rabbitTemplate.setMessageConverter(jsonMessageConverter());
         return rabbitTemplate;
     }
+
+    @Value("${ih.rabbitmq.queue}")
+    String queueName;
+
+    @Value("${ih.rabbitmq.exchange}")
+    String exchange;
+
+    @Value("${ih.rabbitmq.routingkey}")
+    String routingkey;
+
+    @Bean
+    Queue queue() {
+        return new Queue(queueName, true);
+    }
+
+    @Bean
+    TopicExchange exchange() {
+        return new TopicExchange(exchange);
+    }
+
+    @Bean
+    Binding binding(Queue queue, TopicExchange exchange) {
+        return BindingBuilder.bind(queue).to(exchange).with(routingkey);
+    }
+
 
 }

@@ -1,12 +1,14 @@
- .container .cards .example-card {
-    max-width: 450px;
+ .container .example-card {
+    max-width: 500px;
     margin: 4px;
-    margin-left: 10px;
    background-color:rgb(117, 180, 216);
    margin-top: 20px;
-   margin-left: 28px;
   }
    .cards{
     display: flex;
-    
    }
+   h4{
+      color:white
+   }
+
+  

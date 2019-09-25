@@ -1,6 +1,7 @@
 package com.stackroute.recommendedqueryservice.service;
 
 import com.stackroute.recommendedqueryservice.domain.ServiceProvider;
+import com.stackroute.recommendedqueryservice.domain.Skills;
 import com.stackroute.recommendedqueryservice.repository.TeamRecommendationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,7 @@ public class RecommendedTeamServiceImpl implements RecommendedTeamService {
         List<ServiceProvider> serviceProvider1 = teamRecommendationRepository.findTeam(title, roleName.toLowerCase());
         return serviceProvider1;
     }
+
     /**
      * Implementation of getTeamBasedOnAppliedIdea method
      */
