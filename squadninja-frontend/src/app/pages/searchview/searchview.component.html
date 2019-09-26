@@ -3,21 +3,24 @@
 <div class="header bg-gradient-dark opacity-1 pb-8 pt-5 pt-md-8">
     </div>
            <div class="container-fluid">
+
             <div class="row mt-4">
                 <div class="col-xl-11 mb-8 mb-xl-5">
                     <div class="postedideas">
                         <h2 class="mb-3 align-items-center">
                             <span class="align-items-center">Search Results</span>
                         </h2>
+                        <div class="cards">
+                        <div class="row">
                         <mat-card *ngFor="let x of searchbar let index=index" class="cardGroup" cols="cols">
-                            <mat-card class="matCard">
                                 <mat-card-title>{{x.name}}</mat-card-title>
                                 <b>Location:</b><mat-card-content>{{x.currentLocation}}</mat-card-content>
                                 <b>Charge Per Hour:</b><mat-card-content>{{x.chargePerHour}}</mat-card-content>
                                 <button (click)="getIdeaDetails(index)" class="button2" type="button">Invite</button>
-                            </mat-card>
                         </mat-card>
                     </div>
                 </div>
+                </div>
             </div>
+        </div>
         </div>

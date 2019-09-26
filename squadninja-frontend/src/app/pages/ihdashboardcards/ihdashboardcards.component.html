@@ -13,13 +13,14 @@
         </div>
     </div>
     <div class="cards">
-        <div class="row">
+        
+        <div class="row">  
             <mat-card *ngFor="let card of ideaCardsDatas let index=index" class="cardGroup" cols="cols" >
                 <mat-card-title>{{card.title | truncate:10:"..."}}</mat-card-title>
                 <mat-card-content><p>{{card.description | truncate:20:"..."}}</p></mat-card-content>
                 <button (click)="getIdeaDetails(index)" [routerLink]="['ideaview']" class="button2" type="button" btn btn-info btn-lg w-100>View</button>
             </mat-card>
-    </div>
+          </div>
 </div>
 </div>
 
