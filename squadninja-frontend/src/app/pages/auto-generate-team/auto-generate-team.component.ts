@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 import {AutogenerateService} from '../../services/autogenServices/autogenerate.service';
 import {HttpClient} from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { SpprofileserService } from '../../services/spprofileser/spprofileser.service';
 @Component({
   selector: 'app-auto-generate-team',
   templateUrl: './auto-generate-team.component.html',
@@ -12,6 +13,9 @@ import { map } from 'rxjs/operators';
 export class AutoGenerateTeamComponent implements OnInit {
   public items: any;
   public postedIdeaDetails: any;
+
+  public data;
+  public auto: any=[];
  
   status="done";
   toggle = true;
@@ -34,7 +38,7 @@ export class AutoGenerateTeamComponent implements OnInit {
     }
 }
   toSendData = new Map();
-  constructor( private http:HttpClient,private autogeneratesp:AutogenerateService) { }
+  constructor( private http:HttpClient,private autogeneratesp:AutogenerateService,private spprofileserService: SpprofileserService) { }
   ngOnInit() {
      let  disp=[];
 // this.getPostedIdeas(); 
@@ -44,11 +48,11 @@ export class AutoGenerateTeamComponent implements OnInit {
     for(let role of this.obj1){
         this.tabs.push(role.role);
         this.getAnyTeam(role.role);
-        disp=this.cards;
-        console.log(this.cards);
-      }
-     
+        disp=this.auto;
+        console.log(this.auto);
+      }   
 }
+
 sendAutogenTeam(){
   console.log(this.toSendData);
   for(let [key,value] of this.toSendData){
@@ -83,10 +87,10 @@ addCards(toAdd){
   console.log(this.cards);
 }
 getAnyTeam(role: any) {
-  // console.log(role);
-  this.autogeneratesp.getByIdeaTitleAndRoleName(this.title, role)
-  .subscribe(data => {
-    this.cards = data;
+  let roleTab = role;
+  this.spprofileserService.getSearchResults(role).subscribe((data) => { this.auto.push(data);console.log(this.auto,data[0].role.role);});
+}
+    // this.cards = data;
     if (data) {
            data = data.map(e => {
             e.acceptStatus = 'Accept';
@@ -99,12 +103,14 @@ getAnyTeam(role: any) {
     // this.addCards(this.cards);
     console.log('after getting back from service', this.roleCards);
           }
-  }
-  );
+  
+  
   // console.log(this.cards);
- }
+//   console.log(this.auto);
+//  }
  clickAccept(card,index,i) {
-   
+   console.log()
+   if(this.toggle==true){
   this.toggle = !this.toggle;
   this.status = this.toggle ? 'done' : 'clear';
   console.log(this.toggle)
@@ -126,8 +132,7 @@ getAnyTeam(role: any) {
     });
     }
  }
- clickReject(card, index, i) {
- 
+ else{
   this.toSendData.delete(2 * index + 1 * i);
   console.log(this.toSendData);
   console.log(index);
@@ -146,5 +151,6 @@ getAnyTeam(role: any) {
   return e;
   });
   }
- }
+}
+}
 }

@@ -20,7 +20,9 @@ import { IdeaviewComponent } from 'src/app/pages/ideaview/ideaview.component';
 import { AutoGenerateTeamComponent } from 'src/app/pages/auto-generate-team/auto-generate-team.component';
 import { IdeaviewService } from 'src/app/services/ideaviewser/ideaview.service';
 import { SearchviewComponent } from 'src/app/pages/searchview/searchview.component';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { TruncateModule } from 'ng2-truncate';
+import { MDBBootstrapModule} from 'angular-bootstrap-md';
+
 
 
 
@@ -52,6 +54,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     ReactiveFormsModule,
     MatTabsModule,
     MatCardModule,
+    TruncateModule,
     MatButtonModule,
     MDBBootstrapModule
   ],

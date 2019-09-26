@@ -37,7 +37,7 @@ public class CommandLineRunnerSpProfile implements CommandLineRunner
     public void run(String... args) throws Exception
     {
         // need to load Excel XLSX file to read
-        File file = new File("sp-profile-service.xlsx");
+        File file = new File("/home/sushmitha/Videos/last/service-provider-profile-service/src/main/resources/sp-profile-service.xlsx");
         /*FileInputStream is meant for reading streams of raw bytes such as image data.
           For reading streams of characters, consider using FileReader .
          */

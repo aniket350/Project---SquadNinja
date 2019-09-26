@@ -18,7 +18,7 @@ export class IhdashboardcardsComponent implements OnInit {
   sections: any = ['title'];
   ideaCardsData: any = [];
   ideaCardsDatas: any = [];
-
+  ideaCarouselCards: any = [[]];
 
   updated: any;
 
@@ -55,7 +55,9 @@ export class IhdashboardcardsComponent implements OnInit {
       console.log("data fetched..", data);
       this.ideaCardsData=data;
       console.log("after getting back from service",this.ideaCardsData);
+
     });
+
   }
 
   getPostedIdeas(){
@@ -66,6 +68,8 @@ export class IhdashboardcardsComponent implements OnInit {
       this.ideaCardsDatas=data;
       // localStorage.setItem("forTeam", JSON.stringify(this.ideaCardsDatas));
       // console.log(this.ideaCardsDatas);
+     // this.ideaCarouselCards = this.chunk(this.ideaCardsDatas, 5);
+
     });
   }
 
