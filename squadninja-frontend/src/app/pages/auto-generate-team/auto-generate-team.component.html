@@ -1,41 +1,86 @@
-<div class="header bg-gradient-dark opacity-1 pb-8 pt-5 pt-md-8">
-</div>
-<span aria-expanded="true">{{title}}</span>
-<button (click)="sendAutogenTeam()">Done</button>
-<mat-tab-group >
-    <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
-      <div class="cardGroup">
-        <mat-card class="card" *ngFor="let card of roleCards[index] let i=index" >
+<!-- <div class="header bg-gradient-dark opacity-1 pb-8 pt-5 pt-md-8">
+  </div>
+  <div class="text">
+  <span aria-expanded="true" style="font-size: 30px; color:rgb(19, 53, 204);" >{{title | uppercase}}</span></div>
+  <mat-tab-group >
+     <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
+       <div class="cardGroup">
+         <mat-card class="card" *ngFor="let card of roleCards[index] let i=index" >
+           <mat-card-header>
+             <div mat-card-avatar class="example-header-image"></div>
+             <mat-card-title class="matCardAlign">{{card.name | uppercase}}</mat-card-title>
+             <mat-card-subtitle class="matCardAlign">{{card.email}}</mat-card-subtitle>
+           </mat-card-header>
+           <mat-card-content>
+             <p>
+               {{card.skills}}
+             </p>
+           </mat-card-content>
+           <mat-card-actions>
+       <button type="button" class="btn btn-light" (click)="clickAccept(card,index,i)">{{card.acceptStatus}}</button>
+       <button type="button"  mat-button class="btn btn-light" (click)="clickReject(card,index,i)" >{{card.rejectStatus}}</button>
+           </mat-card-actions>
+         </mat-card>
+       </div>
+     </mat-tab>
+   </mat-tab-group>
+   <div class="doneButton">
+     <button type="button" class="btn btn-info btn-lg btn-block" (click)="sendAutogenTeam()">Confirm Selected Team</button>
+   </div> -->
+  
+
+
+
+    <div class="header pb- pt-3 pt-md-8">
+    </div>
+  <mat-tab-group (selectedTabChange) = "myClick($event)">
+  <mat-tab class="mattab" (selectedTabChange) = "myClick($event)" label="{{tab}}" *ngFor="let tab of tabs let index=index">
+          <div class="container">
+       
+              <div class="row">
+             <br>
+      <mat-card class="col-md-4" *ngFor = "let serviceprovider of example" class="example-card">
+        <br>
+
           <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title>{{card.name}}</mat-card-title>
-            <mat-card-subtitle>{{card.email}}</mat-card-subtitle>
+           <b><h3>
+              <div class="img">
+                  <p><img  src="../../../assets/img/theme/profile-green.png" alt="card image"></p>
+              </div>
+            <mat-card-title style="text-align: center">name</mat-card-title>
+            <mat-card-subtitle style="text-align: center">email</mat-card-subtitle>
+           </h3></b>
           </mat-card-header>
+           
           <mat-card-content>
-            <p>
-              Description of SP
-            </p>
+            
+            <p> <strong>EmailID   :</strong>  email </p>
+            
+            <p><strong>Charge/Hr   :</strong>  charge per hour</p>
+              
+             <p><strong>Domain   :</strong>  domain</p>
+             
+              <p><strong>Skills   :</strong>
+              <span *ngFor = "let skill of serviceprovider.skills" >
+              skill
+              </span> </p>
+                       
           </mat-card-content>
-          <mat-card-actions>
-      <button type="button"  mat-button (click)="clickedAccept(index,i)">Accept</button>
-      <button type="button"  mat-button (click)="clickedReject(index,i)" >Reject</button>
+          
+          <br>
+          <mat-card-actions class="text-center">
+            <button  (click)="accept()" mat-button>Accept</button>
+            <button  (click)="reject()" mat-button>Reject</button>
+            <!-- <button  mat-button >Accepted</button> -->
           </mat-card-actions>
         </mat-card>
       </div>
-    </mat-tab>
-  </mat-tab-group>
-  <!-- Aniket code ---------
-  <p>Auto Genetarated Team</p>
-<mat-tab-group (selectedIndexChange)="getTab($event)">
- <mat-tab *ngFor= "let tab of postedIdeaDetails.role; let index = index"  [label]="tab.role" >
-   <mat-card class="card" *ngFor= "let item of items; let index = index">
-         <mat-card-title>{{item.name}}</mat-card-title>
-         <mat-card-subtitle>{{item.skills}}</mat-card-subtitle>
-         <mat-card-content>{{item.domain}}</mat-card-content>
-         <mat-card-actions>
-         <button type="button"  mat-button  (click)="clickedAccept(item, tab.role)">{{item.acceptStatus}}</button>
-         <button type="button"  mat-button (click)="clickedReject(item, tab.role)" >{{item.rejectStatus}}</button>
-         </mat-card-actions>
-</mat-card>
-</mat-tab>
-</mat-tab-group> -->
+</div>
+
+  </mat-tab>
+
+</mat-tab-group>
+
+<div class="wrapper">
+    <button style="font-size: 18px; padding-top:8px; padding-bottom:8px; border-radius:12px" (click)="done()" background-color="black" mat-button>CONFIRM YOUR TEAM</button>
+</div>

@@ -11,7 +11,7 @@ import { ClipboardModule } from 'ngx-clipboard';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { IhdashboardcardsComponent } from 'src/app/pages/ihdashboardcards/ihdashboardcards.component';
 import { IhprofileComponent } from 'src/app/pages/ihprofile/ihprofile.component';
-import { MatTabsModule, MatCard, MatCardModule, MatCardActions, MatHint, MatOption, MatSelect, MatInputModule, MatChipsModule, MatIconModule, MatAutocompleteModule, MatCardAvatar, MatCardTitle, MatCardHeader } from '@angular/material';
+import { MatTabsModule, MatCard, MatCardModule, MatCardActions, MatHint, MatOption, MatSelect, MatInputModule, MatChipsModule, MatIconModule, MatAutocompleteModule, MatCardAvatar, MatCardTitle, MatCardHeader, MatButtonModule } from '@angular/material';
 import { PostideaComponent } from 'src/app/pages/postidea/postidea.component';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatSelectModule} from '@angular/material/select';
@@ -21,7 +21,9 @@ import { AutoGenerateTeamComponent } from 'src/app/pages/auto-generate-team/auto
 import { IdeaviewService } from 'src/app/services/ideaviewser/ideaview.service';
 import { SearchviewComponent } from 'src/app/pages/searchview/searchview.component';
 import { TruncateModule } from 'ng2-truncate';
-import { MDBBootstrapModule} from 'angular-bootstrap-md'
+import { MDBBootstrapModule} from 'angular-bootstrap-md';
+
+
 
 
 @NgModule({
@@ -53,6 +55,7 @@ import { MDBBootstrapModule} from 'angular-bootstrap-md'
     MatTabsModule,
     MatCardModule,
     TruncateModule,
+    MatButtonModule,
     MDBBootstrapModule
   ],
   providers:[
