@@ -17,6 +17,8 @@ export class AutoGenerateTeamComponent implements OnInit {
   public data;
   public auto: any=[];
  
+  status="done";
+  toggle = true;
   title:any="";
   obj1:any="";
   obj:any="";
@@ -46,10 +48,9 @@ export class AutoGenerateTeamComponent implements OnInit {
     for(let role of this.obj1){
         this.tabs.push(role.role);
         this.getAnyTeam(role.role);
-        disp=this.cards;
-        console.log(this.cards);
-      }
-     
+        disp=this.auto;
+        console.log(this.auto);
+      }   
 }
 
 sendAutogenTeam(){
@@ -66,6 +67,7 @@ sendAutogenTeam(){
       delete e[element];
     })
   );
+
   this.accept = this.accept.map(element => {
       this.sendAccept.role.role = element.role;
       this.sendAccept.role.experience = element.experience;
@@ -85,29 +87,33 @@ addCards(toAdd){
   console.log(this.cards);
 }
 getAnyTeam(role: any) {
-  // console.log(role);
-
-  this.spprofileserService.getSearchResults(role).subscribe((data) => this.auto = data);
-  console.log(this.auto);}
+  let roleTab = role;
+  this.spprofileserService.getSearchResults(role).subscribe((data) => { this.auto.push(data);console.log(this.auto,data[0].role.role);});
+}
     // this.cards = data;
-    // if (data) {
-    //        data = data.map(e => {
-    //         e.acceptStatus = 'Accept';
-    //         e.rejectStatus = 'Reject';
-    //         return e;
-    //       });
-    //       this.cards = data;
-    //        this.roleCards.push(this.cards);
-    // // this.addCards(this.cards);
-    // console.log('after getting back from service', this.roleCards);
-    //       }
+    if (data) {
+           data = data.map(e => {
+            e.acceptStatus = 'Accept';
+            e.rejectStatus = 'Reject';
+            e.toggle=true;
+            return e;
+          });
+          this.cards = data;
+           this.roleCards.push(this.cards);
+    // this.addCards(this.cards);
+    console.log('after getting back from service', this.roleCards);
+          }
   
   
   // console.log(this.cards);
 //   console.log(this.auto);
 //  }
  clickAccept(card,index,i) {
-  
+   console.log()
+   if(this.toggle==true){
+  this.toggle = !this.toggle;
+  this.status = this.toggle ? 'done' : 'clear';
+  console.log(this.toggle)
   this.disabled = false;
   console.log(this.roleCards[index][i]);
   this.toSendData.set(2 * index + 1 * i, this.roleCards[index][i]);
@@ -118,6 +124,7 @@ getAnyTeam(role: any) {
   if (card.email == j.email) {
   j.rejectStatus = 'Reject';
   j.acceptStatus = 'Accepted';
+  j.toggle=false;
   }
   return j;
  });
@@ -125,8 +132,7 @@ getAnyTeam(role: any) {
     });
     }
  }
- clickReject(card, index, i) {
- 
+ else{
   this.toSendData.delete(2 * index + 1 * i);
   console.log(this.toSendData);
   console.log(index);
@@ -138,11 +144,13 @@ getAnyTeam(role: any) {
   if (card.email == j.email) {
   j.rejectStatus = 'Rejected';
   j.acceptStatus = 'Accept';
+  j.toggle=true;
   }
   return j;
   });
   return e;
   });
   }
- }
+}
+}
 }

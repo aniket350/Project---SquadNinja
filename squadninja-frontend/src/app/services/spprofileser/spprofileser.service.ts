@@ -45,6 +45,7 @@ export class  SpprofileserService {
   }
 
   getSearchResults(roleName):Observable<SearchData>{
+    console.log("service called",roleName);
     return this.http.get<SearchData>(`http://13.235.10.115:8084/api/v1/serviceproviders/${roleName}`);
   }
 
