@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 import {AutogenerateService} from '../../services/autogenServices/autogenerate.service';
 import {HttpClient} from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { SpprofileserService } from '../../services/spprofileser/spprofileser.service';
 @Component({
   selector: 'app-auto-generate-team',
   templateUrl: './auto-generate-team.component.html',
@@ -12,6 +13,9 @@ import { map } from 'rxjs/operators';
 export class AutoGenerateTeamComponent implements OnInit {
   public items: any;
   public postedIdeaDetails: any;
+
+  public data;
+  public auto: any=[];
  
   title:any="";
   obj1:any="";
@@ -31,7 +35,7 @@ export class AutoGenerateTeamComponent implements OnInit {
     }
 }
   toSendData = new Map();
-  constructor( private http:HttpClient,private autogeneratesp:AutogenerateService) { }
+  constructor( private http:HttpClient,private autogeneratesp:AutogenerateService,private spprofileserService: SpprofileserService) { }
   ngOnInit() {
      let  disp=[];
 // this.getPostedIdeas(); 
@@ -46,6 +50,7 @@ export class AutoGenerateTeamComponent implements OnInit {
       }
      
 }
+
 sendAutogenTeam(){
   console.log(this.toSendData);
   for(let [key,value] of this.toSendData){
@@ -80,24 +85,26 @@ addCards(toAdd){
 }
 getAnyTeam(role: any) {
   // console.log(role);
-  this.autogeneratesp.getByIdeaTitleAndRoleName(this.title, role)
-  .subscribe(data => {
-    this.cards = data;
-    if (data) {
-           data = data.map(e => {
-            e.acceptStatus = 'Accept';
-            e.rejectStatus = 'Reject';
-            return e;
-          });
-          this.cards = data;
-           this.roleCards.push(this.cards);
-    // this.addCards(this.cards);
-    console.log('after getting back from service', this.roleCards);
-          }
-  }
-  );
+
+  this.spprofileserService.getSearchResults(role).subscribe((data) => this.auto = data);
+  console.log(this.auto);}
+    // this.cards = data;
+    // if (data) {
+    //        data = data.map(e => {
+    //         e.acceptStatus = 'Accept';
+    //         e.rejectStatus = 'Reject';
+    //         return e;
+    //       });
+    //       this.cards = data;
+    //        this.roleCards.push(this.cards);
+    // // this.addCards(this.cards);
+    // console.log('after getting back from service', this.roleCards);
+    //       }
+  
+  
   // console.log(this.cards);
- }
+//   console.log(this.auto);
+//  }
  clickAccept(card,index,i) {
   
   this.disabled = false;
