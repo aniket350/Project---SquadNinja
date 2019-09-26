@@ -184,6 +184,7 @@ export class PostideaComponent implements OnInit {
   //filter method for subdomain
   private _filter(value: any) {
     const filterValue = value.toLowerCase();
+    console.log(filterValue);
     return this.subdomains.filter(subdomain => subdomain.toLowerCase().includes(filterValue));
   }
 
