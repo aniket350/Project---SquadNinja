@@ -1,61 +1,220 @@
 
-   body {
-    background-color:black;
-   }
+  //  body {
+  //   background-color:black;
+  //  }
 
-   .example-button-row{
-     float:right;
-   }
+  //  .example-button-row{
+  //    float:right;
+  //  }
 
-    h4{
-     margin-top: 40px;
-   }
-   .example-container{
-     margin-top: 10px;
-   }
+  //   h4{
+  //    margin-top: 40px;
+  //  }
+  //  .example-container{
+  //    margin-top: 10px;
+  //  }
 
-   .cards{
+  //  .cards{
+  //   display: flex;
+  //  }
+  //  .example-card {
+  //   max-width: 390px;
+  //   margin: 7px;
+  // }
+  //  .example-header-image {
+  //   background-image: url('https://makeawebsitehub.com/wp-content/uploads/2017/04/wordpress-923188_640.jpg');
+  //   background-size: cover;
+  //  }
+  //  .container{
+  //   margin-top:2px;
+  //   margin-right: 100%;
+  //   margin-left: 1px;
+  //   background-color:white;
+  //   width: 100%;
+  //  }
+
+
+
+  //  @media screen and (max-width: 959px) {
+  //   /* Column Gap */
+  //   .cards > *:not(:last-child) {
+  //     margin-right: 32px;
+  //   }
+  //   /* Item sizing */
+  //   .cards {
+  //     flex: 0 1 calc(100% - 100%);
+  //   }
+  // }
+  // /* small size viewport */
+  // @media screen and (max-width: 599px) {
+  //   .cards {
+  //     display: flex;
+  //     flex-direction: column;
+  //     justify-content: flex-start;
+  //   }
+  //   .cards > *:not(:last-child) {
+  //     margin-right: unset;
+  //     margin-bottom: 32px;
+  //   }
+  // }
+  // button{
+  //   color: blue;
+  // }
+   
+  .cardGroup{
     display: flex;
    }
-   .example-card {
-    max-width: 390px;
-    margin: 7px;
-  }
-   .example-header-image {
-    background-image: url('https://makeawebsitehub.com/wp-content/uploads/2017/04/wordpress-923188_640.jpg');
-    background-size: cover;
-   }
-   .container{
-    margin-top:2px;
-    margin-right: 100%;
-    margin-left: 1px;
-    background-color:white;
-    width: 100%;
-   }
-
-   @media screen and (max-width: 959px) {
-    /* Column Gap */
-    .cards > *:not(:last-child) {
-      margin-right: 32px;
-    }
-    /* Item sizing */
-    .cards {
-      flex: 0 1 calc(100% - 100%);
-    }
-  }
-  /* small size viewport */
-  @media screen and (max-width: 599px) {
-    .cards {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
-    .cards > *:not(:last-child) {
-      margin-right: unset;
-      margin-bottom: 32px;
-    }
-  }
-  button{
-    color: blue;
-  }
    
+   
+   .btn {
+       width: 3.3cm;
+       height: 1cm;
+       background-color: black;
+       color: white;
+       position: center;
+      
+     }
+     
+     mat-card{
+     
+     
+     width: 100%;
+     margin:auto;
+     
+     max-width:510px;
+     min-height:400px;
+     position:relative;
+     background-size: cover;
+     box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+     
+     }
+     p{
+       font-size: 18px;
+     }
+     
+     .img{
+     
+     background-size: cover; 
+     background-position: center center;
+     
+     }
+     
+     .display-4{
+       font-size: 40px;
+       text-align: center;
+     }
+     
+     .fullbody{
+       background-size: cover;
+       background-attachment: fixed;
+        background-position: center center;
+     }
+     img{
+       height:70%;
+       width: 70%;
+       position: relative;
+       padding-left: 25%;
+     }
+     
+     .navbar-brand {
+       text-decoration: none;
+       color:white;
+     }
+     a{
+       color: white;
+       font-size: 24px;
+     }
+     
+     .nav-item{
+       color: white;
+     }
+     
+      .example-card{
+        text-transform: capitalize;
+      }
+     
+     @media (max-width: 300px) {
+     #header .fullbody mat-card .example-card .card{
+       width: 100%;
+       height: 100%;
+       }
+      
+     }
+     
+     .example-card {
+       max-width: 300px;
+       margin: 10px;
+       
+     }
+     
+     .example-header-image {
+       /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
+       background-size: cover;
+     }
+     
+     
+     .mat-button{
+     
+     text-align: center;
+     background-color:black;
+     color: white;
+     }
+     
+     
+     
+     body {
+       margin:0;
+       padding:0;
+       font-family:sans-serif;
+       background:#fbfbfb;
+     }
+     .card {
+       position:absolute;
+       top:50%;
+       left:50%;
+       transform:translate(-50%,-50%);
+       width:300px;
+       min-height:300px;
+       background:#fff;
+       box-shadow:0 20px 50px rgba(0,0,0,.1);
+       border-radius:10px;
+       transition:0.5s;
+     }
+     
+     
+     
+     
+     .wrapper {
+   
+       margin-left: 40%;
+       margin-top: 3%;
+     }
+     
+   
+     
+     .mat-card-actions .mat-button:first-child, .mat-card-actions .mat-raised-button:first-child {
+       margin-left: 20%;
+     }
+     
+     
+     body{
+     height:100%; 
+     background-repeat: no-repeat; 
+     background-size: cover; 
+     background-position: center center;
+     min-height: 100vh;
+     }
+   
+     
+     
+     .row{
+       margin-top: 10%;
+     }
+     
+     .material-icons{
+         font:100%;
+     }
+   
+     mat-fab{
+         border:none;
+     }
