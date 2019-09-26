@@ -70,7 +70,7 @@
     <!-- <mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
       [animation]="'slide'"> -->
       <mdb-carousel [animation]="'slide'" [isControls]="true" class="carousel-multi-item multi-animation">
-      <mdb-carousel-item *ngFor="let item of recommendedCarouselCards; let i = index">
+      <mdb-carousel-item *ngFor="let z of serviceProviderData; let i = index">
         <div class="col-md-3" [ngClass]="{'d-none d-md-block': recentEntitiesindex !== 0}"
           *ngFor="let z of serviceProviderData; let recentEntitiesIndex = index">
           <mdb-card class="my-1" style="min-height: 400px;">
