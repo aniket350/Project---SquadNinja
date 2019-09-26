@@ -13,8 +13,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IHRepository extends Neo4jRepository<IdeaHamster, Long> {
   public IdeaHamster findById(long id);
-  @Query("MATCH (x:IdeaHamster),(y:Idea) WHERE x.email={email} and y.title={title} CREATE (x)-[p:posted_by]->(y) RETURN x")
-  public Idea setPlayedByRelation(@Param("email")String email, @Param("title")String title);
 
   @Query("MATCH (x:IdeaHamster),(y:Idea) WHERE x.email={email} and y.title={title} CREATE (x)-[p:posted_by]->(y) RETURN x")
   public Idea setPlayedByRelation(@Param("email")String email, @Param("title")String title);

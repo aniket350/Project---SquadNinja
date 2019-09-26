@@ -27,6 +27,5 @@ public class IdeaHamster {
   private String name;
   private String mobile;
   private String email;
-  @Relationship(type = "posted_by", direction = Relationship.OUTGOING)
-  private List<Idea> ideas;
+
 }

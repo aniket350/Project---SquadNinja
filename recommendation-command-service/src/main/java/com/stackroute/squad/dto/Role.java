@@ -21,7 +21,6 @@ import java.util.List;
 @Component
 public class Role {
   private String experience;
-  private String noOfPeople;
   private List<String> skills;
   private String role;
 

@@ -41,7 +41,7 @@ public class IdeaServiceImpl implements IdeaService {
 
   /*It consumes the data of the idea-service*/
   @RabbitListener(queues = "${idea.rabbitmq.queue}")
-  public void receiveData(IdeaDto ideaDTO) throws IdeaAlreadyExistsException {
+  public void receiveData(IdeaDto ideaDTO)throws IdeaAlreadyExistsException {
     Idea idea = new Idea();
     idea.setTitle(ideaDTO.getTitle());
     if (ideaRepository.findByTitle(idea.getTitle()) != null) {

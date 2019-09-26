@@ -56,7 +56,8 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
 
   /*It will listen the data from spProfile queue used for updating the serviceProvider profile data*/
   @RabbitListener(queues = "${spUpdate.rabbitmq.queue}")
-  public void updatedServiceProvider(ServiceProviderDto serviceProviderDto) throws ServiceProviderNotFoundException {
+  public void updatedServiceProvider(ServiceProviderDto serviceProviderDto)throws ServiceProviderNotFoundException {
+
 
     ServiceProvider retrievedServiceProvider = serviceProviderRepository.findByEmail(serviceProviderDto.getEmail());
     if (serviceProviderRepository.findByEmail(retrievedServiceProvider.getEmail()) == null) {
