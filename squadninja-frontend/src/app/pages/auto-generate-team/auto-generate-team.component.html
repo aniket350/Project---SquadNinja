@@ -28,17 +28,10 @@
      <button type="button" class="btn btn-info btn-lg btn-block" (click)="sendAutogenTeam()">Confirm Selected Team</button>
    </div> -->
   
-   <style>
-    @import url('https://fonts.googleapis.com/css?family=Macondo+Swash+Caps&display=swap');
-    </style>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<body class="mask ">
-    <div class="header   pb- pt-3 pt-md-8">
+
+
+    <div class="header pb- pt-3 pt-md-8">
     </div>
   <mat-tab-group (selectedTabChange) = "myClick($event)">
   <mat-tab class="mattab" (selectedTabChange) = "myClick($event)" label="{{tab}}" *ngFor="let tab of tabs let index=index">
@@ -78,14 +71,9 @@
           <mat-card-actions class="text-center">
             <button  (click)="accept()" mat-button>Accept</button>
             <button  (click)="reject()" mat-button>Reject</button>
-            <button  mat-button >Accepted</button>
+            <!-- <button  mat-button >Accepted</button> -->
           </mat-card-actions>
         </mat-card>
- 
-
-     
-
-
       </div>
 </div>
 
