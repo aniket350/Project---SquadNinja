@@ -96,7 +96,7 @@
     padding-left: 10px;
  }
  .rolebody .projectnoofpeople{
-    width: 70%;
+    width: 80%;
  }
  .rolebody .projectexperience{
     width:80%;
@@ -126,15 +126,27 @@
    //  padding-left: 10px;
  }
  .submit{
-    margin-left: 40%;
-    width:100%;
+   padding-top: 20px;
+   margin-left: 80%; 
+    
    
  }
  
  
   .mat-raised-button{
      width:100%;
+     
+  }
+
+  .submitButton {
+     width: 150px;
+   //   background-color: purple;
      font-size: 20px;
+   //   float: right;
+   
+  }
+  .experiencehint{
+     font-size: 30px;
   }
  
  

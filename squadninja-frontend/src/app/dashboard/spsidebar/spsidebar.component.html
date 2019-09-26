@@ -48,7 +48,7 @@
           </div>
         </div>
        
-        <ul class="navbar-nav">
+        <ul class="navbar-nav spnavbar">
             <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
                 <a routerLinkActive="active" [routerLink]="[menuItem.path]" class="nav-link">
                     <i class="ni {{menuItem.icon}}"></i>
