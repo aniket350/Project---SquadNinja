@@ -3,7 +3,7 @@
 </div>
 
 <div>
-  <h1>Recommended Idea Cards</h1>
+  <h1>Recommended Ideas:</h1>
 </div>
 <div class="">
   <!-- <mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
@@ -63,7 +63,71 @@
     </div>
   </div>
 
+  <div>
+    <h1>Invited Ideas:</h1>
+  </div>
+  <div class="">
+    <!-- <mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
+      [animation]="'slide'"> -->
+      <mdb-carousel [animation]="'slide'" [isControls]="true" class="carousel-multi-item multi-animation">
+      <mdb-carousel-item *ngFor="let item of recommendedCarouselCards; let i = index">
+        <div class="col-md-3" [ngClass]="{'d-none d-md-block': recentEntitiesindex !== 0}"
+          *ngFor="let z of serviceProviderData; let recentEntitiesIndex = index">
+          <mdb-card class="my-1" style="min-height: 400px;">
+            <!-- <mdb-card-img id="imgs" [src]="item.title"
+               alt="Card image cap"></mdb-card-img><br> -->
+            <mdb-card-body>
+              <mdb-card-title style="min-height: 80px;">
+                <h4>{{z.title | titlecase | truncate:10:"..."}}</h4>
+              </mdb-card-title>
+              <div style="min-height: 250px;">
+                <p>{{z.description | truncate:70:"..."}}</p><br>
+              </div>
+              <button (click)="clicked(i + recentEntitiesIndex)" style="min-height: 70;" type="button" class="btn btn-info btn-lg w-100"
+                  data-toggle="modal" data-target="#myModalIdea">
+                  View
+              </button>
+              <!-- <ngb-rating [rate]="recentEntities.overAllRating"></ngb-rating> -->
+            </mdb-card-body>
+          </mdb-card>
+        </div>
+      </mdb-carousel-item>
+    </mdb-carousel>
+  </div>
+  
+  
+  
+  <div class="modal fade" id="myModalIdea" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+           
+            <h4 class="modal-title">
+              {{ recommendCards[cardNumber]?.title }}
+            </h4>
+            <button type="button" class="close" data-dismiss="modal">
+                &times;
+              </button>
+          </div>
+          <div class="modal-body">
+            <p>{{ recommendCards[cardNumber]?.description }}</p>
+          </div>
+          <div class="modal-body">
+              <p>{{ recommendCards[cardNumber]?.cost}}</p>
+            </div>
+          <div class="modal-footer">
+            <button type="button"  class="btn btn-default" data-dismiss="modal" (click)="accept(cardNumber)">
+              Accept
+            </button>
+            <button type="button"  class="btn btn-default" data-dismiss="modal" (click)="reject(cardNumber)">
+              Reject
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
+  
 <!-- <div class="container-fluid">
     <div class="card" style="width: 18rem;"></div>
     <div class="row mt-9">
