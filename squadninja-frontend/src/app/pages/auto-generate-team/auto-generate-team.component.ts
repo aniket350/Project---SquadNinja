@@ -32,7 +32,7 @@ export class AutoGenerateTeamComponent implements OnInit {
     }
 }
   toSendData = new Map();
-  constructor(private autogenerate : AutogenerateService, private http:HttpClient,private autogeneratesp:AutogenerateService) { }
+  constructor( private http:HttpClient,private autogeneratesp:AutogenerateService) { }
   ngOnInit() {
      let  disp=[];
 // this.getPostedIdeas(); 

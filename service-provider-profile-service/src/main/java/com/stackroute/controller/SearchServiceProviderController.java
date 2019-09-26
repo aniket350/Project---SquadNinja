@@ -25,6 +25,7 @@ public class SearchServiceProviderController {
     @GetMapping("serviceproviders/{roleName}")
     public ResponseEntity<?> searchResult(@PathVariable String roleName){
 
-        return new ResponseEntity<List<ServiceProvider>>(searchServiceProviderService.searchListOfServiceProvider(roleName), HttpStatus.OK);
+        String value = roleName.toLowerCase();
+        return new ResponseEntity<List<ServiceProvider>>(searchServiceProviderService.searchListOfServiceProvider(value), HttpStatus.OK);
     }
 }
