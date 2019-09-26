@@ -22,6 +22,7 @@ export class AutoGenerateTeamComponent implements OnInit {
   obj:any="";
   disabled:boolean=true;
   cards = [];
+  example=['one','two'];
   roleCards=[];
   tabs=[];
   response:any;
