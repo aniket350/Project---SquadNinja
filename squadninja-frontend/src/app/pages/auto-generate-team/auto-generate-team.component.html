@@ -39,7 +39,7 @@
        
               <div class="row">
              <br>
-      <mat-card class="col-md-4" *ngFor = "let serviceprovider of example" class="example-card">
+      <mat-card class="col-md-4" *ngFor = "let serviceprovider of example let i=index" class="example-card">
         <br>
 
           <mat-card-header>
@@ -69,7 +69,9 @@
           
           <br>
           <mat-card-actions class="text-center">
-            <button  (click)="accept()" mat-button>Accept</button>
+          <button mat-fab [style.background-color]="toggle ? 'green' : 'red'">
+            <mat-icon class="material-icons" (click)="clickAccept(serviceprovider,index,i)" mat-button>{{status}}</mat-icon>
+          </button>
             <button  (click)="reject()" mat-button>Reject</button>
             <!-- <button  mat-button >Accepted</button> -->
           </mat-card-actions>

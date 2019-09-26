@@ -13,6 +13,8 @@ export class AutoGenerateTeamComponent implements OnInit {
   public items: any;
   public postedIdeaDetails: any;
  
+  status="done";
+  toggle = true;
   title:any="";
   obj1:any="";
   obj:any="";
@@ -61,6 +63,7 @@ sendAutogenTeam(){
       delete e[element];
     })
   );
+
   this.accept = this.accept.map(element => {
       this.sendAccept.role.role = element.role;
       this.sendAccept.role.experience = element.experience;
@@ -88,6 +91,7 @@ getAnyTeam(role: any) {
            data = data.map(e => {
             e.acceptStatus = 'Accept';
             e.rejectStatus = 'Reject';
+            e.toggle=true;
             return e;
           });
           this.cards = data;
@@ -100,7 +104,10 @@ getAnyTeam(role: any) {
   // console.log(this.cards);
  }
  clickAccept(card,index,i) {
-  
+   
+  this.toggle = !this.toggle;
+  this.status = this.toggle ? 'done' : 'clear';
+  console.log(this.toggle)
   this.disabled = false;
   console.log(this.roleCards[index][i]);
   this.toSendData.set(2 * index + 1 * i, this.roleCards[index][i]);
@@ -111,6 +118,7 @@ getAnyTeam(role: any) {
   if (card.email == j.email) {
   j.rejectStatus = 'Reject';
   j.acceptStatus = 'Accepted';
+  j.toggle=false;
   }
   return j;
  });
@@ -131,6 +139,7 @@ getAnyTeam(role: any) {
   if (card.email == j.email) {
   j.rejectStatus = 'Rejected';
   j.acceptStatus = 'Accept';
+  j.toggle=true;
   }
   return j;
   });
