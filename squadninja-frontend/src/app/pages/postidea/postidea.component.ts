@@ -132,6 +132,7 @@ export class PostideaComponent implements OnInit {
 
   save() {
     this.emailId=localStorage.getItem("emailId");
+   
     let obj = {
       title: this.title,
       description: this.description,
@@ -148,6 +149,9 @@ export class PostideaComponent implements OnInit {
       location: this.location,
       postedBy:this.emailId
     }
+
+
+    
 //  console.log(obj);
 
     if (this.fieldArray.length >= 1 && this.newAttribute.skills > 0) {

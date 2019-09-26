@@ -28,6 +28,9 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
 
 
   dialog: any;
+  ideaviewService: any;
+  rejected: any;
+  joined: any;
   
 
 
@@ -124,10 +127,31 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
   }
 
   accept(cardnumber){
-    
+    console.log(cardnumber);
+    console.log(this.serviceProviderData.invitedIdeas[cardnumber].title);
+    let title = this.serviceProviderData.invitedIdeas[cardnumber].title;
+
+    console.log(String(title));
+    let joined: boolean =true;
+    this.ideaviewService.joinedAfterInvite(String(title),this.emailId,joined)
+    .subscribe((data)=> {
+      this.joined=data;
+      console.log("after getting back from service",this.joined);
+    });
+    this.serviceProviderData.invitedIdeas.splice(cardnumber,1);
   }
 
   reject(cardnumber){
-
+    console.log(cardnumber);
+    this.serviceProviderData.invitedIdeas.splice(cardnumber,1);
+    console.log(this.serviceProviderData.invitedIdeas[cardnumber].title);
+    let title = this.serviceProviderData.invitedIdeas[cardnumber].title;
+    console.log(String(title));
+    let joined: boolean =false; 
+    this.ideaviewService.joinedAfterInvite(title,this.emailId,joined)
+    .subscribe((data)=> {
+      this.rejected=data;
+      console.log("after getting back from service",this.rejected);
+    });
   }
 }
