@@ -12,7 +12,7 @@
                         </h2>
                         <div class="cards">
                         <div class="row">
-                        <mat-card *ngFor="let x of searchbar;let index=index" class="cardGroup" cols="cols">
+                        <mat-card *ngFor="let x of searchbar ; let index=index" class="cardGroup" cols="cols">
                                 <mat-card-title>{{x.name}}</mat-card-title>
                                 <b>Location:</b><mat-card-content>{{x.currentLocation}}</mat-card-content>
                                 <b>Charge Per Hour:</b><mat-card-content>{{x.chargePerHour}}</mat-card-content>

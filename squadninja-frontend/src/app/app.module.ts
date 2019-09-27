@@ -14,7 +14,7 @@ import { IhdashboardComponent } from './layouts/ihdashboard/ihdashboard.componen
 import { DashboardModule } from './dashboard/dashboard.module';
 import { RouterModule } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
-import { MatTabsModule } from '@angular/material';
+import { MatTabsModule, MatSnackBar } from '@angular/material';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { IhprofileserService } from './services/ihprofileser/ihprofileser.service';
@@ -68,6 +68,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     MatAutocompleteModule,
     MatButtonModule,
     MatTooltipModule
+    
     
   ],
   providers: [

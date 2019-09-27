@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SpprofileserService } from 'src/app/services/spprofileser/spprofileser.service';
 import { IdeaviewService } from 'src/app/services/ideaviewser/ideaview.service';
+// import { MatSnackBar } from '@angular/material';
 
 
 @Component({
@@ -34,6 +35,7 @@ export class SearchviewComponent implements OnInit {
     console.log("sending from here",this.inviteIdea);
     this.ideaviewservice.inviteTeam(this.inviteIdea,this.searchbar[index]).subscribe((response)=>this.invite=response);
     console.log("invite team", this.invite);
+    // let snackBarRef = this.snackBar.open('Message archived');
    
   }
 }
