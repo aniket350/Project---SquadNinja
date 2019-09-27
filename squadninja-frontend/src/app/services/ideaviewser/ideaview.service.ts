@@ -103,4 +103,8 @@ export class IdeaviewService {
       }
     );
   }
+
+  joinedAfterInvite(title,email,joined):Observable<any>{
+    return this.http.put<IdeaView>(`http://13.235.10.115:8083/api/v1/joinedsp?title=${title}&email=${email}&joined=${joined}`,(null));
+  }
 }

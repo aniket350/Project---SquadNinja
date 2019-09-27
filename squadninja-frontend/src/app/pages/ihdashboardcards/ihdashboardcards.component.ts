@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import {$} from 'protractor';
 import { protractor } from 'protractor/built/ptor';
 import { FormControl } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { SectionComponentService } from 'src/app/services/cardHomePage/section-component.service';
 import { SectionComponentSP } from 'src/app/services/cardSPHomePage/section-component-service-service';
 import { SpprofileserService } from 'src/app/services/spprofileser/spprofileser.service';
@@ -19,23 +21,24 @@ export class IhdashboardcardsComponent implements OnInit {
   ideaCardsData: any = [];
   ideaCardsDatas: any = [];
   ideaCarouselCards: any = [[]];
-
+  imageArray: any = [];
   updated: any;
 
   cards:any=['one','two'];
 
-  constructor(private ihprofileserService : IhprofileserService){}
+  constructor(private ihprofileserService : IhprofileserService,private http:HttpClient){}
 
   public emailId = '';
   ngOnInit() {
     this.getTheProfile();
     this.getPostedIdeas();
+    this.getJSON().subscribe(data =>{this.imageArray = data;console.log(this.imageArray)}, error => console.log(error));
     // this.sectionComponentService.getIdeas()
     //   .subscribe(data => {
     //     this.ideaCardsData = data
     //     console.log(this.ideaCardsData);
     //   });
-      
+
     this.sections = this.chunk(this.sections, 3);
   }
 
@@ -47,6 +50,9 @@ export class IhdashboardcardsComponent implements OnInit {
     }
     return R;
   }
+  public getJSON(): Observable<any> {
+     return this.http.get("../assets/data/subDomainImage.json");
+ }
 
   getTheProfile(){
     this.emailId=localStorage.getItem("emailId");
@@ -64,7 +70,7 @@ export class IhdashboardcardsComponent implements OnInit {
     this.emailId=localStorage.getItem("emailId");
     console.log(this.emailId);
     this.ihprofileserService.getIdea(this.emailId).subscribe((data)=>{
-      // console.log(data);
+      console.log(data);
       this.ideaCardsDatas=data;
       // localStorage.setItem("forTeam", JSON.stringify(this.ideaCardsDatas));
       // console.log(this.ideaCardsDatas);
@@ -79,4 +85,3 @@ export class IhdashboardcardsComponent implements OnInit {
     console.log(this.ideaCardsDatas[index]);
   }
 }
- 

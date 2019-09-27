@@ -11,6 +11,11 @@ import { SpdashboardComponent } from './layouts/spdashboard/spdashboard.componen
 import { FussionChartComponent } from './fussion-chart/fussion-chart.component';
 import { SpprofileComponent } from './pages/spprofile/spprofile.component';
 import { FooterSearchComponent } from './home/footer-search/footer-search.component';
+import { HttpClientModule } from '@angular/common/http'; import { HttpModule } from '@angular/http';
+
+
+
+
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
@@ -20,6 +25,8 @@ const routes: Routes = [
   {path: 'sp',component:SpprofileComponent},
   {path:'footersearch',component: FooterSearchComponent},
   {path: 'ihdashboard',
+  // canActivate: [AuthGuard] ,
+  // canActivate: [AuthGuard] ,
   component: IhdashboardComponent,
   children: [
     {

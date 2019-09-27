@@ -4,6 +4,7 @@ import { SectionComponentSP } from 'src/app/services/cardSPHomePage/section-comp
 import { HttpClient } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
 import { SpprofileserService } from 'src/app/services/spprofileser/spprofileser.service';
+import { IdeaviewService } from 'src/app/services/ideaviewser/ideaview.service';
 
 @Component({
   selector: 'app-spdashboardcards',
@@ -28,13 +29,12 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
 
 
   dialog: any;
-  ideaviewService: any;
   rejected: any;
   joined: any;
   
 
 
-  constructor(private sectionComponentService : SectionComponentService ,private spprofileserService : SpprofileserService,private serviceProviderProfile: SpprofileserService){}
+  constructor(private sectionComponentService : SectionComponentService ,private spprofileserService : SpprofileserService,private serviceProviderProfile: SpprofileserService, private ideaviewService : IdeaviewService){}
   ngOnInit() {
 
     this.emailId=localStorage.getItem("emailId");
@@ -80,7 +80,7 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
     .subscribe((data)=> {
       // console.log("data fetched..", data);
       this.serviceProviderData=data;
-      // console.log("after getting back from service",this.serviceProviderData);
+      console.log("after getting back from service",this.serviceProviderData);
     });
   }
 

@@ -10,6 +10,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SectionsComponent } from './sections/sections.component';
 import { LoginComponent } from './login/login.component';
 
+ import { HttpModule } from '@angular/http';
+
+
 import { IhdashboardComponent } from './layouts/ihdashboard/ihdashboard.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { RouterModule } from '@angular/router';
@@ -39,9 +42,10 @@ import * as FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 import { FussionChartComponent } from './fussion-chart/fussion-chart.component';
 import { SpdashboardModule } from './layouts/spdashboard/spdashboard.module';
 import { SearchviewComponent } from './pages/searchview/searchview.component';
-// Pass the fusioncharts library and chart modules
+// Pass the fusio  // AuthService,
+    // AuthGuardServicencharts library and chart modules
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
-
+  
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,16 +71,17 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     SpdashboardModule,
     MatAutocompleteModule,
     MatButtonModule,
-    MatTooltipModule
-    
-    
+    MatTooltipModule,
+    HttpModule
+
   ],
   providers: [
     HttpClient,
     IhprofileserService,
     SpprofileserService,
     RegisterserService,
-    MatButtonModule
+    MatButtonModule,
+
   ],
   exports : [MatTooltipModule,
     MatButtonModule,

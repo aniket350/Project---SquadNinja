@@ -27,21 +27,21 @@
    <div class="doneButton">
      <button type="button" class="btn btn-info btn-lg btn-block" (click)="sendAutogenTeam()">Confirm Selected Team</button>
    </div> -->
-  
 
-
-
+​
+​
+​
     <div class="header pb- pt-3 pt-md-8">
     </div>
   <mat-tab-group (selectedTabChange) = "myClick($event)">
   <mat-tab class="mattab" (selectedTabChange) = "myClick($event)" label="{{tab[0].role.role}}" *ngFor="let tab of auto let index=index">
           <div class="container">
-       
+
               <div class="row">
              <br>
       <mat-card class="col-md-4" *ngFor = "let sp of tab ;let i=index" class="example-card">
         <br>
-
+​
           <mat-card-header>
            <b><h3>
               <div class="img">
@@ -51,38 +51,36 @@
             <mat-card-subtitle style="text-align: center">{{sp.currentLocation}}</mat-card-subtitle>
            </h3></b>
           </mat-card-header>
-           
+
           <mat-card-content>
-            
+
             <p> <strong>EmailID   :</strong> {{sp.email}} </p>
-            
+
             <p><strong>Charge/Hr   :</strong>  {{sp.chargePerHour}}</p>
-              
+
              <p><strong>Domain   :</strong>  {{sp.role.role}}</p>
-             
+
               <p><strong>Skills   :</strong>
               <span >
               {{sp.role.skills}}
               </span> </p>
-                       
+
           </mat-card-content>
-          
+
           <br>
           <mat-card-actions class="text-center">
           <button mat-fab [style.background-color]="toggle ? 'green' : 'red'">
-            <mat-icon class="material-icons" (click)="clickAccept(serviceprovider,index,i)" mat-button>{{status}}</mat-icon>
+            <mat-icon class="material-icons" (click)="clickAccept(sp,index,i)" mat-button>{{checkStatus(sp)}}</mat-icon>
           </button>
-            <button  (click)="reject()" mat-button>Reject</button>
-            <!-- <button  mat-button >Accepted</button> -->
           </mat-card-actions>
         </mat-card>
       </div>
 </div>
-
+​
   </mat-tab>
-
+​
 </mat-tab-group>
-
+​
 <div class="wrapper">
-    <button style="font-size: 18px; padding-top:8px; padding-bottom:8px; border-radius:12px" (click)="done()" background-color="black" mat-button>CONFIRM YOUR TEAM</button>
+    <button style="font-size: 18px; padding-top:8px; padding-bottom:8px; border-radius:12px" (click)="sendAutogenTeam()" background-color="black" mat-button>CONFIRM YOUR TEAM</button>
 </div>

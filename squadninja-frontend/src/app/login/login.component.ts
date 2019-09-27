@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserserviceService } from '../services/userser/userservice.service';
-import {Router} from '@angular/router';
+import {Router,CanActivate} from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
 // import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 // import {  TemplateRef } from '@angular/core';
@@ -32,7 +32,7 @@ constructor(private registerser: RegisterserService, private userservice: Userse
   public ideaHamster:any = "ideaHamster";
 
   public hello:any;
- 
+
 
   ngOnInit() {
   }
@@ -48,6 +48,14 @@ constructor(private registerser: RegisterserService, private userservice: Userse
         return Error;
     }
   }
+  //
+  // canActivate(){
+  //   if(this.email!=null){
+  //     return true;
+  //   }
+  //   else
+  //   return false;
+  // }
 
   selectIh() {
     this.role = 'ideahamster';
@@ -56,7 +64,7 @@ constructor(private registerser: RegisterserService, private userservice: Userse
   selectSp() {
     this.role = 'serviceprovider';
   }
-  
+
 
 Login() {
     this.userservice.Login (this.email, this.password).subscribe((response) => {
@@ -66,17 +74,18 @@ Login() {
         this.token = response;
         this.decodedroletoken = this.getDecodedAccessToken(this.token.token);
         this.decodedTokenWithRoleSub = this.decodedroletoken.sub;
+
+          // canActivate(): boolean {
+            
         if (this.decodedTokenWithRoleSub === "ideaHamster") {
-         
+
           this.router.navigate(['/ihdashboard']);
         }
          else {
           this.router.navigate(['/spdashboard']);
-          
-          
         }
-        
-        
+      // }
+
 
   }},
   (err) => {

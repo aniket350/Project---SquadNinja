@@ -56,7 +56,7 @@
               <i class="ni location_pin mr-2"></i>{{serviceProviderData.currentLocation}}
             </div>
             <div class="h5 mt-4">
-              <i class="ni business_briefcase-24 mr-2">{{serviceProviderData?.role}}</i>
+              <i class="ni business_briefcase-24 mr-2">{{serviceProviderData.role.role}}</i>
             </div>
             <div>
               <i class="ni education_hat mr-2"></i>
@@ -202,7 +202,7 @@
 
 
                   <!-- <div class="form-group">
-                    
+
                     <input type="text" name="skills" [(ngModel)]="serviceProviderData.skills" class="form-control form-control-alternative"
                       placeholder={{serviceProviderData.role?.skills}} >
                   </div> -->
@@ -247,9 +247,9 @@
                             {{subdomain}}
                           </mat-option>
                         </mat-autocomplete>
-                        
+
                       </mat-form-field>
-                    
+
                     <!-- <input type="text" name="subDomain" [(ngModel)]="serviceProviderData.subDomain"
                       class="form-control form-control-alternative" placeholder={{serviceProviderData.subDomain}}> -->
                   </div>

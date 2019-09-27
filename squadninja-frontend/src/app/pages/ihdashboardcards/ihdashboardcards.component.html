@@ -1,27 +1,47 @@
 <div class="header bg-cyan opacity-15 pb-8 pt-1 pt-md-8"></div>
 
 <div class="container-fluid">
-        <div class="card" style="display: inline;;"></div>
-    <div class="row mt-4 ">
-       <div class="col-xl-11 mb-8 mb-xl-5">
-            <div class="postedideas">
-                <h2 class="mb-3 align-items-center">
-                    <span class="align-items-center">Posted Ideas</span>
-                </h2>
-            </div>
-            
-        </div>
+  <div class="card" style="display: inline;;"></div>
+  <div class="row mt-4 ">
+    <div class="col-xl-11 mb-8 mb-xl-5">
+      <div class="postedideas">
+        <h2 class="mb-3 align-items-center">
+          <span class="align-items-center">Posted Ideas</span>
+        </h2>
+      </div>
+
     </div>
-    <div class="cards">
-        
-        <div class="row">  
-            <mat-card *ngFor="let card of ideaCardsDatas let index=index" class="cardGroup" cols="cols" >
-                <mat-card-title>{{card.title | truncate:10:"..."}}</mat-card-title>
-                <mat-card-content><p>{{card.description | truncate:20:"..."}}</p></mat-card-content>
-                <button (click)="getIdeaDetails(index)" [routerLink]="['ideaview']" class="button2" type="button" btn btn-info btn-lg w-100>View</button>
-            </mat-card>
+  </div>
+  <div class="cards">
+
+    <div class="row">
+      <div *ngFor="let card of ideaCardsDatas let index=index">
+        <mat-card class="cardGroup" cols="cols">
+          <mat-card-header id="mat-header">
+            <mat-card-title>{{card.title}}</mat-card-title>
+          </mat-card-header>
+          <div *ngFor="let img of imageArray let index=index">
+            <div *ngIf="img.name===card.subDomain; else elseBlock">
+                <img id="img" mat-card-image src='{{img.images[0]}}' alt='{{card.subDomain}}'>
+            </div>
           </div>
-</div>
+              <mat-card-content id="mat-content">
+                <p>{{card.description | truncate:100:"..."}}</p>
+              </mat-card-content>
+              <mat-card-actions>
+                <button (click)="getIdeaDetails(index)" [routerLink]="['ideaview']" class="button2" type="button" btn btn-info btn-lg w-100>View</button>
+              </mat-card-actions>
+        </mat-card>
+      </div>
+      <!-- <mat-card *ngFor="let card of ideaCardsDatas let index=index" class="cardGroup" cols="cols">
+        <mat-card-title>{{card.title}}</mat-card-title>
+        <mat-card-content>
+          <p>{{card.description | truncate:20:"..."}}</p>
+        </mat-card-content>
+        <button (click)="getIdeaDetails(index)" [routerLink]="['ideaview']" class="button2" type="button" btn btn-info btn-lg w-100>View</button>
+      </mat-card> -->
+    </div>
+  </div>
 </div>
 
 <!-- <mdb-carousel-item *ngFor="let item of ideaCardsDatas; let i = index">
@@ -29,7 +49,7 @@
           *ngFor="let entity of item; let recentEntitiesIndex = index">
           <mdb-card class="my-1" style="min-height: 400px;">
             <mdb-card-img id="imgs" [src]="item.title"
-               alt="Card image cap"></mdb-card-img><br> 
+               alt="Card image cap"></mdb-card-img><br>
             <mdb-card-body>
               <mdb-card-title style="min-height: 80px;">
                 <h4></h4>
@@ -41,7 +61,7 @@
                   data-toggle="modal" data-target="#myModal">
                   View
               </button>
-            <ngb-rating [rate]="recentEntities.overAllRating"></ngb-rating> 
+            <ngb-rating [rate]="recentEntities.overAllRating"></ngb-rating>
             </mdb-card-body>
           </mdb-card>
         </div>
