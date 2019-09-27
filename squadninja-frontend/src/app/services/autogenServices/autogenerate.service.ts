@@ -8,10 +8,11 @@ import { SearchData } from '../spprofileser/search.model';
 })
 export class AutogenerateService {
   constructor(private http:HttpClient) { }
-  // getByIdeaTitleAndRoleName(roleName):Observable<SearchData>{
-  //   console.log("in getbyemail of reg service ",roleName);
-  //   return this.http.get<SearchData>(`http://13.235.10.115:8084/api/v1/serviceprovider/${roleName}`);
-  // }
+  getByIdeaTitleAndRoleName(title,role):any{
+    console.log("in getbyemail of reg service ",title,role);
+    console.log();
+    return this.http.get<any>(`http://13.235.10.115:8081/api/v1/applied/${title}?roleName=${role} `);
+  }
   //Aniket code
 //   posetedIdeas(): Observable <any> {
 //    return this.http.get('http://localhost:3000/postAnIdeaDetails');
