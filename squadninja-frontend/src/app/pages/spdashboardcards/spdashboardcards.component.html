@@ -66,25 +66,24 @@
   <div>
     <h1>Invited Ideas:</h1>
   </div>
- 
+  <div class="">
 
-      <div class="cards">
+      <div class="cards"></div>
         
           <div class="row">  
               <mat-card *ngFor="let card of serviceProviderData.invitedIdeas let index=index" class="cardGroup" cols="cols" >
                   <mat-card-title>{{card.title | truncate:10:"..."}}</mat-card-title>
                   <mat-card-content><p>{{card.description | truncate:20:"..."}}</p></mat-card-content>
-                  <button (click)="clicked(index)"  type="button" class="btn btn-info btn-lg w-100"
+                  <button (click)="clicked(i + recentEntitiesIndex)"  type="button" class="btn btn-info btn-lg w-100"
                   data-toggle="modal" data-target="#myModali">
                   View
               </button>
-
               </mat-card>
             </div>
                
-
+                   
                     <!-- <ngb-rating [rate]="recentEntities.overAllRating"></ngb-rating> -->
-         
+                  </div>
                   
         
         <div class="modal fade" id="myModali" role="dialog">
@@ -93,17 +92,17 @@
                 <div class="modal-header">
                  
                   <h4 class="modal-title">
-                    {{ serviceProviderData.invitedIdeas[cardNumber]?.title }}
+                    {{ recommendCards[cardNumber]?.title }}
                   </h4>
                   <button type="button" class="close" data-dismiss="modal">
                       &times;
                     </button>
                 </div>
                 <div class="modal-body">
-                  <p>{{ serviceProviderData.invitedIdeas[cardNumber]?.description }}</p>
+                  <p>{{ recommendCards[cardNumber]?.description }}</p>
                 </div>
                 <div class="modal-body">
-                    <p>{{ serviceProviderData.invitedIdeas[cardNumber]?.cost}}</p>
+                    <p>{{ recommendCards[cardNumber]?.cost}}</p>
                   </div>
                 <div class="modal-footer">
                   <button type="button"  class="btn btn-default" data-dismiss="modal" (click)="accept(cardNumber)">

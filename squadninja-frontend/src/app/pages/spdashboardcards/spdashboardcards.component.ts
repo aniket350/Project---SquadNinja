@@ -51,7 +51,7 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
         this.recommendCards = data;
         console.log(this.recommendCards);
         console.log(this.recommendCards[0].title);
-        this.recommendedCarouselCards = this.chunk(this.recommendCards, 5);
+        this.recommendedCarouselCards = this.chunk(this.recommendCards, 2);
         
       });
 
@@ -78,7 +78,7 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
   getTheProfile(){
     this.serviceProviderProfile.getByEmailIdForServiceProvider(this.emailId)
     .subscribe((data)=> {
-      // console.log("data fetched..", data);
+      console.log("data fetched..", data);
       this.serviceProviderData=data;
       console.log("after getting back from service",this.serviceProviderData);
     });
