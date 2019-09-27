@@ -1,5 +1,6 @@
 [
     { "rolename": "Software Engineer"},
+    { "rolename": "UI Designer"},
     { "rolename": "System Analyst"},
     { "rolename": "Business Analyst"},
     { "rolename": "Technical Support"},
@@ -11,7 +12,6 @@
     { "rolename": "Analyst"},
     { "rolename": "Cloud Admin"},
     { "rolename": "Web Designer"},
-    { "rolename": "UI Designer"},
     { "rolename": "Network Engineer"},
     { "rolename": "Network Admin"},
     { "rolename": "BlockChain Developer"},
