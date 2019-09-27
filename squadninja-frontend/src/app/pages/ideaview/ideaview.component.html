@@ -62,7 +62,7 @@
 ​
     </section>
     <div class="cards row">
-        <mat-card class="example-card " *ngFor="let abc of selectedTeam" >
+        <mat-card class="example-card " *ngFor="let abc of selectedTeam let index=index" >
             <mat-card-header >
                     <div class="img">
                             <p><img  src="../../../assets/img/theme/profile-green.png" alt="card image"></p>
@@ -78,7 +78,7 @@
 ​
                 </p>
             </mat-card-content>
-            <button  mat-button color="warn"  (click)="removeCard(abc.email)">Remove</button>
+            <button  mat-button color="warn"  (click)="removeCard(abc.email,index)">Remove</button>
         </mat-card>
     </div>
     <br />

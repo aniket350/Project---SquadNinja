@@ -44,9 +44,10 @@ export class IdeaviewComponent implements OnInit {
   }
 ​
 ​
-  removeCard(email) {
+  removeCard(email,index) {
     this.ideaviewService.remove(this.title,email).subscribe((data) =>{
     });
+    this.selectedTeam.splice(index,1);
    //window.location.reload();
   }
   save(email){
